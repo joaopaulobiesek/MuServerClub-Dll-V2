@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{481FFB97-7E7F-4068-A882-004B54BAA98F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SeasonVI</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v100</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>Plugin</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;MAIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>true</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;SEASONVI_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;SEASONVI_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;SEASONVI_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="AntiLagS17.h" />
+    <ClInclude Include="Camera3dS17.h" />
+    <ClInclude Include="CCRC32.h" />
+    <ClInclude Include="Clock.h" />
+    <ClInclude Include="Connection.h" />
+    <ClInclude Include="CriticalSection.h" />
+    <ClInclude Include="Defines.h" />
+    <ClInclude Include="ExecutableCheck.h" />
+    <ClInclude Include="Features.h" />
+    <ClInclude Include="FileCheck.h" />
+    <ClInclude Include="FileProtect.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="HookKBS17.h" />
+    <ClInclude Include="HookMSS17.h" />
+    <ClInclude Include="ListManager.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="MapName.h" />
+    <ClInclude Include="Message.h" />
+    <ClInclude Include="Offset.h" />
+    <ClInclude Include="OffsetS0.h" />
+    <ClInclude Include="OffsetS10.h" />
+    <ClInclude Include="OffsetS12.h" />
+    <ClInclude Include="OffsetS13.h" />
+    <ClInclude Include="OffsetS14.h" />
+    <ClInclude Include="OffsetS15.h" />
+    <ClInclude Include="OffsetS16.h" />
+    <ClInclude Include="OffsetS17.h" />
+    <ClInclude Include="OffsetS2.h" />
+    <ClInclude Include="OffsetS4.h" />
+    <ClInclude Include="OffsetS6.h" />
+    <ClInclude Include="OffsetS8.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="ProcessCheck.h" />
+    <ClInclude Include="ProcessManager.h" />
+    <ClInclude Include="ProcessQuery.h" />
+    <ClInclude Include="Protect.h" />
+    <ClInclude Include="Protocol.h" />
+    <ClInclude Include="ProtocolS0.h" />
+    <ClInclude Include="ProtocolS10.h" />
+    <ClInclude Include="ProtocolS12.h" />
+    <ClInclude Include="ProtocolS13.h" />
+    <ClInclude Include="ProtocolS14.h" />
+    <ClInclude Include="ProtocolS15.h" />
+    <ClInclude Include="ProtocolS16.h" />
+    <ClInclude Include="ProtocolS17.h" />
+    <ClInclude Include="ProtocolS2.h" />
+    <ClInclude Include="ProtocolS4.h" />
+    <ClInclude Include="ProtocolS6.h" />
+    <ClInclude Include="ProtocolS8.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SimpleModules.h" />
+    <ClInclude Include="SplashScreen.h" />
+    <ClInclude Include="SwitchKBS17.h" />
+    <ClInclude Include="Thread.h" />
+    <ClInclude Include="Themida\ThemidaSDK.h" />
+    <ClInclude Include="Themida\Via ASM module\SecureEngineMacros.h" />
+    <ClInclude Include="ThreadCheck.h" />
+    <ClInclude Include="ThreadS17.h" />
+    <ClInclude Include="Util.h" />
+    <ClInclude Include="WindowCheck.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AntiLagS17.cpp" />
+    <ClCompile Include="Camera3dS17.cpp" />
+    <ClCompile Include="CCRC32.cpp" />
+    <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="Connection.cpp" />
+    <ClCompile Include="CriticalSection.cpp" />
+    <ClCompile Include="ExecutableCheck.cpp" />
+    <ClCompile Include="Features.cpp" />
+    <ClCompile Include="FileCheck.cpp" />
+    <ClCompile Include="FileProtect.cpp" />
+    <ClCompile Include="HookKBS17.cpp" />
+    <ClCompile Include="HookMSS17.cpp" />
+    <ClCompile Include="ListManager.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="MapName.cpp" />
+    <ClCompile Include="Message.cpp" />
+    <ClCompile Include="Offset.cpp" />
+    <ClCompile Include="OffsetS0.cpp" />
+    <ClCompile Include="OffsetS10.cpp" />
+    <ClCompile Include="OffsetS12.cpp" />
+    <ClCompile Include="OffsetS13.cpp" />
+    <ClCompile Include="OffsetS14.cpp" />
+    <ClCompile Include="OffsetS15.cpp" />
+    <ClCompile Include="OffsetS16.cpp" />
+    <ClCompile Include="OffsetS17.cpp" />
+    <ClCompile Include="OffsetS2.cpp" />
+    <ClCompile Include="OffsetS4.cpp" />
+    <ClCompile Include="OffsetS6.cpp" />
+    <ClCompile Include="OffsetS8.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ProcessCheck.cpp" />
+    <ClCompile Include="ProcessManager.cpp" />
+    <ClCompile Include="ProcessQuery.cpp" />
+    <ClCompile Include="Protect.cpp" />
+    <ClCompile Include="Protocol.cpp" />
+    <ClCompile Include="ProtocolS0.cpp" />
+    <ClCompile Include="ProtocolS10.cpp" />
+    <ClCompile Include="ProtocolS12.cpp" />
+    <ClCompile Include="ProtocolS13.cpp" />
+    <ClCompile Include="ProtocolS14.cpp" />
+    <ClCompile Include="ProtocolS15.cpp" />
+    <ClCompile Include="ProtocolS16.cpp" />
+    <ClCompile Include="ProtocolS17.cpp" />
+    <ClCompile Include="ProtocolS2.cpp" />
+    <ClCompile Include="ProtocolS4.cpp" />
+    <ClCompile Include="ProtocolS6.cpp" />
+    <ClCompile Include="ProtocolS8.cpp" />
+    <ClCompile Include="SimpleModules.cpp" />
+    <ClCompile Include="SplashScreen.cpp" />
+    <ClCompile Include="SwitchKBS17.cpp" />
+    <ClCompile Include="Thread.cpp" />
+    <ClCompile Include="ThreadCheck.cpp" />
+    <ClCompile Include="ThreadS17.cpp" />
+    <ClCompile Include="Util.cpp" />
+    <ClCompile Include="WindowCheck.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.ico" />
+    <None Include="Themida\Via ASM module\SecureEngineMacros.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Themida\SecureEngineSDK32.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

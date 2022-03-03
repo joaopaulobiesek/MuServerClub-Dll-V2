@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Themida">
+      <UniqueIdentifier>{05f5184d-aaff-411e-910a-ebe131b56d61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Display">
+      <UniqueIdentifier>{74b6bb13-5521-471c-b714-013684733539}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset">
+      <UniqueIdentifier>{1af48285-b314-4eea-9f4f-3c6809934808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S0">
+      <UniqueIdentifier>{21f40ba1-a19c-47b5-86d7-23e9a666a118}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S2">
+      <UniqueIdentifier>{f80242d8-834c-4bd7-8718-148aea0b31bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S4">
+      <UniqueIdentifier>{aca7709d-16d1-4fe9-b8f1-cfd0840e86ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S6">
+      <UniqueIdentifier>{e0eb9437-86d8-45fc-96f2-a039378de9be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S8">
+      <UniqueIdentifier>{226ab220-5626-4f56-913f-c06980540c6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S10">
+      <UniqueIdentifier>{a9552f63-4ce0-4324-81c7-661086fc47ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S12">
+      <UniqueIdentifier>{700f7890-0fb3-43ac-9678-eb8fb81f0bf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S13">
+      <UniqueIdentifier>{5f800e64-5907-4f39-a959-200c91ee34f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S14">
+      <UniqueIdentifier>{59695022-ece9-4a13-abd6-308f7876739d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S15">
+      <UniqueIdentifier>{c9aecad1-bb2e-4f0c-9aa7-831ae46469bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S16">
+      <UniqueIdentifier>{c8d473c7-188e-4457-b65e-d78047ec1980}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S17">
+      <UniqueIdentifier>{89df27fa-8b5b-4428-ba07-e153040bc903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features">
+      <UniqueIdentifier>{24c25bc1-ffea-4042-b6a2-f898ce66c409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol">
+      <UniqueIdentifier>{f45b1a44-3bcb-4ac4-8103-affa413a548f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S0">
+      <UniqueIdentifier>{11234958-2563-4ef1-9f25-235c0ca73660}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S2">
+      <UniqueIdentifier>{19cc7a93-1f62-467b-a164-ae241bb2f76a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S4">
+      <UniqueIdentifier>{ea8f959b-ea1d-4bdf-a5bf-9d18ea340cbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S6">
+      <UniqueIdentifier>{7571f5e0-0ede-411a-b202-937889962eda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S8">
+      <UniqueIdentifier>{8a8af602-1f54-42b5-95b4-f5f53a87980a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S10">
+      <UniqueIdentifier>{2f69ac0e-a48f-4003-b54e-e754f7fca6ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S12">
+      <UniqueIdentifier>{c68fd0fd-8e1a-4a87-a272-408a9cbe0b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S13">
+      <UniqueIdentifier>{6f386a84-8fe5-46ae-9c82-1855b4298d4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S14">
+      <UniqueIdentifier>{cb545ded-efce-4354-801d-43a793e59e9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S15">
+      <UniqueIdentifier>{2493ca82-d457-4408-aaa7-09dfebd566c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S16">
+      <UniqueIdentifier>{a9be73a8-b0c1-4910-8087-fdafc56db0da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S17">
+      <UniqueIdentifier>{6728cfa7-702e-459c-878d-3611b9028771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\Validation">
+      <UniqueIdentifier>{835ef217-5db6-443b-9374-3929fa8f8548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules">
+      <UniqueIdentifier>{f42c9b3e-382b-4d84-85e5-7f2ba612ed2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules\AuthServer">
+      <UniqueIdentifier>{7c4cee6e-6803-48f7-a9e0-1e7133bfeed2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerDll.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Themida\ThemidaSDK.h">
+      <Filter>Header Files\Themida</Filter>
+    </ClInclude>
+    <ClInclude Include="Themida\Via ASM module\SecureEngineMacros.h">
+      <Filter>Header Files\Themida</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS0.h">
+      <Filter>Source Files\Offset\S0</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS2.h">
+      <Filter>Source Files\Offset\S2</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS4.h">
+      <Filter>Source Files\Offset\S4</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS6.h">
+      <Filter>Source Files\Offset\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS8.h">
+      <Filter>Source Files\Offset\S8</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS10.h">
+      <Filter>Source Files\Offset\S10</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS12.h">
+      <Filter>Source Files\Offset\S12</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS13.h">
+      <Filter>Source Files\Offset\S13</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS14.h">
+      <Filter>Source Files\Offset\S14</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS15.h">
+      <Filter>Source Files\Offset\S15</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS16.h">
+      <Filter>Source Files\Offset\S16</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS17.h">
+      <Filter>Source Files\Offset\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="Offset.h">
+      <Filter>Source Files\Offset</Filter>
+    </ClInclude>
+    <ClInclude Include="Features.h">
+      <Filter>Source Files\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS0.h">
+      <Filter>Source Files\Protocol\S0</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS2.h">
+      <Filter>Source Files\Protocol\S2</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS4.h">
+      <Filter>Source Files\Protocol\S4</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS6.h">
+      <Filter>Source Files\Protocol\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS8.h">
+      <Filter>Source Files\Protocol\S8</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS10.h">
+      <Filter>Source Files\Protocol\S10</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS12.h">
+      <Filter>Source Files\Protocol\S12</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS13.h">
+      <Filter>Source Files\Protocol\S13</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS14.h">
+      <Filter>Source Files\Protocol\S14</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS15.h">
+      <Filter>Source Files\Protocol\S15</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS16.h">
+      <Filter>Source Files\Protocol\S16</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS17.h">
+      <Filter>Source Files\Protocol\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol.h">
+      <Filter>Source Files\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolValidation.h">
+      <Filter>Source Files\Protocol\Validation</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketManager.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="CriticalSection.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientManager.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerDisplayer.h">
+      <Filter>Source Files\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="CCRC32.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerInfo.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="QueryManager.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadFiles.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="MemScript.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackList.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadAuth.h">
+      <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocoloAuth.h">
+      <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionAuth.h">
+      <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessQueryAuth.h">
+      <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadCheckAuth.h">
+      <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerDll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerDisplayer.cpp">
+      <Filter>Source Files\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientManager.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="CriticalSection.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="Queue.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketManager.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS0.cpp">
+      <Filter>Source Files\Offset\S0</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS2.cpp">
+      <Filter>Source Files\Offset\S2</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS4.cpp">
+      <Filter>Source Files\Offset\S4</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS6.cpp">
+      <Filter>Source Files\Offset\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS8.cpp">
+      <Filter>Source Files\Offset\S8</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS10.cpp">
+      <Filter>Source Files\Offset\S10</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS12.cpp">
+      <Filter>Source Files\Offset\S12</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS13.cpp">
+      <Filter>Source Files\Offset\S13</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS14.cpp">
+      <Filter>Source Files\Offset\S14</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS15.cpp">
+      <Filter>Source Files\Offset\S15</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS16.cpp">
+      <Filter>Source Files\Offset\S16</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS17.cpp">
+      <Filter>Source Files\Offset\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="Offset.cpp">
+      <Filter>Source Files\Offset</Filter>
+    </ClCompile>
+    <ClCompile Include="Features.cpp">
+      <Filter>Source Files\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS0.cpp">
+      <Filter>Source Files\Protocol\S0</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS2.cpp">
+      <Filter>Source Files\Protocol\S2</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS4.cpp">
+      <Filter>Source Files\Protocol\S4</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS6.cpp">
+      <Filter>Source Files\Protocol\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS8.cpp">
+      <Filter>Source Files\Protocol\S8</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS10.cpp">
+      <Filter>Source Files\Protocol\S10</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS12.cpp">
+      <Filter>Source Files\Protocol\S12</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS13.cpp">
+      <Filter>Source Files\Protocol\S13</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS14.cpp">
+      <Filter>Source Files\Protocol\S14</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS15.cpp">
+      <Filter>Source Files\Protocol\S15</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS16.cpp">
+      <Filter>Source Files\Protocol\S16</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS17.cpp">
+      <Filter>Source Files\Protocol\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol.cpp">
+      <Filter>Source Files\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolValidation.cpp">
+      <Filter>Source Files\Protocol\Validation</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="CCRC32.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerInfo.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryManager.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadFiles.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="MemScript.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackList.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadAuth.cpp">
+      <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocoloAuth.cpp">
+      <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionAuth.cpp">
+      <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessQueryAuth.cpp">
+      <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadCheckAuth.cpp">
+      <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ServerDll.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ServerDll.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Themida\SecureEngineSDK32.lib">
+      <Filter>Header Files\Themida</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Themida\Via ASM module\SecureEngineMacros.asm">
+      <Filter>Header Files\Themida</Filter>
+    </None>
+  </ItemGroup>
+</Project>

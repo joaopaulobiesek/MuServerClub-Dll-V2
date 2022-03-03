@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Themida">
+      <UniqueIdentifier>{776d5921-68e8-4a9f-aa61-76d254b793ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset">
+      <UniqueIdentifier>{1d7fe877-5529-4108-8ac6-f6919f79ffa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S0">
+      <UniqueIdentifier>{e1b4bf9a-92bd-4417-831b-7c9c60799728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S2">
+      <UniqueIdentifier>{db56b342-b34f-4c57-bca3-f1389a291078}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S4">
+      <UniqueIdentifier>{116105fa-2963-4ba5-aa64-f7d9631f22f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S6">
+      <UniqueIdentifier>{dbc53ba8-1d41-415e-935a-a9cec00c3cc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S8">
+      <UniqueIdentifier>{26eb9a7c-dbb1-406f-a987-feb57907ebe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S10">
+      <UniqueIdentifier>{91e0f9ef-4c87-46dc-a574-36914f242d78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S12">
+      <UniqueIdentifier>{ed82b6c1-7cfd-4265-92bd-60d48c14859d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S13">
+      <UniqueIdentifier>{544d0d41-4bdb-4ab0-ab81-be5367fbe3cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S14">
+      <UniqueIdentifier>{19792217-7704-4f7a-8631-0c6f1516ce1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S15">
+      <UniqueIdentifier>{d3caaf61-bdac-432b-bced-e51dfe284ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S16">
+      <UniqueIdentifier>{3b31d8f0-792a-48e5-bd7a-733033652ae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Offset\S17">
+      <UniqueIdentifier>{eed273b5-d4c7-42ba-aca3-164d8b7526f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol">
+      <UniqueIdentifier>{c505e148-aa54-40c4-9459-b3c5956e48d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S17">
+      <UniqueIdentifier>{d964c844-a201-44fe-98e9-e3d430fbf978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S0">
+      <UniqueIdentifier>{1e02bf03-bf7e-44a4-be0c-1173fd98c4c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S2">
+      <UniqueIdentifier>{528aa19d-4774-4fbb-b999-ff2413d7422c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S4">
+      <UniqueIdentifier>{c9a9eb13-2cbd-44a4-97b4-02ec86cd6c08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S6">
+      <UniqueIdentifier>{9a4ed3b0-463e-4472-9e33-c965e83a8357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S8">
+      <UniqueIdentifier>{73619626-b821-4e36-8e26-f78126594dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S10">
+      <UniqueIdentifier>{29504652-1757-4a12-86c9-ccde6a9f6f6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S12">
+      <UniqueIdentifier>{3f0301ac-2d70-425d-afce-6efaca0f431f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S13">
+      <UniqueIdentifier>{300aef9c-690a-4193-8f23-8411182e45a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S14">
+      <UniqueIdentifier>{16cb13c5-8266-401e-8d9e-44a8696dfaac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S15">
+      <UniqueIdentifier>{2cfea5aa-a304-449d-9fb6-6e2fa7611b6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S16">
+      <UniqueIdentifier>{5de56321-2c1e-4f87-8844-47b7156e2163}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules">
+      <UniqueIdentifier>{55262401-c277-4155-89e6-989e236b178e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules\Crypto">
+      <UniqueIdentifier>{33ce92ac-9bad-42d6-86c8-723196601f52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules\Main">
+      <UniqueIdentifier>{b32c18df-d099-4622-a9e6-4cded650293f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules\Connection">
+      <UniqueIdentifier>{ab8d9b27-33ed-44f1-afd1-0858f9eac314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules\Threads">
+      <UniqueIdentifier>{fdcf64dd-90da-41f5-809a-9be8da9d1b0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features">
+      <UniqueIdentifier>{194b2f27-e73e-4620-93d0-2ed07b2790ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\AntiLag">
+      <UniqueIdentifier>{aeb47ad8-9e23-4bd1-a37c-d633e284066c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Camera3D">
+      <UniqueIdentifier>{3c93ada7-bd6d-4cb6-84d9-3dccdca34534}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Camera3D\S17">
+      <UniqueIdentifier>{4ce96ca4-e605-418d-b118-e20fd155acf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Hook_KB_MS">
+      <UniqueIdentifier>{ab934284-fa6f-415b-9491-c3eb700e022d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Hook_KB_MS\S17">
+      <UniqueIdentifier>{ce44c6b5-2d15-4328-9e44-1f25dcbe79e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\AntiLag\S17">
+      <UniqueIdentifier>{d6803ce1-ba2e-4109-b900-b638973b478a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Themida\ThemidaSDK.h">
+      <Filter>Header Files\Themida</Filter>
+    </ClInclude>
+    <ClInclude Include="Themida\Via ASM module\SecureEngineMacros.h">
+      <Filter>Header Files\Themida</Filter>
+    </ClInclude>
+    <ClInclude Include="Offset.h">
+      <Filter>Source Files\Offset</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS0.h">
+      <Filter>Source Files\Offset\S0</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS2.h">
+      <Filter>Source Files\Offset\S2</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS4.h">
+      <Filter>Source Files\Offset\S4</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS6.h">
+      <Filter>Source Files\Offset\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS8.h">
+      <Filter>Source Files\Offset\S8</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS10.h">
+      <Filter>Source Files\Offset\S10</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS12.h">
+      <Filter>Source Files\Offset\S12</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS13.h">
+      <Filter>Source Files\Offset\S13</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS14.h">
+      <Filter>Source Files\Offset\S14</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS15.h">
+      <Filter>Source Files\Offset\S15</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS16.h">
+      <Filter>Source Files\Offset\S16</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS17.h">
+      <Filter>Source Files\Offset\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol.h">
+      <Filter>Source Files\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread.h">
+      <Filter>Source Files\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS16.h">
+      <Filter>Source Files\Protocol\S16</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS15.h">
+      <Filter>Source Files\Protocol\S15</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS14.h">
+      <Filter>Source Files\Protocol\S14</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS13.h">
+      <Filter>Source Files\Protocol\S13</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS12.h">
+      <Filter>Source Files\Protocol\S12</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS10.h">
+      <Filter>Source Files\Protocol\S10</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS8.h">
+      <Filter>Source Files\Protocol\S8</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS6.h">
+      <Filter>Source Files\Protocol\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS4.h">
+      <Filter>Source Files\Protocol\S4</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS2.h">
+      <Filter>Source Files\Protocol\S2</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS0.h">
+      <Filter>Source Files\Protocol\S0</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleModules.h">
+      <Filter>Source Files\BasicModules\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="Connection.h">
+      <Filter>Source Files\BasicModules\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="CriticalSection.h">
+      <Filter>Source Files\BasicModules\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="ListManager.h">
+      <Filter>Source Files\BasicModules\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Source Files\BasicModules\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="FileCheck.h">
+      <Filter>Source Files\BasicModules\Crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="FileProtect.h">
+      <Filter>Source Files\BasicModules\Crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowCheck.h">
+      <Filter>Source Files\BasicModules\Crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="CCRC32.h">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Clock.h">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="MapName.h">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Message.h">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashScreen.h">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Protect.h">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadCheck.h">
+      <Filter>Source Files\BasicModules\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessQuery.h">
+      <Filter>Source Files\BasicModules\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessManager.h">
+      <Filter>Source Files\BasicModules\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessCheck.h">
+      <Filter>Source Files\BasicModules\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="ExecutableCheck.h">
+      <Filter>Source Files\BasicModules\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS17.h">
+      <Filter>Source Files\Protocol\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadS17.h">
+      <Filter>Source Files\Protocol\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera3dS17.h">
+      <Filter>Source Files\Features\Camera3D\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="HookKBS17.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="HookMSS17.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiLagS17.h">
+      <Filter>Source Files\Features\AntiLag\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchKBS17.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="Features.h">
+      <Filter>Source Files\Features</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CCRC32.cpp">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Clock.cpp">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MapName.cpp">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Message.cpp">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Protect.cpp">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashScreen.cpp">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>Source Files\BasicModules\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessQuery.cpp">
+      <Filter>Source Files\BasicModules\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadCheck.cpp">
+      <Filter>Source Files\BasicModules\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="FileCheck.cpp">
+      <Filter>Source Files\BasicModules\Crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="FileProtect.cpp">
+      <Filter>Source Files\BasicModules\Crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="Connection.cpp">
+      <Filter>Source Files\BasicModules\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="CriticalSection.cpp">
+      <Filter>Source Files\BasicModules\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="ListManager.cpp">
+      <Filter>Source Files\BasicModules\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Source Files\BasicModules\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleModules.cpp">
+      <Filter>Source Files\BasicModules\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS0.cpp">
+      <Filter>Source Files\Protocol\S0</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS2.cpp">
+      <Filter>Source Files\Protocol\S2</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS4.cpp">
+      <Filter>Source Files\Protocol\S4</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS6.cpp">
+      <Filter>Source Files\Protocol\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS8.cpp">
+      <Filter>Source Files\Protocol\S8</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS10.cpp">
+      <Filter>Source Files\Protocol\S10</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS12.cpp">
+      <Filter>Source Files\Protocol\S12</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS13.cpp">
+      <Filter>Source Files\Protocol\S13</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS14.cpp">
+      <Filter>Source Files\Protocol\S14</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS15.cpp">
+      <Filter>Source Files\Protocol\S15</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS16.cpp">
+      <Filter>Source Files\Protocol\S16</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread.cpp">
+      <Filter>Source Files\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowCheck.cpp">
+      <Filter>Source Files\BasicModules\Crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessManager.cpp">
+      <Filter>Source Files\BasicModules\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="ExecutableCheck.cpp">
+      <Filter>Source Files\BasicModules\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessCheck.cpp">
+      <Filter>Source Files\BasicModules\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="Offset.cpp">
+      <Filter>Source Files\Offset</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS0.cpp">
+      <Filter>Source Files\Offset\S0</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS2.cpp">
+      <Filter>Source Files\Offset\S2</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS4.cpp">
+      <Filter>Source Files\Offset\S4</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS6.cpp">
+      <Filter>Source Files\Offset\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS8.cpp">
+      <Filter>Source Files\Offset\S8</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS10.cpp">
+      <Filter>Source Files\Offset\S10</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS12.cpp">
+      <Filter>Source Files\Offset\S12</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS13.cpp">
+      <Filter>Source Files\Offset\S13</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS14.cpp">
+      <Filter>Source Files\Offset\S14</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS15.cpp">
+      <Filter>Source Files\Offset\S15</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS16.cpp">
+      <Filter>Source Files\Offset\S16</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS17.cpp">
+      <Filter>Source Files\Offset\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol.cpp">
+      <Filter>Source Files\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS17.cpp">
+      <Filter>Source Files\Protocol\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadS17.cpp">
+      <Filter>Source Files\Protocol\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera3dS17.cpp">
+      <Filter>Source Files\Features\Camera3D\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="HookKBS17.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="HookMSS17.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiLagS17.cpp">
+      <Filter>Source Files\Features\AntiLag\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchKBS17.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="Features.cpp">
+      <Filter>Source Files\Features</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Themida\Via ASM module\SecureEngineMacros.asm">
+      <Filter>Header Files\Themida</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Themida\SecureEngineSDK32.lib">
+      <Filter>Header Files\Themida</Filter>
+    </Library>
+  </ItemGroup>
+</Project>
