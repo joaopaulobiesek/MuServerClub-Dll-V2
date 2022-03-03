@@ -11,6 +11,7 @@ struct MAIN_FILE_INFO
 	char IpAddress[32];
 	WORD ServerPort;
 	int removeSplash;
+	char SerialMD5[32];
 	char CameraName[32];
 	DWORD CameraCRC32;
 	MESSAGE_INFO EngMessageInfo[MAX_MESSAGE];

@@ -21,7 +21,10 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 		ExitProcess(0);
 	}
 
+	memcpy(gFileProtect.m_CryPass, gProtect.m_MainInfo.SerialMD5, sizeof(gFileProtect.m_CryPass));
+
 	char buff[256];
+
 	if (gProtect.m_MainInfo.removeSplash != 1)
 	{
 		wsprintf(buff, "Powered by Muserver.club");

@@ -95,23 +95,6 @@ void CThread::Init()
 {
 	CheckSystemInformation();
 
-	if (gProtocol.HackSwitch == 1)
-	{
-		if (API_INIT() == 0)
-		{
-			SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(7), 5000);
-			SafeExitProcess();
-			return;
-		}
-
-		if (gProcessManager.Init() == 0)
-		{
-			SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(7), 5000);
-			SafeExitProcess();
-			return;
-		}
-	}
-
 	DWORD ClientInfoTimeOut = GetTickCount();
 
 	int CountId = 0;
@@ -153,6 +136,24 @@ void CThread::Init()
 			}
 		}
 	}
+
+	if (gProtocol.HackSwitch == 1)
+	{
+		if (API_INIT() == 0)
+		{
+			SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(7), 5000);
+			SafeExitProcess();
+			return;
+		}
+
+		if (gProcessManager.Init() == 0)
+		{
+			SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(7), 5000);
+			SafeExitProcess();
+			return;
+		}
+	}
+
 	this->ThreadHandles[0] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)MainThread, 0, 0, (DWORD*)&gThreadCheck.m_CheckThreadID[1]);
 
 	this->ThreadHandles[1] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ConnectionStatusThread, 0, 0, (DWORD*)&gThreadCheck.m_CheckThreadID[2]);

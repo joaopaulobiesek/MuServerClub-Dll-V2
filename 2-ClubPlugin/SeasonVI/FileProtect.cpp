@@ -139,13 +139,17 @@ bool CFileProtect::EncryptFile(char* path) // OK
 
 	memcpy(&buff[sizeof(gFileProtectHeader)], this->m_buff, this->m_size);
 
-	for (int n = 0; n < ((int)this->m_size); n++)
-	{
-		buff[sizeof(gFileProtectHeader) + n] ^= gFileProtectXorTable[n % sizeof(gFileProtectXorTable)];
-		buff[sizeof(gFileProtectHeader) + n] += gFileProtectXorTable[this->m_CryPass[n % sizeof(this->m_CryPass)] % sizeof(gFileProtectXorTable)];
-	}
+	VM_TIGER_BLACK_START
+		STR_ENCRYPT_START
+		for (int n = 0; n < ((int)this->m_size); n++)
+		{
+			buff[sizeof(gFileProtectHeader) + n] ^= gFileProtectXorTable[n % sizeof(gFileProtectXorTable)];
+			buff[sizeof(gFileProtectHeader) + n] += gFileProtectXorTable[this->m_CryPass[n % sizeof(this->m_CryPass)] % sizeof(gFileProtectXorTable)];
+		}
+	STR_ENCRYPT_END
+		VM_TIGER_BLACK_END
 
-	DWORD OutSize = 0;
+		DWORD OutSize = 0;
 
 	if (WriteFile(file, buff, (this->m_size + sizeof(gFileProtectHeader)), &OutSize, 0) == 0)
 	{
@@ -174,18 +178,23 @@ bool CFileProtect::DecryptFile(char* path) // OK
 		return 0;
 	}
 
-	for (int n = 0; n < ((int)(this->m_size - sizeof(gFileProtectHeader))); n++)
-	{
-		this->m_buff[sizeof(gFileProtectHeader) + n] -= gFileProtectXorTable[this->m_CryPass[n % sizeof(this->m_CryPass)] % sizeof(gFileProtectXorTable)];
-		this->m_buff[sizeof(gFileProtectHeader) + n] ^= gFileProtectXorTable[n % sizeof(gFileProtectXorTable)];
-	}
+	VM_TIGER_BLACK_START
+		STR_ENCRYPT_START
+		for (int n = 0; n < ((int)(this->m_size - sizeof(gFileProtectHeader))); n++)
+		{
+			this->m_buff[sizeof(gFileProtectHeader) + n] -= gFileProtectXorTable[this->m_CryPass[n % sizeof(this->m_CryPass)] % sizeof(gFileProtectXorTable)];
+			this->m_buff[sizeof(gFileProtectHeader) + n] ^= gFileProtectXorTable[n % sizeof(gFileProtectXorTable)];
+		}
+	STR_ENCRYPT_END
+		VM_TIGER_BLACK_END
 
-	return this->CreateTemporaryFile();
+		return this->CreateTemporaryFile();
 }
 
 bool CFileProtect::CreateTemporaryFile() // OK
 {
-	wsprintf(this->m_path, "Data\\t%d.bmd", rand() % 1000);
+	STR_ENCRYPT_START
+		wsprintf(this->m_path, "Data\\t%d.bmd", rand() % 1000);
 
 	HANDLE file = CreateFile(this->m_path, GENERIC_WRITE, FILE_SHARE_WRITE | FILE_SHARE_READ | FILE_SHARE_DELETE, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_TEMPORARY, 0);
 
@@ -203,7 +212,8 @@ bool CFileProtect::CreateTemporaryFile() // OK
 	}
 
 	CloseHandle(file);
-	return 1;
+	STR_ENCRYPT_END
+		return 1;
 }
 
 void CFileProtect::DeleteTemporaryFile() // OK
