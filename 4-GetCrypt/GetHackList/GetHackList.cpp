@@ -11,8 +11,6 @@ int main(int argc, _TCHAR* argv[])
 {
 	GetPrivateProfileString("GetCryptClub","PasswordFiles","",gCustomerName,sizeof(gCustomerName),".\\GetCryptClub.ini");
 
-	gFileProtect.FindFile("Checksum_Protect\\");
-
 	CRCChecker.Initialize();
 
 	fopen_s(&DumpFile,"Dump.List.db","w");

@@ -159,6 +159,14 @@ struct SDHP_CLIENT_DISCONNECT_RECV
 //************ Dll -> Server *******************//
 //**********************************************//
 
+struct SDHP_CLIENT_HACK_SEND
+{
+	PBMSG_HEAD header; // C1:00
+	int Status;
+	char Name[12];
+	char Program[100];
+};
+
 struct SDHP_CLIENT_INFO_SEND
 {
 	PBMSG_HEAD header; // C1:00
@@ -197,6 +205,7 @@ public:
 	void WindowListRecv(SDHP_WINDOW_LIST_RECV* lpMsg);
 	void ClientDisconnectSend(int type, char* text, DWORD pid);
 	void ClientDisconnectRecv(SDHP_CLIENT_DISCONNECT_RECV* lpMsg);
+	void ClientSendHack(char* Account, char* Prog, int Status);
 	void ClientInfoSend();
 	void ConnectionStatusSend();
 public:

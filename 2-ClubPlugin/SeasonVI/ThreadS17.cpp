@@ -19,6 +19,7 @@ void CThreadS17::Init()
 	switch (*(DWORD*)(gOffsetS17.MAIN_SCREEN_STATE))
 	{
 	case SelectServer:
+		gWindowCheck.CHeckCheat = 0;
 		if (GET_HWND == 0)
 		{
 			GET_HWND = 1;
@@ -32,6 +33,7 @@ void CThreadS17::Init()
 		}
 		break;
 	case SwitchCharacter:
+		gWindowCheck.CHeckCheat = 0;
 		if (GET_HWND == 1 || GET_HWND == 2)
 		{
 			Count++;
@@ -43,6 +45,7 @@ void CThreadS17::Init()
 		}
 		break;
 	case GameProcess:
+		gWindowCheck.CHeckCheat = 1;
 		if (GET_HWND == 3)
 		{
 			GET_HWND = 4;
@@ -67,6 +70,11 @@ void CThreadS17::SelectServerThread(int Cod_ID)
 
 void CThreadS17::SwitchCharacterThread(int Cod_ID)
 {
+	if (Cod_ID == 0)
+	{
+		char* GetAccountN = (char*)gOffset.AccountAddress;
+		wsprintf(gThread.NameAccount, GetAccountN);
+	}	
 }
 
 void CThreadS17::GameProcessThread(int Cod_ID)

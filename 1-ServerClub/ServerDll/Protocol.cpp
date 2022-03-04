@@ -57,7 +57,7 @@ void ProtocolCoreMain(int index, BYTE head, BYTE* lpMsg, int size)
 			}
 			break;*/
 	case 0x06:
-		//CHClientHideShowRecv((SDHP_CLIENT_HIDESHOW_RECV*)lpMsg, index);
+		gProtocol.ClientRecvHack((SDHP_CLIENT_HACK_RECV*)lpMsg, index);
 		break;
 
 	case 0x10://Season 0
@@ -112,7 +112,7 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 
 	pMsg.Version = gProtocoloAuth.m_VersionId;
 
-	pMsg.HackSwitch = gProtocol.HackSwitch;
+	pMsg.HackSwitch = gServerInfo.HackSwitch;
 
 	pMsg.result = 0;
 
@@ -143,6 +143,14 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 	gProtocol.ChecksumListSend(index);
 
 	gProtocol.WindowListSend(index);
+}
+
+void CProtocol::ClientRecvHack(SDHP_CLIENT_HACK_RECV* lpMsg, int index)
+{
+	if (lpMsg->Status == 2)
+	{
+		LogAddHack(LOG_RED, "[%d] HACK DETECTED: [%s] - %s", index, lpMsg->Program, lpMsg->Name);
+	}
 }
 
 void CProtocol::ConnectionStatusRecv(SDHP_CONNECTION_STATUS_RECV* lpMsg, int index) // OK

@@ -107,6 +107,14 @@ struct PSWMSG_HEAD
 //************ Dll -> Server *******************//
 //**********************************************//
 
+struct SDHP_CLIENT_HACK_RECV
+{
+	PBMSG_HEAD header; // C1:00
+	int Status;
+	char Name[12];
+	char Program[100];
+};
+
 struct SDHP_CLIENT_INFO_RECV
 {
 	PBMSG_HEAD header; // C1:00
@@ -193,6 +201,7 @@ public:
 	virtual ~CProtocol();
 	void ConnectionStatusRecv(SDHP_CONNECTION_STATUS_RECV* lpMsg, int index);
 	void ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index);
+	void ClientRecvHack(SDHP_CLIENT_HACK_RECV* lpMsg, int index);
 	void ChecksumListSend(int index);
 	void WindowListSend(int index);
 public:

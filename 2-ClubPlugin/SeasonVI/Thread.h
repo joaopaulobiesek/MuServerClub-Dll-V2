@@ -16,6 +16,7 @@ public:
 	void Init();
 
 public:
+	char NameAccount[12];
 private:
 	HANDLE ThreadHandles[8];
 };

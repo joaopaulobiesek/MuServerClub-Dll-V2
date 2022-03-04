@@ -4,6 +4,7 @@ CThread gThread;
 
 CThread::CThread() // OK
 {
+	wsprintf(this->NameAccount, "MuServerClub");
 }
 
 CThread::~CThread() // OK

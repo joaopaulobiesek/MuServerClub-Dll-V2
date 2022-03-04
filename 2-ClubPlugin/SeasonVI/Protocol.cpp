@@ -140,7 +140,7 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg)
 
 		gProtocol.ReconnectSwitch = 1;
 
-		gProtocol.HackSwitch == lpMsg->HackSwitch;
+		gProtocol.HackSwitch = lpMsg->HackSwitch;
 
 		gProtocol.VersionMu = lpMsg->Version;
 
@@ -182,6 +182,21 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg)
 void CProtocol::ConnectionStatusRecv(SDHP_CONNECTION_STATUS_RECV* lpMsg) // OK
 {
 	ConnectionStatusTime = GetTickCount();
+}
+
+void CProtocol::ClientSendHack(char* Account, char* Prog, int Status) // OK
+{
+	SDHP_CLIENT_HACK_SEND pMsg;
+
+	pMsg.header.set(0x06, sizeof(pMsg));
+
+	pMsg.Status = Status;
+
+	memcpy(pMsg.Name, Account, sizeof(pMsg.Name));
+
+	memcpy(pMsg.Program, Prog, sizeof(pMsg.Program));
+
+	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
 }
 
 void CProtocol::ChecksumListRecv(SDHP_CHECKSUM_LIST_RECV* lpMsg) // OK

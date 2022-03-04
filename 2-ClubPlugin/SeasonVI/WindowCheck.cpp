@@ -4,7 +4,7 @@ CWindowCheck gWindowCheck;
 
 CWindowCheck::CWindowCheck()
 {
-
+	this->CHeckCheat = 0;
 }
 
 CWindowCheck::~CWindowCheck()
@@ -15,8 +15,8 @@ CWindowCheck::~CWindowCheck()
 void CWindowCheck::Scan()
 {
 	HWND WindowHwnd;
-	//if (CHeckCheat == 1)
-	//{
+	if (this->CHeckCheat == 1)
+	{
 		for (std::vector<WNDW_LIST_INFO>::iterator it = gListManager.gWindowListInfo.begin(); it != gListManager.gWindowListInfo.end(); it++)
 		{
 			switch (it->type)
@@ -27,7 +27,7 @@ void CWindowCheck::Scan()
 					DWORD pid = 0;
 					GetWindowThreadProcessId(WindowHwnd, &pid);
 					gProtocol.ClientDisconnectSend(CLIENT_DISCONNECT_WINDOW_DETECTION, it->text, pid);
-					//gProtocol.ClientHideShowSend(NameAccount, it->text, 2);
+					gProtocol.ClientSendHack(gThread.NameAccount, it->text, 2);
 					return;
 				}
 				break;
@@ -37,11 +37,11 @@ void CWindowCheck::Scan()
 					DWORD pid = 0;
 					GetWindowThreadProcessId(WindowHwnd, &pid);
 					gProtocol.ClientDisconnectSend(CLIENT_DISCONNECT_WINDOW_DETECTION, it->text, pid);
-					//gProtocol.ClientHideShowSend(NameAccount, it->text, 2);
+					gProtocol.ClientSendHack(gThread.NameAccount, it->text, 2);
 					return;
 				}
 				break;
 			}
 		}
-	//}
+	}
 }

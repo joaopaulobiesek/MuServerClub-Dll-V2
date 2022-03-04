@@ -8,6 +8,8 @@ public:
 	CWindowCheck();
 	virtual ~CWindowCheck();
 	void Scan();
+public:
+	int CHeckCheat;
 };
 
 extern CWindowCheck gWindowCheck;

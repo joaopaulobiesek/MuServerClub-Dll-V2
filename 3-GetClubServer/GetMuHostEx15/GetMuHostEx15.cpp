@@ -27,7 +27,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	info.ServerPort = GetPrivateProfileInt("ClubInfo", "ServerPort", 0, ".\\ClubInfo.ini");
 
-	GetPrivateProfileString("MainInfo", "PasswordFiles", "", info.SerialMD5, sizeof(info.SerialMD5), ".\\MainInfo.ini");
+	GetPrivateProfileString("ClubInfo", "PasswordFiles", "", info.SerialMD5, sizeof(info.SerialMD5), ".\\ClubInfo.ini");
 
 	info.removeSplash = GetPrivateProfileInt("ClubInfo", "Splash", 0, ".\\ClubInfo.ini");
 
