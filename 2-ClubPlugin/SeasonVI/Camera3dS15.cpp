@@ -1,17 +1,17 @@
 #include "pch.h"
 
-CCamera3dS17 gCamera3dS17;
+CCamera3dS15 gCamera3dS15;
 
-CCamera3dS17::CCamera3dS17() // OK
+CCamera3dS15::CCamera3dS15() // OK
 {
 }
 
-CCamera3dS17::~CCamera3dS17() // OK
+CCamera3dS15::~CCamera3dS15() // OK
 {
 
 }
 
-void CCamera3dS17::InitKB(int Parameter)
+void CCamera3dS15::InitKB(int Parameter)
 {
 	if (gFeatures.camera3D == 0) return; // Desativa Camera 
 
@@ -51,7 +51,7 @@ void CCamera3dS17::InitKB(int Parameter)
 	}
 }
 
-void CCamera3dS17::Init()
+void CCamera3dS15::Init()
 {
 	if (gFeatures.camera3D == 0) return; // Desativa Camera 
 
@@ -65,69 +65,69 @@ void CCamera3dS17::Init()
 
 	this->Precision = 2.0;
 
-	this->m_OffSet.RotY = (float*)gOffsetS17.CameraY;
+	this->m_OffSet.RotY = (float*)gOffsetS15.CameraY;
 
-	this->m_OffSet.PosZ = (double*)gOffsetS17.CameraZ;
+	this->m_OffSet.PosZ = (double*)gOffsetS15.CameraZ;
 
-	this->m_OffSet.RotX = (float*)gOffsetS17.CameraX;
+	this->m_OffSet.RotX = (float*)gOffsetS15.CameraX;
 
-	this->m_OffSet.Zoom1 = (float*)gOffsetS17.CameraZoom1;
+	this->m_OffSet.Zoom1 = (float*)gOffsetS15.CameraZoom1;
 
-	this->m_OffSet.Zoom2 = (float*)gOffsetS17.CameraZoom2;
+	this->m_OffSet.Zoom2 = (float*)gOffsetS15.CameraZoom2;
 
-	this->m_OffSet.Zoom3 = (float*)gOffsetS17.CameraZoom3;
+	this->m_OffSet.Zoom3 = (float*)gOffsetS15.CameraZoom3;
 
-	this->m_OffSet.ZoomByte = (DWORD*)gOffsetS17.CameraZoomByte;
+	this->m_OffSet.ZoomByte = (DWORD*)gOffsetS15.CameraZoomByte;
 
-	this->m_OffSet.ArenaCam = (BYTE*)gOffsetS17.CameraArena;
+	this->m_OffSet.ArenaCam = (BYTE*)gOffsetS15.CameraArena;
 
 	SetByte((DWORD)this->m_OffSet.ArenaCam, 5);
 
-	SetByte(gOffsetS17.CameraFuncNull, 0xC3);//Camera FuncNull
+	SetByte(gOffsetS15.CameraFuncNull, 0xC3);//Camera FuncNull
 
-	MemorySet(gOffsetS17.CameraHook, 144, 0x5);//Camera Hook
+	MemorySet(gOffsetS15.CameraHook, 144, 0x5);//Camera Hook
 
-	SetCompleteHook(0xE8, gOffsetS17.CameraHook, &Zoom2S17);//Camera Hook
+	SetCompleteHook(0xE8, gOffsetS15.CameraHook, &Zoom2S15);//Camera Hook
 }
 
-void CCamera3dS17::ThreadCamS17()
+void CCamera3dS15::ThreadCamS15()
 {
 	this->ActiveCamDelay = 0;//Faz funcionar camera Hook
 }
 
-void Zoom2S17()
+void Zoom2S15()
 {
-	gCamera3dS17.ActiveCamDelay = 1;
+	gCamera3dS15.ActiveCamDelay = 1;
 }
 
-void CCamera3dS17::SetIsMove(BOOL IsMove) // OK
+void CCamera3dS15::SetIsMove(BOOL IsMove) // OK
 {
-	if (this->m_Start.Active == 1 && *(DWORD*)(gOffsetS17.MAIN_SCREEN_STATE) == 6)
+	if (this->m_Start.Active == 1 && *(DWORD*)(gOffsetS15.MAIN_SCREEN_STATE) == 6)
 	{
 		this->m_IsMove = IsMove;
 	}
 }
 
-void CCamera3dS17::SetIsAutoMove(BOOL IsMove) // OK
+void CCamera3dS15::SetIsAutoMove(BOOL IsMove) // OK
 {
-	if (this->m_Start.Active == 0 && *(DWORD*)(gOffsetS17.MAIN_SCREEN_STATE) == 6)
+	if (this->m_Start.Active == 0 && *(DWORD*)(gOffsetS15.MAIN_SCREEN_STATE) == 6)
 	{
 		this->m_IsAutoMove = IsMove;
 	}
 }
 
-void CCamera3dS17::SetCursor(LONG CursorX, LONG CursorY) // OK
+void CCamera3dS15::SetCursor(LONG CursorX, LONG CursorY) // OK
 {
-	if (this->m_Start.Active == 0 || *(DWORD*)(gOffsetS17.MAIN_SCREEN_STATE) == 6)
+	if (this->m_Start.Active == 0 || *(DWORD*)(gOffsetS15.MAIN_SCREEN_STATE) == 6)
 	{
 		this->m_CursorX = CursorX;
 		this->m_CursorY = CursorY;
 	}
 }
 
-void CCamera3dS17::Zoom(MOUSEHOOKSTRUCTEX* lpMouse)
+void CCamera3dS15::Zoom(MOUSEHOOKSTRUCTEX* lpMouse)
 {
-	if (this->ActiveCamDelay == 1 && *(DWORD*)(gOffsetS17.MAIN_SCREEN_STATE) == 6)
+	if (this->ActiveCamDelay == 1 && *(DWORD*)(gOffsetS15.MAIN_SCREEN_STATE) == 6)
 	{
 		if (((int)lpMouse->mouseData) > 0)// aproxima do char
 		{
@@ -165,9 +165,9 @@ void CCamera3dS17::Zoom(MOUSEHOOKSTRUCTEX* lpMouse)
 	}
 }
 
-void CCamera3dS17::Move(MOUSEHOOKSTRUCTEX* lpMouse) // OK
+void CCamera3dS15::Move(MOUSEHOOKSTRUCTEX* lpMouse) // OK
 {
-	if (this->m_Start.Active == 1 && this->m_IsMove == 1 && *(DWORD*)(gOffsetS17.MAIN_SCREEN_STATE) == 6)
+	if (this->m_Start.Active == 1 && this->m_IsMove == 1 && *(DWORD*)(gOffsetS15.MAIN_SCREEN_STATE) == 6)
 	{
 
 		if (this->m_CursorX < lpMouse->pt.x)
@@ -217,9 +217,9 @@ void CCamera3dS17::Move(MOUSEHOOKSTRUCTEX* lpMouse) // OK
 	}
 }
 
-void CCamera3dS17::AutoMove(MOUSEHOOKSTRUCTEX* lpMouse) // OK
+void CCamera3dS15::AutoMove(MOUSEHOOKSTRUCTEX* lpMouse) // OK
 {
-	if (this->m_Start.Active == 0 && *(DWORD*)(gOffsetS17.MAIN_SCREEN_STATE) == 6 && this->m_IsAutoMove == 1)
+	if (this->m_Start.Active == 0 && *(DWORD*)(gOffsetS15.MAIN_SCREEN_STATE) == 6 && this->m_IsAutoMove == 1)
 	{
 		if (this->PosX != this->PosXC || this->PosY != this->PosYC)
 		{

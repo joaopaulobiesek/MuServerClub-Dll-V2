@@ -10,10 +10,10 @@ void CProtocolS17::ProtocolCore(BYTE head, BYTE* lpMsg, int size)
 		switch (lpMsg[4])
 		{
 		case 0x00:
-			gOffsetS17.RecvOffset((SDHP_REQUEST_OFFSET_RECV*)lpMsg);
+			gOffsetS17.RecvOffset((SDHP_REQUEST_OFFSET_S17_RECV*)lpMsg);
 			break;
 		case 0x01:
-			this->RecvKeyboardS17((SDHP_REQUEST_KEYBOARD_RECV*)lpMsg);
+			this->RecvKeyboardS17((SDHP_REQUEST_KEYBOARD_S17_RECV*)lpMsg);
 			break;
 		}
 		break;
@@ -25,7 +25,7 @@ void CProtocolS17::ProtocolCore(BYTE head, BYTE* lpMsg, int size)
 
 void CProtocolS17::RequestOffSetS17()
 {
-	SDHP_REQUEST_OFFSET_SEND pMsg;
+	SDHP_REQUEST_OFFSET_S17_SEND pMsg;
 
 	pMsg.header.set(gProtocol.VersionMuHEX, 0x00, sizeof(pMsg));
 
@@ -34,14 +34,14 @@ void CProtocolS17::RequestOffSetS17()
 
 void CProtocolS17::RequestKeyboardS17()
 {
-	SDHP_REQUEST_KEYBOARD_SEND pMsg;
+	SDHP_REQUEST_KEYBOARD_S17_SEND pMsg;
 
 	pMsg.header.set(gProtocol.VersionMuHEX, 0x01, sizeof(pMsg));
 
 	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
 }
 
-void CProtocolS17::RecvKeyboardS17(SDHP_REQUEST_KEYBOARD_RECV* lpMsg)
+void CProtocolS17::RecvKeyboardS17(SDHP_REQUEST_KEYBOARD_S17_RECV* lpMsg)
 {
 	gHookKBS17.Func1 = lpMsg->Func1;
 	gHookKBS17.Func2 = lpMsg->Func2;

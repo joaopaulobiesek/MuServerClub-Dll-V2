@@ -37,6 +37,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) // OK
 		case 9://Season 14
 			break;
 		case 10://Season 15
+			gHookKBS15.Init(nCode, wParam, lParam);
 			break;
 		case 11://Season 16
 			break;
@@ -77,6 +78,7 @@ LRESULT CALLBACK MouseProc(int nCode, WPARAM wParam, LPARAM lParam) // OK
 		case 9://Season 14
 			break;
 		case 10://Season 15
+			gHookMSS15.Init(nCode, wParam, lParam);
 			break;
 		case 11://Season 16
 			break;
@@ -143,14 +145,14 @@ void CThread::Init()
 		if (API_INIT() == 0)
 		{
 			SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(7), 5000);
-			SafeExitProcess();
+			//SafeExitProcess(); Add Aqui envio de Info para servidor!
 			return;
 		}
 
 		if (gProcessManager.Init() == 0)
 		{
 			SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(7), 5000);
-			SafeExitProcess();
+			//SafeExitProcess(); Add Aqui envio de Info para servidor!
 			return;
 		}
 	}
@@ -210,6 +212,8 @@ DWORD WINAPI ThreadSeasonCustom() // OK
 		case 9://Season 14
 			break;
 		case 10://Season 15
+			gThreadS15.Init();
+			gCamera3dS15.ThreadCamS15();
 			break;
 		case 11://Season 16
 			break;

@@ -105,12 +105,21 @@ typedef unsigned __int64 QWORD;
 
 //Include Protocol
 #include "Thread.h"
+#include "ThreadS15.h"
 #include "ThreadS17.h"
 
 //Features
+// 
+#include "Camera3dS15.h"
+#include "AntiLagS15.h"
+#include "HookKBS15.h"
+#include "HookMSS15.h"
+#include "SwitchKBS15.h"
+//
 #include "Camera3dS17.h"
 #include "AntiLagS17.h"
 #include "HookKBS17.h"
 #include "HookMSS17.h"
 #include "SwitchKBS17.h"
+//
 #include "Features.h"

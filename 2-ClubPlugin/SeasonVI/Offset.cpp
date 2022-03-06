@@ -53,6 +53,8 @@ void COffset::Init(int version, SDHP_CLIENT_INFO_RECV* lpMsg)
 	case 10://Season 15
 		gProtocol.VersionMuHEX = 0x19;
 		gOffsetS15.InitOffset(lpMsg);
+		gProtocolS15.RequestOffSetS15();
+		gProtocolS15.RequestKeyboardS15();
 		break;
 	case 11://Season 16
 		gProtocol.VersionMuHEX = 0x20;

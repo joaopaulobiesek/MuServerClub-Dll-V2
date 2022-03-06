@@ -1,10 +1,10 @@
 #pragma once
 
-class CThreadS17
+class CThreadS15
 {
 public:
-	CThreadS17();
-	virtual ~CThreadS17();
+	CThreadS15();
+	virtual ~CThreadS15();
 	void Init();
 	void SelectServerThread(int Cod_ID);
 	void SwitchCharacterThread(int Cod_ID);
@@ -24,4 +24,4 @@ private:
 	DWORD BaseAddress;
 };
 
-extern CThreadS17 gThreadS17;
+extern CThreadS15 gThreadS15;

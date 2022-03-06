@@ -4,12 +4,12 @@
 //************ Dll -> Server *******************//
 //**********************************************//
 
-struct SDHP_REQUEST_OFFSET_SEND
+struct SDHP_REQUEST_OFFSET_S17_SEND
 {
 	HEAD_VERSION header; // C1:00
 };
 
-struct SDHP_REQUEST_KEYBOARD_SEND
+struct SDHP_REQUEST_KEYBOARD_S17_SEND
 {
 	HEAD_VERSION header; // C1:00
 };
@@ -18,7 +18,7 @@ struct SDHP_REQUEST_KEYBOARD_SEND
 //************ Server -> Dll *******************//
 //**********************************************//
 
-struct SDHP_REQUEST_OFFSET_RECV
+struct SDHP_REQUEST_OFFSET_S17_RECV
 {
 	HEAD_VERSION header; // C1:00
 	DWORD MAIN_SCREEN_STATE;
@@ -60,7 +60,7 @@ struct SDHP_REQUEST_OFFSET_RECV
 	DWORD CameraHook;
 };
 
-struct SDHP_REQUEST_KEYBOARD_RECV
+struct SDHP_REQUEST_KEYBOARD_S17_RECV
 {
 	HEAD_VERSION header; // C1:00
 	int Func1; //Ativar/Desativar Câmera 3D
@@ -83,7 +83,7 @@ class CProtocolS17
 {
 public:
 	void ProtocolCore(BYTE head, BYTE* lpMsg, int size);
-	void RecvKeyboardS17(SDHP_REQUEST_KEYBOARD_RECV* lpMsg);
+	void RecvKeyboardS17(SDHP_REQUEST_KEYBOARD_S17_RECV* lpMsg);
 	void RequestOffSetS17();
 	void RequestKeyboardS17();
 

@@ -1,22 +1,22 @@
 #include "pch.h"
 
-CThreadS17 gThreadS17;
+CThreadS15 gThreadS15;
 
-CThreadS17::CThreadS17() // OK
+CThreadS15::CThreadS15() // OK
 {
 	this->GET_HWND = 0;
 	this->Count = 0;
 	this->GetAntLag = 0;
 }
 
-CThreadS17::~CThreadS17() // OK
+CThreadS15::~CThreadS15() // OK
 {
 
 }
 
-void CThreadS17::Init()
+void CThreadS15::Init()
 {
-	switch (*(DWORD*)(gOffsetS17.MAIN_SCREEN_STATE))
+	switch (*(DWORD*)(gOffsetS15.MAIN_SCREEN_STATE))
 	{
 	case SelectServer:
 		gWindowCheck.CHeckCheat = 0;
@@ -55,7 +55,7 @@ void CThreadS17::Init()
 		if (this->GetAntLag >= 10)
 		{
 			this->GetAntLag = 0;
-			if (gFeatures.antiLag != 0) { gAntiLagS17.ActiveDisabled(1); }
+			if (gFeatures.antiLag != 0) { gAntiLagS15.ActiveDisabled(1); }
 		}
 		this->GameProcessThread(0);
 		break;
@@ -64,11 +64,11 @@ void CThreadS17::Init()
 	}
 }
 
-void CThreadS17::SelectServerThread(int Cod_ID)
+void CThreadS15::SelectServerThread(int Cod_ID)
 {
 }
 
-void CThreadS17::SwitchCharacterThread(int Cod_ID)
+void CThreadS15::SwitchCharacterThread(int Cod_ID)
 {
 	if (Cod_ID == 0)
 	{
@@ -77,7 +77,7 @@ void CThreadS17::SwitchCharacterThread(int Cod_ID)
 	}	
 }
 
-void CThreadS17::GameProcessThread(int Cod_ID)
+void CThreadS15::GameProcessThread(int Cod_ID)
 {
 	if (Cod_ID == 0)
 	{
@@ -85,27 +85,27 @@ void CThreadS17::GameProcessThread(int Cod_ID)
 		this->GetCharacterN = (char*)(*(DWORD*)(gOffset.CharacterAddress)+0x54);
 		this->Level = *(int*)(*(DWORD*)(gOffset.CharacterAddress));
 		this->MLevel = *(int*)(*(DWORD*)(gOffset.CharacterAddress) + 0x18);
-		this->Map = *(DWORD*)(gOffsetS17.MAIN_MAP_CODE);
-		this->PosX = *(int*)(*(DWORD*)(gOffsetS17.MAIN_VIEWPORT_STRUCT) + 0x180);
-		this->PosY = *(int*)(*(DWORD*)(gOffsetS17.MAIN_VIEWPORT_STRUCT) + 0x184);
-		gCamera3dS17.PosX = this->PosX;
-		gCamera3dS17.PosY = this->PosY;
-		if (gFeatures.camera3D != 0) { gCamera3dS17.PosXC = *(DWORD*)(gOffsetS17.gCameraPosXC); }
-		if (gFeatures.camera3D != 0) { gCamera3dS17.PosYC = *(DWORD*)(gOffsetS17.gCameraPosYC); }
+		this->Map = *(DWORD*)(gOffsetS15.MAIN_MAP_CODE);
+		this->PosX = *(int*)(*(DWORD*)(gOffsetS15.MAIN_VIEWPORT_STRUCT) + 0x180);
+		this->PosY = *(int*)(*(DWORD*)(gOffsetS15.MAIN_VIEWPORT_STRUCT) + 0x184);
+		gCamera3dS15.PosX = this->PosX;
+		gCamera3dS15.PosY = this->PosY;
+		if (gFeatures.camera3D != 0) { gCamera3dS15.PosXC = *(DWORD*)(gOffsetS15.gCameraPosXC); }
+		if (gFeatures.camera3D != 0) { gCamera3dS15.PosYC = *(DWORD*)(gOffsetS15.gCameraPosYC); }
 	}
 	else
 	{
-		if (gFeatures.antiLag != 0) { gAntiLagS17.ActiveDisabled(0); }
+		if (gFeatures.antiLag != 0) { gAntiLagS15.ActiveDisabled(0); }
 		if (gFeatures.camera3D != 0) {
 			GetWindowRect(gMain.hWnd, &this->rect);
-			gCamera3dS17.width = floor((float)this->rect.right - this->rect.left);
-			gCamera3dS17.height = floor((float)this->rect.bottom - this->rect.top);
-			gCamera3dS17.midwidth = floor((float)gCamera3dS17.width / 2);
-			gCamera3dS17.midheight = floor((float)gCamera3dS17.height / 2);
-			gCamera3dS17.rangewidth = floor((float)gCamera3dS17.width / 20);
-			gCamera3dS17.rangeheight = floor((float)gCamera3dS17.height / 20);
+			gCamera3dS15.width = floor((float)this->rect.right - this->rect.left);
+			gCamera3dS15.height = floor((float)this->rect.bottom - this->rect.top);
+			gCamera3dS15.midwidth = floor((float)gCamera3dS15.width / 2);
+			gCamera3dS15.midheight = floor((float)gCamera3dS15.height / 2);
+			gCamera3dS15.rangewidth = floor((float)gCamera3dS15.width / 20);
+			gCamera3dS15.rangeheight = floor((float)gCamera3dS15.height / 20);
 
-			gCamera3dS17.actualz = -45;
+			gCamera3dS15.actualz = -45;
 		}
 	}
 }

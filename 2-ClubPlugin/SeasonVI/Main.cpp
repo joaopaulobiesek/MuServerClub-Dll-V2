@@ -27,7 +27,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	if (gProtect.m_MainInfo.removeSplash != 1)
 	{
-		wsprintf(buff, "Powered by Muserver.club");
+		wsprintf(buff, "Licensed to %s - Powered by Muserver.club", gProtect.m_MainInfo.SplashName);
 		SplashScreen(&SplashInit, 0, 1, buff, 0);
 	}
 

@@ -68,7 +68,7 @@ void COffsetS17::InitOffset(SDHP_CLIENT_INFO_RECV* lpMsg)
 		VM_TIGER_BLACK_END
 }
 
-void COffsetS17::RecvOffset(SDHP_REQUEST_OFFSET_RECV* lpMsg)
+void COffsetS17::RecvOffset(SDHP_REQUEST_OFFSET_S17_RECV* lpMsg)
 {
 	VM_TIGER_BLACK_START
 		STR_ENCRYPT_START
@@ -110,7 +110,7 @@ void COffsetS17::RecvOffset(SDHP_REQUEST_OFFSET_RECV* lpMsg)
 	this->CameraFuncNull = lpMsg->CameraFuncNull;
 	this->CameraHook = lpMsg->CameraHook;
 
-	if(this->CameraY != 0) gCamera3dS17.Init();
+	if(gFeatures.camera3D == 1) gCamera3dS17.Init();
 
 	STR_ENCRYPT_END
 		VM_TIGER_BLACK_END

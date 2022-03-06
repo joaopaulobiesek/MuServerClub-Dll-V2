@@ -8,7 +8,7 @@ public:
 	COffsetS17();
 	virtual ~COffsetS17();
 	void InitOffset(SDHP_CLIENT_INFO_RECV* lpMsg);
-	void RecvOffset(SDHP_REQUEST_OFFSET_RECV* lpMsg);
+	void RecvOffset(SDHP_REQUEST_OFFSET_S17_RECV* lpMsg);
 public:
 	DWORD MAIN_SCREEN_STATE;
 	DWORD MAIN_VIEWPORT_STRUCT;

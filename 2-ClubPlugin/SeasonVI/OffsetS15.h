@@ -6,6 +6,7 @@ public:
 	COffsetS15();
 	virtual ~COffsetS15();
 	void InitOffset(SDHP_CLIENT_INFO_RECV* lpMsg);
+	void RecvOffset(SDHP_REQUEST_OFFSET_S15_RECV* lpMsg);
 public:
 	DWORD MAIN_SCREEN_STATE;
 	DWORD MAIN_VIEWPORT_STRUCT;

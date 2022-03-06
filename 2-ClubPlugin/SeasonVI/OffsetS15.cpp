@@ -72,3 +72,53 @@ void COffsetS15::InitOffset(SDHP_CLIENT_INFO_RECV* lpMsg)
 	STR_ENCRYPT_END
 		VM_TIGER_BLACK_END
 }
+
+void COffsetS15::RecvOffset(SDHP_REQUEST_OFFSET_S15_RECV* lpMsg)
+{
+	VM_TIGER_BLACK_START
+		STR_ENCRYPT_START
+		this->MAIN_SCREEN_STATE = lpMsg->MAIN_SCREEN_STATE;
+	this->MAIN_VIEWPORT_STRUCT = lpMsg->MAIN_VIEWPORT_STRUCT;
+	this->MAIN_MAP_CODE = lpMsg->MAIN_MAP_CODE;
+	this->pDrawMessage = lpMsg->pDrawMessage;
+	this->gCameraPosXC = lpMsg->gCameraPosXC;
+	this->gCameraPosYC = lpMsg->gCameraPosYC;
+	this->WingActive = lpMsg->WingActive;
+	this->Skill1Active = lpMsg->Skill1Active;
+	this->Skill2Active = lpMsg->Skill2Active;
+	this->Skill3Active = lpMsg->Skill3Active;
+	this->Skill4Active = lpMsg->Skill4Active;
+	this->Skill5Active = lpMsg->Skill5Active;
+	this->Skill6ActiveHook = lpMsg->Skill6ActiveHook;
+	this->ZenActive = lpMsg->ZenActive;
+	this->ItemActive = lpMsg->ItemActive;
+	this->Pet1Active = lpMsg->Pet1Active;
+	this->Pet2ActiveHook = lpMsg->Pet2ActiveHook;
+	this->Pet3Active = lpMsg->Pet3Active;
+	this->Pet4ActiveHook = lpMsg->Pet4ActiveHook;
+	this->Char1Moob1Active = lpMsg->Char1Moob1Active;
+	this->Char1Moob2ActiveHook = lpMsg->Char1Moob2ActiveHook;
+	this->Char2Moob3Active = lpMsg->Char2Moob3Active;
+	this->Char2Moob4Active = lpMsg->Char2Moob4Active;
+	this->Char2Moob5ActiveHook = lpMsg->Char2Moob5ActiveHook;
+	this->Terrain1Active = lpMsg->Terrain1Active;
+	this->Terrain2Active = lpMsg->Terrain2Active;
+	this->RemoveSetActive = lpMsg->RemoveSetActive;
+	this->HitBox1Active = lpMsg->HitBox1Active;
+	this->HitBox2Active = lpMsg->HitBox2Active;
+	this->HitBox3Active = lpMsg->HitBox3Active;
+	this->HitBox4Active = lpMsg->HitBox4Active;
+	this->HitBox5Active = lpMsg->HitBox5Active;
+	this->CameraY = lpMsg->CameraY;
+	this->CameraZ = lpMsg->CameraZ;
+	this->CameraX = lpMsg->CameraX;
+	this->CameraZoom1 = lpMsg->CameraZoom1;
+	this->CameraZoom2 = lpMsg->CameraZoom2;
+	this->CameraZoom3 = lpMsg->CameraZoom3;
+	this->CameraZoomByte = lpMsg->CameraZoomByte;
+	this->CameraArena = lpMsg->CameraArena;
+	this->CameraFuncNull = lpMsg->CameraFuncNull;
+	this->CameraHook = lpMsg->CameraHook;
+		STR_ENCRYPT_END
+		VM_TIGER_BLACK_END
+}
