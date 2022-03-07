@@ -145,7 +145,7 @@ void CServerInfo::ReadStartupDS(const char* path) // OK
 	}
 	else
 	{
-		LogAdd(LOG_BLUE, "Connect to database");
+		LogAdd(LOG_BLUE, "Connected to database");
 	}
 }
 

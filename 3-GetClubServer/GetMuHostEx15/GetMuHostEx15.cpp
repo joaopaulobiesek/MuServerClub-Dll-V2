@@ -10,6 +10,7 @@ struct MAIN_FILE_INFO
 	WORD ServerPort;
 	int removeSplash;
 	char SerialMD5[32];
+	char SplashName[32];
 	char CameraName[32];
 	DWORD CameraCRC32;
 	MESSAGE_INFO EngMessageInfo[MAX_MESSAGE];
@@ -28,6 +29,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	info.ServerPort = GetPrivateProfileInt("ClubInfo", "ServerPort", 0, ".\\ClubInfo.ini");
 
 	GetPrivateProfileString("ClubInfo", "PasswordFiles", "", info.SerialMD5, sizeof(info.SerialMD5), ".\\ClubInfo.ini");
+
+	GetPrivateProfileString("ClubInfo", "SplashName", "", info.SplashName, sizeof(info.SplashName), ".\ClubInfo.ini");
 
 	info.removeSplash = GetPrivateProfileInt("ClubInfo", "Splash", 0, ".\\ClubInfo.ini");
 

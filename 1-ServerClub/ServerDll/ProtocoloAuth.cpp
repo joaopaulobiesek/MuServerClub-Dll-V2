@@ -110,6 +110,8 @@ void CProtocoloAuth::ConnectionLicensedRecv(SERVERDLL_CONNECT_LICENSED_RECV* lpM
 
 	gFeatures.removeSplash = lpMsg->feature_4;
 
+	gFeatures.twoFactorAuth = lpMsg->feature_5;
+
 	if (checkLoadInfo == 0)
 	{
 		if (gFeatures.camera3D == 0)
@@ -146,6 +148,15 @@ void CProtocoloAuth::ConnectionLicensedRecv(SERVERDLL_CONNECT_LICENSED_RECV* lpM
 		else
 		{
 			LogAdd(LOG_GREEN, "[Remove Splash] Actived!");
+		}
+
+		if (gFeatures.removeSplash == 0)
+		{
+			LogAdd(LOG_RED, "[2 FA] Disabled!");
+		}
+		else
+		{
+			LogAdd(LOG_GREEN, "[2 FA] Actived!");
 		}
 		checkLoadInfo = 1;
 	}

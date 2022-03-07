@@ -10,10 +10,10 @@ void CProtocolS17::ProtocolCore(int index, BYTE head, BYTE* lpMsg, int size)
 		switch (lpMsg[4])
 		{
 		case 0x00:
-			this->RequestOffSet17((SDHP_REQUEST_OFFSET_RECV*)lpMsg, index);
+			this->RequestOffSet17((SDHP_REQUEST_OFFSET_S17_RECV*)lpMsg, index);
 			break;
 		case 0x01:
-			this->RequestKeyBoardS17((SDHP_REQUEST_KEYBOARD_RECV*)lpMsg, index);
+			this->RequestKeyBoardS17((SDHP_REQUEST_KEYBOARD_S17_RECV*)lpMsg, index);
 			break;
 		}
 		break;
@@ -23,11 +23,11 @@ void CProtocolS17::ProtocolCore(int index, BYTE head, BYTE* lpMsg, int size)
 	}
 }
 
-void CProtocolS17::RequestOffSet17(SDHP_REQUEST_OFFSET_RECV* lpMsg, int index)
+void CProtocolS17::RequestOffSet17(SDHP_REQUEST_OFFSET_S17_RECV* lpMsg, int index)
 {
 	VM_TIGER_BLACK_START
 		STR_ENCRYPT_START
-	SDHP_REQUEST_OFFSET_SEND pMsg;
+	SDHP_REQUEST_OFFSET_S17_SEND pMsg;
 
 	pMsg.header.set(gProtocol.VersionMuHEX, 0x00, sizeof(pMsg));
 
@@ -80,9 +80,9 @@ void CProtocolS17::RequestOffSet17(SDHP_REQUEST_OFFSET_RECV* lpMsg, int index)
 		VM_TIGER_BLACK_END
 }
 
-void CProtocolS17::RequestKeyBoardS17(SDHP_REQUEST_KEYBOARD_RECV* lpMsg, int index)
+void CProtocolS17::RequestKeyBoardS17(SDHP_REQUEST_KEYBOARD_S17_RECV* lpMsg, int index)
 {
-	SDHP_REQUEST_KEYBOARD_SEND pMsg;
+	SDHP_REQUEST_KEYBOARD_S17_SEND pMsg;
 
 	pMsg.header.set(gProtocol.VersionMuHEX, 0x01, sizeof(pMsg));
 
