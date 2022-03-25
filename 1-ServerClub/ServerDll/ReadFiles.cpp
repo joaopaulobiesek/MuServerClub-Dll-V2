@@ -227,91 +227,127 @@ void CReadFiles::WindowList(char* filename)
 
 	delete lpScript;
 }
-/*
-void CReadFiles::UpdateInternalList()
+
+void CReadFiles::CustomMonsterList(char* path)
 {
-	if (this->UpdateSwitch != 0)
+
+	CMemScript* lpScript = new CMemScript;
+
+	int Index = 0;
+
+	if (lpScript == 0)
 	{
-		LogAdd(LOG_BLACK, "[Database] Please wait for the current list update");
 		return;
 	}
 
-	if (this->ReloadSwitch != 0)
+	if (lpScript->SetBuffer(path, 0) == 0)
 	{
-		LogAdd(LOG_BLACK, "[Database] Please wait for the current list reload");
+		delete lpScript;
 		return;
 	}
 
-	this->UpdateSwitch = 1;
+	gCustomMonsterListInfo.clear();
 
-	char UpdateFileURL[MAX_PATH];
-
-	sprintf_s(UpdateFileURL, "", HACKSERVER_VERSION);
-
-	char NewFilePath[MAX_PATH] = ".\\Data\\Internal.List.part.db";
-
-	char OldFilePath[MAX_PATH] = ".\\Data\\Internal.List.db";
-
-	char buffer[0xFFFF];
-
-	char address[1024];
-
-	char request[1024];
-
-	URLPARTS_T url;
-
-	memset(&url, 0, sizeof(url));
-
-	url.address = address;
-
-	url.request = request;
-
-	url.addressLen = sizeof(address);
-
-	url.requestLen = sizeof(request);
-
-	breakUrl(UpdateFileURL, &url);
-
-	int Downloader = httpGet(address, url.port, request);
-
-	if (Downloader)
+	try
 	{
-		FILE* NewFile;
-
-		fopen_s(&NewFile, NewFilePath, "wb");
-
-		int size;
-
-		while ((size = httpRecv(Downloader, buffer, sizeof(buffer))) > 0)
+		while (true)
 		{
-			fwrite(buffer, size, 1, NewFile);
+			if (lpScript->GetToken() == TOKEN_END)
+			{
+				break;
+			}
+
+			if (strcmp("end", lpScript->GetString()) == 0)
+			{
+				break;
+			}
+
+			CUSTOMMONSTER_DATA info;
+
+			info.Index = Index++;
+
+			info.ID = lpScript->GetNumber();
+
+			info.Type = lpScript->GetAsNumber();
+
+			strcpy_s(info.Name, lpScript->GetAsString());
+
+			strcpy_s(info.Dir, lpScript->GetAsString());
+
+			strcpy_s(info.Folder, lpScript->GetAsString());
+
+			strcpy_s(info.BMDFile, lpScript->GetAsString());
+
+			info.Size = lpScript->GetAsFloatNumber();
+
+			gCustomMonsterListInfo.push_back(info);
 		}
-
-		fclose(NewFile);
-
-		httpClose(Downloader);
-
 	}
-	else
+	catch (...)
 	{
-		DeleteFile(NewFilePath);
+		printf(lpScript->GetLastError());
+	}
 
-		this->UpdateSwitch = 0;
+	delete lpScript;
+}
 
-		LogAdd(LOG_RED, "[Database] Could not update list (Error: %i)", httpLastError());
+void CReadFiles::CustomNPCList(char* path)
+{
 
+	CMemScript* lpScript = new CMemScript;
+
+	if (lpScript == 0)
+	{
 		return;
 	}
 
-	DeleteFile(OldFilePath);
+	if (lpScript->SetBuffer(path, 0) == 0)
+	{
+		delete lpScript;
+		return;
+	}
 
-	Sleep(500);
+	gCustomNPCListInfo.clear();
 
-	rename(NewFilePath, OldFilePath);
+	try
+	{
+		while (true)
+		{
+			if (lpScript->GetToken() == TOKEN_END)
+			{
+				break;
+			}
 
-	this->UpdateSwitch = 0;
+			if (strcmp("end", lpScript->GetString()) == 0)
+			{
+				break;
+			}
 
-	LogAdd(LOG_GREEN, "[Database] Updated successfully");
+			NPCNAME_DATA info;
 
-	gServerInfo.ReadInternalList();
-}*/
+			memset(&info, 0, sizeof(info));
+
+			static int CustomIndexCount = 0;
+
+			info.Index = CustomIndexCount++;
+
+			info.NPCId = lpScript->GetNumber();
+
+			info.Map = lpScript->GetAsNumber();
+
+			info.X = lpScript->GetAsNumber();
+
+			info.Y = lpScript->GetAsNumber();
+
+			strcpy_s(info.Name, lpScript->GetAsString());
+
+			gCustomNPCListInfo.push_back(info);
+		}
+	}
+	catch (...)
+	{
+		printf(lpScript->GetLastError());
+	}
+
+	delete lpScript;
+}

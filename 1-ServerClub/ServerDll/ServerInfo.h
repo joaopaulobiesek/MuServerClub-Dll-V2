@@ -12,6 +12,7 @@ public:
 	void ReadInit();
 	void ReadConfig();
 	void ReadChecksumList();
+	void ReadCustomList();
 	void ReadWindowList();
 	void ReadBlackList();
 	void ReadStartupInfo(const char* section, const char* path);
@@ -31,6 +32,7 @@ public:
 	int CheckBlackList;
 	int CheckWindowList;
 	int CheckSumList;
+	int CheckCustomList;
 	int CheckSQL;
 
 	//KeyBoard Function

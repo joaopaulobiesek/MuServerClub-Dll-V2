@@ -161,12 +161,16 @@
   <ItemGroup>
     <ClInclude Include="AntiLagS15.h" />
     <ClInclude Include="AntiLagS17.h" />
+    <ClInclude Include="AntiLagS6.h" />
     <ClInclude Include="Camera3dS15.h" />
     <ClInclude Include="Camera3dS17.h" />
+    <ClInclude Include="Camera3dS6.h" />
     <ClInclude Include="CCRC32.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="CriticalSection.h" />
+    <ClInclude Include="CustomMonsterS6.h" />
+    <ClInclude Include="CustomNpcNameS6.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="ExecutableCheck.h" />
     <ClInclude Include="Features.h" />
@@ -175,12 +179,15 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="HookKBS15.h" />
     <ClInclude Include="HookKBS17.h" />
+    <ClInclude Include="HookKBS6.h" />
     <ClInclude Include="HookMSS15.h" />
     <ClInclude Include="HookMSS17.h" />
+    <ClInclude Include="HookMSS6.h" />
     <ClInclude Include="ListManager.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="MapName.h" />
     <ClInclude Include="Message.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="Offset.h" />
     <ClInclude Include="OffsetS0.h" />
     <ClInclude Include="OffsetS10.h" />
@@ -218,32 +225,40 @@
     <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="SwitchKBS15.h" />
     <ClInclude Include="SwitchKBS17.h" />
+    <ClInclude Include="SwitchKBS6.h" />
     <ClInclude Include="Thread.h" />
     <ClInclude Include="Themida\ThemidaSDK.h" />
     <ClInclude Include="Themida\Via ASM module\SecureEngineMacros.h" />
     <ClInclude Include="ThreadCheck.h" />
     <ClInclude Include="ThreadS15.h" />
     <ClInclude Include="ThreadS17.h" />
+    <ClInclude Include="ThreadS6.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="WindowCheck.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AntiLagS15.cpp" />
     <ClCompile Include="AntiLagS17.cpp" />
+    <ClCompile Include="AntiLagS6.cpp" />
     <ClCompile Include="Camera3dS15.cpp" />
     <ClCompile Include="Camera3dS17.cpp" />
+    <ClCompile Include="Camera3dS6.cpp" />
     <ClCompile Include="CCRC32.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="CriticalSection.cpp" />
+    <ClCompile Include="CustomMonsterS6.cpp" />
+    <ClCompile Include="CustomNpcNameS6.cpp" />
     <ClCompile Include="ExecutableCheck.cpp" />
     <ClCompile Include="Features.cpp" />
     <ClCompile Include="FileCheck.cpp" />
     <ClCompile Include="FileProtect.cpp" />
     <ClCompile Include="HookKBS15.cpp" />
     <ClCompile Include="HookKBS17.cpp" />
+    <ClCompile Include="HookKBS6.cpp" />
     <ClCompile Include="HookMSS15.cpp" />
     <ClCompile Include="HookMSS17.cpp" />
+    <ClCompile Include="HookMSS6.cpp" />
     <ClCompile Include="ListManager.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="MapName.cpp" />
@@ -289,10 +304,12 @@
     <ClCompile Include="SplashScreen.cpp" />
     <ClCompile Include="SwitchKBS15.cpp" />
     <ClCompile Include="SwitchKBS17.cpp" />
+    <ClCompile Include="SwitchKBS6.cpp" />
     <ClCompile Include="Thread.cpp" />
     <ClCompile Include="ThreadCheck.cpp" />
     <ClCompile Include="ThreadS15.cpp" />
     <ClCompile Include="ThreadS17.cpp" />
+    <ClCompile Include="ThreadS6.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="WindowCheck.cpp" />
   </ItemGroup>

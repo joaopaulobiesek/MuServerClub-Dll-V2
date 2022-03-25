@@ -139,6 +139,21 @@
     <Filter Include="Source Files\Features\Hook_KB_MS\S15">
       <UniqueIdentifier>{be422a28-d339-4e1e-9902-b3b43af4fc5e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Features\Hook_KB_MS\S6">
+      <UniqueIdentifier>{23e35149-4e0c-437f-b512-51199de87c1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Camera3D\S6">
+      <UniqueIdentifier>{0ed53ee0-66d3-4bea-b208-64afc90cfc20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\AntiLag\S6">
+      <UniqueIdentifier>{0bf17b59-a881-4d84-8347-d8ae66084c72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\MonsterCustom">
+      <UniqueIdentifier>{427d9b29-056d-4d3b-bfee-2f719d722f53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\MonsterCustom\S6">
+      <UniqueIdentifier>{6135566d-ac97-4342-800c-2884a649b6f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -342,6 +357,33 @@
     <ClInclude Include="ThreadS15.h">
       <Filter>Source Files\Protocol\S15</Filter>
     </ClInclude>
+    <ClInclude Include="HookKBS6.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="HookMSS6.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchKBS6.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera3dS6.h">
+      <Filter>Source Files\Features\Camera3D\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiLagS6.h">
+      <Filter>Source Files\Features\AntiLag\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadS6.h">
+      <Filter>Source Files\Protocol\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomMonsterS6.h">
+      <Filter>Source Files\Features\MonsterCustom\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomNpcNameS6.h">
+      <Filter>Source Files\Features\MonsterCustom\S6</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -529,6 +571,30 @@
     </ClCompile>
     <ClCompile Include="ThreadS15.cpp">
       <Filter>Source Files\Protocol\S15</Filter>
+    </ClCompile>
+    <ClCompile Include="HookKBS6.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="HookMSS6.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchKBS6.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera3dS6.cpp">
+      <Filter>Source Files\Features\Camera3D\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiLagS6.cpp">
+      <Filter>Source Files\Features\AntiLag\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadS6.cpp">
+      <Filter>Source Files\Protocol\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomMonsterS6.cpp">
+      <Filter>Source Files\Features\MonsterCustom\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomNpcNameS6.cpp">
+      <Filter>Source Files\Features\MonsterCustom\S6</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

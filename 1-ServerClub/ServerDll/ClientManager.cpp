@@ -135,3 +135,51 @@ void CClientManager::DelClient() // OK
 
 	this->m_PacketTime = 0;
 }
+
+void CClientManager::SetDataServer(int Index, char* NewHardwareId, char* HardwareId, char* account, char* PcName)// OK
+{
+	std::string NewHWID = NewHardwareId;
+	NewHWID.erase(std::remove_if(NewHWID.begin(), NewHWID.end(), [](char c) { return !isalnum(c); }), NewHWID.end());
+	strcpy(this->m_NewHardwareId, NewHWID.c_str());
+	memcpy(this->m_HardwareId, HardwareId, sizeof(this->m_HardwareId));
+	memcpy(this->m_Account, account, sizeof(this->m_Account));
+	memcpy(this->m_PcName, PcName, sizeof(this->m_PcName));
+
+	memcpy(gClientManager[Index].m_Account, account, sizeof(gClientManager[Index].m_Account));
+
+	LogAdd(LOG_BLACK, "[ClientManager][%d] Account: %s", this->m_index, this->m_Account);
+	LogAdd(LOG_BLACK, "[ClientManager][%d] HwId: %s", this->m_index, this->m_HardwareId);
+	LogAdd(LOG_BLACK, "[ClientManager][%d] NewHwId: %s", this->m_index, this->m_NewHardwareId);
+	LogAdd(LOG_BLACK, "[ClientManager][%d] PcName: %s", this->m_index, this->m_PcName);
+	if (gServerInfo.CheckSQL == 1)
+	{
+		gQueryManager.Close();
+		gQueryManager.BindParameterAsString(1, this->m_Account, sizeof(this->m_Account)); // Anti-Injection
+		gQueryManager.BindParameterAsString(2, this->m_IpAddr, sizeof(this->m_IpAddr)); // Anti-Injection
+		if (gQueryManager.ExecQuery("SELECT memb___id FROM MEMB_STAT WHERE memb___id=? and IP =? and ConnectStat=1") == 0 || gQueryManager.Fetch() == SQL_NO_DATA) // Anti-Injection
+		{
+			gQueryManager.Close();
+			//HCClientDisconnectSend(Index, 0xB);
+			LogAdd(LOG_RED, "Erro de Conexão SQL");
+		}
+		else
+		{
+			gQueryManager.Close();
+			gQueryManager.BindParameterAsString(1, this->m_NewHardwareId, sizeof(this->m_NewHardwareId)); // Anti-Injection
+			gQueryManager.BindParameterAsString(2, this->m_PcName, sizeof(this->m_PcName)); // Anti-Injection
+			gQueryManager.BindParameterAsString(3, this->m_Account, sizeof(this->m_Account)); // Anti-Injection
+			if (gQueryManager.ExecQuery("UPDATE MEMB_INFO SET HWID=? , pcname=? WHERE memb___id=?") != 0 || gQueryManager.Fetch() == SQL_NO_DATA)
+			{
+				// Anti-Injection
+				gQueryManager.Close();
+				LogAdd(LOG_BLUE, "[SQL] [HwId]: %s [Acc]: %s ", this->m_NewHardwareId, this->m_Account);
+			}
+			else
+			{
+				// Anti-Injection
+				gQueryManager.Close();
+				LogAdd(LOG_RED, "[ERROR] updating HWID.");
+			}
+		}
+	}
+}

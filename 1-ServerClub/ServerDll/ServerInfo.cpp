@@ -21,6 +21,8 @@ void CServerInfo::ReadInit() // OK
 	if (this->CheckWindowList == 1) this->ReadWindowList();
 
 	if (this->CheckBlackList == 1) this->ReadBlackList();
+
+	if (this->CheckCustomList == 1) this->ReadCustomList();
 }
 
 void CServerInfo::ReadConfig() // OK
@@ -61,6 +63,37 @@ void CServerInfo::ReadChecksumList() // OK
 		LogAdd(LOG_RED, "[ServerInfo] ChecksumList file does not exist");
 	}
 }
+
+void CServerInfo::ReadCustomList() // OK
+{
+	std::ifstream obj;
+	obj.open(".\\Custom\\CustomNPCName.txt");
+	if (obj.is_open())
+	{
+		obj.close();
+		gReadFiles.CustomNPCList(".\\Custom\\CustomNPCName.txt");
+		LogAdd(LOG_BLUE, "[ServerInfo] Custom NPC Name loaded successfully");
+	}
+	else
+	{
+		obj.close();
+		LogAdd(LOG_RED, "[ServerInfo] Custom NPC Name file does not exist");
+	}
+
+	obj.open(".\\Custom\\CustomMonster.txt");
+	if (obj.is_open())
+	{
+		obj.close();
+		gReadFiles.CustomMonsterList(".\\Custom\\CustomMonster.txt");
+		LogAdd(LOG_BLUE, "[ServerInfo] Custom Monster loaded successfully");
+	}
+	else
+	{
+		obj.close();
+		LogAdd(LOG_RED, "[ServerInfo] Custom Monster file does not exist");
+	}
+}
+
 void CServerInfo::ReadWindowList() // OK
 {
 	std::ifstream obj;
@@ -109,6 +142,8 @@ void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 	this->CheckWindowList = GetPrivateProfileInt(section, "CheckWindowList", 1, path);
 
 	this->CheckSumList = GetPrivateProfileInt(section, "CheckSumList", 1, path);
+
+	this->CheckCustomList = GetPrivateProfileInt(section, "CheckCustomList", 1, path);
 
 	this->HackSwitch = GetPrivateProfileInt(section, "HackSwitch", 1, path);
 

@@ -27,6 +27,7 @@ public:
 	bool CheckOnlineTime();
 	void AddClient(int index, char* ip, SOCKET socket);
 	void DelClient();
+	void SetDataServer(int Index, char* NewHardwareId, char* HardwareId, char* account, char* PcName);
 public:
 	int m_index;
 	eClientState m_state;
@@ -36,6 +37,8 @@ public:
 	IO_SEND_CONTEXT* m_IoSendContext;
 	char m_Account[11];
 	char m_HardwareId[36];
+	char m_NewHardwareId[200];
+	char m_PcName[100];
 	DWORD m_OnlineTime;
 	DWORD m_PacketTime;
 };

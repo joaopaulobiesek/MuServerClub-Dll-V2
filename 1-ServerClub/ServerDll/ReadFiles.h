@@ -26,6 +26,28 @@ struct WNDW_LIST_INFO
 	char text[64];
 };
 
+struct CUSTOMMONSTER_DATA
+{
+	int Index;
+	WORD ID;
+	BYTE Type;
+	char Name[25];
+	char Dir[50];
+	char Folder[50];
+	char BMDFile[50];
+	float Size;
+};
+
+struct NPCNAME_DATA
+{
+	int Index;
+	int NPCId;
+	int Map;
+	int X;
+	int Y;
+	char Name[25];
+};
+
 class CReadFiles
 {
 public:
@@ -35,7 +57,8 @@ public:
 	void ChecksumList(char* filename);
 	void InternalList(char* filename);
 	void WindowList(char* filename);
-	//void UpdateInternalList();
+	void CustomMonsterList(char* path);
+	void CustomNPCList(char* path);
 public:
 	bool ReloadSwitch;
 	bool UpdateSwitch;
@@ -43,6 +66,8 @@ public:
 	std::vector<CSUM_LIST_INFO> gChecksumListInfo;
 	std::vector<ITRN_LIST_INFO> gInternalListInfo;
 	std::vector<WNDW_LIST_INFO> gWindowListInfo;
+	std::vector<NPCNAME_DATA> gCustomNPCListInfo;
+	std::vector<CUSTOMMONSTER_DATA> gCustomMonsterListInfo;
 };
 
 extern CReadFiles gReadFiles;

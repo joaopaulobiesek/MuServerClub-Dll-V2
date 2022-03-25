@@ -74,6 +74,7 @@ void CThreadS17::SwitchCharacterThread(int Cod_ID)
 	{
 		char* GetAccountN = (char*)gOffset.AccountAddress;
 		wsprintf(gThread.NameAccount, GetAccountN);
+		gProtocol.ClientConnectSend();
 	}	
 }
 

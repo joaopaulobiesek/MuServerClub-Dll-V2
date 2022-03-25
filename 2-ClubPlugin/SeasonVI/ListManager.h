@@ -49,6 +49,28 @@ enum WINDOW_LIST_TYPE
 	WINDOW_CLASS = 1,
 };
 
+struct CUSTOMMONSTER_DATA
+{
+	int Index;
+	WORD ID;
+	BYTE Type;
+	char Name[25];
+	char Dir[50];
+	char Folder[50];
+	char BMDFile[50];
+	float Size;
+};
+
+struct NPCNAME_DATA
+{
+	int Index;
+	int NPCId;
+	int Map;
+	int X;
+	int Y;
+	char Name[25];
+};
+
 class CListManager
 {
 public:
@@ -59,6 +81,8 @@ public:
 	std::vector<CSUM_LIST_INFO> gChecksumListInfo;
 	std::vector<ITRN_LIST_INFO> gInternalListInfo;
 	std::vector<WNDW_LIST_INFO> gWindowListInfo;
+	std::vector<NPCNAME_DATA> gCustomNPCListInfo;
+	std::vector<CUSTOMMONSTER_DATA> gCustomMonsterListInfo;
 };
 
 extern CListManager gListManager;

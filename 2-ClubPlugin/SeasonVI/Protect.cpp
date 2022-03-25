@@ -61,5 +61,6 @@ bool CProtect::ReadDllFile(char* name) // OK
 	gMessage.LoadSpn(this->m_MainInfo.SpnMessageInfo);
 
 	CloseHandle(file);
+
 	return 1;
 }

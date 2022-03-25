@@ -25,6 +25,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) // OK
 		case 3://Season 4
 			break;
 		case 4://Season 6
+			gHookKBS6.Init(nCode, wParam, lParam);
 			break;
 		case 5://Season 8
 			break;
@@ -66,6 +67,7 @@ LRESULT CALLBACK MouseProc(int nCode, WPARAM wParam, LPARAM lParam) // OK
 		case 3://Season 4
 			break;
 		case 4://Season 6
+			gHookMSS6.Init(nCode, wParam, lParam);
 			break;
 		case 5://Season 8
 			break;
@@ -120,11 +122,11 @@ void CThread::Init()
 			}
 		}
 
-		if (gProtocol.ClientInfoOK != 0 && gProtocol.ChecksumListOK != 0 && gProtocol.WindowListOK != 0)
+		if (gProtocol.ClientInfoOK != 0 && gProtocol.ChecksumListOK != 0 && gProtocol.WindowListOK != 0 && gProtocol.CustomMonsterListOK != 0 && gProtocol.CustomNPCListOK != 0)
 		{
-			DWORD CurProgress = gListManager.gChecksumListInfo.size() + gListManager.gWindowListInfo.size();
+			DWORD CurProgress = gListManager.gChecksumListInfo.size() + gListManager.gWindowListInfo.size() + gListManager.gCustomMonsterListInfo.size() + gListManager.gCustomNPCListInfo.size();
 
-			DWORD MaxProgress = gProtocol.ChecksumListMaxCount + gProtocol.WindowListMaxCount;
+			DWORD MaxProgress = gProtocol.ChecksumListMaxCount + gProtocol.WindowListMaxCount + gProtocol.CustomMonsterListMaxCount + gProtocol.CustomNPCListMaxCount;
 
 			if (CurProgress >= MaxProgress)
 			{
@@ -185,6 +187,11 @@ void CThread::Init()
 			ExitProcess(0);
 		}
 	}
+
+	if (gProtocol.VersionMu == 4) 
+	{
+		gCustomMonster.InitMonster();
+	}
 }
 
 DWORD WINAPI ThreadSeasonCustom() // OK
@@ -200,6 +207,8 @@ DWORD WINAPI ThreadSeasonCustom() // OK
 		case 3://Season 4
 			break;
 		case 4://Season 6
+			gThreadS6.Init();
+			//gCamera3dS6.ThreadCamS6(); Não funciona ainda!!!
 			break;
 		case 5://Season 8
 			break;
@@ -393,7 +402,7 @@ DWORD WINAPI ConnectionReconnectThread() // OK
 			gProtocol.ConnectionStatusTime = GetTickCount();
 
 			gProtocol.ClientInfoSend();
-			//gProtocol.ClientConnectSend();
+			gProtocol.ClientConnectSend();
 		}
 	}
 

@@ -66,12 +66,13 @@ typedef unsigned __int64 QWORD;
 #include "Clock.h"
 #include "Log.h"
 
-
 #include "Themida/ThemidaSDK.h"
 #include "SplashScreen.h"
 #include "windowsx.h"
 #include "resource.h"
 #include "Defines.h"
+
+#include "Object.h"
 
 //Include Protocol
 #include "Protocol.h"
@@ -105,11 +106,19 @@ typedef unsigned __int64 QWORD;
 
 //Include Protocol
 #include "Thread.h"
+#include "ThreadS6.h"
 #include "ThreadS15.h"
 #include "ThreadS17.h"
 
 //Features
+//
 // 
+#include "Camera3dS6.h"
+#include "AntiLagS6.h"
+#include "HookKBS6.h"
+#include "HookMSS6.h"
+#include "SwitchKBS6.h" 
+//
 #include "Camera3dS15.h"
 #include "AntiLagS15.h"
 #include "HookKBS15.h"
@@ -121,5 +130,8 @@ typedef unsigned __int64 QWORD;
 #include "HookKBS17.h"
 #include "HookMSS17.h"
 #include "SwitchKBS17.h"
+//
+#include "CustomNpcNameS6.h"
+#include "CustomMonsterS6.h"
 //
 #include "Features.h"

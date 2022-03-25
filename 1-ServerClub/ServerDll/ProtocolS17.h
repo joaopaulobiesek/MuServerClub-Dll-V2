@@ -82,7 +82,7 @@ class CProtocolS17
 {
 public:
 	void ProtocolCore(int index, BYTE head, BYTE* lpMsg, int size);
-	void RequestOffSet17(SDHP_REQUEST_OFFSET_S17_RECV* lpMsg, int index);
+	void RequestOffSetS17(SDHP_REQUEST_OFFSET_S17_RECV* lpMsg, int index);
 	void RequestKeyBoardS17(SDHP_REQUEST_KEYBOARD_S17_RECV* lpMsg, int index);
 public:
 };

@@ -142,6 +142,20 @@ struct SDHP_WINDOW_LIST_RECV
 	BYTE count;
 };
 
+struct SDHP_CUSTOM_MONSTER_LIST_RECV
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
+struct SDHP_CUSTOM_NPC_LIST_RECV
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
 struct SDHP_CHECKSUM_LIST_RECV
 {
 	PSWMSG_HEAD header; // C1:02:01
@@ -190,6 +204,15 @@ struct SDHP_CLIENT_DISCONNECT_SEND
 	char ProcessName[64];
 };
 
+struct SDHP_CLIENT_SEND_CONNECT
+{
+	PBMSG_HEAD header; // C1:00
+	char NewHardwareId[100];
+	char HardwareId[36];
+	char account[11];
+	char PcName[100];
+};
+
 //**********************************************//
 //***************** Class **********************//
 //**********************************************//
@@ -203,23 +226,30 @@ public:
 	void ConnectionStatusRecv(SDHP_CONNECTION_STATUS_RECV* lpMsg);
 	void ChecksumListRecv(SDHP_CHECKSUM_LIST_RECV* lpMsg);
 	void WindowListRecv(SDHP_WINDOW_LIST_RECV* lpMsg);
+	void CustomMonsterListRecv(SDHP_CUSTOM_MONSTER_LIST_RECV* lpMsg);
+	void CustomNPCListRecv(SDHP_CUSTOM_NPC_LIST_RECV* lpMsg);
 	void ClientDisconnectSend(int type, char* text, DWORD pid);
 	void ClientDisconnectRecv(SDHP_CLIENT_DISCONNECT_RECV* lpMsg);
 	void ClientSendHack(char* Account, char* Prog, int Status);
 	void ClientInfoSend();
 	void ConnectionStatusSend();
+	void ClientConnectSend();
 public:
 	DWORD VersionMu;
 	DWORD VersionMuHEX;
 	DWORD ConnectionStatusTime;
 	DWORD ChecksumListMaxCount;
-	DWORD WindowListMaxCount ;
+	DWORD WindowListMaxCount;
+	DWORD CustomMonsterListMaxCount;
+	DWORD CustomNPCListMaxCount;
 	DWORD ReconnectStatus;
 	DWORD ReconnectSwitch;
 	DWORD HackSwitch;
 	DWORD ClientInfoOK;
 	DWORD ChecksumListOK;
 	DWORD WindowListOK;
+	DWORD CustomMonsterListOK;
+	DWORD CustomNPCListOK;
 	DWORD DetectCloseTime;
 	DWORD UserAccount;
 	DWORD UserStruct;

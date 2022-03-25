@@ -77,6 +77,53 @@ bool CMemScript::SetBuffer(char* filename, int CryptSwitch)
 	return 1;
 }
 
+bool CMemScript::SetBuffers(char* path) // OK
+{
+	strcpy_s(this->m_path, path);
+
+	HANDLE file = CreateFile(this->m_path, GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING, FILE_ATTRIBUTE_ARCHIVE, 0);
+
+	if (file == INVALID_HANDLE_VALUE)
+	{
+		this->SetLastError(0);
+		return 0;
+	}
+
+	this->m_size = GetFileSize(file, 0);
+
+	if (this->m_buff != 0)
+	{
+		delete[] this->m_buff;
+		this->m_buff = 0;
+	}
+
+	this->m_buff = new char[this->m_size];
+
+	if (this->m_buff == 0)
+	{
+		this->SetLastError(1);
+		CloseHandle(file);
+		return 0;
+	}
+
+	DWORD OutSize = 0;
+
+	if (ReadFile(file, this->m_buff, this->m_size, &OutSize, 0) == 0)
+	{
+		this->SetLastError(2);
+		CloseHandle(file);
+		return 0;
+	}
+
+	CloseHandle(file);
+
+	this->m_count = 0;
+
+	this->m_tick = GetTickCount();
+
+	return 1;
+}
+
 void CMemScript::GetWzAgInfo(char* buff, DWORD* size)
 {
 	memcpy(buff, this->m_buff, this->m_size);
@@ -244,6 +291,36 @@ int CMemScript::GetToken()
 	}
 }
 
+void CMemScript::SetLastError(int error) // OK
+{
+	switch (error)
+	{
+	case 0:
+		wsprintf(this->m_LastError, MEM_SCRIPT_ERROR_CODE0, this->m_path);
+		break;
+	case 1:
+		wsprintf(this->m_LastError, MEM_SCRIPT_ERROR_CODE1, this->m_path);
+		break;
+	case 2:
+		wsprintf(this->m_LastError, MEM_SCRIPT_ERROR_CODE2, this->m_path);
+		break;
+	case 3:
+		wsprintf(this->m_LastError, MEM_SCRIPT_ERROR_CODE3, this->m_path);
+		break;
+	case 4:
+		wsprintf(this->m_LastError, MEM_SCRIPT_ERROR_CODE4, this->m_path);
+		break;
+	default:
+		wsprintf(this->m_LastError, MEM_SCRIPT_ERROR_CODEX, this->m_path, error);
+		break;
+	}
+}
+
+char* CMemScript::GetLastError() // OK
+{
+	return this->m_LastError;
+}
+
 int CMemScript::GetNumber()
 {
 	return (int)this->m_number;
@@ -305,4 +382,11 @@ double CMemScript::GetAsFloat()
 {
 	this->GetToken();
 	return (double)this->m_number;
+}
+
+float CMemScript::GetAsFloatNumber() // OK
+{
+	this->GetToken();
+
+	return this->m_number;
 }

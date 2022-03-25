@@ -138,6 +138,15 @@ struct SDHP_CLIENT_DISCONNECT_RECV
 	char ProcessName[64];
 };
 
+struct SDHP_CLIENT_RECV_CONNECT
+{
+	PBMSG_HEAD header; // C1:00
+	char NewHardwareId[100];
+	char HardwareId[36];
+	char account[11];
+	char PcName[100];
+};
+
 //**********************************************//
 //************ Server -> Dll *******************//
 //**********************************************//
@@ -177,6 +186,20 @@ struct SDHP_WINDOW_LIST_SEND
 	BYTE count;
 };
 
+struct SDHP_CUSTOM_MONSTER_LIST_SEND
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
+struct SDHP_CUSTOM_NPC_LIST_SEND
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
 struct SDHP_CHECKSUM_LIST_SEND
 {
 	PSWMSG_HEAD header; // C1:02:01
@@ -204,6 +227,9 @@ public:
 	void ClientRecvHack(SDHP_CLIENT_HACK_RECV* lpMsg, int index);
 	void ChecksumListSend(int index);
 	void WindowListSend(int index);
+	void CustomMonsterListSend(int index);
+	void CustomNPCListSend(int index);
+	void ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index);
 public:
 	DWORD VersionMu;
 	DWORD VersionMuHEX;

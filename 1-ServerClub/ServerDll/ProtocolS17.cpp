@@ -10,7 +10,7 @@ void CProtocolS17::ProtocolCore(int index, BYTE head, BYTE* lpMsg, int size)
 		switch (lpMsg[4])
 		{
 		case 0x00:
-			this->RequestOffSet17((SDHP_REQUEST_OFFSET_S17_RECV*)lpMsg, index);
+			this->RequestOffSetS17((SDHP_REQUEST_OFFSET_S17_RECV*)lpMsg, index);
 			break;
 		case 0x01:
 			this->RequestKeyBoardS17((SDHP_REQUEST_KEYBOARD_S17_RECV*)lpMsg, index);
@@ -23,7 +23,7 @@ void CProtocolS17::ProtocolCore(int index, BYTE head, BYTE* lpMsg, int size)
 	}
 }
 
-void CProtocolS17::RequestOffSet17(SDHP_REQUEST_OFFSET_S17_RECV* lpMsg, int index)
+void CProtocolS17::RequestOffSetS17(SDHP_REQUEST_OFFSET_S17_RECV* lpMsg, int index)
 {
 	VM_TIGER_BLACK_START
 		STR_ENCRYPT_START

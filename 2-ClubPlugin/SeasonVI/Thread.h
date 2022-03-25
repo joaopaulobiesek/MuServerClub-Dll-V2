@@ -8,6 +8,14 @@ enum ObjState
 	GameProcess = 6,
 };
 
+enum ObjStateS6
+{
+	LoadingServer_2 = 1,
+	SelectServer_2 = 2,
+	SwitchCharacter_2 = 4,
+	GameProcess_2 = 5,
+};
+
 class CThread
 {
 public:

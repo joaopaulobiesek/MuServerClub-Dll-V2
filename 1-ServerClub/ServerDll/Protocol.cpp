@@ -42,7 +42,7 @@ void ProtocolCoreMain(int index, BYTE head, BYTE* lpMsg, int size)
 		//CHClientDisconnectRecv((SDHP_CLIENT_DISCONNECT_RECV*)lpMsg, index);
 		break;
 	case 0x04:
-		//CHClientConnectRecv((SDHP_CLIENT_RECV_CONNECT*)lpMsg, index);
+		gProtocol.ClientConnectRecv((SDHP_CLIENT_RECV_CONNECT*)lpMsg, index);
 		break;
 	case 0x05:
 		//CHClientHackRecv((SDHP_CLIENT_HACK_RECV*)lpMsg, index);
@@ -143,6 +143,10 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 	gProtocol.ChecksumListSend(index);
 
 	gProtocol.WindowListSend(index);
+
+	gProtocol.CustomMonsterListSend(index);
+
+	gProtocol.CustomNPCListSend(index);
 }
 
 void CProtocol::ClientRecvHack(SDHP_CLIENT_HACK_RECV* lpMsg, int index)
@@ -260,4 +264,149 @@ void CProtocol::WindowListSend(int index) // OK
 
 		gSocketManager.DataSend(index, send, size);
 	} while (MakeList != gReadFiles.gWindowListInfo.end());
+}
+
+void CProtocol::CustomMonsterListSend(int index) // OK
+{
+	std::vector<CUSTOMMONSTER_DATA>::iterator MakeList = gReadFiles.gCustomMonsterListInfo.begin();
+
+	do
+	{
+		BYTE send[8192];
+
+		SDHP_CUSTOM_MONSTER_LIST_SEND pMsg;
+
+		pMsg.header.set(0x02, 0x05, 0);
+
+		int size = sizeof(pMsg);
+
+		pMsg.MaxCount = gReadFiles.gCustomMonsterListInfo.size();
+
+		pMsg.count = 0;
+
+		CUSTOMMONSTER_DATA info;
+
+		for (; MakeList != gReadFiles.gCustomMonsterListInfo.end(); MakeList++)
+		{
+			info.Index = MakeList->Index;
+
+			info.ID = MakeList->ID;
+
+			info.Type = MakeList->Type;
+
+			strcpy_s(info.Name, MakeList->Name);
+
+			strcpy_s(info.Dir, MakeList->Dir);
+
+			strcpy_s(info.Folder, MakeList->Folder);
+
+			strcpy_s(info.BMDFile, MakeList->BMDFile);
+
+			info.Size = MakeList->Size;
+
+			if ((size + sizeof(info)) > sizeof(send))
+			{
+				break;
+			}
+			else
+			{
+				memcpy(&send[size], &info, sizeof(info));
+				size += sizeof(info);
+
+				pMsg.count++;
+			}
+		}
+
+		pMsg.header.size[0] = SET_NUMBERHB(size);
+
+		pMsg.header.size[1] = SET_NUMBERLB(size);
+
+		memcpy(send, &pMsg, sizeof(pMsg));
+
+		gSocketManager.DataSend(index, send, size);
+	} while (MakeList != gReadFiles.gCustomMonsterListInfo.end());
+}
+
+void CProtocol::CustomNPCListSend(int index) // OK
+{
+	std::vector<NPCNAME_DATA>::iterator MakeList = gReadFiles.gCustomNPCListInfo.begin();
+
+	do
+	{
+		BYTE send[8192];
+
+		SDHP_CUSTOM_NPC_LIST_SEND pMsg;
+
+		pMsg.header.set(0x02, 0x07, 0);
+
+		int size = sizeof(pMsg);
+
+		pMsg.MaxCount = gReadFiles.gCustomNPCListInfo.size();
+
+		pMsg.count = 0;
+
+		NPCNAME_DATA info;
+
+		for (; MakeList != gReadFiles.gCustomNPCListInfo.end(); MakeList++)
+		{
+
+			info.Index = MakeList->Index;
+
+			info.NPCId = MakeList->NPCId;
+
+			info.Map = MakeList->Map;
+
+			info.X = MakeList->X;
+
+			info.Y = MakeList->Y;
+
+			strcpy_s(info.Name, MakeList->Name);
+
+			if ((size + sizeof(info)) > sizeof(send))
+			{
+				break;
+			}
+			else
+			{
+				memcpy(&send[size], &info, sizeof(info));
+				size += sizeof(info);
+
+				pMsg.count++;
+			}
+		}
+
+		pMsg.header.size[0] = SET_NUMBERHB(size);
+
+		pMsg.header.size[1] = SET_NUMBERLB(size);
+
+		memcpy(send, &pMsg, sizeof(pMsg));
+
+		gSocketManager.DataSend(index, send, size);
+	} while (MakeList != gReadFiles.gCustomNPCListInfo.end());
+}
+
+void CProtocol::ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index)// OK
+{
+	if (lpMsg->NewHardwareId[0] == NULL)
+	{
+		LogAdd(LOG_RED, "[%d] NewHardwareId NULL", index);
+		return;
+	}
+	if (lpMsg->HardwareId[0] == NULL)
+	{
+		LogAdd(LOG_RED, "[%d] HardwareId NULL", index);
+		return;
+	}
+	if (lpMsg->account[0] == NULL)
+	{
+		LogAdd(LOG_RED, "[%d] Account NULL", index);
+		return;
+	}
+	if (lpMsg->PcName[0] == NULL)
+	{
+		LogAdd(LOG_RED, "[%d] PcName NULL", index);
+		return;
+	}
+
+	gClientManager[index].SetDataServer(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName);
 }

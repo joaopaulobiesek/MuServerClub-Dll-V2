@@ -9,12 +9,16 @@ CProtocol::CProtocol() // OK
 	this->ConnectionStatusTime = 0;
 	this->ChecksumListMaxCount = 0;
 	this->WindowListMaxCount = 0;
+	this->CustomMonsterListMaxCount = 0;
+	this->CustomNPCListMaxCount = 0;
 	this->ReconnectStatus = 0;
 	this->ReconnectSwitch = 0;
 	this->HackSwitch = 0;
 	this->ClientInfoOK = 0;
 	this->ChecksumListOK = 0;
 	this->WindowListOK = 0;
+	this->CustomMonsterListOK = 0;
+	this->CustomNPCListOK = 0;
 	this->DetectCloseTime = 0;
 	this->UserAccount = 0;
 	this->UserStruct = 0;
@@ -43,6 +47,12 @@ void ProtocolCoreMain(BYTE head, BYTE* lpMsg, int size)
 			break;
 		case 0x03:
 			gProtocol.WindowListRecv((SDHP_WINDOW_LIST_RECV*)lpMsg);
+			break;
+		case 0x05:
+			gProtocol.CustomMonsterListRecv((SDHP_CUSTOM_MONSTER_LIST_RECV*)lpMsg);
+			break;
+		case 0x07:
+			gProtocol.CustomNPCListRecv((SDHP_CUSTOM_NPC_LIST_RECV*)lpMsg);
 			break;
 		}
 		break;
@@ -112,9 +122,21 @@ void CProtocol::ClientInfoSend() // OK
 
 		ChecksumListOK = 0;
 
+		CustomMonsterListOK = 0;
+
+		CustomNPCListOK = 0;
+
 		ChecksumListMaxCount = 0;
 
+		CustomMonsterListMaxCount = 0;
+
+		CustomNPCListMaxCount = 0;
+
 		gListManager.gChecksumListInfo.clear();
+
+		gListManager.gCustomMonsterListInfo.clear();
+
+		gListManager.gCustomNPCListInfo.clear();
 	}
 
 	SDHP_CLIENT_INFO_SEND pMsg;
@@ -227,6 +249,38 @@ void CProtocol::WindowListRecv(SDHP_WINDOW_LIST_RECV* lpMsg) // OK
 	}
 
 	WindowListOK = 1;
+}
+
+void CProtocol::CustomMonsterListRecv(SDHP_CUSTOM_MONSTER_LIST_RECV* lpMsg) // OK
+{
+	//gLog.Output(LOG_DEBUG, GetEncryptedString(43), lpMsg->count, lpMsg->MaxCount);
+
+	CustomMonsterListMaxCount = lpMsg->MaxCount;
+
+	for (int n = 0; n < lpMsg->count; n++)
+	{
+		CUSTOMMONSTER_DATA* lpInfo = (CUSTOMMONSTER_DATA*)(((BYTE*)lpMsg) + sizeof(SDHP_CUSTOM_MONSTER_LIST_RECV) + (sizeof(CUSTOMMONSTER_DATA) * n));
+
+		gListManager.gCustomMonsterListInfo.push_back((*lpInfo));
+	}
+
+	CustomMonsterListOK = 1;
+}
+
+void CProtocol::CustomNPCListRecv(SDHP_CUSTOM_NPC_LIST_RECV* lpMsg) // OK
+{
+	//gLog.Output(LOG_DEBUG, GetEncryptedString(43), lpMsg->count, lpMsg->MaxCount);
+
+	CustomNPCListMaxCount = lpMsg->MaxCount;
+
+	for (int n = 0; n < lpMsg->count; n++)
+	{
+		NPCNAME_DATA* lpInfo = (NPCNAME_DATA*)(((BYTE*)lpMsg) + sizeof(SDHP_CUSTOM_NPC_LIST_RECV) + (sizeof(NPCNAME_DATA) * n));
+
+		gListManager.gCustomNPCListInfo.push_back((*lpInfo));
+	}
+
+	CustomNPCListOK = 1;
 }
 
 void CProtocol::ConnectionStatusSend() // OK
@@ -372,6 +426,25 @@ void CProtocol::ClientDisconnectSend(int type, char* text, DWORD pid) // OK
 	}
 
 	//gLog.Output(LOG_DEBUG,GetEncryptedString(32),pMsg.type,pMsg.account,pMsg.name,pMsg.CaptionName,pMsg.ProcessName);
+
+	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
+}
+
+void CProtocol::ClientConnectSend() // OK
+{
+	SDHP_CLIENT_SEND_CONNECT pMsg;
+
+	pMsg.header.set(0x04, sizeof(pMsg));
+
+	memcpy(pMsg.NewHardwareId, GetHardwareIdNew(), sizeof(pMsg.NewHardwareId));
+
+	memcpy(pMsg.HardwareId, GetHardwareId(), sizeof(pMsg.HardwareId));
+
+	memcpy(pMsg.account, gThread.NameAccount, sizeof(pMsg.account));
+
+	memcpy(pMsg.PcName, GetPcName(), sizeof(pMsg.PcName));
+
+	//gLog.Output(LOG_DEBUG,GetEncryptedString(31),pMsg.IsReconnect,pMsg.ClientFileCRC,pMsg.HackVersion,pMsg.HardwareId);
 
 	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
 }
