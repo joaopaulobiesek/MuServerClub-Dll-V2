@@ -179,6 +179,9 @@ struct SDHP_CLIENT_HACK_SEND
 	int Status;
 	char Name[12];
 	char Program[100];
+	int Map;
+	int X;
+	int Y;
 };
 
 struct SDHP_CLIENT_INFO_SEND
@@ -230,7 +233,7 @@ public:
 	void CustomNPCListRecv(SDHP_CUSTOM_NPC_LIST_RECV* lpMsg);
 	void ClientDisconnectSend(int type, char* text, DWORD pid);
 	void ClientDisconnectRecv(SDHP_CLIENT_DISCONNECT_RECV* lpMsg);
-	void ClientSendHack(char* Account, char* Prog, int Status);
+	void ClientSendHack(char* Account, char* Prog, int Status, int Map, int X, int Y);
 	void ClientInfoSend();
 	void ConnectionStatusSend();
 	void ClientConnectSend();

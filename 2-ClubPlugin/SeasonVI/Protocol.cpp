@@ -206,7 +206,7 @@ void CProtocol::ConnectionStatusRecv(SDHP_CONNECTION_STATUS_RECV* lpMsg) // OK
 	ConnectionStatusTime = GetTickCount();
 }
 
-void CProtocol::ClientSendHack(char* Account, char* Prog, int Status) // OK
+void CProtocol::ClientSendHack(char* Account, char* Prog, int Status, int Map, int X, int Y) // OK
 {
 	SDHP_CLIENT_HACK_SEND pMsg;
 
@@ -217,6 +217,12 @@ void CProtocol::ClientSendHack(char* Account, char* Prog, int Status) // OK
 	memcpy(pMsg.Name, Account, sizeof(pMsg.Name));
 
 	memcpy(pMsg.Program, Prog, sizeof(pMsg.Program));
+
+	pMsg.Map = Map;
+
+	pMsg.X = X;
+
+	pMsg.Y = Y;
 
 	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
 }

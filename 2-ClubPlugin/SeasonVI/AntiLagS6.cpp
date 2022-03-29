@@ -247,6 +247,15 @@ void CAntiLagS6::InitKB(int Parameter)
 		STR_ENCRYPT_END
 			VM_TIGER_BLACK_END
 			break;
+	case 12:
+		VM_TIGER_BLACK_START
+			STR_ENCRYPT_START
+			gInterface.MiniMap = (gInterface.MiniMap == 0) ? 1 : 0;
+		wsprintf(GraphicsControl, "%d", gInterface.MiniMap);
+		WritePrivateProfileStringA("Graphics", "MiniMap", GraphicsControl, ".\\option.ini");
+		STR_ENCRYPT_END
+			VM_TIGER_BLACK_END
+			break;
 	default:
 		break;
 	}
@@ -256,55 +265,59 @@ void CAntiLagS6::ActiveDisabled(int code)
 {
 	//VM_TIGER_BLACK_START
 		//STR_ENCRYPT_START
-		if (code == 0)
-		{
-			this->case3 = GetPrivateProfileIntA("Graphics", "DisableWing", 0, "./option.ini");
-			this->case4 = GetPrivateProfileIntA("Graphics", "DisableSkill", 0, "./option.ini");
-			this->case5 = GetPrivateProfileIntA("Graphics", "DisableDropZen", 0, "./option.ini");
-			this->case6 = GetPrivateProfileIntA("Graphics", "DisableDropItem", 0, "./option.ini");
-			this->case7 = GetPrivateProfileIntA("Graphics", "DisableObjTerrain", 0, "./option.ini");
-			this->case8 = GetPrivateProfileIntA("Graphics", "RemoveSet", 0, "./option.ini");
-			this->case9 = GetPrivateProfileIntA("Graphics", "DisablePet", 0, "./option.ini");
+	if (code == 0)
+	{
+		this->case3 = GetPrivateProfileIntA("Graphics", "DisableWing", 0, "./option.ini");
+		this->case4 = GetPrivateProfileIntA("Graphics", "DisableSkill", 0, "./option.ini");
+		this->case5 = GetPrivateProfileIntA("Graphics", "DisableDropZen", 0, "./option.ini");
+		this->case6 = GetPrivateProfileIntA("Graphics", "DisableDropItem", 0, "./option.ini");
+		this->case7 = GetPrivateProfileIntA("Graphics", "DisableObjTerrain", 0, "./option.ini");
+		this->case8 = GetPrivateProfileIntA("Graphics", "RemoveSet", 0, "./option.ini");
+		this->case9 = GetPrivateProfileIntA("Graphics", "DisablePet", 0, "./option.ini");
 
-			if (this->case3) { this->case3 = 0; this->InitKB(3); }
-			if (this->case4) { this->case4 = 0; this->InitKB(4); }
-			if (this->case5) { this->case5 = 0; this->InitKB(5); }
-			if (this->case6) { this->case6 = 0; this->InitKB(6); }
-			if (this->case7) { this->case7 = 0; this->InitKB(7); }
-			if (this->case8) { this->case8 = 0; this->InitKB(8); }
-			if (this->case9) { this->case9 = 0; this->InitKB(9); }
-		}
-		else
+		if (this->case3) { this->case3 = 0; this->InitKB(3); }
+		if (this->case4) { this->case4 = 0; this->InitKB(4); }
+		if (this->case5) { this->case5 = 0; this->InitKB(5); }
+		if (this->case6) { this->case6 = 0; this->InitKB(6); }
+		if (this->case7) { this->case7 = 0; this->InitKB(7); }
+		if (this->case8) { this->case8 = 0; this->InitKB(8); }
+		if (this->case9) { this->case9 = 0; this->InitKB(9); }
+	}
+	else
+	{
+		if (GetPrivateProfileIntA("Graphics", "DisableWing", 0, "./option.ini") != this->case3)
 		{
-			if (GetPrivateProfileIntA("Graphics", "DisableWing", 0, "./option.ini") != this->case3)
-			{
-				this->InitKB(3);
-			}
-			if (GetPrivateProfileIntA("Graphics", "DisableSkill", 0, "./option.ini") != this->case4)
-			{
-				this->InitKB(4);
-			}
-			if (GetPrivateProfileIntA("Graphics", "DisableDropZen", 0, "./option.ini") != this->case5)
-			{
-				this->InitKB(5);
-			}
-			if (GetPrivateProfileIntA("Graphics", "DisableDropItem", 0, "./option.ini") != this->case6)
-			{
-				this->InitKB(6);
-			}
-			if (GetPrivateProfileIntA("Graphics", "DisableObjTerrain", 0, "./option.ini") != this->case7)
-			{
-				this->InitKB(7);
-			}
-			if (GetPrivateProfileIntA("Graphics", "RemoveSet", 0, "./option.ini") != this->case8)
-			{
-				this->InitKB(8);
-			}
-			if (GetPrivateProfileIntA("Graphics", "DisablePet", 0, "./option.ini") != this->case9)
-			{
-				this->InitKB(9);
-			}
+			this->InitKB(3);
 		}
+		if (GetPrivateProfileIntA("Graphics", "DisableSkill", 0, "./option.ini") != this->case4)
+		{
+			this->InitKB(4);
+		}
+		if (GetPrivateProfileIntA("Graphics", "DisableDropZen", 0, "./option.ini") != this->case5)
+		{
+			this->InitKB(5);
+		}
+		if (GetPrivateProfileIntA("Graphics", "DisableDropItem", 0, "./option.ini") != this->case6)
+		{
+			this->InitKB(6);
+		}
+		if (GetPrivateProfileIntA("Graphics", "DisableObjTerrain", 0, "./option.ini") != this->case7)
+		{
+			this->InitKB(7);
+		}
+		if (GetPrivateProfileIntA("Graphics", "RemoveSet", 0, "./option.ini") != this->case8)
+		{
+			this->InitKB(8);
+		}
+		if (GetPrivateProfileIntA("Graphics", "DisablePet", 0, "./option.ini") != this->case9)
+		{
+			this->InitKB(9);
+		}
+		if (GetPrivateProfileIntA("Graphics", "MiniMap", 0, "./option.ini") != gInterface.MiniMap)
+		{
+			this->InitKB(12);
+		}
+	}
 	//STR_ENCRYPT_END
 		//VM_TIGER_BLACK_END
 }

@@ -151,6 +151,10 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 
 void CProtocol::ClientRecvHack(SDHP_CLIENT_HACK_RECV* lpMsg, int index)
 {
+	if (lpMsg->Status == 1)
+	{
+		LogAddHackSpeed(LOG_RED, "[%d] SPEED HACK DETECTED: MAP:[%d] - X:[%d] - Y:[%d]", index, lpMsg->Map, lpMsg->X, lpMsg->Y);
+	}
 	if (lpMsg->Status == 2)
 	{
 		LogAddHack(LOG_RED, "[%d] HACK DETECTED: [%s] - %s", index, lpMsg->Program, lpMsg->Name);

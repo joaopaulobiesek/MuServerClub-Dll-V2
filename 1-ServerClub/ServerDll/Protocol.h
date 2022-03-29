@@ -113,6 +113,9 @@ struct SDHP_CLIENT_HACK_RECV
 	int Status;
 	char Name[12];
 	char Program[100];
+	int Map;
+	int X;
+	int Y;
 };
 
 struct SDHP_CLIENT_INFO_RECV

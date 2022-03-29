@@ -55,6 +55,7 @@ typedef unsigned __int64 QWORD;
 #include "CCRC32.h"
 #include "Util.h"
 #include "Protect.h"
+#include "SpeedCheck.h"
 #include "WindowCheck.h"
 #include "ProcessManager.h"
 #include "ProcessQuery.h"
@@ -133,5 +134,8 @@ typedef unsigned __int64 QWORD;
 //
 #include "CustomNpcNameS6.h"
 #include "CustomMonsterS6.h"
+#include "InterfaceS6.h"
+#include "UserS6.h"
+#include "CustomInterfaceS6.h"
 //
 #include "Features.h"

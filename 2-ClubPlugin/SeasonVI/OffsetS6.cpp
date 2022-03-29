@@ -64,7 +64,7 @@ void COffsetS6::RecvOffset(SDHP_REQUEST_OFFSET_S6_RECV* lpMsg)
 	this->Terrain1Active = lpMsg->Terrain1Active;
 	this->RemoveSetActive = lpMsg->RemoveSetActive;
 
-	if (gFeatures.camera3D == 1) gCamera3dS6.Init();
+	//if (gFeatures.camera3D == 1) gCamera3dS6.Init();
 
 	STR_ENCRYPT_END
 		VM_TIGER_BLACK_END

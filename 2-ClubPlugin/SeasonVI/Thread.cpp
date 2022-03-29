@@ -147,14 +147,14 @@ void CThread::Init()
 		if (API_INIT() == 0)
 		{
 			SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(7), 5000);
-			//SafeExitProcess(); Add Aqui envio de Info para servidor!
+			SafeExitProcess(); //Add Aqui envio de Info para servidor!
 			return;
 		}
 
 		if (gProcessManager.Init() == 0)
 		{
 			SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(7), 5000);
-			//SafeExitProcess(); Add Aqui envio de Info para servidor!
+			SafeExitProcess(); //Add Aqui envio de Info para servidor!
 			return;
 		}
 	}
@@ -190,6 +190,9 @@ void CThread::Init()
 
 	if (gProtocol.VersionMu == 4) 
 	{
+		gObjUser.Load();
+		gInterface.Load();
+		gCustomInterface.Load();
 		gCustomMonster.Scan();
 		gCustomMonster.Load(gCustomMonster.m_CustomMonster);
 		gNPCName.Scan();
@@ -212,7 +215,6 @@ DWORD WINAPI ThreadSeasonCustom() // OK
 			break;
 		case 4://Season 6
 			gThreadS6.Init();
-			//gCamera3dS6.ThreadCamS6(); Não funciona ainda!!!
 			break;
 		case 5://Season 8
 			break;

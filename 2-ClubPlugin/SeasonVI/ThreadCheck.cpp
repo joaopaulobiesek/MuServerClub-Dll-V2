@@ -88,7 +88,7 @@ void CThreadCheck::CheckThreadIntegrity() //OK
 		{
 			if ((this->m_IsActiveTime = GetTickCount()) != 0 && this->CheckThreadState() == 0)
 			{
-				SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(0), 5000);
+				//SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(0), 5000); QUanod inicia o jogo fica aparecendo splash 
 			}
 			else
 			{

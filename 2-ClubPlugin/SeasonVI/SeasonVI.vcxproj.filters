@@ -384,6 +384,18 @@
     <ClInclude Include="CustomNpcNameS6.h">
       <Filter>Source Files\Features\Custom\S6</Filter>
     </ClInclude>
+    <ClInclude Include="SpeedCheck.h">
+      <Filter>Source Files\BasicModules\Crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceS6.h">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="UserS6.h">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomInterfaceS6.h">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -594,6 +606,18 @@
       <Filter>Source Files\Features\Custom\S6</Filter>
     </ClCompile>
     <ClCompile Include="CustomNpcNameS6.cpp">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeedCheck.cpp">
+      <Filter>Source Files\BasicModules\Crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceS6.cpp">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="UserS6.cpp">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomInterfaceS6.cpp">
       <Filter>Source Files\Features\Custom\S6</Filter>
     </ClCompile>
   </ItemGroup>

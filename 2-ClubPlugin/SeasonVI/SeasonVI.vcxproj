@@ -169,6 +169,7 @@
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="CriticalSection.h" />
+    <ClInclude Include="CustomInterfaceS6.h" />
     <ClInclude Include="CustomMonsterS6.h" />
     <ClInclude Include="CustomNpcNameS6.h" />
     <ClInclude Include="Defines.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="HookMSS15.h" />
     <ClInclude Include="HookMSS17.h" />
     <ClInclude Include="HookMSS6.h" />
+    <ClInclude Include="InterfaceS6.h" />
     <ClInclude Include="ListManager.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="MapName.h" />
@@ -222,6 +224,7 @@
     <ClInclude Include="ProtocolS8.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SimpleModules.h" />
+    <ClInclude Include="SpeedCheck.h" />
     <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="SwitchKBS15.h" />
     <ClInclude Include="SwitchKBS17.h" />
@@ -233,6 +236,7 @@
     <ClInclude Include="ThreadS15.h" />
     <ClInclude Include="ThreadS17.h" />
     <ClInclude Include="ThreadS6.h" />
+    <ClInclude Include="UserS6.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="WindowCheck.h" />
   </ItemGroup>
@@ -247,6 +251,7 @@
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="CriticalSection.cpp" />
+    <ClCompile Include="CustomInterfaceS6.cpp" />
     <ClCompile Include="CustomMonsterS6.cpp" />
     <ClCompile Include="CustomNpcNameS6.cpp" />
     <ClCompile Include="ExecutableCheck.cpp" />
@@ -259,6 +264,7 @@
     <ClCompile Include="HookMSS15.cpp" />
     <ClCompile Include="HookMSS17.cpp" />
     <ClCompile Include="HookMSS6.cpp" />
+    <ClCompile Include="InterfaceS6.cpp" />
     <ClCompile Include="ListManager.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="MapName.cpp" />
@@ -301,6 +307,7 @@
     <ClCompile Include="ProtocolS6.cpp" />
     <ClCompile Include="ProtocolS8.cpp" />
     <ClCompile Include="SimpleModules.cpp" />
+    <ClCompile Include="SpeedCheck.cpp" />
     <ClCompile Include="SplashScreen.cpp" />
     <ClCompile Include="SwitchKBS15.cpp" />
     <ClCompile Include="SwitchKBS17.cpp" />
@@ -310,6 +317,7 @@
     <ClCompile Include="ThreadS15.cpp" />
     <ClCompile Include="ThreadS17.cpp" />
     <ClCompile Include="ThreadS6.cpp" />
+    <ClCompile Include="UserS6.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="WindowCheck.cpp" />
   </ItemGroup>

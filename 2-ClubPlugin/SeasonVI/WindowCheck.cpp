@@ -27,7 +27,7 @@ void CWindowCheck::Scan()
 					DWORD pid = 0;
 					GetWindowThreadProcessId(WindowHwnd, &pid);
 					gProtocol.ClientDisconnectSend(CLIENT_DISCONNECT_WINDOW_DETECTION, it->text, pid);
-					gProtocol.ClientSendHack(gThread.NameAccount, it->text, 2);
+					gProtocol.ClientSendHack(gThread.NameAccount, it->text, 2, 0, 0, 0);
 					return;
 				}
 				break;
@@ -37,7 +37,7 @@ void CWindowCheck::Scan()
 					DWORD pid = 0;
 					GetWindowThreadProcessId(WindowHwnd, &pid);
 					gProtocol.ClientDisconnectSend(CLIENT_DISCONNECT_WINDOW_DETECTION, it->text, pid);
-					gProtocol.ClientSendHack(gThread.NameAccount, it->text, 2);
+					gProtocol.ClientSendHack(gThread.NameAccount, it->text, 2, 0, 0, 0);
 					return;
 				}
 				break;

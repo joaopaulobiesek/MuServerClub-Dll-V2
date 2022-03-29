@@ -20,6 +20,7 @@ void CThreadS6::Init()
 	{
 	case SelectServer_2:
 		gWindowCheck.CHeckCheat = 0;
+		gSpeed.CHeckSpeed = 0;
 		if (this->GET_HWND == 0)
 		{
 			this->GET_HWND = 1;
@@ -34,6 +35,7 @@ void CThreadS6::Init()
 		break;
 	case SwitchCharacter_2:
 		gWindowCheck.CHeckCheat = 0;
+		gSpeed.CHeckSpeed = 0;
 		if (this->GET_HWND == 1 || this->GET_HWND == 2)
 		{
 			this->Count++;
@@ -46,6 +48,7 @@ void CThreadS6::Init()
 		break;
 	case GameProcess_2:
 		gWindowCheck.CHeckCheat = 1;
+		gSpeed.CHeckSpeed = 1;
 		if (this->GET_HWND == 3)
 		{
 			this->GET_HWND = 4;
@@ -55,7 +58,7 @@ void CThreadS6::Init()
 		if (this->GetAntLag >= 10)
 		{
 			this->GetAntLag = 0;
-			if (gFeatures.antiLag != 0) { gAntiLagS15.ActiveDisabled(1); }
+			if (gFeatures.antiLag != 0) { gAntiLagS6.ActiveDisabled(1); }
 		}
 		this->GameProcessThread(0);
 		break;
@@ -75,7 +78,7 @@ void CThreadS6::SwitchCharacterThread(int Cod_ID)
 		char* GetAccountN = (char*)gOffset.AccountAddress;
 		wsprintf(gThread.NameAccount, GetAccountN);
 		gProtocol.ClientConnectSend();
-	}	
+	}
 }
 
 void CThreadS6::GameProcessThread(int Cod_ID)
@@ -83,20 +86,22 @@ void CThreadS6::GameProcessThread(int Cod_ID)
 	if (Cod_ID == 0)
 	{
 		this->BaseAddress = (DWORD)GetModuleHandle("Main.dll");
+		lpViewObj lpViewPlayer = &*(ObjectPreview*)*(int*)(gOffsetS6.MAIN_VIEWPORT_STRUCT);
+
+		DWORD Map = *(DWORD*)(gOffsetS6.MAIN_MAP_CODE);
+		DWORD PosX = lpViewPlayer->MapPosX;
+		DWORD PosY = lpViewPlayer->MapPosY;
+
+		if (gSpeed.CHeckSpeed == 1) {
+			gSpeed.m_SpeedMain.Map = Map;
+			gSpeed.m_SpeedMain.X = PosX;
+			gSpeed.m_SpeedMain.Y = PosY;
+
+			gSpeed.CheckLimit(Map, PosX, PosY);
+		}
 	}
 	else
 	{
 		if (gFeatures.antiLag != 0) { gAntiLagS6.ActiveDisabled(0); }
-		if (gFeatures.camera3D != 0) {
-			GetWindowRect(gMain.hWnd, &this->rect);
-			gCamera3dS6.width = floor((float)this->rect.right - this->rect.left);
-			gCamera3dS6.height = floor((float)this->rect.bottom - this->rect.top);
-			gCamera3dS6.midwidth = floor((float)gCamera3dS6.width / 2);
-			gCamera3dS6.midheight = floor((float)gCamera3dS6.height / 2);
-			gCamera3dS6.rangewidth = floor((float)gCamera3dS6.width / 20);
-			gCamera3dS6.rangeheight = floor((float)gCamera3dS6.height / 20);
-
-			gCamera3dS6.actualz = -45;
-		}
 	}
 }
