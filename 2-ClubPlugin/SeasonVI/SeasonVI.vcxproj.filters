@@ -148,10 +148,10 @@
     <Filter Include="Source Files\Features\AntiLag\S6">
       <UniqueIdentifier>{0bf17b59-a881-4d84-8347-d8ae66084c72}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Features\MonsterCustom">
+    <Filter Include="Source Files\Features\Custom">
       <UniqueIdentifier>{427d9b29-056d-4d3b-bfee-2f719d722f53}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Features\MonsterCustom\S6">
+    <Filter Include="Source Files\Features\Custom\S6">
       <UniqueIdentifier>{6135566d-ac97-4342-800c-2884a649b6f9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -376,13 +376,13 @@
       <Filter>Source Files\Protocol\S6</Filter>
     </ClInclude>
     <ClInclude Include="CustomMonsterS6.h">
-      <Filter>Source Files\Features\MonsterCustom\S6</Filter>
+      <Filter>Source Files\Features\Custom\S6</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomNpcNameS6.h">
-      <Filter>Source Files\Features\MonsterCustom\S6</Filter>
+      <Filter>Source Files\Features\Custom\S6</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -591,10 +591,10 @@
       <Filter>Source Files\Protocol\S6</Filter>
     </ClCompile>
     <ClCompile Include="CustomMonsterS6.cpp">
-      <Filter>Source Files\Features\MonsterCustom\S6</Filter>
+      <Filter>Source Files\Features\Custom\S6</Filter>
     </ClCompile>
     <ClCompile Include="CustomNpcNameS6.cpp">
-      <Filter>Source Files\Features\MonsterCustom\S6</Filter>
+      <Filter>Source Files\Features\Custom\S6</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

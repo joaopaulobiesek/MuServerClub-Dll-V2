@@ -507,3 +507,29 @@ void CCustomMonster::SetMainAttribute(lpViewObj Object, int MonsterID)
 //		}
 //	}
 //}
+
+void CCustomMonster::Scan()
+{
+	CUSTOMMONSTER_DATA info;
+
+	for (std::vector<CUSTOMMONSTER_DATA>::iterator it = gListManager.gCustomMonsterListInfo.begin(); it != gListManager.gCustomMonsterListInfo.end(); it++)
+	{
+		info.Index = it->Index++;
+
+		info.ID = it->ID;
+
+		info.Type = it->Type;
+
+		strcpy_s(info.Name, it->Name);
+
+		strcpy_s(info.Dir, it->Dir);
+
+		strcpy_s(info.Folder, it->Folder);
+
+		strcpy_s(info.BMDFile, it->BMDFile);
+
+		info.Size = it->Size;
+
+		this->m_CustomMonster[info.Index] = info;
+	}
+}

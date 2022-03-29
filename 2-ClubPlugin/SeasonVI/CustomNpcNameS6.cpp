@@ -78,3 +78,25 @@ NPCNAME_DATA* cNPCName::GetNPCNameByIndex(int index) // OK
 
 	return &this->m_CustomNpcName[index];
 }
+
+void cNPCName::Scan()
+{
+	NPCNAME_DATA info;
+
+	for (std::vector<NPCNAME_DATA>::iterator it = gListManager.gCustomNPCListInfo.begin(); it != gListManager.gCustomNPCListInfo.end(); it++)
+	{
+		info.Index = it->Index++;
+
+		info.NPCId = it->NPCId;
+
+		info.Map = it->Map;
+
+		info.X = it->X;
+
+		info.Y = it->Y;
+
+		strcpy_s(info.Name, it->Name);
+
+		this->m_CustomNpcName[info.Index] = info;
+	}
+}

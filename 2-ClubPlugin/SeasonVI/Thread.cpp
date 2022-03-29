@@ -190,6 +190,10 @@ void CThread::Init()
 
 	if (gProtocol.VersionMu == 4) 
 	{
+		gCustomMonster.Scan();
+		gCustomMonster.Load(gCustomMonster.m_CustomMonster);
+		gNPCName.Scan();
+		gNPCName.Load(gNPCName.m_CustomNpcName);
 		gCustomMonster.InitMonster();
 	}
 }

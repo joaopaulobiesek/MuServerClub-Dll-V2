@@ -32,6 +32,7 @@ public:
 	CUSTOMMONSTER_DATA* GetInfoByMonsterID(int MonsterID);
 	CUSTOMMONSTER_DATA* GetInfoByIndex(int Index);
 	void InitMonster();
+	void Scan();
 private:
 	static void LoadMonsterBMD(signed int Class, char* FileDir, char* BmdName, signed int BmdType);
 	static void LoadMonsterTexture(signed int Class, char* FolderDir, int a3, int a4);
@@ -39,6 +40,7 @@ private:
 	static void SetMainAttribute(lpViewObj Object, int MonsterID);
 	int LoadMonster;
 	NpcNameList m_NpcName[MAX_CUSTOMMONSTER];
+public:
 	CUSTOMMONSTER_DATA m_CustomMonster[MAX_CUSTOMMONSTER];
 };
 
