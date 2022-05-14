@@ -56,4 +56,14 @@ void CProtocolS6::RecvKeyboardS6(SDHP_REQUEST_KEYBOARD_S6_RECV* lpMsg)
 	gHookKBS6.Func11 = lpMsg->Func11;
 	gHookKBS6.Func12 = lpMsg->Func12;
 	gHookKBS6.Func13 = lpMsg->Func13;
+
+	gThreadS6.PetSafeZone_Horse = lpMsg->PetSafeZone_Horse;
+	gThreadS6.PetSafeZone_Dinorant = lpMsg->PetSafeZone_Dinorant;
+	gThreadS6.PetSafeZone_Fenrir = lpMsg->PetSafeZone_Fenrir;
+
+	gThreadS6.ActiveNameServer = lpMsg->ActiveNameServer;
+	memcpy(gThreadS6.Name1Server, lpMsg->Name1Server, sizeof(gThreadS6.Name1Server));
+	memcpy(gThreadS6.Name2Server, lpMsg->Name2Server, sizeof(gThreadS6.Name2Server));
+	memcpy(gThreadS6.Name3Server, lpMsg->Name3Server, sizeof(gThreadS6.Name3Server));
+	memcpy(gThreadS6.Name4Server, lpMsg->Name4Server, sizeof(gThreadS6.Name4Server));
 }

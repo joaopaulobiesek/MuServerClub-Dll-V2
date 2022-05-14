@@ -67,6 +67,126 @@ void CThreadS6::Init()
 	}
 }
 
+
+void CThreadS6::InitCustom()
+{
+	SetCompleteHook(0xE9, 0x0095DFBE, 0x0095DFD3); // Help Iventory
+
+	SetCompleteHook(0xE9, 0x004D1CF0, 0x004D1DC2); //-- Remove MuError.DMP
+	MemorySet(0x00D20170, 0x90, 0x1B); //-- Remove Creation MuError.log
+
+	// item limit
+	SetByte(0x00777FD6, 0x70); // Item Text Limit
+	SetByte(0x00777FD7, 0x17); // Item Text Limit
+	SetByte(0x004EBEC7, 0x3C); // Item Text Limit
+	SetByte(0x005C4004, 0x3C); // Item Text Limit
+	SetByte(0x007E40BB, 0x3C); // Item Text Limit
+	SetByte(0x0081B546, 0x3C); // Item Text Limit
+	SetByte(0x0081B58D, 0x3C); // Item Text Limit
+	SetByte(0x0086E284, 0x3C); // Item Text Limit
+	SetByte(0x0086E44C, 0x3C); // Item Text Limit
+	SetByte(0x0086E573, 0x3C); // Item Text Limit
+	SetByte(0x0086F8FC, 0x3C); // Item Text Limit
+	SetByte(0x007DA373, 0xB7); // Item Type Limit
+	SetByte(0x007E1C44, 0xB7); // Item Type Limit
+
+	gObjUser.Load();
+	gInterface.Load();
+	gCustomInterface.Load();
+
+	if (gFeatures.customMoster == 1)
+	{
+		gCustomMonster.Scan();
+	}
+
+	if (gFeatures.customNPC == 1)
+	{
+		gNPCName.Scan();
+	}
+
+	gCustomMonster.Load(gCustomMonster.m_CustomMonster);
+	gNPCName.Load(gNPCName.m_CustomNpcName);
+	gCustomMonster.InitMonster();
+
+	if (gFeatures.guildIco == 1)
+	{
+		InitGuildIcon();
+	}
+
+	if (gFeatures.petSafeZone == 1)
+	{
+		if (gThreadS6.PetSafeZone_Fenrir == 1)
+		{
+			SetByte(0x00501955 + 2, 0);
+			MemorySet(0x0054EAE1, 0x90, 0x06);//SetPlayerStop
+			MemorySet(0x0054FC92, 0x90, 0x06);//SetPlayerWalk
+		}
+
+		if (gThreadS6.PetSafeZone_Horse == 1)
+		{
+			//Horse SafeZone (Struct +14)
+			SetByte(0x00502269 + 2, 0);
+			MemorySet(0x0054ECA3, 0x90, 0x6);
+			MemorySet(0x0054FCEC, 0x90, 0x6);
+		}
+
+		if (gThreadS6.PetSafeZone_Dinorant == 1)
+		{
+			//Dinorant e Uniria (Struct +14)
+			SetByte(0x00502C4B + 2, 0);
+			MemorySet(0x0054ED6D, 0x90, 0x6);
+			MemorySet(0x0054FD5F, 0x90, 0x6);
+			MemorySet(0x0054FE3E, 0x90, 0x6);
+		}
+	}
+
+	if (gThreadS6.ActiveNameServer == 1)
+	{
+		SetDword(0x00954148 + 1, (DWORD)gThreadS6.Name1Server);
+		SetDword(0x0040B6EB + 1, (DWORD)0xEAB);
+		SetDword(0x0077F93E + 1, (DWORD)0xEAB);
+		SetDword(0x00954115 + 1, (DWORD)gThreadS6.Name2Server);
+		SetDword(0x0040B6D6 + 1, (DWORD)0xEAC);
+		SetDword(0x0077F929 + 1, (DWORD)0xEAC);
+		SetDword(0x009540E2 + 1, (DWORD)gThreadS6.Name3Server);
+		SetDword(0x0040B6C1 + 1, (DWORD)0xEAD);
+		SetDword(0x0077F914 + 1, (DWORD)0xEAD);
+		SetDword(0x009540AC + 1, (DWORD)gThreadS6.Name4Server);
+		SetDword(0x0040B6AC + 1, (DWORD)0xEAE);
+		SetDword(0x0077F8FF + 1, (DWORD)0xEAE);
+	}
+
+	/* rafael downgrade
+	MemorySet(0x00D20170, 0x90, 0x1B);            //-> Remove Creation MuError.log
+
+
+MemorySet(0x0085B6AC, 0x90, 0x05);            //-> Remove Helper Top Screen
+MemorySet(0x0085CC50, 0x90, 0x05);            //-> Disable Helper (Key Z)
+MemorySet(0x007D40A2, 0x90, 0x05);            //-> Disable Helper (Key Home)
+
+MemorySet(0x0085BF15, 0x90, 0x05);            //-> Disable Tree (Key A)
+
+MemorySet(0x007C5AD2, 0x90, 0x05);            //-> Disable Gens (Key B)
+
+MemorySet(0x0062F876, 0x90, 0x30);            //-> Disable ViewMap (Key TAB)
+
+MemorySet(0x00661700, 0x90, 0x43);            //-> Disable CashShop (Key X) SafeZone
+MemorySet(0x007D3D7A, 0x90, 0x05);            //-> Disable CashShop (Key X) MonsterZone
+
+MemorySet(0x008583F9, 0x90, 0x08);            //-> Disable Red Lucky Item Inv -> Trade
+MemorySet(0x00858752, 0x90, 0x08);            //-> Disable Red Lucky Item Inv -> Baul
+MemorySet(0x0085875F, 0x90, 0xF6);            //-> Allow Move Lucky Item Inv -> Baul
+
+MemorySet(0x008684F0, 0x90, 0x52);            //-> Disable FastMenu (Key U)
+
+
+[b]COORDENADAS PARA DOWNGRADE S3[/b]
+#define pDrawTextBig            ((int(__cdecl*)(float, float, int, float)) 0x791000)
+pDrawTextBig(23.0f,(MAX_WIN_HEIGHT-20),*(BYTE*)(*(DWORD*)(MAIN_VIEWPORT_STRUCT)+0x0AC),0.9f);
+pDrawTextBig(45.0f,(MAX_WIN_HEIGHT-20),*(BYTE*)(*(DWORD*)(MAIN_VIEWPORT_STRUCT)+0x0B0),0.9f);*/
+
+}
+
 void CThreadS6::SelectServerThread(int Cod_ID)
 {
 }

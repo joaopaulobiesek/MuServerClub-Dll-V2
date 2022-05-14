@@ -154,6 +154,9 @@
     <Filter Include="Source Files\Features\Custom\S6">
       <UniqueIdentifier>{6135566d-ac97-4342-800c-2884a649b6f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Features\GuildIco">
+      <UniqueIdentifier>{412125a3-e588-4caa-98d3-acacc9545a8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -396,6 +399,12 @@
     <ClInclude Include="CustomInterfaceS6.h">
       <Filter>Source Files\Features\Custom\S6</Filter>
     </ClInclude>
+    <ClInclude Include="EmojiSystemS6.h">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="GuildIcoS6.h">
+      <Filter>Source Files\Features\GuildIco</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -619,6 +628,12 @@
     </ClCompile>
     <ClCompile Include="CustomInterfaceS6.cpp">
       <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="EmojiSystem_S6.cpp">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="GuildIcoS6.cpp">
+      <Filter>Source Files\Features\GuildIco</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

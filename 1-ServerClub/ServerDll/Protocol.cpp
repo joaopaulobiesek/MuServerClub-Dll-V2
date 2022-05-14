@@ -137,6 +137,13 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 	pMsg.antiLag = gFeatures.antiLag;
 	pMsg.customICO = gFeatures.customICO;
 	pMsg.removeSplash = gFeatures.removeSplash;
+	pMsg.twoFactorAuth = gFeatures.twoFactorAuth;
+	pMsg.emoji = gFeatures.emoji;
+	pMsg.customMoster = gFeatures.customMoster;
+	pMsg.guildIco = gFeatures.guildIco;
+	pMsg.petSafeZone = gFeatures.petSafeZone;
+	pMsg.customNPC = gFeatures.customNPC;
+	pMsg.customCloak = gFeatures.customCloak;
 
 	gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
 

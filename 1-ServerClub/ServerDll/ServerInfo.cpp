@@ -218,9 +218,28 @@ void CServerInfo::ReadStartupKeyboard(const char* section, const char* path) // 
 
 	this->Func16 = GetPrivateProfileInt(section, "Func16", 0, path);
 
-	this->DownS6 = GetPrivateProfileInt(section, "DownS6", 0, path);
-
 	LogAdd(LOG_BLUE, "Keyboard loaded successfully");
 }
 
+void CServerInfo::ReadStartupCustomS6(const char* section, const char* path) // OK
+{
+	this->DownS6 = GetPrivateProfileInt(section, "DownS6", 0, path);
 
+	this->PetSafeZone_Horse = GetPrivateProfileInt(section, "PetSafeZoneHorse", 0, path);
+
+	this->PetSafeZone_Dinorant = GetPrivateProfileInt(section, "PetSafeZoneDinorant", 0, path);
+
+	this->PetSafeZone_Fenrir = GetPrivateProfileInt(section, "PetSafeZoneFenrir", 0, path);
+
+	this->ActiveNameServer = GetPrivateProfileInt(section, "ActiveNameServer", 0, path);
+
+	GetPrivateProfileString(section, "Name1Server", "", this->Name1Server, sizeof(this->Name1Server), path);
+
+	GetPrivateProfileString(section, "Name2Server", "", this->Name2Server, sizeof(this->Name2Server), path);
+
+	GetPrivateProfileString(section, "Name3Server", "", this->Name3Server, sizeof(this->Name3Server), path);
+
+	GetPrivateProfileString(section, "Name4Server", "", this->Name4Server, sizeof(this->Name4Server), path);
+
+	LogAdd(LOG_BLUE, "CustomS6 loaded successfully");
+}

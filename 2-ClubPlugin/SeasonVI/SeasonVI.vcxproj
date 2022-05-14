@@ -173,11 +173,13 @@
     <ClInclude Include="CustomMonsterS6.h" />
     <ClInclude Include="CustomNpcNameS6.h" />
     <ClInclude Include="Defines.h" />
+    <ClInclude Include="EmojiSystemS6.h" />
     <ClInclude Include="ExecutableCheck.h" />
     <ClInclude Include="Features.h" />
     <ClInclude Include="FileCheck.h" />
     <ClInclude Include="FileProtect.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GuildIcoS6.h" />
     <ClInclude Include="HookKBS15.h" />
     <ClInclude Include="HookKBS17.h" />
     <ClInclude Include="HookKBS6.h" />
@@ -254,10 +256,12 @@
     <ClCompile Include="CustomInterfaceS6.cpp" />
     <ClCompile Include="CustomMonsterS6.cpp" />
     <ClCompile Include="CustomNpcNameS6.cpp" />
+    <ClCompile Include="EmojiSystem_S6.cpp" />
     <ClCompile Include="ExecutableCheck.cpp" />
     <ClCompile Include="Features.cpp" />
     <ClCompile Include="FileCheck.cpp" />
     <ClCompile Include="FileProtect.cpp" />
+    <ClCompile Include="GuildIcoS6.cpp" />
     <ClCompile Include="HookKBS15.cpp" />
     <ClCompile Include="HookKBS17.cpp" />
     <ClCompile Include="HookKBS6.cpp" />

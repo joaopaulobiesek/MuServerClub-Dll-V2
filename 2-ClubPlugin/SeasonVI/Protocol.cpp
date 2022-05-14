@@ -188,6 +188,20 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg)
 
 		gFeatures.removeSplash = lpMsg->removeSplash;
 
+		gFeatures.twoFactorAuth = lpMsg->twoFactorAuth;
+
+		gFeatures.emoji = lpMsg->emoji;
+
+		gFeatures.customMoster = lpMsg->customMoster;
+
+		gFeatures.guildIco = lpMsg->guildIco;
+
+		gFeatures.petSafeZone = lpMsg->petSafeZone;
+
+		gFeatures.customNPC = lpMsg->customNPC;
+
+		gFeatures.customCloak = lpMsg->customCloak;
+
 		MemoryCpy((DWORD)gProtocol.ClientSerial, lpMsg->ClientSerial, sizeof(gProtocol.ClientSerial));
 
 		gOffset.Init(gProtocol.VersionMu, lpMsg);

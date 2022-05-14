@@ -20,6 +20,108 @@ void ProtocolCore(BYTE head, BYTE* lpMsg, int size) // OK
 	}
 }
 
+void CProtocoloAuth::SwitchFeature() // OK
+{
+	if (gFeatures.camera3D == 0)
+	{
+		LogAdd(LOG_RED, "[Camera 3D] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Camera 3D] Actived!");
+	}
+
+	if (gFeatures.antiLag == 0)
+	{
+		LogAdd(LOG_RED, "[AntiLag] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[AntiLag] Actived!");
+	}
+
+	if (gFeatures.customICO == 0)
+	{
+		LogAdd(LOG_RED, "[Custom ICO] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Custom ICO] Actived!");
+	}
+
+	if (gFeatures.removeSplash == 0)
+	{
+		LogAdd(LOG_RED, "[Remove Splash] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Remove Splash] Actived!");
+	}
+
+	if (gFeatures.twoFactorAuth == 0)
+	{
+		LogAdd(LOG_RED, "[2 FA] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[2 FA] Actived!");
+	}
+
+	if (gFeatures.emoji == 0)
+	{
+		LogAdd(LOG_RED, "[Emoji] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Emoji] Actived!");
+	}
+
+	if (gFeatures.customMoster == 0)
+	{
+		LogAdd(LOG_RED, "[Custom Moster] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Custom Moster] Actived!");
+	}
+
+	if (gFeatures.guildIco == 0)
+	{
+		LogAdd(LOG_RED, "[Guild Ico] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Guild Ico] Actived!");
+	}
+
+	if (gFeatures.petSafeZone == 0)
+	{
+		LogAdd(LOG_RED, "[Pet Safe Zone] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Pet Safe Zone] Actived!");
+	}
+
+	if (gFeatures.customNPC == 0)
+	{
+		LogAdd(LOG_RED, "[Custom NPC] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Custom NPC] Actived!");
+	}
+
+	if (gFeatures.customCloak == 0)
+	{
+		LogAdd(LOG_RED, "[Custom Cloak] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Custom Cloak] Actived!");
+	}
+}
+
 char* CProtocoloAuth::SwitchName(int SERVER_TYPE) // OK
 {
 	char Name[4];
@@ -112,53 +214,22 @@ void CProtocoloAuth::ConnectionLicensedRecv(SERVERDLL_CONNECT_LICENSED_RECV* lpM
 
 	gFeatures.twoFactorAuth = lpMsg->feature_5;
 
+	gFeatures.emoji = lpMsg->feature_6;
+
+	gFeatures.customMoster = lpMsg->feature_7;
+
+	gFeatures.guildIco = lpMsg->feature_8;
+
+	gFeatures.petSafeZone = lpMsg->feature_9;
+
+	gFeatures.customNPC = lpMsg->feature_10;
+
+	gFeatures.customCloak = lpMsg->feature_11;
+
 	if (checkLoadInfo == 0)
 	{
-		if (gFeatures.camera3D == 0)
-		{
-			LogAdd(LOG_RED, "[Camera 3D] Disabled!");
-		}
-		else
-		{
-			LogAdd(LOG_GREEN, "[Camera 3D] Actived!");
-		}
-
-		if (gFeatures.antiLag == 0)
-		{
-			LogAdd(LOG_RED, "[AntiLag] Disabled!");
-		}
-		else
-		{
-			LogAdd(LOG_GREEN, "[AntiLag] Actived!");
-		}
-
-		if (gFeatures.customICO == 0)
-		{
-			LogAdd(LOG_RED, "[Custom ICO] Disabled!");
-		}
-		else
-		{
-			LogAdd(LOG_GREEN, "[Custom ICO] Actived!");
-		}
-
-		if (gFeatures.removeSplash == 0)
-		{
-			LogAdd(LOG_RED, "[Remove Splash] Disabled!");
-		}
-		else
-		{
-			LogAdd(LOG_GREEN, "[Remove Splash] Actived!");
-		}
-
-		if (gFeatures.removeSplash == 0)
-		{
-			LogAdd(LOG_RED, "[2 FA] Disabled!");
-		}
-		else
-		{
-			LogAdd(LOG_GREEN, "[2 FA] Actived!");
-		}
-		checkLoadInfo = 1;
+		this->SwitchFeature();
+		checkLoadInfo = 1;		
 	}
 
 	gConnection.gConnectionStatusTime = GetTickCount();

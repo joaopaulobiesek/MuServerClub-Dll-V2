@@ -84,7 +84,8 @@ struct SERVERDLL_CONNECT_LICENSED_RECV
 class CProtocoloAuth
 {
 public:
-	char* SwitchName(int SERVER_TYPE);
+    char* SwitchName(int SERVER_TYPE);
+    void SwitchFeature();
 	void ConnectionLicensedRecv(SERVERDLL_CONNECT_LICENSED_RECV* lpMsg);
 	void CHConnectionStatusRecv(SERVERDLL_CLIENT_STATUS_RECV* lpMsg);
 	inline void ErrorMessageBox(const char* Error);

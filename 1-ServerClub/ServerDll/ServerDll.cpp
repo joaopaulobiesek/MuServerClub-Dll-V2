@@ -29,6 +29,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	gServerInfo.ReadStartupKeyboard("ConfigFuncKeys", ".\\ServerPlugin.ini");
 
+	gServerInfo.ReadStartupCustomS6("ConfigCustomS6", ".\\ServerPlugin.ini");	
+
 	gServerDisplayer.Init(hWnd);
 
 	WSADATA wsa;
@@ -181,8 +183,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 			}
 			break;
 		case IDM_RELOAD_CONFIG:
-			gServerInfo.ReadConfig();
+			if (gServerInfo.CheckCRC == 1) gServerInfo.ReadConfig();
 			gServerInfo.ReadStartupInfo("ServerPluginInfo", ".\\ServerPlugin.ini");
+			gServerInfo.ReadStartupKeyboard("ConfigFuncKeys", ".\\ServerPlugin.ini");
+			gServerInfo.ReadStartupCustomS6("ConfigCustomS6", ".\\ServerPlugin.ini");
 			break;
 		case IDM_RELOAD_CHECKSUM:
 			gServerInfo.ReadChecksumList();

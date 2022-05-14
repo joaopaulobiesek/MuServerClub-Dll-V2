@@ -53,6 +53,14 @@ struct SDHP_REQUEST_KEYBOARD_S6_SEND
 	int Func11; //Ativa/Desativa renderização de chars e mobs 2
 	int Func12; //Ativa/Desativa todo AntLag
 	int Func13; //Ativa/Desativa efeitos diversos (Skills, Asas, Buffs, Drop de Moedas, Muuns)
+	int PetSafeZone_Horse;
+	int PetSafeZone_Dinorant;
+	int PetSafeZone_Fenrir;
+	int ActiveNameServer;
+	char Name1Server[32];
+	char Name2Server[32];
+	char Name3Server[32];
+	char Name4Server[32];
 };
 
 class CProtocolS6

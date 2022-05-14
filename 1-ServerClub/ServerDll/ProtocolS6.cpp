@@ -72,6 +72,14 @@ void CProtocolS6::RequestKeyBoardS6(SDHP_REQUEST_KEYBOARD_S6_RECV* lpMsg, int in
 	pMsg.Func11 = gServerInfo.Func11;
 	pMsg.Func12 = gServerInfo.Func12;
 	pMsg.Func13 = gServerInfo.Func13;
+	pMsg.PetSafeZone_Horse = gServerInfo.PetSafeZone_Horse;
+	pMsg.PetSafeZone_Dinorant = gServerInfo.PetSafeZone_Dinorant;
+	pMsg.PetSafeZone_Fenrir = gServerInfo.PetSafeZone_Fenrir;
+	pMsg.ActiveNameServer = gServerInfo.ActiveNameServer;
+	memcpy(pMsg.Name1Server, gServerInfo.Name1Server, sizeof(pMsg.Name1Server));
+	memcpy(pMsg.Name2Server, gServerInfo.Name2Server, sizeof(pMsg.Name2Server));
+	memcpy(pMsg.Name3Server, gServerInfo.Name3Server, sizeof(pMsg.Name3Server));
+	memcpy(pMsg.Name4Server, gServerInfo.Name4Server, sizeof(pMsg.Name4Server));
 
 	gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
 }

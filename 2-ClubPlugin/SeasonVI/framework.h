@@ -137,5 +137,7 @@ typedef unsigned __int64 QWORD;
 #include "InterfaceS6.h"
 #include "UserS6.h"
 #include "CustomInterfaceS6.h"
+#include "EmojiSystemS6.h"
+#include "GuildIcoS6.h"
 //
 #include "Features.h"

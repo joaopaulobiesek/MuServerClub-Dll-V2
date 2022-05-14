@@ -39,6 +39,10 @@ void Interface::Load()
 	this->BindObject(eKALRUTAN2_MAP, 31481, 128, 128, -1, -1);
 
 	SetOp((LPVOID)oLoadSomeForm_Call, this->LoadImages, ASM::CALL);
+	if (gFeatures.emoji == 1)
+	{
+		gEmojis.AddTextures();
+	}
 }
 
 void Interface::LoadImages()
@@ -71,6 +75,10 @@ void Interface::LoadImages()
 	pLoadImage("Interface\\newui_menu02.jpg", 31378, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Interface\\newui_menu02-03.jpg", 31379, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Interface\\newui_menu03.jpg", 31380, 0x2601, 0x2901, 1, 0);
+	if (gFeatures.emoji == 1)
+	{
+		gEmojis.LoadImages();
+	}
 }
 
 void Interface::BindObject(short MonsterID, DWORD ModelID, float Width, float Height, float X, float Y)

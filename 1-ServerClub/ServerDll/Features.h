@@ -11,5 +11,11 @@ public:
 	int customICO;
 	int removeSplash;
 	int twoFactorAuth;
+	int emoji;
+	int customMoster;
+	int guildIco;
+	int petSafeZone;
+	int customNPC;
+	int customCloak;
 };
 extern CFeatures gFeatures;

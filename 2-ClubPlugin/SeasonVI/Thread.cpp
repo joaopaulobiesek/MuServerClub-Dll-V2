@@ -188,17 +188,7 @@ void CThread::Init()
 		}
 	}
 
-	if (gProtocol.VersionMu == 4) 
-	{
-		gObjUser.Load();
-		gInterface.Load();
-		gCustomInterface.Load();
-		gCustomMonster.Scan();
-		gCustomMonster.Load(gCustomMonster.m_CustomMonster);
-		gNPCName.Scan();
-		gNPCName.Load(gNPCName.m_CustomNpcName);
-		gCustomMonster.InitMonster();
-	}
+	if (gProtocol.VersionMu == 4) gThreadS6.InitCustom(); // Inicializa Custons S6
 }
 
 DWORD WINAPI ThreadSeasonCustom() // OK
@@ -213,7 +203,7 @@ DWORD WINAPI ThreadSeasonCustom() // OK
 			break;
 		case 3://Season 4
 			break;
-		case 4://Season 6
+		case 4://Season 6			
 			gThreadS6.Init();
 			break;
 		case 5://Season 8

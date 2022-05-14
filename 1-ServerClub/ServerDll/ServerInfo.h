@@ -17,6 +17,7 @@ public:
 	void ReadBlackList();
 	void ReadStartupInfo(const char* section, const char* path);
 	void ReadStartupKeyboard(const char* section, const char* path);
+	void ReadStartupCustomS6(const char* section, const char* path);
 	void ReadStartupDS(const char* path);
 public:
 	DWORD ClientFileCRC;
@@ -53,6 +54,16 @@ public:
 	int Func15;
 	int Func16;
 	int DownS6;
+
+	int PetSafeZone_Horse;
+	int PetSafeZone_Dinorant;
+	int PetSafeZone_Fenrir;
+
+	int ActiveNameServer;
+	char Name1Server[32];
+	char Name2Server[32];
+	char Name3Server[32];
+	char Name4Server[32];
 };
 
 extern CServerInfo gServerInfo;
