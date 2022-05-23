@@ -8,7 +8,6 @@
 #define pMapNumber				*(int*)0x0E61E18
 #define pLoadTexture			((void(__cdecl*)(int TextureID, char * Folder, int GLREPEAT, int GLNEAREST, int GLTRUE)) 0x614710)
 #define pLoadMonsterBMD			((void(__cdecl*)(signed int a1, char* a2, char* a3, signed int a4)) 0x614D10)
-#define pShowMonster			((lpViewObj(__cdecl*)(int a1, int a2, int a3, int a4)) 0x580FC0)
 #define pViewObject				((int(__cdecl*)(int a1, signed int a2, unsigned __int8 a3, unsigned __int8 a4, float a5)) 0x57EEC0)
 #define pLoadMonsterID			((int(__cdecl*)(signed int a1)) 0x61FDE0)
 

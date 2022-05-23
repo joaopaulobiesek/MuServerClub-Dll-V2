@@ -167,17 +167,20 @@
     <ClInclude Include="Camera3dS6.h" />
     <ClInclude Include="CCRC32.h" />
     <ClInclude Include="Clock.h" />
+    <ClInclude Include="CustomCommonS6.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="CustomInterfaceS6.h" />
     <ClInclude Include="CustomMonsterS6.h" />
     <ClInclude Include="CustomNpcNameS6.h" />
+    <ClInclude Include="CustomOptionS6.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="EmojiSystemS6.h" />
     <ClInclude Include="ExecutableCheck.h" />
     <ClInclude Include="Features.h" />
     <ClInclude Include="FileCheck.h" />
     <ClInclude Include="FileProtect.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GuildIcoS6.h" />
     <ClInclude Include="HookKBS15.h" />
@@ -186,7 +189,10 @@
     <ClInclude Include="HookMSS15.h" />
     <ClInclude Include="HookMSS17.h" />
     <ClInclude Include="HookMSS6.h" />
+    <ClInclude Include="ImportS6.h" />
     <ClInclude Include="InterfaceS6.h" />
+    <ClInclude Include="JCEntryproy.h" />
+    <ClInclude Include="JCOptionBox.h" />
     <ClInclude Include="ListManager.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="MapName.h" />
@@ -241,6 +247,7 @@
     <ClInclude Include="UserS6.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="WindowCheck.h" />
+    <ClInclude Include="WindowStruct.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AntiLagS15.cpp" />
@@ -251,16 +258,19 @@
     <ClCompile Include="Camera3dS6.cpp" />
     <ClCompile Include="CCRC32.cpp" />
     <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="CustomCommonS6.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="CriticalSection.cpp" />
     <ClCompile Include="CustomInterfaceS6.cpp" />
     <ClCompile Include="CustomMonsterS6.cpp" />
     <ClCompile Include="CustomNpcNameS6.cpp" />
+    <ClCompile Include="CustomOptionS6.cpp" />
     <ClCompile Include="EmojiSystem_S6.cpp" />
     <ClCompile Include="ExecutableCheck.cpp" />
     <ClCompile Include="Features.cpp" />
     <ClCompile Include="FileCheck.cpp" />
     <ClCompile Include="FileProtect.cpp" />
+    <ClCompile Include="Font.cpp" />
     <ClCompile Include="GuildIcoS6.cpp" />
     <ClCompile Include="HookKBS15.cpp" />
     <ClCompile Include="HookKBS17.cpp" />
@@ -269,6 +279,8 @@
     <ClCompile Include="HookMSS17.cpp" />
     <ClCompile Include="HookMSS6.cpp" />
     <ClCompile Include="InterfaceS6.cpp" />
+    <ClCompile Include="JCEntryproy.cpp" />
+    <ClCompile Include="JCOptionBox.cpp" />
     <ClCompile Include="ListManager.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="MapName.cpp" />
@@ -324,6 +336,7 @@
     <ClCompile Include="UserS6.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="WindowCheck.cpp" />
+    <ClCompile Include="WindowStruct.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

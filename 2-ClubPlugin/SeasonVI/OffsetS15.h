@@ -1,5 +1,7 @@
 #pragma once
 
+#define pDrawMessageS15 ((int(__cdecl*)(LPCSTR Text, int Mode)) gOffsetS15.pDrawMessage)
+
 class COffsetS15
 {
 public:

@@ -156,35 +156,8 @@ void CThreadS6::InitCustom()
 		SetDword(0x0077F8FF + 1, (DWORD)0xEAE);
 	}
 
-	/* rafael downgrade
-	MemorySet(0x00D20170, 0x90, 0x1B);            //-> Remove Creation MuError.log
-
-
-MemorySet(0x0085B6AC, 0x90, 0x05);            //-> Remove Helper Top Screen
-MemorySet(0x0085CC50, 0x90, 0x05);            //-> Disable Helper (Key Z)
-MemorySet(0x007D40A2, 0x90, 0x05);            //-> Disable Helper (Key Home)
-
-MemorySet(0x0085BF15, 0x90, 0x05);            //-> Disable Tree (Key A)
-
-MemorySet(0x007C5AD2, 0x90, 0x05);            //-> Disable Gens (Key B)
-
-MemorySet(0x0062F876, 0x90, 0x30);            //-> Disable ViewMap (Key TAB)
-
-MemorySet(0x00661700, 0x90, 0x43);            //-> Disable CashShop (Key X) SafeZone
-MemorySet(0x007D3D7A, 0x90, 0x05);            //-> Disable CashShop (Key X) MonsterZone
-
-MemorySet(0x008583F9, 0x90, 0x08);            //-> Disable Red Lucky Item Inv -> Trade
-MemorySet(0x00858752, 0x90, 0x08);            //-> Disable Red Lucky Item Inv -> Baul
-MemorySet(0x0085875F, 0x90, 0xF6);            //-> Allow Move Lucky Item Inv -> Baul
-
-MemorySet(0x008684F0, 0x90, 0x52);            //-> Disable FastMenu (Key U)
-
-
-[b]COORDENADAS PARA DOWNGRADE S3[/b]
-#define pDrawTextBig            ((int(__cdecl*)(float, float, int, float)) 0x791000)
-pDrawTextBig(23.0f,(MAX_WIN_HEIGHT-20),*(BYTE*)(*(DWORD*)(MAIN_VIEWPORT_STRUCT)+0x0AC),0.9f);
-pDrawTextBig(45.0f,(MAX_WIN_HEIGHT-20),*(BYTE*)(*(DWORD*)(MAIN_VIEWPORT_STRUCT)+0x0B0),0.9f);*/
-
+	gFont.Load();
+	gCustomOptionS6.Init();
 }
 
 void CThreadS6::SelectServerThread(int Cod_ID)

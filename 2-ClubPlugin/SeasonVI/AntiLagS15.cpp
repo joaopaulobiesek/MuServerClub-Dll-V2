@@ -39,13 +39,13 @@ void CAntiLagS15::InitKB(int Parameter)
 			{
 				this->case3 = 1;
 				SetByte(gOffsetS15.WingActive, 0xC3);
-				pDrawMessageS17("AntLag:Wing Active.", 1);
+				pDrawMessageS15("AntLag:Wing Active.", 1);
 			}
 			else
 			{
 				this->case3 = 0;
 				SetByte(gOffsetS15.WingActive, 0x55);
-				pDrawMessageS17("AntLag:Wing Disabled.", 1);
+				pDrawMessageS15("AntLag:Wing Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case3);
 		WritePrivateProfileStringA("Graphics", "DisableWing", GraphicsControl, ".\\option.ini");
@@ -63,7 +63,7 @@ void CAntiLagS15::InitKB(int Parameter)
 				SetByte(gOffsetS15.Skill3Active, 0xC3);//Remove Brilho dos Itens
 				MemorySet(gOffsetS15.Skill4Active, ASM::NOP, 0x5);
 				SetByte(gOffsetS15.Skill5Active, 0xC3);
-				pDrawMessageS17("AntLag:Skill Active.", 1);
+				pDrawMessageS15("AntLag:Skill Active.", 1);
 			}
 			else
 			{
@@ -73,7 +73,7 @@ void CAntiLagS15::InitKB(int Parameter)
 				SetByte(gOffsetS15.Skill3Active, 0x55);//Remove Brilho dos Itens
 				SetOp((LPVOID)gOffsetS15.Skill4Active, (LPVOID)gOffsetS15.Skill6ActiveHook, ASM::CALL);
 				SetByte(gOffsetS15.Skill5Active, 0x55);//// Esse tava sem não sei o PQ entao se crash remover!
-				pDrawMessageS17("AntLag:Skill Disabled.", 1);
+				pDrawMessageS15("AntLag:Skill Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case4);
 		WritePrivateProfileStringA("Graphics", "DisableSkill", GraphicsControl, ".\\option.ini");
@@ -87,13 +87,13 @@ void CAntiLagS15::InitKB(int Parameter)
 			{
 				this->case5 = 1;
 				SetByte(gOffsetS15.ZenActive, 0x00);
-				pDrawMessageS17("AntLag:Zen Active.", 1);
+				pDrawMessageS15("AntLag:Zen Active.", 1);
 			}
 			else
 			{
 				this->case5 = 0;
 				SetByte(gOffsetS15.ZenActive, 0x01);
-				pDrawMessageS17("AntLag:Zen Disabled.", 1);
+				pDrawMessageS15("AntLag:Zen Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case5);
 		WritePrivateProfileStringA("Graphics", "DisableDropZen", GraphicsControl, ".\\option.ini");
@@ -107,13 +107,13 @@ void CAntiLagS15::InitKB(int Parameter)
 			{
 				this->case6 = 1;
 				SetByte(gOffsetS15.ItemActive, 0x00);
-				pDrawMessageS17("AntLag:Item Active.", 1);
+				pDrawMessageS15("AntLag:Item Active.", 1);
 			}
 			else
 			{
 				this->case6 = 0;
 				SetByte(gOffsetS15.ItemActive, 0x01);
-				pDrawMessageS17("AntLag:Item Disabled.", 1);
+				pDrawMessageS15("AntLag:Item Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case6);
 		WritePrivateProfileStringA("Graphics", "DisableDropItem", GraphicsControl, ".\\option.ini");
@@ -128,14 +128,14 @@ void CAntiLagS15::InitKB(int Parameter)
 				this->case7 = 1;
 				SetByte(gOffsetS15.Terrain1Active, 0xC3);
 				SetByte(gOffsetS15.Terrain2Active, 0xC3);
-				pDrawMessageS17("AntLag:Terrain Obj Active.", 1);
+				pDrawMessageS15("AntLag:Terrain Obj Active.", 1);
 			}
 			else
 			{
 				this->case7 = 0;
 				SetByte(gOffsetS15.Terrain1Active, 0x55);
 				SetByte(gOffsetS15.Terrain2Active, 0x55);
-				pDrawMessageS17("AntLag:Terrain Obj Disabled.", 1);
+				pDrawMessageS15("AntLag:Terrain Obj Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case7);
 		WritePrivateProfileStringA("Graphics", "DisableObjTerrain", GraphicsControl, ".\\option.ini");
@@ -149,13 +149,13 @@ void CAntiLagS15::InitKB(int Parameter)
 			{
 				this->case8 = 1;
 				SetByte(gOffsetS15.RemoveSetActive, 0xC3);
-				pDrawMessageS17("AntLag:Remove Set Active.", 1);
+				pDrawMessageS15("AntLag:Remove Set Active.", 1);
 			}
 			else
 			{
 				this->case8 = 0;
 				SetByte(gOffsetS15.RemoveSetActive, 0x55);
-				pDrawMessageS17("AntLag:Remove Set Disabled.", 1);
+				pDrawMessageS15("AntLag:Remove Set Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case8);
 		WritePrivateProfileStringA("Graphics", "RemoveSet", GraphicsControl, ".\\option.ini");
@@ -170,14 +170,14 @@ void CAntiLagS15::InitKB(int Parameter)
 				this->case9 = 1;
 				MemorySet(gOffsetS15.Pet1Active, ASM::NOP, 0x5);
 				MemorySet(gOffsetS15.Pet3Active, ASM::NOP, 0x5);
-				pDrawMessageS17("AntLag:Pet Active.", 1);
+				pDrawMessageS15("AntLag:Pet Active.", 1);
 			}
 			else
 			{
 				this->case9 = 0;
 				SetOp((LPVOID)gOffsetS15.Pet1Active, (LPVOID)gOffsetS15.Pet2ActiveHook, ASM::CALL);
 				SetOp((LPVOID)gOffsetS15.Pet3Active, (LPVOID)gOffsetS15.Pet4ActiveHook, ASM::CALL);
-				pDrawMessageS17("AntLag:Pet Disabled.", 1);
+				pDrawMessageS15("AntLag:Pet Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case9);
 		WritePrivateProfileStringA("Graphics", "DisablePet", GraphicsControl, ".\\option.ini");
@@ -191,13 +191,13 @@ void CAntiLagS15::InitKB(int Parameter)
 			{
 				this->case10 = 1;
 				MemorySet(gOffsetS15.Char1Moob1Active, ASM::NOP, 0x5);
-				pDrawMessageS17("AntLag:Char-Moob-1 Active", 1);
+				pDrawMessageS15("AntLag:Char-Moob-1 Active", 1);
 			}
 			else
 			{
 				this->case10 = 0;
 				SetOp((LPVOID)gOffsetS15.Char1Moob1Active, (LPVOID)gOffsetS15.Char1Moob2ActiveHook, ASM::CALL);
-				pDrawMessageS17("AntLag:Char-Moob-1 Disabled.", 1);
+				pDrawMessageS15("AntLag:Char-Moob-1 Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case10);
 		WritePrivateProfileStringA("Graphics", "DisableCharMoob1", GraphicsControl, ".\\option.ini");
@@ -212,14 +212,14 @@ void CAntiLagS15::InitKB(int Parameter)
 				this->case11 = 1;
 				MemorySet(gOffsetS15.Char2Moob3Active, ASM::NOP, 0x5);
 				MemorySet(gOffsetS15.Char2Moob4Active, ASM::NOP, 0x5);
-				pDrawMessageS17("AntLag:Char-Moob-2 Active", 1);
+				pDrawMessageS15("AntLag:Char-Moob-2 Active", 1);
 			}
 			else
 			{
 				this->case11 = 0;
 				SetOp((LPVOID)gOffsetS15.Char2Moob3Active, (LPVOID)gOffsetS15.Char2Moob5ActiveHook, ASM::CALL);
 				SetOp((LPVOID)gOffsetS15.Char2Moob4Active, (LPVOID)gOffsetS15.Char2Moob5ActiveHook, ASM::CALL);
-				pDrawMessageS17("AntLag:Char-Moob-2 Disabled.", 1);
+				pDrawMessageS15("AntLag:Char-Moob-2 Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case11);
 		WritePrivateProfileStringA("Graphics", "DisableCharMoob2", GraphicsControl, ".\\option.ini");
@@ -248,7 +248,7 @@ void CAntiLagS15::InitKB(int Parameter)
 				MemorySet(gOffsetS15.Char1Moob1Active, ASM::NOP, 0x5);
 				MemorySet(gOffsetS15.Char2Moob3Active, ASM::NOP, 0x5);
 				MemorySet(gOffsetS15.Char2Moob4Active, ASM::NOP, 0x5);
-				pDrawMessageS17("Active AntLag!", 1);
+				pDrawMessageS15("Active AntLag!", 1);
 			}
 			else
 			{
@@ -269,7 +269,7 @@ void CAntiLagS15::InitKB(int Parameter)
 				SetOp((LPVOID)gOffsetS15.Char1Moob1Active, (LPVOID)gOffsetS15.Char1Moob2ActiveHook, ASM::CALL);
 				SetOp((LPVOID)gOffsetS15.Char2Moob3Active, (LPVOID)gOffsetS15.Char2Moob5ActiveHook, ASM::CALL);
 				SetOp((LPVOID)gOffsetS15.Char2Moob4Active, (LPVOID)gOffsetS15.Char2Moob5ActiveHook, ASM::CALL);
-				pDrawMessageS17("Disabled AntLag!", 1);
+				pDrawMessageS15("Disabled AntLag!", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case3);
 		WritePrivateProfileStringA("Graphics", "DisableWing", GraphicsControl, ".\\option.ini");

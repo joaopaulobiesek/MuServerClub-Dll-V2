@@ -157,6 +157,9 @@
     <Filter Include="Source Files\Features\GuildIco">
       <UniqueIdentifier>{412125a3-e588-4caa-98d3-acacc9545a8a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Features\Custom\S6\CustomOption">
+      <UniqueIdentifier>{7827bb68-e62d-43c6-8098-008304955161}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -405,6 +408,27 @@
     <ClInclude Include="GuildIcoS6.h">
       <Filter>Source Files\Features\GuildIco</Filter>
     </ClInclude>
+    <ClInclude Include="CustomOptionS6.h">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClInclude>
+    <ClInclude Include="JCOptionBox.h">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClInclude>
+    <ClInclude Include="JCEntryproy.h">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomCommonS6.h">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowStruct.h">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportS6.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -634,6 +658,24 @@
     </ClCompile>
     <ClCompile Include="GuildIcoS6.cpp">
       <Filter>Source Files\Features\GuildIco</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomOptionS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClCompile>
+    <ClCompile Include="JCOptionBox.cpp">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClCompile>
+    <ClCompile Include="JCEntryproy.cpp">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomCommonS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowStruct.cpp">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
