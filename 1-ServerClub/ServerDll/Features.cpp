@@ -15,6 +15,8 @@ CFeatures::CFeatures() // OK
 	this->petSafeZone = 0;
 	this->customNPC = 0;
 	this->customCloak = 0;
+	this->customOption = 0;
+	this->customEventTime = 0;
 }
 
 CFeatures::~CFeatures() // OK

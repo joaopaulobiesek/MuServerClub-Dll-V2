@@ -120,6 +120,24 @@ void CProtocoloAuth::SwitchFeature() // OK
 	{
 		LogAdd(LOG_GREEN, "[Custom Cloak] Actived!");
 	}
+
+	if (gFeatures.customOption == 0)
+	{
+		LogAdd(LOG_RED, "[Custom Option] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Custom Option] Actived!");
+	}
+
+	if (gFeatures.customEventTime == 0)
+	{
+		LogAdd(LOG_RED, "[Custom Event Time] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Custom Event Time] Actived!");
+	}
 }
 
 char* CProtocoloAuth::SwitchName(int SERVER_TYPE) // OK
@@ -225,6 +243,10 @@ void CProtocoloAuth::ConnectionLicensedRecv(SERVERDLL_CONNECT_LICENSED_RECV* lpM
 	gFeatures.customNPC = lpMsg->feature_10;
 
 	gFeatures.customCloak = lpMsg->feature_11;
+
+	gFeatures.customOption = lpMsg->feature_12;
+
+	gFeatures.customEventTime = lpMsg->feature_13;
 
 	if (checkLoadInfo == 0)
 	{

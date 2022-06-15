@@ -202,6 +202,10 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg)
 
 		gFeatures.customCloak = lpMsg->customCloak;
 
+		gFeatures.customOption = lpMsg->customOption;
+
+		gFeatures.customEventTime = lpMsg->customEventTime;
+
 		MemoryCpy((DWORD)gProtocol.ClientSerial, lpMsg->ClientSerial, sizeof(gProtocol.ClientSerial));
 
 		gOffset.Init(gProtocol.VersionMu, lpMsg);

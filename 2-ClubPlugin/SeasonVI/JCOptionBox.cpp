@@ -30,7 +30,64 @@ void JCOptionBox::LoadAction(int Pointer, int Action)
 	this->JCActive = Pointer;
 	this->JCAction = Action;
 
+	
+	this->JCActive = Pointer;
+	this->JCAction = Action;
+
 	switch (this->JCAction)
+	{
+	case Effect_DisableWing:
+	{
+		this->JCActive = gAntiLagS6.case3;
+	}
+	break;
+	case Effect_DisableSkill:
+	{
+		this->JCActive = gAntiLagS6.case4;
+	}
+	break;
+	case Effect_DisableDropZen:
+	{
+		this->JCActive = gAntiLagS6.case5;
+	}
+	break;
+	case Effect_DisableDropItem:
+	{
+		this->JCActive = gAntiLagS6.case6;
+	}
+	break;
+	case Effect_DisablePet:
+	{
+		this->JCActive = gAntiLagS6.case9;
+	}
+	break;
+	case Effect_DisableCharMoob1:
+	{
+		this->JCActive = gAntiLagS6.case10;// Desativa tudo
+	}
+	break;
+	case Effect_DisableCharMoob2:
+	{
+		this->JCActive = gAntiLagS6.case11;// Custom Personalizado
+	}
+	break;
+	case Effect_DisableObjTerrain:
+	{
+		this->JCActive = gAntiLagS6.case7;
+	}
+	break;
+	case Effect_RemoveSet:
+	{
+		this->JCActive = gAntiLagS6.case8;
+	}
+	break;
+	case NONE:
+		break;
+	case DEFAULT:
+		break;
+	}
+
+	/*switch (this->JCAction)
 	{
 	case Effect_DisableWing:
 	{
@@ -86,8 +143,7 @@ void JCOptionBox::LoadAction(int Pointer, int Action)
 		break;
 	case DEFAULT:
 		break;
-	}
-
+	}*/
 }
 
 /*void JCOptionBox::SetBounds(JCRECT Bound)
@@ -187,71 +243,56 @@ void JCOptionBox::mouseEntered()
 
 void JCOptionBox::ActionListener()
 {
-	/*switch (this->JCAction)
+	switch (this->JCAction)
 	{
 	case Effect_DisableWing:
 	{
-		WritePrivateProfileStringA("Graphics", "DisableWing", (this->JCActive != 0) ? "1" : "0", "./Config.ini");
-		ActiveAntiLag(3, true);
+		gAntiLagS6.InitKB(3);
 	}
 	break;
 	case Effect_DisableSkill:
 	{
-		WritePrivateProfileStringA("Graphics", "DisableSkill", (this->JCActive != 0) ? "1" : "0", "./Config.ini");
-		ActiveAntiLag(4, true);
+		gAntiLagS6.InitKB(4);
 	}
 	break;
 	case Effect_DisableDropZen:
 	{
-		WritePrivateProfileStringA("Graphics", "DisableDropZen", (this->JCActive != 0) ? "1" : "0", "./Config.ini");
-		ActiveAntiLag(5, true);
+		gAntiLagS6.InitKB(5);
 	}
 	break;
 	case Effect_DisableDropItem:
 	{
-		WritePrivateProfileStringA("Graphics", "DisableDropItem", (this->JCActive != 0) ? "1" : "0", "./Config.ini");
-		ActiveAntiLag(6, true);
+		gAntiLagS6.InitKB(6);
 	}
 	break;
 	case Effect_DisablePet:
 	{
-		WritePrivateProfileStringA("Graphics", "DisablePet", (this->JCActive != 0) ? "1" : "0", "./Config.ini");
-		ActiveAntiLag(9, true);
+		gAntiLagS6.InitKB(9);
 	}
 	break;
 	case Effect_DisableCharMoob1:
 	{
-		WritePrivateProfileStringA("Graphics", "DisableCharMoob1", (this->JCActive != 0) ? "1" : "0", "./Config.ini");
-		ActiveAntiLag(10, true);
+		gAntiLagS6.InitKB(10);// Desativa tudo
 	}
 	break;
 	case Effect_DisableCharMoob2:
 	{
-		WritePrivateProfileStringA("Graphics", "DisableCharMoob2", (this->JCActive != 0) ? "1" : "0", "./Config.ini");
-		ActiveAntiLag(11, true);
+		gAntiLagS6.InitKB(11);// Custom Personalizado
 	}
 	break;
 	case Effect_DisableObjTerrain:
 	{
-		WritePrivateProfileStringA("Graphics", "DisableObjTerrain", (this->JCActive != 0) ? "1" : "0", "./Config.ini");
-		ActiveAntiLag(7, true);
+		gAntiLagS6.InitKB(7);
 	}
 	break;
 	case Effect_RemoveSet:
 	{
-		WritePrivateProfileStringA("Graphics", "RemoveSet", (this->JCActive != 0) ? "1" : "0", "./Config.ini");
-		ActiveAntiLag(8, true);
-	}
-	break;
-	case Effect_LagDetection:
-	{
-		WritePrivateProfileStringA("Graphics", "LagDetection", (this->JCActive != 0) ? "1" : "0", "./Config.ini");
-		LagDetectionOption = (this->JCActive != 0) ? 0 : 1;
+		gAntiLagS6.InitKB(8);
 	}
 	break;
 	case NONE:
 		break;
 	case DEFAULT:
 		break;
-	}*/
+	}
 }

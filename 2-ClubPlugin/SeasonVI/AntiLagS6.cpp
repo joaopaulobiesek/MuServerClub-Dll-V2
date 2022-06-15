@@ -265,7 +265,17 @@ void CAntiLagS6::ActiveDisabled(int code)
 {
 	//VM_TIGER_BLACK_START
 		//STR_ENCRYPT_START
-	if (code == 0)
+	if (code == 99)
+	{// Puxa Config para o Option Custom
+		this->case3 = GetPrivateProfileIntA("Graphics", "DisableWing", 0, "./option.ini");
+		this->case4 = GetPrivateProfileIntA("Graphics", "DisableSkill", 0, "./option.ini");
+		this->case5 = GetPrivateProfileIntA("Graphics", "DisableDropZen", 0, "./option.ini");
+		this->case6 = GetPrivateProfileIntA("Graphics", "DisableDropItem", 0, "./option.ini");
+		this->case7 = GetPrivateProfileIntA("Graphics", "DisableObjTerrain", 0, "./option.ini");
+		this->case8 = GetPrivateProfileIntA("Graphics", "RemoveSet", 0, "./option.ini");
+		this->case9 = GetPrivateProfileIntA("Graphics", "DisablePet", 0, "./option.ini");
+	}
+	else if (code == 0)
 	{
 		this->case3 = GetPrivateProfileIntA("Graphics", "DisableWing", 0, "./option.ini");
 		this->case4 = GetPrivateProfileIntA("Graphics", "DisableSkill", 0, "./option.ini");

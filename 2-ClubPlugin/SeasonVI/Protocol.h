@@ -135,6 +135,8 @@ struct SDHP_CLIENT_INFO_RECV
 	int petSafeZone;
 	int customNPC;
 	int customCloak;
+	int customOption;
+	int customEventTime;
 };
 
 struct SDHP_CONNECTION_STATUS_RECV

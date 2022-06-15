@@ -156,8 +156,18 @@ void CThreadS6::InitCustom()
 		SetDword(0x0077F8FF + 1, (DWORD)0xEAE);
 	}
 
-	gFont.Load();
-	gCustomOptionS6.Init();
+	if (gFeatures.customOption == 1)
+	{
+		//Inicia Custom Window + ESC Option
+		if (gFeatures.antiLag != 0) { gAntiLagS6.ActiveDisabled(99); }
+		gCustomCommonS6.InitCommon();
+		if (gCustomCommonS6.FontON == 1)
+		{
+			gFont.Load();
+		}
+		gCustomOptionS6.Init();
+		//Inicia Custom Window + ESC Option
+	}
 }
 
 void CThreadS6::SelectServerThread(int Cod_ID)

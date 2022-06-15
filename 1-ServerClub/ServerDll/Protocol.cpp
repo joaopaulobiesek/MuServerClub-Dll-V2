@@ -144,6 +144,8 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 	pMsg.petSafeZone = gFeatures.petSafeZone;
 	pMsg.customNPC = gFeatures.customNPC;
 	pMsg.customCloak = gFeatures.customCloak;
+	pMsg.customOption = gFeatures.customOption;
+	pMsg.customEventTime = gFeatures.customEventTime;
 
 	gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
 

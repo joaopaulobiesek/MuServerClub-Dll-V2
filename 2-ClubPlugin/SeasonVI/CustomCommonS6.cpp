@@ -45,7 +45,7 @@ CCustomCommonS6::~CCustomCommonS6()
 }
 
 void CCustomCommonS6::InitCommon() // OK
-{
+{ 
 	FontON = GetPrivateProfileIntA("FontConfig", "FontON", 0, "./Settings.ini");
 	FontHeight = GetPrivateProfileIntA("FontConfig", "FontSize1", 11, "./Settings.ini");
 	FontHeight = GetPrivateProfileIntA("FontConfig", "FontSize1", 12, "./Settings.ini");

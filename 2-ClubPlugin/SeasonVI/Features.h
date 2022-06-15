@@ -17,5 +17,7 @@ public:
 	int petSafeZone;
 	int customNPC;
 	int customCloak;
+	int customOption;
+	int customEventTime;
 };
 extern CFeatures gFeatures;

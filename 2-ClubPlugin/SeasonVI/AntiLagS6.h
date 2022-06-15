@@ -9,9 +9,6 @@ public:
 	void InitKB(int Parameter);
 	void ActiveDisabled(int code);
 public:
-
-
-private:
 	int case1;
 	int case2;
 	int case3;
@@ -23,6 +20,7 @@ private:
 	int case9;
 	int case10;
 	int case11;
+private:
 	char GraphicsControl[256];
 };
 
