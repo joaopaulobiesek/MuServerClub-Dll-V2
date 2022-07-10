@@ -160,6 +160,9 @@
     <Filter Include="Source Files\Features\Custom\S6\CustomOption">
       <UniqueIdentifier>{7827bb68-e62d-43c6-8098-008304955161}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Features\Custom\S6\Ranking">
+      <UniqueIdentifier>{75ecc66b-014f-4d0d-a58c-61ae952de4de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -429,6 +432,12 @@
     <ClInclude Include="Font.h">
       <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
     </ClInclude>
+    <ClInclude Include="HealthBarS6.h">
+      <Filter>Source Files\Features\Custom\S6\Ranking</Filter>
+    </ClInclude>
+    <ClInclude Include="RankUserS6.h">
+      <Filter>Source Files\Features\Custom\S6\Ranking</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -676,6 +685,12 @@
     </ClCompile>
     <ClCompile Include="Font.cpp">
       <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthBarS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\Ranking</Filter>
+    </ClCompile>
+    <ClCompile Include="RankUserS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\Ranking</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

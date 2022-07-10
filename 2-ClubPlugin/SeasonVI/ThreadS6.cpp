@@ -67,9 +67,21 @@ void CThreadS6::Init()
 	}
 }
 
+__declspec(naked) void GlobalMessagem()
+{
+	static DWORD ADDS = 0x00597698;
+
+	_asm
+	{
+		CMP DWORD PTR SS : [EBP - 8] , 1200
+		JMP[ADDS]
+	}
+}
 
 void CThreadS6::InitCustom()
 {
+	/// global message fix
+	SetCompleteHook(0xE9, 0x00597691, &GlobalMessagem);
 	SetCompleteHook(0xE9, 0x0095DFBE, 0x0095DFD3); // Help Iventory
 
 	SetCompleteHook(0xE9, 0x004D1CF0, 0x004D1DC2); //-- Remove MuError.DMP
@@ -166,6 +178,7 @@ void CThreadS6::InitCustom()
 			gFont.Load();
 		}
 		gCustomOptionS6.Init();
+		gCHealthBarS6.InitHealthBar();
 		//Inicia Custom Window + ESC Option
 	}
 }

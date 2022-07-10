@@ -151,3 +151,6 @@ typedef unsigned __int64 QWORD;
 #include "WindowStruct.h"
 //
 #include "Features.h"
+
+#include "HealthBarS6.h"
+#include "RankUserS6.h"

@@ -4,29 +4,27 @@ CCustomOptionS6 gCustomOptionS6;
 
 CCustomOptionS6::CCustomOptionS6()
 {
+
 	this->JCOption[0].SetText("Show Wing");
-	this->JCOption[0].LoadAction(gCustomCommonS6.DisableWing, Effect_DisableWing);
+	this->JCOption[0].LoadAction(gAntiLagS6.case3, Effect_DisableWing);
 
 	this->JCOption[1].SetText("Show Skill");
-	this->JCOption[1].LoadAction(gCustomCommonS6.DisableSkill, Effect_DisableSkill);
+	this->JCOption[1].LoadAction(gAntiLagS6.case4, Effect_DisableSkill);
 
 	this->JCOption[2].SetText("Show Drop Zen");
-	this->JCOption[2].LoadAction(gCustomCommonS6.DisableDropZen, Effect_DisableDropZen);
+	this->JCOption[2].LoadAction(gAntiLagS6.case5, Effect_DisableDropZen);
 
 	this->JCOption[3].SetText("Show Drop Item");
-	this->JCOption[3].LoadAction(gCustomCommonS6.DisableDropItem, Effect_DisableDropItem);
+	this->JCOption[3].LoadAction(gAntiLagS6.case6, Effect_DisableDropItem);
 
 	this->JCOption[4].SetText("Show Pet");
-	this->JCOption[4].LoadAction(gCustomCommonS6.DisablePet, Effect_DisablePet);
+	this->JCOption[4].LoadAction(gAntiLagS6.case9, Effect_DisablePet);
 
 	this->JCOption[5].SetText("Show Obj Terrain");
-	this->JCOption[5].LoadAction(gCustomCommonS6.DisableObjTerrain, Effect_DisableObjTerrain);
+	this->JCOption[5].LoadAction(gAntiLagS6.case7, Effect_DisableObjTerrain);
 
 	this->JCOption[6].SetText("Show Set");
-	this->JCOption[6].LoadAction(gCustomCommonS6.RemoveSet, Effect_RemoveSet);
-
-	this->JCOption[7].SetText("Auto Lag Detection");
-	this->JCOption[7].LoadAction(gCustomCommonS6.LagDetection, Effect_LagDetection);
+	this->JCOption[6].LoadAction(gAntiLagS6.case8, Effect_RemoveSet);
 }
 
 CCustomOptionS6::~CCustomOptionS6()
@@ -126,81 +124,29 @@ void CCustomOptionS6::EventPanelOption()
 
 	x = (double)*(signed int*)(This + 16);
 	y = (double)*(signed int*)(This + 20);
-
-
-	//OPCIONES LADO IZQUIERDO
-		/*if ( gCentral.EventPushCursor(x + 25, y + 97, 15, 15) ){
-			CharMiniBuff = !CharMiniBuff;
-			if(CharMiniBuff != 0)
-				WritePrivateProfileStringA("Custom","CharMiniBuff","1","./Settings.ini");
-			else
-				WritePrivateProfileStringA("Custom","CharMiniBuff","0","./Settings.ini");}*/
-				//--
-				//OPCIONES LADO DERECHO
-
 	//--
 	if (this->EventPushCursor(x + 32, y + 40, 15, 15)) {
-		TimerBar = !TimerBar;
-		if (TimerBar != 0)
-			WritePrivateProfileStringA("Setting", "TimerBar", "1", "./Settings.ini");
+		gInterface.MiniMap = !gInterface.MiniMap;
+		if (gInterface.MiniMap != 0)
+			WritePrivateProfileStringA("Graphics", "MiniMap", "1", "./option.ini");
 		else
-			WritePrivateProfileStringA("Setting", "TimerBar", "0", "./Settings.ini");
+			WritePrivateProfileStringA("Graphics", "MiniMap", "0", "./option.ini");
 	}
 	//--
 	if (this->EventPushCursor(x + 32, y + 60, 15, 15)) {
-		gCustomCommonS6.MiniMap = !gCustomCommonS6.MiniMap;
-		if (gCustomCommonS6.MiniMap != 0)
-			WritePrivateProfileStringA("Graphics", "MiniMap", "1", "./Settings.ini");
+		gInterface.CharName = !gInterface.CharName;
+		if (gInterface.CharName != 0)
+			WritePrivateProfileStringA("Graphics", "CharName", "1", "./option.ini");
 		else
-			WritePrivateProfileStringA("Graphics", "MiniMap", "0", "./Settings.ini");
+			WritePrivateProfileStringA("Graphics", "CharName", "0", "./option.ini");
 	}
 	//--
-	if (this->EventPushCursor(x + 32, y + 80, 15, 15)) {
-		gCustomCommonS6.FPS = !gCustomCommonS6.FPS;
-		if (gCustomCommonS6.FPS != 0)
-			WritePrivateProfileStringA("Graphics", "FPS", "1", "./Settings.ini");
-		else
-			WritePrivateProfileStringA("Graphics", "FPS", "0", "./Settings.ini");
-	}
-
-	if (this->EventPushCursor(x + 32, y + 100, 15, 15)) {
-		CharName = !CharName;
-		if (CharName != 0)
-			WritePrivateProfileStringA("Graphics", "CharName", "1", "./Settings.ini");
-		else
-			WritePrivateProfileStringA("Graphics", "CharName", "0", "./Settings.ini");
-	}
-
 	if (this->EventPushCursor(x + 130, y + 40, 15, 15)) {
-		MonsterName = !MonsterName;
-		if (MonsterName != 0)
-			WritePrivateProfileStringA("Graphics", "MonsterName", "1", "./Settings.ini");
+		gInterface.MonsterName = !gInterface.MonsterName;
+		if (gInterface.MonsterName != 0)
+			WritePrivateProfileStringA("Graphics", "MonsterName", "1", "./option.ini");
 		else
-			WritePrivateProfileStringA("Graphics", "MonsterName", "0", "./Settings.ini");
-	}
-
-	if (this->EventPushCursor(x + 130, y + 60, 15, 15)) {
-		RankUser = !RankUser;
-		if (RankUser != 0)
-			WritePrivateProfileStringA("Graphics", "RankUser", "1", "./Settings.ini");
-		else
-			WritePrivateProfileStringA("Graphics", "RankUser", "0", "./Settings.ini");
-	}
-
-	if (this->EventPushCursor(x + 130, y + 80, 15, 15)) {
-		UserTitle = !UserTitle;
-		if (UserTitle != 0)
-			WritePrivateProfileStringA("Graphics", "UserTitle", "1", "./Settings.ini");
-		else
-			WritePrivateProfileStringA("Graphics", "UserTitle", "0", "./Settings.ini");
-	}
-
-	if (this->EventPushCursor(x + 130, y + 100, 15, 15)) {
-		CombatSystem = !CombatSystem;
-		if (CombatSystem != 0)
-			WritePrivateProfileStringA("Graphics", "CombatSystem", "1", "./Settings.ini");
-		else
-			WritePrivateProfileStringA("Graphics", "CombatSystem", "0", "./Settings.ini");
+			WritePrivateProfileStringA("Graphics", "MonsterName", "0", "./option.ini");
 	}
 
 	int RESOLUTION;
@@ -357,7 +303,7 @@ void RenderWindowsOption(int a1)
 	RenderBitmap(71520, x - 50, y + 30, 50, 1, 0, 0, 0.7600000501, 1.0, 1, 1, 0); //BARRA DE ARRIBA NUEVA
 
 //--
-	for (int k = 0; k < 9; k++) //AUMENTAR NUMERO SI AUMENTAN OPCIONES
+	for (int k = 0; k < 7; k++) //AUMENTAR NUMERO SI AUMENTAN OPCIONES
 	{
 		gCustomOptionS6.JCOption[k].mouseClicked();
 	}
@@ -554,22 +500,10 @@ void RenderOptionText(int a1)
 	sub_4200F0_Addr(pTextThis(), 0);
 	pSetBackgroundTextColor(pTextThis(), 0, 0, 0, 0);
 
-	//OPCIONES IZQUIERDA
-	//pDrawText(pTextThis(), x + 45, y + 40, pGetTextLine(pTextLineThis, 386), 0, 0, (LPINT)1, 0); //-- Attack Automatic
-	//pDrawText(pTextThis(), x + 45, y + 60, pGetTextLine(pTextLineThis, 387), 0, 0, (LPINT)1, 0); //-- Beep Sound
-	//pDrawText(pTextThis(), x + 45, y + 80, pGetTextLine(pTextLineThis, 919), 0, 0, (LPINT)1, 0); //-- Slide Help
-	//pDrawText(pTextThis(), x + 45, y + 100, "CharMiniBuff", 0, 0, (LPINT)1, 0); //-- HP Monster
-//OPCIONES DERECHA
-
-	//pDrawText(pTextThis(), x + 158, y + 40, "Show HP Monster", 0, 0, (LPINT)1, 0); //-- HP Monster
-	pDrawText(pTextThis(), x + 45, y + 40, "Show Time Bar", 0, 0, (LPINT)1, 0); //-- Time Bar
-	pDrawText(pTextThis(), x + 45, y + 60, "Show MiniMap", 0, 0, (LPINT)1, 0); //-- Show MiniMap
-	pDrawText(pTextThis(), x + 45, y + 80, "Enable FPS Monitor", 0, 0, (LPINT)1, 0); //-- Show MiniMap
-	pDrawText(pTextThis(), x + 45, y + 100, "Show Char Name", 0, 0, (LPINT)1, 0);
+	
+	pDrawText(pTextThis(), x + 45, y + 40, "Show MiniMap", 0, 0, (LPINT)1, 0); //-- Time Bar
+	pDrawText(pTextThis(), x + 45, y + 60, "Show Char Name", 0, 0, (LPINT)1, 0); //-- Show MiniMap
 	pDrawText(pTextThis(), x + 145, y + 40, "Show Monster Name", 0, 0, (LPINT)1, 0);
-	pDrawText(pTextThis(), x + 145, y + 60, "Show User Rank", 0, 0, (LPINT)1, 0);
-	pDrawText(pTextThis(), x + 145, y + 80, "Show User Title", 0, 0, (LPINT)1, 0);
-	pDrawText(pTextThis(), x + 145, y + 100, "Combat System", 0, 0, (LPINT)1, 0);
 	//TAMAÑO DE FUENTE
 	pDrawText(pTextThis(), x + 25, y + 285, "FONT ON", 0, 0, (LPINT)1, 0);
 	pDrawText(pTextThis(), x + 103, y + 285, "11", 0, 0, (LPINT)1, 0);
@@ -620,29 +554,11 @@ void RenderOptionPanel(int a1)
 	EnableAlphaTest(1);
 	glColor4f(1.0, 1.0, 1.0, 1.0);
 
-	//	pDrawButton(31593, x + 27, y + 37, 15, 15, 0, (*(BYTE*)(This + 196)) ? 0.0 : 15.0); //-- Attack Automatic
-	//
-	//	pDrawButton(31593, x + 27, y + 57, 15, 15, 0, (*(BYTE*)(This + 197)) ? 0.0 : 15.0); //-- Beep Sound
-	//
-	//	pDrawButton(31593, x + 27, y + 77, 15, 15, 0, (*(BYTE*)(This + 198)) ? 0.0 : 15.0); //-- Slide Show
-	////--
-	//	pDrawButton(31593, x + 140, y + 37, 15, 15, 0.0, (HPMonster != 0) ? 0.0 : 15.0); //-- HP Monster
+	pDrawButton(31593, x + 27, y + 37, 15, 15, 0.0, (gInterface.MiniMap != 0) ? 0.0 : 15.0); //-- Time Bar
 
-	pDrawButton(31593, x + 27, y + 37, 15, 15, 0.0, (gCustomCommonS6.TimerBar != 0) ? 0.0 : 15.0); //-- Time Bar
+	pDrawButton(31593, x + 27, y + 57, 15, 15, 0.0, (gInterface.CharName != 0) ? 0.0 : 15.0); //-- MiniMap
 
-	pDrawButton(31593, x + 27, y + 57, 15, 15, 0.0, (gCustomCommonS6.MiniMap != 0) ? 0.0 : 15.0); //-- MiniMap
-
-	pDrawButton(31593, x + 27, y + 77, 15, 15, 0.0, (gCustomCommonS6.FPS != 0) ? 0.0 : 15.0); //-- FPS
-
-	pDrawButton(31593, x + 27, y + 97, 15, 15, 0.0, (gCustomCommonS6.CharName != 0) ? 0.0 : 15.0);
-
-	pDrawButton(31593, x + 127, y + 37, 15, 15, 0.0, (gCustomCommonS6.MonsterName != 0) ? 0.0 : 15.0);
-
-	pDrawButton(31593, x + 127, y + 57, 15, 15, 0.0, (gCustomCommonS6.RankUser != 0) ? 0.0 : 15.0);
-
-	pDrawButton(31593, x + 127, y + 77, 15, 15, 0.0, (gCustomCommonS6.UserTitle != 0) ? 0.0 : 15.0);
-
-	pDrawButton(31593, x + 127, y + 97, 15, 15, 0.0, (gCustomCommonS6.CombatSystem != 0) ? 0.0 : 15.0);
+	pDrawButton(31593, x + 127, y + 37, 15, 15, 0.0, (gInterface.MonsterName != 0) ? 0.0 : 15.0);
 
 	/*int CharName;
 	int MonsterName;
@@ -669,12 +585,12 @@ void RenderOptionPanel(int a1)
 	//int DisableCharMoob2;
 	//int DisableObjTerrain;
 	//int RemoveSet;
-	int* SystemAntiLag[9] = { &gCustomCommonS6.DisableWing, &gCustomCommonS6.DisableSkill, &gCustomCommonS6.DisableDropZen, &gCustomCommonS6.DisableDropItem, &gCustomCommonS6.DisableDropItem, &gCustomCommonS6.DisablePet, &gCustomCommonS6.DisableObjTerrain, &gCustomCommonS6.RemoveSet, &gCustomCommonS6.LagDetection };
+	int* SystemAntiLag[8] = { &gCustomCommonS6.DisableWing, &gCustomCommonS6.DisableSkill, &gCustomCommonS6.DisableDropZen, &gCustomCommonS6.DisableDropItem, &gCustomCommonS6.DisableDropItem, &gCustomCommonS6.DisablePet, &gCustomCommonS6.DisableObjTerrain, &gCustomCommonS6.RemoveSet};
 
 	float JCRenderY = y + 170;
 	float JCRenderX = x + 27;
 
-	for (int k = 0; k < 8; k++)
+	for (int k = 0; k < 7; k++)
 	{
 		gCustomOptionS6.JCOption[k].SetLocation(JCRenderX, JCRenderY);
 		*(int*)SystemAntiLag[k] = gCustomOptionS6.JCOption[k].SetVisible();

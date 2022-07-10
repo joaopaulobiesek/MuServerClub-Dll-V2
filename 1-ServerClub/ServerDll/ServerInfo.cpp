@@ -67,6 +67,13 @@ void CServerInfo::ReadChecksumList() // OK
 void CServerInfo::ReadCustomList() // OK
 {
 	std::ifstream obj;
+	obj.open(".\\Custom\\CustomEventName.txt");
+	if (obj.is_open())
+	{
+		obj.close();
+		gReadFiles.CustomEventList(".\\Custom\\CustomEventName.txt");
+		LogAdd(LOG_BLUE, "[ServerInfo] Custom Event List loaded successfully");
+	}
 	obj.open(".\\Custom\\CustomNPCName.txt");
 	if (obj.is_open())
 	{

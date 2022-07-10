@@ -174,6 +174,7 @@
     <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="Features.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GetSync.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="MemScript.h" />
     <ClInclude Include="Offset.h" />
@@ -227,6 +228,7 @@
     <ClCompile Include="ConnectionAuth.cpp" />
     <ClCompile Include="CriticalSection.cpp" />
     <ClCompile Include="Features.cpp" />
+    <ClCompile Include="GetSync.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="MemScript.cpp" />
     <ClCompile Include="Offset.cpp" />

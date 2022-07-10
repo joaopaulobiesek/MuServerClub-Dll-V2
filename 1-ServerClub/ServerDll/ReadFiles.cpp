@@ -351,3 +351,105 @@ void CReadFiles::CustomNPCList(char* path)
 
 	delete lpScript;
 }
+
+void CReadFiles::CustomEventList(char* path)
+{
+
+	CMemScript* lpScript = new CMemScript;
+
+	if (lpScript == 0)
+	{
+		return;
+	}
+
+	if (lpScript->SetBuffer(path, 0) == 0)
+	{
+		delete lpScript;
+		return;
+	}
+
+	gCustomEVENTListNameInfo.clear();
+
+	gCustomEVENTListHourInfo.clear();
+
+	try
+	{
+		while (true)
+		{
+			if (lpScript->GetToken() == TOKEN_END)
+			{
+				break;
+			}
+
+			int section = lpScript->GetNumber();
+
+			while (true)
+			{
+				if (section == 0)
+				{
+					if (strcmp("end", lpScript->GetString()) == 0)
+					{
+						break;
+					}
+
+					EVENTNAME_DATA info;
+
+					memset(&info, 0, sizeof(info));
+
+					static int CustomIndexCount = 0;
+
+					info.Index = CustomIndexCount;
+
+					info.Id = lpScript->GetNumber();
+
+					strcpy_s(info.Name, lpScript->GetAsString());
+
+					gCustomEVENTListNameInfo.push_back(info);
+
+					CustomIndexCount++;
+				}
+				else if (section == 1)
+				{
+					if (strcmp("end", lpScript->GetString()) == 0)
+					{
+						break;
+					}
+
+					EVENTNAME_HOUR_DATA info;
+
+					memset(&info, 0, sizeof(info));
+
+					static int CustomIndexCount = 0;
+
+					info.Index = CustomIndexCount;
+
+					info.Id = lpScript->GetNumber();
+
+					info.Year = lpScript->GetNumber();
+
+					info.Month = lpScript->GetNumber();
+
+					info.Day = lpScript->GetNumber();
+
+					info.DoW = lpScript->GetNumber();
+
+					info.Hour = lpScript->GetNumber();
+
+					info.Minute = lpScript->GetNumber();
+
+					info.Second = lpScript->GetNumber();
+
+					CustomIndexCount++;
+
+					gCustomEVENTListHourInfo.push_back(info);
+				}
+			}
+		}
+	}
+	catch (...)
+	{
+		printf(lpScript->GetLastError());
+	}
+
+	delete lpScript;
+}

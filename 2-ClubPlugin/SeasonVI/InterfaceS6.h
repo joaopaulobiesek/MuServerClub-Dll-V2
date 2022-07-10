@@ -202,6 +202,8 @@ public:
 	InterfaceObject Data[MAX_OBJECT];
 
 	int			MiniMap;
+	int			CharName;
+	int			MonsterName;
 private:
 
 };

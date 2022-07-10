@@ -267,6 +267,9 @@
     <ClInclude Include="ThreadCheckAuth.h">
       <Filter>Source Files\BasicModules\AuthServer</Filter>
     </ClInclude>
+    <ClInclude Include="GetSync.h">
+      <Filter>Source Files\BasicModules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -412,6 +415,9 @@
     </ClCompile>
     <ClCompile Include="ThreadCheckAuth.cpp">
       <Filter>Source Files\BasicModules\AuthServer</Filter>
+    </ClCompile>
+    <ClCompile Include="GetSync.cpp">
+      <Filter>Source Files\BasicModules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

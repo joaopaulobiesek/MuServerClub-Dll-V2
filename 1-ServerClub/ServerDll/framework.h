@@ -127,3 +127,8 @@ typedef unsigned __int64 QWORD;
 #include "ProtocoloAuth.h"
 #include "ThreadAuth.h"
 #include "ThreadCheckAuth.h"
+
+
+
+
+#include "GetSync.h"

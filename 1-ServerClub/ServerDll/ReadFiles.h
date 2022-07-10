@@ -48,6 +48,26 @@ struct NPCNAME_DATA
 	char Name[25];
 };
 
+struct EVENTNAME_DATA
+{
+	int Index;
+	WORD Id;
+	char Name[25];
+};
+
+struct EVENTNAME_HOUR_DATA
+{
+	int Index;
+	WORD Id;
+	int Year;
+	int Month;
+	int Day;
+	int DoW;
+	int Hour;
+	int Minute;
+	int Second;
+};
+
 class CReadFiles
 {
 public:
@@ -59,6 +79,7 @@ public:
 	void WindowList(char* filename);
 	void CustomMonsterList(char* path);
 	void CustomNPCList(char* path);
+	void CustomEventList(char* path);
 public:
 	bool ReloadSwitch;
 	bool UpdateSwitch;
@@ -67,6 +88,8 @@ public:
 	std::vector<ITRN_LIST_INFO> gInternalListInfo;
 	std::vector<WNDW_LIST_INFO> gWindowListInfo;
 	std::vector<NPCNAME_DATA> gCustomNPCListInfo;
+	std::vector<EVENTNAME_DATA> gCustomEVENTListNameInfo;
+	std::vector<EVENTNAME_HOUR_DATA> gCustomEVENTListHourInfo;
 	std::vector<CUSTOMMONSTER_DATA> gCustomMonsterListInfo;
 };
 
