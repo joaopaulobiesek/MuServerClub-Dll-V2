@@ -15,6 +15,9 @@ void CProtocolS6::ProtocolCore(int index, BYTE head, BYTE* lpMsg, int size)
 		case 0x01:
 			this->RequestKeyBoardS6((SDHP_REQUEST_KEYBOARD_S6_RECV*)lpMsg, index);
 			break;
+		case 0x02:
+			this->RequestEventListS6((SDHP_REQUEST_EVENT_LIST_S6_RECV*)lpMsg, index);
+			break;
 		}
 		break;
 	default:
@@ -82,4 +85,26 @@ void CProtocolS6::RequestKeyBoardS6(SDHP_REQUEST_KEYBOARD_S6_RECV* lpMsg, int in
 	memcpy(pMsg.Name4Server, gServerInfo.Name4Server, sizeof(pMsg.Name4Server));
 
 	gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
+}
+
+void CProtocolS6::RequestEventListS6(SDHP_REQUEST_EVENT_LIST_S6_RECV* lpMsg, int index)
+{
+	gGetSync.Scan();
+
+	SDHP_REQUEST_EVENT_LIST_S6_SEND pMsg;
+
+	pMsg.header.set(gProtocol.VersionMuHEX, 0x02, sizeof(pMsg));
+
+	for (int i = 0; i < MAX_EVENT_LIST; i++)
+	{
+		if (gGetSync.gCustomEventListInfo[i].Id != -1)
+		{
+			pMsg.TimeEvent = gGetSync.gCustomEventListInfo[i].TimeEvent;
+			memcpy(pMsg.NameEvent, gGetSync.gCustomEventListInfo[i].NameEvent, sizeof(pMsg.NameEvent));
+			LogAdd(LOG_BLUE, "[%d] - %s", gGetSync.gCustomEventListInfo[i].TimeEvent, gGetSync.gCustomEventListInfo[i].NameEvent);
+
+			gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
+		}
+	}
+
 }

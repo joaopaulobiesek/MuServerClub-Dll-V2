@@ -14,6 +14,11 @@ struct SDHP_REQUEST_KEYBOARD_S6_RECV
 	HEAD_VERSION header; // C1:00
 };
 
+struct SDHP_REQUEST_EVENT_LIST_S6_RECV
+{
+	HEAD_VERSION header; // C1:00
+};
+
 //**********************************************//
 //************ Server -> Dll *******************//
 //**********************************************//
@@ -63,12 +68,20 @@ struct SDHP_REQUEST_KEYBOARD_S6_SEND
 	char Name4Server[32];
 };
 
+struct SDHP_REQUEST_EVENT_LIST_S6_SEND
+{
+	HEAD_VERSION header; // C1:00	
+	char NameEvent[25];
+	int TimeEvent;
+};
+
 class CProtocolS6
 {
 public:
 	void ProtocolCore(int index, BYTE head, BYTE* lpMsg, int size);
 	void RequestOffSetS6(SDHP_REQUEST_OFFSET_S6_RECV* lpMsg, int index);
 	void RequestKeyBoardS6(SDHP_REQUEST_KEYBOARD_S6_RECV* lpMsg, int index);
+	void RequestEventListS6(SDHP_REQUEST_EVENT_LIST_S6_RECV* lpMsg, int index);
 public:
 };
 

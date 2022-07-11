@@ -387,7 +387,7 @@ void CReadFiles::CustomEventList(char* path)
 			{
 				if (section == 0)
 				{
-					if (strcmp("end", lpScript->GetString()) == 0)
+					if (strcmp("end", lpScript->GetAsString()) == 0)
 					{
 						break;
 					}
@@ -410,7 +410,7 @@ void CReadFiles::CustomEventList(char* path)
 				}
 				else if (section == 1)
 				{
-					if (strcmp("end", lpScript->GetString()) == 0)
+					if (strcmp("end", lpScript->GetAsString()) == 0)
 					{
 						break;
 					}
@@ -425,19 +425,19 @@ void CReadFiles::CustomEventList(char* path)
 
 					info.Id = lpScript->GetNumber();
 
-					info.Year = lpScript->GetNumber();
+					info.Year = lpScript->GetAsNumber();
 
-					info.Month = lpScript->GetNumber();
+					info.Month = lpScript->GetAsNumber();
 
-					info.Day = lpScript->GetNumber();
+					info.Day = lpScript->GetAsNumber();
 
-					info.DoW = lpScript->GetNumber();
+					info.DoW = lpScript->GetAsNumber();
 
-					info.Hour = lpScript->GetNumber();
+					info.Hour = lpScript->GetAsNumber();
 
-					info.Minute = lpScript->GetNumber();
+					info.Minute = lpScript->GetAsNumber();
 
-					info.Second = lpScript->GetNumber();
+					info.Second = lpScript->GetAsNumber();
 
 					CustomIndexCount++;
 
