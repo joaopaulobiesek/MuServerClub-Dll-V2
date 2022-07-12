@@ -54,6 +54,9 @@ void ProtocolCoreMain(BYTE head, BYTE* lpMsg, int size)
 		case 0x07:
 			gProtocol.CustomNPCListRecv((SDHP_CUSTOM_NPC_LIST_RECV*)lpMsg);
 			break;
+		case 0x09:
+			gProtocol.CustomCloakListRecv((SDHP_CUSTOM_CLOAK_LIST_RECV*)lpMsg);
+			break;
 		}
 		break;
 	case 0x03:
@@ -305,6 +308,22 @@ void CProtocol::CustomNPCListRecv(SDHP_CUSTOM_NPC_LIST_RECV* lpMsg) // OK
 	}
 
 	CustomNPCListOK = 1;
+}
+
+void CProtocol::CustomCloakListRecv(SDHP_CUSTOM_CLOAK_LIST_RECV* lpMsg) // OK
+{
+	//gLog.Output(LOG_DEBUG, GetEncryptedString(43), lpMsg->count, lpMsg->MaxCount);
+
+	CustomCloakListMaxCount = lpMsg->MaxCount;
+
+	for (int n = 0; n < lpMsg->count; n++)
+	{
+		CLOAKNAME_DATA* lpInfo = (CLOAKNAME_DATA*)(((BYTE*)lpMsg) + sizeof(SDHP_CUSTOM_CLOAK_LIST_RECV) + (sizeof(CLOAKNAME_DATA) * n));
+
+		gListManager.gCustomCloakListInfo.push_back((*lpInfo));
+	}
+
+	CustomCloakListOK = 1;
 }
 
 void CProtocol::ConnectionStatusSend() // OK

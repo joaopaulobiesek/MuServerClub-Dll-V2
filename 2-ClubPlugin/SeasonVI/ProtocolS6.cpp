@@ -15,12 +15,24 @@ void CProtocolS6::ProtocolCore(BYTE head, BYTE* lpMsg, int size)
 		case 0x01:
 			this->RecvKeyboardS6((SDHP_REQUEST_KEYBOARD_S6_RECV*)lpMsg);
 			break;
+		case 0x02:
+			this->RecvEventListS6((SDHP_REQUEST_EVENT_LIST_S6_RECV*)lpMsg);
+			break;
 		}
 		break;
 	default:
 		gConnection.Disconnect();
 		break;
 	}
+}
+
+void CProtocolS6::RequestEventListS6()
+{
+	SDHP_REQUEST_EVENT_LIST_S6_SEND pMsg;
+
+	pMsg.header.set(gProtocol.VersionMuHEX, 0x02, sizeof(pMsg));
+
+	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
 }
 
 void CProtocolS6::RequestOffSetS6()
@@ -66,4 +78,11 @@ void CProtocolS6::RecvKeyboardS6(SDHP_REQUEST_KEYBOARD_S6_RECV* lpMsg)
 	memcpy(gThreadS6.Name2Server, lpMsg->Name2Server, sizeof(gThreadS6.Name2Server));
 	memcpy(gThreadS6.Name3Server, lpMsg->Name3Server, sizeof(gThreadS6.Name3Server));
 	memcpy(gThreadS6.Name4Server, lpMsg->Name4Server, sizeof(gThreadS6.Name4Server));
+}
+
+void CProtocolS6::RecvEventListS6(SDHP_REQUEST_EVENT_LIST_S6_RECV* lpMsg)
+{
+	gCustomEventTimeDraw.gCustomEventListInfo[lpMsg->Id].Id = lpMsg->Id;
+	memcpy(gCustomEventTimeDraw.gCustomEventListInfo[lpMsg->Id].NameEvent, lpMsg->NameEvent, sizeof(gCustomEventTimeDraw.gCustomEventListInfo[lpMsg->Id].NameEvent));
+	gCustomEventTimeDraw.gCustomEventListInfo[lpMsg->Id].TimeEvent = lpMsg->TimeEvent;
 }

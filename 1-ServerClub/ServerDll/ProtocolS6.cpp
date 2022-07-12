@@ -99,9 +99,9 @@ void CProtocolS6::RequestEventListS6(SDHP_REQUEST_EVENT_LIST_S6_RECV* lpMsg, int
 	{
 		if (gGetSync.gCustomEventListInfo[i].Id != -1)
 		{
+			pMsg.Id = i;
 			pMsg.TimeEvent = gGetSync.gCustomEventListInfo[i].TimeEvent;
 			memcpy(pMsg.NameEvent, gGetSync.gCustomEventListInfo[i].NameEvent, sizeof(pMsg.NameEvent));
-			LogAdd(LOG_BLUE, "[%d] - %s", gGetSync.gCustomEventListInfo[i].TimeEvent, gGetSync.gCustomEventListInfo[i].NameEvent);
 
 			gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
 		}

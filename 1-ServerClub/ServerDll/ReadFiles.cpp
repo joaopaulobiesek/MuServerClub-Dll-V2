@@ -453,3 +453,64 @@ void CReadFiles::CustomEventList(char* path)
 
 	delete lpScript;
 }
+
+void CReadFiles::CustomCloakList(char* path)
+{
+
+	CMemScript* lpScript = new CMemScript;
+
+	if (lpScript == 0)
+	{
+		return;
+	}
+
+	if (lpScript->SetBuffer(path, 0) == 0)
+	{
+		delete lpScript;
+		return;
+	}
+
+	gCustomCloakListInfo.clear();
+
+	try
+	{
+		while (true)
+		{
+			if (lpScript->GetToken() == TOKEN_END)
+			{
+				break;
+			}
+
+			if (strcmp("end", lpScript->GetString()) == 0)
+			{
+				break;
+			}
+
+			CLOAKNAME_DATA info;
+
+			memset(&info, 0, sizeof(info));
+
+			static int CustomIndexCount = 0;
+
+			info.Index = CustomIndexCount;
+
+			info.ItemType = lpScript->GetNumber();
+
+			info.Mode = lpScript->GetAsNumber();
+
+			strcpy_s(info.CloakName, lpScript->GetAsString());
+
+			strcpy_s(info.StripName, lpScript->GetAsString());
+
+			CustomIndexCount++;
+
+			gCustomCloakListInfo.push_back(info);
+		}
+	}
+	catch (...)
+	{
+		printf(lpScript->GetLastError());
+	}
+
+	delete lpScript;
+}

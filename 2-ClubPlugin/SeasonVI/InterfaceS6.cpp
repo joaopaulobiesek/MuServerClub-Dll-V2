@@ -38,10 +38,18 @@ void Interface::Load()
 	this->BindObject(eKALRUTAN_MAP, 31480, 128, 128, -1, -1);
 	this->BindObject(eKALRUTAN2_MAP, 31481, 128, 128, -1, -1);
 
+	this->BindObject(eEventTime_CLOSE, 0x7EC5, 36, 29, -1, -1);
+	this->BindObject(ePrevEvent, 31658, 17, 18, -1, -1);
+	this->BindObject(eNextEvent, 31659, 17, 18, -1, -1);
+
 	SetOp((LPVOID)oLoadSomeForm_Call, this->LoadImages, ASM::CALL);
 	if (gFeatures.emoji == 1)
 	{
 		gEmojis.AddTextures();
+	}
+	if (gFeatures.customCloak == 1)
+	{
+		gCloak.LoadTexture();
 	}
 }
 
@@ -176,6 +184,23 @@ void Interface::Work()
 {
 	gObjUser.Refresh();
 	gInterface.DrawMiniMap();
+
+	if (gFeatures.customEventTime == 1)
+	{
+		gCustomEventTimeDraw.DrawEventTimePanelWindow();
+
+		if (GetKeyState('R') & 0x4000 && GetForegroundWindow() == pGameWindow)
+		{
+			gCustomEventTimeDraw.OpenWindow();
+		}
+	}
+
+	if (GetKeyState(VK_ESCAPE) < 0 && GetForegroundWindow() == pGameWindow)
+	{
+		gInterface.CloseCustomWindow();
+
+		pSetCursorFocus = false;
+	}
 }
 
 bool Interface::CheckWindow(int WindowID)

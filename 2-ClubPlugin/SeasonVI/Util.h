@@ -41,6 +41,7 @@ bool DelayMe(DWORD delay, DWORD value);
 DWORD WriteMemory(const LPVOID lpAddress, const LPVOID lpBuf, const UINT uSize);
 DWORD ReadMemory(const LPVOID lpAddress, LPVOID lpBuf, const UINT uSize);
 DWORD SetOp(const LPVOID dwEnterFunction, const LPVOID dwJMPAddress, BYTE cmd);
+DWORD SetRange(const LPVOID dwAddress, const USHORT wCount, const BYTE btValue);
 
 char* ConvertModuleFileName(char* name);
 wchar_t* ConvertModuleFileName(wchar_t* name);

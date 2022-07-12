@@ -154,3 +154,10 @@ typedef unsigned __int64 QWORD;
 
 #include "HealthBarS6.h"
 #include "RankUserS6.h"
+#include "ItemFixS6.h"
+#include "EventTimeS6.h"
+#include "CustomCloakS6.h"
+#include "CapeS6.h"
+#include "zzzmathlib.h"
+#include "MonsterEffectS6.h"
+#include "ModelEffectS6.h"

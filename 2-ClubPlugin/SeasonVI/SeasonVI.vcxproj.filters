@@ -163,6 +163,18 @@
     <Filter Include="Source Files\Features\Custom\S6\Ranking">
       <UniqueIdentifier>{75ecc66b-014f-4d0d-a58c-61ae952de4de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Features\Custom\S6\EventTime">
+      <UniqueIdentifier>{7fd21c81-72da-4cc2-a036-9fcedd7f20e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Custom\S6\Cape">
+      <UniqueIdentifier>{7440eb4a-07b6-41d8-ac02-928808921f5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lib">
+      <UniqueIdentifier>{83d1ee86-614a-44fc-b7af-4322a3325ebc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lib\Mathlib">
+      <UniqueIdentifier>{17f38541-a28d-4589-a69a-d379c1ee9a37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -438,6 +450,27 @@
     <ClInclude Include="RankUserS6.h">
       <Filter>Source Files\Features\Custom\S6\Ranking</Filter>
     </ClInclude>
+    <ClInclude Include="ItemFixS6.h">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClInclude>
+    <ClInclude Include="EventTimeS6.h">
+      <Filter>Source Files\Features\Custom\S6\EventTime</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomCloakS6.h">
+      <Filter>Source Files\Features\Custom\S6\Cape</Filter>
+    </ClInclude>
+    <ClInclude Include="CapeS6.h">
+      <Filter>Source Files\Features\Custom\S6\Cape</Filter>
+    </ClInclude>
+    <ClInclude Include="zzzmathlib.h">
+      <Filter>Source Files\Lib\Mathlib</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterEffectS6.h">
+      <Filter>Source Files\Features\Custom\S6\Cape</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelEffectS6.h">
+      <Filter>Source Files\Features\Custom\S6\Cape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -691,6 +724,27 @@
     </ClCompile>
     <ClCompile Include="RankUserS6.cpp">
       <Filter>Source Files\Features\Custom\S6\Ranking</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemFixS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\CustomOption</Filter>
+    </ClCompile>
+    <ClCompile Include="EventTimeS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\EventTime</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomCloakS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\Cape</Filter>
+    </ClCompile>
+    <ClCompile Include="CapeS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\Cape</Filter>
+    </ClCompile>
+    <ClCompile Include="zzzmathlib.cpp">
+      <Filter>Source Files\Lib\Mathlib</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterEffectS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\Cape</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelEffectS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\Cape</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

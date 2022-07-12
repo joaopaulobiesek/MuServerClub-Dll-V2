@@ -212,6 +212,13 @@ struct SDHP_CUSTOM_NPC_LIST_SEND
 	BYTE count;
 };
 
+struct SDHP_CUSTOM_CLOAK_LIST_SEND
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
 struct SDHP_CHECKSUM_LIST_SEND
 {
 	PSWMSG_HEAD header; // C1:02:01
@@ -241,6 +248,7 @@ public:
 	void WindowListSend(int index);
 	void CustomMonsterListSend(int index);
 	void CustomNPCListSend(int index);
+	void CustomCloakListSend(int index);
 	void ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index);
 public:
 	DWORD VersionMu;

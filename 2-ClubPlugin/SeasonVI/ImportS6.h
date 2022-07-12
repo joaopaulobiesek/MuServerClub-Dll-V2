@@ -7,6 +7,14 @@
 #include <gl\GL.h>
 #pragma comment(lib, "Opengl32.lib")
 #pragma comment(lib, "Ws2_32.lib")
+
+#define MODEL_HELPER            7827
+#define ITEM_INTER                    1171
+#define ITEM(x, y)                    ((x * 512) + y)
+#define ITEM2(x, y)                    ((x * 512) + y + ITEM_INTER)
+
+
+
 // ----------------------------------------------------------------------------------------------
 #define PlayBuffer			((signed int(__cdecl*)(int a1, int a2, int a3)) 0x006D6C20)
 #define pCheckMouseOver				((bool(__cdecl*)(int a1, int a2, int a3, int a4)) 0x00790B10)
@@ -334,3 +342,15 @@
 #define SetBoundInputField			((int(__thiscall*)(int a1, int a2, int a3)) 0x00417EC0)
 //--
 #define RenderBitMapColored ((void(__cdecl*)(int a4, float a5, float a6, float a7, float a8, float a9, float a10, float a11, float a12, int a13))0x00790DF0)
+
+
+
+
+
+
+
+
+//Cloak
+#define pModelThis					((LPVOID(*)())0x004CDA10)
+#define pGetModel					((LPVOID(__thiscall*)(LPVOID This, signed int a2)) 0x00969C50)
+#define pPlayStaticEffect1			((int(__cdecl*)(int ModelID, vec3_t Bone1, float size, vec3_t Color, int ObjPos, float, int)) 0x771310)

@@ -45,10 +45,6 @@ void CGetSync::Scan()
 
 	this->ResetTimeLeft();
 
-	gReadFiles.gCustomEVENTListNameInfo.clear();
-
-	gReadFiles.gCustomEVENTListHourInfo.clear();
-
 	for (std::vector<EVENTNAME_DATA>::iterator itN = gReadFiles.gCustomEVENTListNameInfo.begin(); itN != gReadFiles.gCustomEVENTListNameInfo.end(); itN++)
 	{
 		for (std::vector<EVENTNAME_HOUR_DATA>::iterator itH = gReadFiles.gCustomEVENTListHourInfo.begin(); itH != gReadFiles.gCustomEVENTListHourInfo.end(); itH++)

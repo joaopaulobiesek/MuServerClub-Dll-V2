@@ -165,8 +165,10 @@
     <ClInclude Include="Camera3dS15.h" />
     <ClInclude Include="Camera3dS17.h" />
     <ClInclude Include="Camera3dS6.h" />
+    <ClInclude Include="CapeS6.h" />
     <ClInclude Include="CCRC32.h" />
     <ClInclude Include="Clock.h" />
+    <ClInclude Include="CustomCloakS6.h" />
     <ClInclude Include="CustomCommonS6.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="CriticalSection.h" />
@@ -176,6 +178,7 @@
     <ClInclude Include="CustomOptionS6.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="EmojiSystemS6.h" />
+    <ClInclude Include="EventTimeS6.h" />
     <ClInclude Include="ExecutableCheck.h" />
     <ClInclude Include="Features.h" />
     <ClInclude Include="FileCheck.h" />
@@ -192,12 +195,15 @@
     <ClInclude Include="HookMSS6.h" />
     <ClInclude Include="ImportS6.h" />
     <ClInclude Include="InterfaceS6.h" />
+    <ClInclude Include="ItemFixS6.h" />
     <ClInclude Include="JCEntryproy.h" />
     <ClInclude Include="JCOptionBox.h" />
     <ClInclude Include="ListManager.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="MapName.h" />
     <ClInclude Include="Message.h" />
+    <ClInclude Include="ModelEffectS6.h" />
+    <ClInclude Include="MonsterEffectS6.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Offset.h" />
     <ClInclude Include="OffsetS0.h" />
@@ -250,6 +256,7 @@
     <ClInclude Include="Util.h" />
     <ClInclude Include="WindowCheck.h" />
     <ClInclude Include="WindowStruct.h" />
+    <ClInclude Include="zzzmathlib.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AntiLagS15.cpp" />
@@ -258,8 +265,10 @@
     <ClCompile Include="Camera3dS15.cpp" />
     <ClCompile Include="Camera3dS17.cpp" />
     <ClCompile Include="Camera3dS6.cpp" />
+    <ClCompile Include="CapeS6.cpp" />
     <ClCompile Include="CCRC32.cpp" />
     <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="CustomCloakS6.cpp" />
     <ClCompile Include="CustomCommonS6.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="CriticalSection.cpp" />
@@ -268,6 +277,7 @@
     <ClCompile Include="CustomNpcNameS6.cpp" />
     <ClCompile Include="CustomOptionS6.cpp" />
     <ClCompile Include="EmojiSystem_S6.cpp" />
+    <ClCompile Include="EventTimeS6.cpp" />
     <ClCompile Include="ExecutableCheck.cpp" />
     <ClCompile Include="Features.cpp" />
     <ClCompile Include="FileCheck.cpp" />
@@ -282,12 +292,15 @@
     <ClCompile Include="HookMSS17.cpp" />
     <ClCompile Include="HookMSS6.cpp" />
     <ClCompile Include="InterfaceS6.cpp" />
+    <ClCompile Include="ItemFixS6.cpp" />
     <ClCompile Include="JCEntryproy.cpp" />
     <ClCompile Include="JCOptionBox.cpp" />
     <ClCompile Include="ListManager.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="MapName.cpp" />
     <ClCompile Include="Message.cpp" />
+    <ClCompile Include="ModelEffectS6.cpp" />
+    <ClCompile Include="MonsterEffectS6.cpp" />
     <ClCompile Include="Offset.cpp" />
     <ClCompile Include="OffsetS0.cpp" />
     <ClCompile Include="OffsetS10.cpp" />
@@ -341,6 +354,7 @@
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="WindowCheck.cpp" />
     <ClCompile Include="WindowStruct.cpp" />
+    <ClCompile Include="zzzmathlib.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

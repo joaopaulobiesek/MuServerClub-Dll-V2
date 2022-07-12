@@ -156,6 +156,8 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 	gProtocol.CustomMonsterListSend(index);
 
 	gProtocol.CustomNPCListSend(index);
+
+	gProtocol.CustomCloakListSend(index);	
 }
 
 void CProtocol::ClientRecvHack(SDHP_CLIENT_HACK_RECV* lpMsg, int index)
@@ -396,6 +398,62 @@ void CProtocol::CustomNPCListSend(int index) // OK
 
 		gSocketManager.DataSend(index, send, size);
 	} while (MakeList != gReadFiles.gCustomNPCListInfo.end());
+}
+
+void CProtocol::CustomCloakListSend(int index) // OK
+{
+	std::vector<CLOAKNAME_DATA>::iterator MakeList = gReadFiles.gCustomCloakListInfo.begin();
+
+	do
+	{
+		BYTE send[8192];
+
+		SDHP_CUSTOM_CLOAK_LIST_SEND pMsg;
+
+		pMsg.header.set(0x02, 0x09, 0);
+
+		int size = sizeof(pMsg);
+
+		pMsg.MaxCount = gReadFiles.gCustomCloakListInfo.size();
+
+		pMsg.count = 0;
+
+		CLOAKNAME_DATA info;
+
+		for (; MakeList != gReadFiles.gCustomCloakListInfo.end(); MakeList++)
+		{
+
+			info.Index = MakeList->Index;
+
+			info.ItemType = MakeList->ItemType;
+
+			info.Mode = MakeList->Mode;
+
+			strcpy_s(info.CloakName, MakeList->CloakName);
+
+			strcpy_s(info.StripName, MakeList->StripName);
+
+			if ((size + sizeof(info)) > sizeof(send))
+			{
+				break;
+			}
+			else
+			{
+				memcpy(&send[size], &info, sizeof(info));
+				size += sizeof(info);
+
+				pMsg.count++;
+			}
+		}
+
+		pMsg.header.size[0] = SET_NUMBERHB(size);
+
+		pMsg.header.size[1] = SET_NUMBERLB(size);
+
+		memcpy(send, &pMsg, sizeof(pMsg));
+
+		gSocketManager.DataSend(index, send, size);
+	} while (MakeList != gReadFiles.gCustomCloakListInfo.end());
 }
 
 void CProtocol::ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index)// OK

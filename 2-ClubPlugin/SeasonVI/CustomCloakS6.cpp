@@ -1,0 +1,168 @@
+#include "pch.h"
+
+cCustomCloak gCloak;
+
+cCustomCloak::cCustomCloak() // OK
+{
+    this->Init();
+}
+// -------------------------------------------------------------------------------
+cCustomCloak::~cCustomCloak() // OK
+{
+
+}
+// -------------------------------------------------------------------------------
+void cCustomCloak::Init() // OK
+{
+    for (int n = 0; n < MAX_CUSTOMCLOAK; n++)
+    {
+        this->m_Cloak[n].Index = -1;
+
+        this->m_Cloak[n].IndexCloak = -1;
+
+        this->m_Cloak[n].IndexStrip = -1;
+    }
+}
+// -------------------------------------------------------------------------------
+void cCustomCloak::Load(CLOAKNAME_DATA* info) // OK
+{
+    for (int n = 0; n < MAX_CUSTOMCLOAK; n++)
+    {
+        this->SetInfo(info[n]);
+    }
+}
+// -------------------------------------------------------------------------------
+void cCustomCloak::SetInfo(CLOAKNAME_DATA info) // OK
+{
+    if (info.Index < 0 || info.Index >= MAX_CUSTOMCLOAK)
+    {
+        return;
+    }
+
+    this->m_Cloak[info.Index] = info;
+}
+// -------------------------------------------------------------------------------
+CLOAKNAME_DATA* cCustomCloak::GetInfo(int index) // OK
+{
+    if (index < 0 || index >= MAX_CUSTOMCLOAK)
+    {
+        return 0;
+    }
+
+    if (this->m_Cloak[index].Index != index)
+    {
+        return 0;
+    }
+
+    return &this->m_Cloak[index];
+}
+// -------------------------------------------------------------------------------
+CLOAKNAME_DATA* cCustomCloak::GetInfoByItem(int ItemIndex) // OK
+{
+    for (int n = 0; n < MAX_CUSTOMCLOAK; n++)
+    {
+        CLOAKNAME_DATA* lpInfo = this->GetInfo(n);
+
+        if (lpInfo == 0)
+        {
+            continue;
+        }
+
+        if (lpInfo->ItemIndex == ItemIndex)
+        {
+            return lpInfo;
+        }
+    }
+
+    return 0;
+}
+// -------------------------------------------------------------------------------
+bool cCustomCloak::isCloak(int ItemIndex) // OK
+{
+    for (int i = 0; i < MAX_CUSTOMCLOAK; i++)
+    {
+        if (ItemIndex == this->m_Cloak[i].ItemIndex)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+// -------------------------------------------------------------------------------
+DWORD cCustomCloak::getCodeCape(int ItemIndex) // OK
+{
+    for (int i = 0; i < MAX_CUSTOMCLOAK; i++)
+    {
+        if (ItemIndex == this->m_Cloak[i].ItemIndex)
+        {
+            return this->m_Cloak[i].IndexCloak;
+        }
+    }
+    return -1;
+}
+
+// -------------------------------------------------------------------------------
+bool cCustomCloak::isCloakStrip(int ItemIndex) // OK
+{
+    for (int i = 0; i < MAX_CUSTOMCLOAK; i++)
+    {
+        if (ItemIndex == this->m_Cloak[i].ItemIndex && this->m_Cloak[i].Mode == 1)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+// -------------------------------------------------------------------------------
+void cCustomCloak::LoadTexture() // OK
+{
+    this->code = 0x16305;
+
+    for (int n = 0; n < MAX_CUSTOMCLOAK; n++)
+    {
+        if (this->m_Cloak[n].Index != -1) {
+
+            pLoadImage(this->m_Cloak[n].CloakName, this->code, GL_LINEAR, GL_REPEAT, 1, 0);
+
+            this->m_Cloak[n].IndexCloak = this->code;
+
+            this->code++;
+
+            if (this->m_Cloak[n].Mode == 1) {
+
+                pLoadImage(this->m_Cloak[n].StripName, this->code, GL_LINEAR, GL_REPEAT, 1, 0);
+
+                this->m_Cloak[n].IndexStrip = this->code;
+
+                this->code++;
+            }
+        }
+    }
+}
+// -------------------------------------------------------------------------------
+void cCustomCloak::Scan()
+{
+    CLOAKNAME_DATA info;
+
+    for (std::vector<CLOAKNAME_DATA>::iterator it = gListManager.gCustomCloakListInfo.begin(); it != gListManager.gCustomCloakListInfo.end(); it++)
+    {
+        info.Index = it->Index++;
+
+        info.ItemType = it->ItemType;
+
+        info.Mode = it->Mode;
+
+        info.IndexCloak = 0;
+
+        info.IndexStrip = 0;
+
+        info.ItemIndex = 0;
+
+        strcpy_s(info.CloakName, it->CloakName);
+
+        strcpy_s(info.StripName, it->StripName);
+
+        this->m_Cloak[info.Index] = info;
+    }
+}

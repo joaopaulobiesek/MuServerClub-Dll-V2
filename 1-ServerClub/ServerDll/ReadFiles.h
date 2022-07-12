@@ -48,6 +48,15 @@ struct NPCNAME_DATA
 	char Name[25];
 };
 
+struct CLOAKNAME_DATA
+{
+	int Index;
+	int ItemType;
+	int Mode;
+	char CloakName[100];
+	char StripName[100];
+};
+
 struct EVENTNAME_DATA
 {
 	int Index;
@@ -79,6 +88,7 @@ public:
 	void WindowList(char* filename);
 	void CustomMonsterList(char* path);
 	void CustomNPCList(char* path);
+	void CustomCloakList(char* path);
 	void CustomEventList(char* path);
 public:
 	bool ReloadSwitch;
@@ -88,6 +98,7 @@ public:
 	std::vector<ITRN_LIST_INFO> gInternalListInfo;
 	std::vector<WNDW_LIST_INFO> gWindowListInfo;
 	std::vector<NPCNAME_DATA> gCustomNPCListInfo;
+	std::vector<CLOAKNAME_DATA> gCustomCloakListInfo;
 	std::vector<EVENTNAME_DATA> gCustomEVENTListNameInfo;
 	std::vector<EVENTNAME_HOUR_DATA> gCustomEVENTListHourInfo;
 	std::vector<CUSTOMMONSTER_DATA> gCustomMonsterListInfo;

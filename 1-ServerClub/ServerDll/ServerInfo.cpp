@@ -74,6 +74,23 @@ void CServerInfo::ReadCustomList() // OK
 		gReadFiles.CustomEventList(".\\Custom\\CustomEventName.txt");
 		LogAdd(LOG_BLUE, "[ServerInfo] Custom Event List loaded successfully");
 	}
+	else
+	{
+		obj.close();
+		LogAdd(LOG_RED, "[ServerInfo] Custom Event List file does not exist");
+	}
+	obj.open(".\\Custom\\CustomCloak.txt");
+	if (obj.is_open())
+	{
+		obj.close();
+		gReadFiles.CustomCloakList(".\\Custom\\CustomCloak.txt");
+		LogAdd(LOG_BLUE, "[ServerInfo] Custom Cloak loaded successfully");
+	}
+	else
+	{
+		obj.close();
+		LogAdd(LOG_RED, "[ServerInfo] Custom Cloak file does not exist");
+	}
 	obj.open(".\\Custom\\CustomNPCName.txt");
 	if (obj.is_open())
 	{
@@ -86,7 +103,6 @@ void CServerInfo::ReadCustomList() // OK
 		obj.close();
 		LogAdd(LOG_RED, "[ServerInfo] Custom NPC Name file does not exist");
 	}
-
 	obj.open(".\\Custom\\CustomMonster.txt");
 	if (obj.is_open())
 	{

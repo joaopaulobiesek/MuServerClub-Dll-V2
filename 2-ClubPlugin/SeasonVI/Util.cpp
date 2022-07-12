@@ -524,3 +524,12 @@ DWORD SetOp(const LPVOID dwEnterFunction, const LPVOID dwJMPAddress, const BYTE 
 	// ----
 	return WriteMemory(dwEnterFunction, (LPVOID)btBuf, sizeof(btBuf));
 }
+
+DWORD SetRange(const LPVOID dwAddress, const USHORT wCount, const BYTE btValue)
+{
+	BYTE* lpBuf = new BYTE[wCount];
+	// ----
+	memset(lpBuf, btValue, wCount);
+	// ----
+	return WriteMemory(dwAddress, (LPVOID)lpBuf, wCount);
+}

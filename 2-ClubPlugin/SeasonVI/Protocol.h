@@ -165,6 +165,13 @@ struct SDHP_CUSTOM_NPC_LIST_RECV
 	BYTE count;
 };
 
+struct SDHP_CUSTOM_CLOAK_LIST_RECV
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
 struct SDHP_CHECKSUM_LIST_RECV
 {
 	PSWMSG_HEAD header; // C1:02:01
@@ -240,6 +247,7 @@ public:
 	void WindowListRecv(SDHP_WINDOW_LIST_RECV* lpMsg);
 	void CustomMonsterListRecv(SDHP_CUSTOM_MONSTER_LIST_RECV* lpMsg);
 	void CustomNPCListRecv(SDHP_CUSTOM_NPC_LIST_RECV* lpMsg);
+	void CustomCloakListRecv(SDHP_CUSTOM_CLOAK_LIST_RECV* lpMsg);
 	void ClientDisconnectSend(int type, char* text, DWORD pid);
 	void ClientDisconnectRecv(SDHP_CLIENT_DISCONNECT_RECV* lpMsg);
 	void ClientSendHack(char* Account, char* Prog, int Status, int Map, int X, int Y);
@@ -254,6 +262,7 @@ public:
 	DWORD WindowListMaxCount;
 	DWORD CustomMonsterListMaxCount;
 	DWORD CustomNPCListMaxCount;
+	DWORD CustomCloakListMaxCount;
 	DWORD ReconnectStatus;
 	DWORD ReconnectSwitch;
 	DWORD HackSwitch;
@@ -262,6 +271,7 @@ public:
 	DWORD WindowListOK;
 	DWORD CustomMonsterListOK;
 	DWORD CustomNPCListOK;
+	DWORD CustomCloakListOK;
 	DWORD DetectCloseTime;
 	DWORD UserAccount;
 	DWORD UserStruct;

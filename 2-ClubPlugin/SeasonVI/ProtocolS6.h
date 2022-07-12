@@ -1,4 +1,5 @@
 #pragma once
+#include "EventTimeS6.h"
 
 //**********************************************//
 //************ Dll -> Server *******************//
@@ -10,6 +11,11 @@ struct SDHP_REQUEST_OFFSET_S6_SEND
 };
 
 struct SDHP_REQUEST_KEYBOARD_S6_SEND
+{
+	HEAD_VERSION header; // C1:00
+};
+
+struct SDHP_REQUEST_EVENT_LIST_S6_SEND
 {
 	HEAD_VERSION header; // C1:00
 };
@@ -63,11 +69,21 @@ struct SDHP_REQUEST_KEYBOARD_S6_RECV
 	char Name4Server[32];
 };
 
+struct SDHP_REQUEST_EVENT_LIST_S6_RECV
+{
+	HEAD_VERSION header; // C1:00	
+	int Id;
+	char NameEvent[25];
+	int TimeEvent;
+};
+
 class CProtocolS6
 {
 public:
 	void ProtocolCore(BYTE head, BYTE* lpMsg, int size);
 	void RecvKeyboardS6(SDHP_REQUEST_KEYBOARD_S6_RECV* lpMsg);
+	void RecvEventListS6(SDHP_REQUEST_EVENT_LIST_S6_RECV* lpMsg);
+	void RequestEventListS6();
 	void RequestOffSetS6();
 	void RequestKeyboardS6();
 public:

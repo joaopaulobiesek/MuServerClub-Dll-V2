@@ -71,6 +71,7 @@ struct SDHP_REQUEST_KEYBOARD_S6_SEND
 struct SDHP_REQUEST_EVENT_LIST_S6_SEND
 {
 	HEAD_VERSION header; // C1:00	
+	int Id;
 	char NameEvent[25];
 	int TimeEvent;
 };

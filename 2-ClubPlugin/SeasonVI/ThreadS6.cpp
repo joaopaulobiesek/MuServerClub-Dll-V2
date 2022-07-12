@@ -116,8 +116,14 @@ void CThreadS6::InitCustom()
 		gNPCName.Scan();
 	}
 
+	if (gFeatures.customCloak == 1)
+	{
+		gCloak.Scan();
+	}
+
 	gCustomMonster.Load(gCustomMonster.m_CustomMonster);
 	gNPCName.Load(gNPCName.m_CustomNpcName);
+	gCloak.Load(gCloak.m_Cloak);
 	gCustomMonster.InitMonster();
 
 	if (gFeatures.guildIco == 1)
@@ -179,6 +185,7 @@ void CThreadS6::InitCustom()
 		}
 		gCustomOptionS6.Init();
 		gCHealthBarS6.InitHealthBar();
+		gItemFixS6.Init();
 		//Inicia Custom Window + ESC Option
 	}
 }

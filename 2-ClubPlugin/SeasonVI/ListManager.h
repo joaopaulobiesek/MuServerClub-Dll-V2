@@ -71,6 +71,18 @@ struct NPCNAME_DATA
 	char Name[25];
 };
 
+struct CLOAKNAME_DATA
+{
+	int Index;
+	int ItemType;
+	int Mode;
+	char CloakName[100];
+	char StripName[100];
+	int IndexCloak;
+	int IndexStrip;
+	int ItemIndex;
+};
+
 class CListManager
 {
 public:
@@ -83,6 +95,7 @@ public:
 	std::vector<WNDW_LIST_INFO> gWindowListInfo;
 	std::vector<NPCNAME_DATA> gCustomNPCListInfo;
 	std::vector<CUSTOMMONSTER_DATA> gCustomMonsterListInfo;
+	std::vector<CLOAKNAME_DATA> gCustomCloakListInfo;
 };
 
 extern CListManager gListManager;
