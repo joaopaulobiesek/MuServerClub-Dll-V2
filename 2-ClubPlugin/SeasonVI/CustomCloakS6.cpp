@@ -149,15 +149,13 @@ void cCustomCloak::Scan()
     {
         info.Index = it->Index++;
 
-        info.ItemType = it->ItemType;
+        info.ItemIndex = it->ItemIndex;
 
         info.Mode = it->Mode;
 
         info.IndexCloak = 0;
 
         info.IndexStrip = 0;
-
-        info.ItemIndex = 0;
 
         strcpy_s(info.CloakName, it->CloakName);
 

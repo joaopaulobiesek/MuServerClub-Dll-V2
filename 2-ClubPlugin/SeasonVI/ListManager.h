@@ -74,13 +74,12 @@ struct NPCNAME_DATA
 struct CLOAKNAME_DATA
 {
 	int Index;
-	int ItemType;
-	int Mode;
-	char CloakName[100];
-	char StripName[100];
-	int IndexCloak;
-	int IndexStrip;
 	int ItemIndex;
+	int Mode;
+	int IndexCloak;
+	char CloakName[100];
+	int IndexStrip;
+	char StripName[100];
 };
 
 class CListManager

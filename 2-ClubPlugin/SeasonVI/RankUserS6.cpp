@@ -38,12 +38,6 @@ void CRankUserS6::DrawInfo()
 			continue;
 		}
 
-
-		if (*(BYTE*)(ViewportAddress + 0xE) == 0)
-		{
-			continue;
-		}
-
 		if ((((pMapNumber) < 18) ? 0 : ((pMapNumber) > 23) ? (((pMapNumber) == 53) ? 1 : 0) : 1) == 1) //Disable in Chaos Castle
 		{
 			continue;
@@ -77,7 +71,7 @@ void CRankUserS6::DrawInfo()
 		pGLSwitch();
 	}
 	// ---
-	//pGLSwitch();
+	pGLSwitch();
 	// ---
 	glColor3f(1.0, 1.0, 1.0);
 }

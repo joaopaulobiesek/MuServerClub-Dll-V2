@@ -425,9 +425,13 @@ void CProtocol::CustomCloakListSend(int index) // OK
 
 			info.Index = MakeList->Index;
 
-			info.ItemType = MakeList->ItemType;
+			info.ItemIndex = MakeList->ItemIndex;
 
 			info.Mode = MakeList->Mode;
+
+			info.IndexCloak = MakeList->IndexCloak;
+
+			info.IndexStrip = MakeList->IndexStrip;
 
 			strcpy_s(info.CloakName, MakeList->CloakName);
 

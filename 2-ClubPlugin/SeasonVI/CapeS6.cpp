@@ -796,7 +796,6 @@ void RefreshCapeUnEquip1(ObjectItem* lpItem)
 {
 	if (gCloak.isCloak(lpItem->ItemID) || lpItem->ItemID == 6183 || lpItem->ItemID == 6184 || lpItem->ItemID == 6193 || lpItem->ItemID == 6194) {
 		pRefreshViewport(oUserPreviewStruct, oUserPreviewStruct + 776, 0);
-		return;
 	}
 	pRefreshCape1(lpItem);
 }
@@ -805,7 +804,6 @@ void RefreshCapeUnEquip2(ObjectItem* lpItem)
 {
 	if (gCloak.isCloak(lpItem->ItemID) || lpItem->ItemID == ITEM(12, 135)) {
 		pRefreshViewport(oUserPreviewStruct, oUserPreviewStruct + 776, 0);
-		return;
 	}
 	pRefreshCape2(lpItem);
 }

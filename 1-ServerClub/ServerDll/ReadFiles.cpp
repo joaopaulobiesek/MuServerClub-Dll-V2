@@ -494,9 +494,13 @@ void CReadFiles::CustomCloakList(char* path)
 
 			info.Index = CustomIndexCount;
 
-			info.ItemType = lpScript->GetNumber();
+			info.ItemIndex = lpScript->GetNumber();
 
 			info.Mode = lpScript->GetAsNumber();
+
+			info.IndexCloak = 0;
+
+			info.IndexStrip = 0;
 
 			strcpy_s(info.CloakName, lpScript->GetAsString());
 

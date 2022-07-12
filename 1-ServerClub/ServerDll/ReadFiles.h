@@ -51,9 +51,11 @@ struct NPCNAME_DATA
 struct CLOAKNAME_DATA
 {
 	int Index;
-	int ItemType;
+	int ItemIndex;
 	int Mode;
+	int IndexCloak;
 	char CloakName[100];
+	int IndexStrip;
 	char StripName[100];
 };
 

@@ -47,10 +47,6 @@ void Interface::Load()
 	{
 		gEmojis.AddTextures();
 	}
-	if (gFeatures.customCloak == 1)
-	{
-		gCloak.LoadTexture();
-	}
 }
 
 void Interface::LoadImages()
@@ -121,6 +117,12 @@ void Interface::LoadImages()
 	{
 		gEmojis.LoadImages();
 	}
+
+	if (gFeatures.customCloak == 1)
+	{
+		gCloak.LoadTexture();
+	}
+	pLoadSomeForm();
 }
 
 void Interface::BindObject(short MonsterID, DWORD ModelID, float Width, float Height, float X, float Y)

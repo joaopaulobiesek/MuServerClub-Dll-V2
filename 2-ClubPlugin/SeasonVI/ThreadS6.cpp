@@ -119,11 +119,12 @@ void CThreadS6::InitCustom()
 	if (gFeatures.customCloak == 1)
 	{
 		gCloak.Scan();
+		gCloak.Load(gCloak.m_Cloak);
+		gCapeAnimation.Load();
 	}
 
 	gCustomMonster.Load(gCustomMonster.m_CustomMonster);
 	gNPCName.Load(gNPCName.m_CustomNpcName);
-	gCloak.Load(gCloak.m_Cloak);
 	gCustomMonster.InitMonster();
 
 	if (gFeatures.guildIco == 1)
