@@ -456,7 +456,6 @@ void CReadFiles::CustomEventList(char* path)
 
 void CReadFiles::CustomCloakList(char* path)
 {
-
 	CMemScript* lpScript = new CMemScript;
 
 	if (lpScript == 0)
@@ -509,6 +508,129 @@ void CReadFiles::CustomCloakList(char* path)
 			CustomIndexCount++;
 
 			gCustomCloakListInfo.push_back(info);
+		}
+	}
+	catch (...)
+	{
+		printf(lpScript->GetLastError());
+	}
+
+	delete lpScript;
+}
+
+void CReadFiles::CustomSmokeEffectList(char* path)
+{
+	CMemScript* lpScript = new CMemScript;
+
+	if (lpScript == 0)
+	{
+		return;
+	}
+
+	if (lpScript->SetBuffer(path, 0) == 0)
+	{
+		delete lpScript;
+		return;
+	}
+
+	gCustomSmokeEffectInfo.clear();
+
+	try
+	{
+		while (true)
+		{
+			if (lpScript->GetToken() == TOKEN_END)
+			{
+				break;
+			}
+
+			if (strcmp("end", lpScript->GetString()) == 0)
+			{
+				break;
+			}
+
+			CUSTOM_SMOKEEFFECT info;
+
+			memset(&info, 0, sizeof(info));
+
+			static int CustomIndexCount = 0;
+
+			info.Index = CustomIndexCount;
+
+			info.ItemIndex = lpScript->GetNumber();
+
+			info.Red = lpScript->GetAsNumber();
+
+			info.Green = lpScript->GetAsNumber();
+
+			info.Blue = lpScript->GetAsNumber();
+
+			CustomIndexCount++;
+
+			gCustomSmokeEffectInfo.push_back(info);
+		}
+	}
+	catch (...)
+	{
+		printf(lpScript->GetLastError());
+	}
+
+	delete lpScript;
+}
+
+void CReadFiles::CustomFogList(char* path)
+{
+
+	CMemScript* lpScript = new CMemScript;
+
+	if (lpScript == 0)
+	{
+		return;
+	}
+
+	if (lpScript->SetBuffer(path, 0) == 0)
+	{
+		delete lpScript;
+		return;
+	}
+
+	gCustomFogInfo.clear();
+
+	try
+	{
+		while (true)
+		{
+			if (lpScript->GetToken() == TOKEN_END)
+			{
+				break;
+			}
+
+			if (strcmp("end", lpScript->GetString()) == 0)
+			{
+				break;
+			}
+
+			CUSTOM_FOG info;
+
+			memset(&info, 0, sizeof(info));
+
+			static int CustomIndexCount = 0;
+
+			info.Index = CustomIndexCount;
+
+			info.MapNumber = lpScript->GetNumber();
+
+			info.Enable = lpScript->GetAsNumber();
+
+			info.Red = lpScript->GetAsNumber();
+
+			info.Green = lpScript->GetAsNumber();
+
+			info.Blue = lpScript->GetAsNumber();
+
+			CustomIndexCount++;
+
+			gCustomFogInfo.push_back(info);
 		}
 	}
 	catch (...)

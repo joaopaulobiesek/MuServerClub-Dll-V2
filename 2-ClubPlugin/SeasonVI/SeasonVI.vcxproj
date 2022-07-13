@@ -172,6 +172,7 @@
     <ClInclude Include="CustomCommonS6.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="CriticalSection.h" />
+    <ClInclude Include="CustomFogS6.h" />
     <ClInclude Include="CustomInterfaceS6.h" />
     <ClInclude Include="CustomMonsterS6.h" />
     <ClInclude Include="CustomNpcNameS6.h" />
@@ -196,6 +197,8 @@
     <ClInclude Include="ImportS6.h" />
     <ClInclude Include="InterfaceS6.h" />
     <ClInclude Include="ItemFixS6.h" />
+    <ClInclude Include="ItemS6.h" />
+    <ClInclude Include="ItemSmokeS6.h" />
     <ClInclude Include="JCEntryproy.h" />
     <ClInclude Include="JCOptionBox.h" />
     <ClInclude Include="ListManager.h" />
@@ -272,6 +275,7 @@
     <ClCompile Include="CustomCommonS6.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="CriticalSection.cpp" />
+    <ClCompile Include="CustomFogS6.cpp" />
     <ClCompile Include="CustomInterfaceS6.cpp" />
     <ClCompile Include="CustomMonsterS6.cpp" />
     <ClCompile Include="CustomNpcNameS6.cpp" />
@@ -293,6 +297,8 @@
     <ClCompile Include="HookMSS6.cpp" />
     <ClCompile Include="InterfaceS6.cpp" />
     <ClCompile Include="ItemFixS6.cpp" />
+    <ClCompile Include="ItemS6.cpp" />
+    <ClCompile Include="ItemSmokeS6.cpp" />
     <ClCompile Include="JCEntryproy.cpp" />
     <ClCompile Include="JCOptionBox.cpp" />
     <ClCompile Include="ListManager.cpp" />

@@ -471,6 +471,15 @@
     <ClInclude Include="ModelEffectS6.h">
       <Filter>Source Files\Features\Custom\S6\Cape</Filter>
     </ClInclude>
+    <ClInclude Include="ItemSmokeS6.h">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomFogS6.h">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemS6.h">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -745,6 +754,15 @@
     </ClCompile>
     <ClCompile Include="ModelEffectS6.cpp">
       <Filter>Source Files\Features\Custom\S6\Cape</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemSmokeS6.cpp">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomFogS6.cpp">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemS6.cpp">
+      <Filter>Source Files\Features\Custom\S6</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

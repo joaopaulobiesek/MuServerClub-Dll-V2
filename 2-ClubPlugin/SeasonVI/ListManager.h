@@ -82,6 +82,25 @@ struct CLOAKNAME_DATA
 	char StripName[100];
 };
 
+struct CUSTOM_SMOKEEFFECT
+{
+	int Index;
+	int ItemIndex;
+	float Red;
+	float Green;
+	float Blue;
+};
+
+struct CUSTOM_FOG
+{
+	int Index;
+	int MapNumber;
+	int Enable;
+	float Red;
+	float Green;
+	float Blue;
+};
+
 class CListManager
 {
 public:
@@ -95,6 +114,8 @@ public:
 	std::vector<NPCNAME_DATA> gCustomNPCListInfo;
 	std::vector<CUSTOMMONSTER_DATA> gCustomMonsterListInfo;
 	std::vector<CLOAKNAME_DATA> gCustomCloakListInfo;
+	std::vector<CUSTOM_SMOKEEFFECT> gCustomSmokeEffectListInfo;
+	std::vector<CUSTOM_FOG> gCustomFogListInfo;
 };
 
 extern CListManager gListManager;

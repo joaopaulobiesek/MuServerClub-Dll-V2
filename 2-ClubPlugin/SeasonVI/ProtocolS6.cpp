@@ -78,6 +78,10 @@ void CProtocolS6::RecvKeyboardS6(SDHP_REQUEST_KEYBOARD_S6_RECV* lpMsg)
 	memcpy(gThreadS6.Name2Server, lpMsg->Name2Server, sizeof(gThreadS6.Name2Server));
 	memcpy(gThreadS6.Name3Server, lpMsg->Name3Server, sizeof(gThreadS6.Name3Server));
 	memcpy(gThreadS6.Name4Server, lpMsg->Name4Server, sizeof(gThreadS6.Name4Server));
+	gThreadS6.KeyEventTime = lpMsg->KeyEventTime;
+	gThreadS6.SmokeEffect = lpMsg->SmokeEffect;
+	gThreadS6.CustomFog = lpMsg->CustomFog;
+	gThreadS6.DownS6 = lpMsg->DownS6;
 }
 
 void CProtocolS6::RecvEventListS6(SDHP_REQUEST_EVENT_LIST_S6_RECV* lpMsg)

@@ -13,7 +13,11 @@
 #define ITEM(x, y)                    ((x * 512) + y)
 #define ITEM2(x, y)                    ((x * 512) + y + ITEM_INTER)
 
-
+#define MAIN_SCREEN_STATE_S6 0x00E609E8
+//--------------------------------------ITEM
+#define HDK_ITEM_EFFECT_ALLOW 0x0057AD8D //0x0052B0E7
+#define HDK_ITEM_EFFECT_NOT_ALLOW 0x0057B73B //0x0052B9E0
+#define HDK_NEXT_ITEM_COLOR 0x0057AF2E //0x0052B150
 
 // ----------------------------------------------------------------------------------------------
 #define PlayBuffer			((signed int(__cdecl*)(int a1, int a2, int a3)) 0x006D6C20)

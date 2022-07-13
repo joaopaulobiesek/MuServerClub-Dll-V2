@@ -67,6 +67,10 @@ struct SDHP_REQUEST_KEYBOARD_S6_RECV
 	char Name2Server[32];
 	char Name3Server[32];
 	char Name4Server[32];
+	int KeyEventTime;
+	int DownS6;
+	int SmokeEffect;
+	int CustomFog;
 };
 
 struct SDHP_REQUEST_EVENT_LIST_S6_RECV

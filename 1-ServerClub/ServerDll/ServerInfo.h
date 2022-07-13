@@ -54,6 +54,9 @@ public:
 	int Func15;
 	int Func16;
 	int DownS6;
+	int SmokeEffect;
+	int CustomFog;
+	int KeyEventTime;
 
 	int PetSafeZone_Horse;
 	int PetSafeZone_Dinorant;

@@ -79,6 +79,25 @@ struct EVENTNAME_HOUR_DATA
 	int Second;
 };
 
+struct CUSTOM_SMOKEEFFECT
+{
+	int Index;
+	int ItemIndex;
+	float Red;
+	float Green;
+	float Blue;
+};
+
+struct CUSTOM_FOG
+{
+	int Index;
+	int MapNumber;
+	int Enable;
+	float Red;
+	float Green;
+	float Blue;
+};
+
 class CReadFiles
 {
 public:
@@ -92,6 +111,8 @@ public:
 	void CustomNPCList(char* path);
 	void CustomCloakList(char* path);
 	void CustomEventList(char* path);
+	void CustomFogList(char* path);
+	void CustomSmokeEffectList(char* path);
 public:
 	bool ReloadSwitch;
 	bool UpdateSwitch;
@@ -104,6 +125,8 @@ public:
 	std::vector<EVENTNAME_DATA> gCustomEVENTListNameInfo;
 	std::vector<EVENTNAME_HOUR_DATA> gCustomEVENTListHourInfo;
 	std::vector<CUSTOMMONSTER_DATA> gCustomMonsterListInfo;
+	std::vector<CUSTOM_SMOKEEFFECT> gCustomSmokeEffectInfo;
+	std::vector<CUSTOM_FOG> gCustomFogInfo;
 };
 
 extern CReadFiles gReadFiles;

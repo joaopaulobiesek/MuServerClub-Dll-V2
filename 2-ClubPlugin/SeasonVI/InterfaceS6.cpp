@@ -191,7 +191,7 @@ void Interface::Work()
 	{
 		gCustomEventTimeDraw.DrawEventTimePanelWindow();
 
-		if (GetKeyState('R') & 0x4000 && GetForegroundWindow() == pGameWindow)
+		if (GetKeyState(gThreadS6.KeyEventTime) & 0x4000 && GetForegroundWindow() == pGameWindow)
 		{
 			gCustomEventTimeDraw.OpenWindow();
 		}

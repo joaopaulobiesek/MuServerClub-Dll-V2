@@ -11,6 +11,9 @@ CProtocol::CProtocol() // OK
 	this->WindowListMaxCount = 0;
 	this->CustomMonsterListMaxCount = 0;
 	this->CustomNPCListMaxCount = 0;
+	this->CustomCloakListMaxCount = 0;
+	this->CustomSmokeEffectListMaxCount = 0;
+	this->CustomFogListMaxCount = 0;
 	this->ReconnectStatus = 0;
 	this->ReconnectSwitch = 0;
 	this->HackSwitch = 0;
@@ -19,6 +22,9 @@ CProtocol::CProtocol() // OK
 	this->WindowListOK = 0;
 	this->CustomMonsterListOK = 0;
 	this->CustomNPCListOK = 0;
+	this->CustomCloakListOK = 0;
+	this->CustomSmokeEffectListOK = 0;
+	this->CustomFogListOK = 0;
 	this->DetectCloseTime = 0;
 	this->UserAccount = 0;
 	this->UserStruct = 0;
@@ -56,6 +62,12 @@ void ProtocolCoreMain(BYTE head, BYTE* lpMsg, int size)
 			break;
 		case 0x09:
 			gProtocol.CustomCloakListRecv((SDHP_CUSTOM_CLOAK_LIST_RECV*)lpMsg);
+			break;
+		case 0x0B:
+			gProtocol.CustomSmokeEffectListRecv((SDHP_CUSTOM_SMOKE_EFFECT_LIST_RECV*)lpMsg);
+			break;
+		case 0x0D:
+			gProtocol.CustomFogListRecv((SDHP_CUSTOM_FOG_LIST_RECV*)lpMsg);
 			break;
 		}
 		break;
@@ -324,6 +336,38 @@ void CProtocol::CustomCloakListRecv(SDHP_CUSTOM_CLOAK_LIST_RECV* lpMsg) // OK
 	}
 
 	CustomCloakListOK = 1;
+}
+
+void CProtocol::CustomSmokeEffectListRecv(SDHP_CUSTOM_SMOKE_EFFECT_LIST_RECV* lpMsg) // OK
+{
+	//gLog.Output(LOG_DEBUG, GetEncryptedString(43), lpMsg->count, lpMsg->MaxCount);
+
+	CustomSmokeEffectListMaxCount = lpMsg->MaxCount;
+
+	for (int n = 0; n < lpMsg->count; n++)
+	{
+		CUSTOM_SMOKEEFFECT* lpInfo = (CUSTOM_SMOKEEFFECT*)(((BYTE*)lpMsg) + sizeof(SDHP_CUSTOM_SMOKE_EFFECT_LIST_RECV) + (sizeof(CUSTOM_SMOKEEFFECT) * n));
+
+		gListManager.gCustomSmokeEffectListInfo.push_back((*lpInfo));
+	}
+
+	CustomSmokeEffectListOK = 1;
+}
+
+void CProtocol::CustomFogListRecv(SDHP_CUSTOM_FOG_LIST_RECV* lpMsg) // OK
+{
+	//gLog.Output(LOG_DEBUG, GetEncryptedString(43), lpMsg->count, lpMsg->MaxCount);
+
+	CustomFogListMaxCount = lpMsg->MaxCount;
+
+	for (int n = 0; n < lpMsg->count; n++)
+	{
+		CUSTOM_FOG* lpInfo = (CUSTOM_FOG*)(((BYTE*)lpMsg) + sizeof(SDHP_CUSTOM_FOG_LIST_RECV) + (sizeof(CUSTOM_FOG) * n));
+
+		gListManager.gCustomFogListInfo.push_back((*lpInfo));
+	}
+
+	CustomFogListOK = 1;
 }
 
 void CProtocol::ConnectionStatusSend() // OK

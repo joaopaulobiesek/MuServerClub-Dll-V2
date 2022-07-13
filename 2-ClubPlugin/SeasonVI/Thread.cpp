@@ -122,11 +122,11 @@ void CThread::Init()
 			}
 		}
 
-		if (gProtocol.ClientInfoOK != 0 && gProtocol.ChecksumListOK != 0 && gProtocol.WindowListOK != 0 && gProtocol.CustomMonsterListOK != 0 && gProtocol.CustomNPCListOK != 0 && gProtocol.CustomCloakListOK != 0)
+		if (gProtocol.ClientInfoOK != 0 && gProtocol.ChecksumListOK != 0 && gProtocol.WindowListOK != 0 && gProtocol.CustomMonsterListOK != 0 && gProtocol.CustomNPCListOK != 0 && gProtocol.CustomCloakListOK != 0 && gProtocol.CustomSmokeEffectListOK != 0 && gProtocol.CustomFogListOK != 0)
 		{
-			DWORD CurProgress = gListManager.gChecksumListInfo.size() + gListManager.gWindowListInfo.size() + gListManager.gCustomMonsterListInfo.size() + gListManager.gCustomNPCListInfo.size() + gListManager.gCustomCloakListInfo.size();
+			DWORD CurProgress = gListManager.gChecksumListInfo.size() + gListManager.gWindowListInfo.size() + gListManager.gCustomMonsterListInfo.size() + gListManager.gCustomNPCListInfo.size() + gListManager.gCustomCloakListInfo.size() + gListManager.gCustomFogListInfo.size() + gListManager.gCustomSmokeEffectListInfo.size();
 
-			DWORD MaxProgress = gProtocol.ChecksumListMaxCount + gProtocol.WindowListMaxCount + gProtocol.CustomMonsterListMaxCount + gProtocol.CustomNPCListMaxCount + gProtocol.CustomCloakListMaxCount;
+			DWORD MaxProgress = gProtocol.ChecksumListMaxCount + gProtocol.WindowListMaxCount + gProtocol.CustomMonsterListMaxCount + gProtocol.CustomNPCListMaxCount + gProtocol.CustomCloakListMaxCount + gProtocol.CustomSmokeEffectListMaxCount + gProtocol.CustomFogListMaxCount;
 
 			if (CurProgress >= MaxProgress)
 			{

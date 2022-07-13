@@ -91,6 +91,30 @@ void CServerInfo::ReadCustomList() // OK
 		obj.close();
 		LogAdd(LOG_RED, "[ServerInfo] Custom Cloak file does not exist");
 	}
+	obj.open(".\\Custom\\CustomFog.txt");
+	if (obj.is_open())
+	{
+		obj.close();
+		gReadFiles.CustomFogList(".\\Custom\\CustomFog.txt");
+		LogAdd(LOG_BLUE, "[ServerInfo] Custom Fog loaded successfully");
+	}
+	else
+	{
+		obj.close();
+		LogAdd(LOG_RED, "[ServerInfo] Custom Fog file does not exist");
+	}
+	obj.open(".\\Custom\\CustomSmokeEffect.txt");
+	if (obj.is_open())
+	{
+		obj.close();
+		gReadFiles.CustomSmokeEffectList(".\\Custom\\CustomSmokeEffect.txt");
+		LogAdd(LOG_BLUE, "[ServerInfo] Custom Smoke Effect loaded successfully");
+	}
+	else
+	{
+		obj.close();
+		LogAdd(LOG_RED, "[ServerInfo] Custom Smoke Effect file does not exist");
+	}
 	obj.open(".\\Custom\\CustomNPCName.txt");
 	if (obj.is_open())
 	{
@@ -247,6 +271,12 @@ void CServerInfo::ReadStartupKeyboard(const char* section, const char* path) // 
 void CServerInfo::ReadStartupCustomS6(const char* section, const char* path) // OK
 {
 	this->DownS6 = GetPrivateProfileInt(section, "DownS6", 0, path);
+
+	this->SmokeEffect = GetPrivateProfileInt(section, "SmokeEffect", 0, path);
+
+	this->CustomFog = GetPrivateProfileInt(section, "CustomFog", 0, path);
+
+	this->KeyEventTime = GetPrivateProfileInt(section, "KeyEventTime", 0, path);
 
 	this->PetSafeZone_Horse = GetPrivateProfileInt(section, "PetSafeZoneHorse", 0, path);
 

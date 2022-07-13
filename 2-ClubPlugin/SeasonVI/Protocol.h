@@ -172,6 +172,20 @@ struct SDHP_CUSTOM_CLOAK_LIST_RECV
 	BYTE count;
 };
 
+struct SDHP_CUSTOM_SMOKE_EFFECT_LIST_RECV
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
+struct SDHP_CUSTOM_FOG_LIST_RECV
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
 struct SDHP_CHECKSUM_LIST_RECV
 {
 	PSWMSG_HEAD header; // C1:02:01
@@ -248,6 +262,8 @@ public:
 	void CustomMonsterListRecv(SDHP_CUSTOM_MONSTER_LIST_RECV* lpMsg);
 	void CustomNPCListRecv(SDHP_CUSTOM_NPC_LIST_RECV* lpMsg);
 	void CustomCloakListRecv(SDHP_CUSTOM_CLOAK_LIST_RECV* lpMsg);
+	void CustomSmokeEffectListRecv(SDHP_CUSTOM_SMOKE_EFFECT_LIST_RECV* lpMsg);
+	void CustomFogListRecv(SDHP_CUSTOM_FOG_LIST_RECV* lpMsg);
 	void ClientDisconnectSend(int type, char* text, DWORD pid);
 	void ClientDisconnectRecv(SDHP_CLIENT_DISCONNECT_RECV* lpMsg);
 	void ClientSendHack(char* Account, char* Prog, int Status, int Map, int X, int Y);
@@ -263,6 +279,8 @@ public:
 	DWORD CustomMonsterListMaxCount;
 	DWORD CustomNPCListMaxCount;
 	DWORD CustomCloakListMaxCount;
+	DWORD CustomSmokeEffectListMaxCount;
+	DWORD CustomFogListMaxCount;
 	DWORD ReconnectStatus;
 	DWORD ReconnectSwitch;
 	DWORD HackSwitch;
@@ -272,6 +290,8 @@ public:
 	DWORD CustomMonsterListOK;
 	DWORD CustomNPCListOK;
 	DWORD CustomCloakListOK;
+	DWORD CustomSmokeEffectListOK;
+	DWORD CustomFogListOK;
 	DWORD DetectCloseTime;
 	DWORD UserAccount;
 	DWORD UserStruct;

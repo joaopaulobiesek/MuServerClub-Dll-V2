@@ -102,9 +102,45 @@ void CThreadS6::InitCustom()
 	SetByte(0x007DA373, 0xB7); // Item Type Limit
 	SetByte(0x007E1C44, 0xB7); // Item Type Limit
 
+	if (gThreadS6.DownS6 == 1)
+	{
+		SetByte(0x004030D4, 6); // Remove RF
+	}
+	else if (gThreadS6.DownS6 == 2)
+	{
+		SetByte(0x004030D4, 5); //Remove RF + SU
+	}
+	else if (gThreadS6.DownS6 == 3)
+	{
+		SetByte(0x004030D4, 4); // Remove RF + SU + DL
+	}
+	else if (gThreadS6.DownS6 == 4)
+	{
+		SetByte(0x004030D4, 3); // Remove RF + SU + DL + MG
+	}
+	else
+	{
+		SetByte(0x004030D4, 7); // Original	
+	}
+
+	if (gThreadS6.SmokeEffect == 1)
+	{
+		gSmokeEffect.Scan();
+		gSmokeEffect.Load(gSmokeEffect.m_CustomSmokeEffect);
+
+	}
+	if (gThreadS6.CustomFog == 1)
+	{
+		gFog.Scan();
+		gFog.Load(gFog.m_CustomFog);
+	}
+
 	gObjUser.Load();
+	if (gThreadS6.SmokeEffect == 1) InitItem();
 	gInterface.Load();
 	gCustomInterface.Load();
+	if (gThreadS6.CustomFog == 1) gFog.Init();
+	if (gThreadS6.SmokeEffect == 1) gSmokeEffect.Init();
 
 	if (gFeatures.customMoster == 1)
 	{
@@ -189,6 +225,7 @@ void CThreadS6::InitCustom()
 		gItemFixS6.Init();
 		//Inicia Custom Window + ESC Option
 	}
+
 }
 
 void CThreadS6::SelectServerThread(int Cod_ID)

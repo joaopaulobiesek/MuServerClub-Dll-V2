@@ -12,6 +12,13 @@ void SetByte(DWORD offset, BYTE value) // OK
 	VirtualProtect((void*)offset, 1, OldProtect, &OldProtect);
 }
 
+//---------------------------------------------------------------------------
+
+DWORD SetByte(const LPVOID dwOffset, const BYTE btValue)
+{
+	return WriteMemory(dwOffset, (LPVOID)&btValue, sizeof(BYTE));
+}
+
 void SetWord(DWORD offset, WORD value) // OK
 {
 	DWORD OldProtect;

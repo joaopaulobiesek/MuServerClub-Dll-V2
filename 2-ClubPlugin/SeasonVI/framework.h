@@ -161,3 +161,6 @@ typedef unsigned __int64 QWORD;
 #include "zzzmathlib.h"
 #include "MonsterEffectS6.h"
 #include "ModelEffectS6.h"
+#include "CustomFogS6.h"
+#include "ItemSmokeS6.h"
+#include "ItemS6.h"

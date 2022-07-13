@@ -28,6 +28,7 @@ struct PROCESS_CACHE_INFO
 };
 
 void SetByte(DWORD offset, BYTE value);
+DWORD SetByte(const LPVOID dwOffset, const BYTE btValue);
 void SetWord(DWORD offset, WORD value);
 void SetDword(DWORD offset, DWORD value);
 void SetFloat(DWORD offset, float value);

@@ -24,6 +24,10 @@ public:
 	char Name2Server[32];
 	char Name3Server[32];
 	char Name4Server[32];
+	int KeyEventTime;
+	int DownS6;
+	int SmokeEffect;
+	int CustomFog;
 private:
 	char* GetCharacterN;
 	RECT rect;

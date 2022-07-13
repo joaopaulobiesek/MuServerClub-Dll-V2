@@ -219,6 +219,20 @@ struct SDHP_CUSTOM_CLOAK_LIST_SEND
 	BYTE count;
 };
 
+struct SDHP_CUSTOM_SMOKE_EFFECT_LIST_SEND
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
+struct SDHP_CUSTOM_FOG_LIST_SEND
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
 struct SDHP_CHECKSUM_LIST_SEND
 {
 	PSWMSG_HEAD header; // C1:02:01
@@ -249,6 +263,8 @@ public:
 	void CustomMonsterListSend(int index);
 	void CustomNPCListSend(int index);
 	void CustomCloakListSend(int index);
+	void CustomSmokeEffectListSend(int index);
+	void CustomFogListSend(int index);
 	void ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index);
 public:
 	DWORD VersionMu;
