@@ -276,7 +276,7 @@ void CServerInfo::ReadStartupCustomS6(const char* section, const char* path) // 
 
 	this->CustomFog = GetPrivateProfileInt(section, "CustomFog", 0, path);
 
-	this->KeyEventTime = GetPrivateProfileInt(section, "KeyEventTime", 0, path);
+	this->KeyEventTime = GetPrivateProfileInt(section, "KeyEventTime", 82, path); // 82 representa a tecla R
 
 	this->PetSafeZone_Horse = GetPrivateProfileInt(section, "PetSafeZoneHorse", 0, path);
 
