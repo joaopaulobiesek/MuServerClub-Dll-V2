@@ -559,12 +559,12 @@ void CReadFiles::CustomSmokeEffectList(char* path)
 
 			info.ItemIndex = lpScript->GetNumber();
 
-			info.Red = lpScript->GetAsNumber();
+			info.Red = lpScript->GetAsFloat();
 
-			info.Green = lpScript->GetAsNumber();
+			info.Green = lpScript->GetAsFloat();
 
-			info.Blue = lpScript->GetAsNumber();
-
+			info.Blue = lpScript->GetAsFloat();
+			
 			CustomIndexCount++;
 
 			gCustomSmokeEffectInfo.push_back(info);
@@ -622,11 +622,11 @@ void CReadFiles::CustomFogList(char* path)
 
 			info.Enable = lpScript->GetAsNumber();
 
-			info.Red = lpScript->GetAsNumber();
+			info.Red = lpScript->GetAsFloat();
 
-			info.Green = lpScript->GetAsNumber();
+			info.Green = lpScript->GetAsFloat();
 
-			info.Blue = lpScript->GetAsNumber();
+			info.Blue = lpScript->GetAsFloat();
 
 			CustomIndexCount++;
 
