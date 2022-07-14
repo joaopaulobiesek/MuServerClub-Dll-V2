@@ -4,7 +4,7 @@ cSmokeEffect gSmokeEffect;
 
 cSmokeEffect::cSmokeEffect()
 {
-	//this->Init();
+	this->Init();
 }
 
 cSmokeEffect::~cSmokeEffect()

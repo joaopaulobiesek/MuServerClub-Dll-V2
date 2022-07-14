@@ -126,8 +126,6 @@ void CThreadS6::InitCustom()
 	if (gThreadS6.SmokeEffect == 1)
 	{
 		gSmokeEffect.Scan();
-		gSmokeEffect.Load(gSmokeEffect.m_CustomSmokeEffect);
-
 	}
 	if (gThreadS6.CustomFog == 1)
 	{
@@ -140,7 +138,6 @@ void CThreadS6::InitCustom()
 	gInterface.Load();
 	gCustomInterface.Load();
 	if (gThreadS6.CustomFog == 1) gFog.Init();
-	if (gThreadS6.SmokeEffect == 1) gSmokeEffect.Init();
 
 	if (gFeatures.customMoster == 1)
 	{
