@@ -271,6 +271,7 @@ public:
 	void ConnectionStatusSend();
 	void ClientConnectSend();
 public:
+	int DebuggerCustomDisable;
 	DWORD VersionMu;
 	DWORD VersionMuHEX;
 	DWORD ConnectionStatusTime;

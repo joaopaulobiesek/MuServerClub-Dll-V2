@@ -96,6 +96,9 @@ void ProtocolCoreMain(int index, BYTE head, BYTE* lpMsg, int size)
 	case 0x21://Season 17
 		gProtocolS17.ProtocolCore(index, head, lpMsg, size);
 		break;
+	case 0x22://Season 17Ep2
+		gProtocolS1702.ProtocolCore(index, head, lpMsg, size);
+		break;
 	default:
 		gSocketManager.Disconnect(index);
 		break;

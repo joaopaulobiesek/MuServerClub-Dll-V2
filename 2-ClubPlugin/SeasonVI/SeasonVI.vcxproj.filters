@@ -175,6 +175,30 @@
     <Filter Include="Source Files\Lib\Mathlib">
       <UniqueIdentifier>{17f38541-a28d-4589-a69a-d379c1ee9a37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Protocol\S17\Ep1">
+      <UniqueIdentifier>{69c77b50-a361-4381-9d67-ee4d60871d0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol\S17\Ep2">
+      <UniqueIdentifier>{41f03915-9faf-4c00-8d00-09e65f5dd960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\AntiLag\S17\Ep1">
+      <UniqueIdentifier>{ed55dcfa-d89a-4028-bc66-a7c1997ceabb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\AntiLag\S17\Ep2">
+      <UniqueIdentifier>{f0bbc396-f291-4348-8e9d-b5760a50a497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Camera3D\S17\Ep1">
+      <UniqueIdentifier>{21e99854-a5d7-474e-9278-64b6e0dac48e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Camera3D\S17\Ep2">
+      <UniqueIdentifier>{601a0e23-73d7-467c-a10c-a1cbc222d048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Hook_KB_MS\S17\Ep1">
+      <UniqueIdentifier>{3aaeb525-98c2-4ab2-9696-42320a2befd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Hook_KB_MS\S17\Ep2">
+      <UniqueIdentifier>{d6d29299-ba54-40f4-b6de-bc4518d928d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -333,29 +357,8 @@
     <ClInclude Include="ExecutableCheck.h">
       <Filter>Source Files\BasicModules\Threads</Filter>
     </ClInclude>
-    <ClInclude Include="ProtocolS17.h">
-      <Filter>Source Files\Protocol\S17</Filter>
-    </ClInclude>
-    <ClInclude Include="ThreadS17.h">
-      <Filter>Source Files\Protocol\S17</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera3dS17.h">
-      <Filter>Source Files\Features\Camera3D\S17</Filter>
-    </ClInclude>
-    <ClInclude Include="HookKBS17.h">
-      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
-    </ClInclude>
-    <ClInclude Include="HookMSS17.h">
-      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
-    </ClInclude>
-    <ClInclude Include="AntiLagS17.h">
-      <Filter>Source Files\Features\AntiLag\S17</Filter>
-    </ClInclude>
     <ClInclude Include="Defines.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SwitchKBS17.h">
-      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
     </ClInclude>
     <ClInclude Include="Features.h">
       <Filter>Source Files\Features</Filter>
@@ -479,6 +482,51 @@
     </ClInclude>
     <ClInclude Include="ItemS6.h">
       <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS17.h">
+      <Filter>Source Files\Protocol\S17\Ep1</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadS17.h">
+      <Filter>Source Files\Protocol\S17\Ep1</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS1702.h">
+      <Filter>Source Files\Protocol\S17\Ep2</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadS1702.h">
+      <Filter>Source Files\Protocol\S17\Ep2</Filter>
+    </ClInclude>
+    <ClInclude Include="OffsetS1702.h">
+      <Filter>Source Files\Offset\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiLagS17.h">
+      <Filter>Source Files\Features\AntiLag\S17\Ep1</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiLagS1702.h">
+      <Filter>Source Files\Features\AntiLag\S17\Ep2</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera3dS17.h">
+      <Filter>Source Files\Features\Camera3D\S17\Ep1</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera3dS1702.h">
+      <Filter>Source Files\Features\Camera3D\S17\Ep2</Filter>
+    </ClInclude>
+    <ClInclude Include="HookKBS17.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep1</Filter>
+    </ClInclude>
+    <ClInclude Include="HookMSS17.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep1</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchKBS17.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep1</Filter>
+    </ClInclude>
+    <ClInclude Include="HookKBS1702.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep2</Filter>
+    </ClInclude>
+    <ClInclude Include="HookMSS1702.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep2</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchKBS1702.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -626,27 +674,6 @@
     <ClCompile Include="Protocol.cpp">
       <Filter>Source Files\Protocol</Filter>
     </ClCompile>
-    <ClCompile Include="ProtocolS17.cpp">
-      <Filter>Source Files\Protocol\S17</Filter>
-    </ClCompile>
-    <ClCompile Include="ThreadS17.cpp">
-      <Filter>Source Files\Protocol\S17</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera3dS17.cpp">
-      <Filter>Source Files\Features\Camera3D\S17</Filter>
-    </ClCompile>
-    <ClCompile Include="HookKBS17.cpp">
-      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
-    </ClCompile>
-    <ClCompile Include="HookMSS17.cpp">
-      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
-    </ClCompile>
-    <ClCompile Include="AntiLagS17.cpp">
-      <Filter>Source Files\Features\AntiLag\S17</Filter>
-    </ClCompile>
-    <ClCompile Include="SwitchKBS17.cpp">
-      <Filter>Source Files\Features\Hook_KB_MS\S17</Filter>
-    </ClCompile>
     <ClCompile Include="Features.cpp">
       <Filter>Source Files\Features</Filter>
     </ClCompile>
@@ -763,6 +790,51 @@
     </ClCompile>
     <ClCompile Include="ItemS6.cpp">
       <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS17.cpp">
+      <Filter>Source Files\Protocol\S17\Ep1</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadS17.cpp">
+      <Filter>Source Files\Protocol\S17\Ep1</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS1702.cpp">
+      <Filter>Source Files\Protocol\S17\Ep2</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadS1702.cpp">
+      <Filter>Source Files\Protocol\S17\Ep2</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS1702.cpp">
+      <Filter>Source Files\Offset\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiLagS17.cpp">
+      <Filter>Source Files\Features\AntiLag\S17\Ep1</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiLagS1702.cpp">
+      <Filter>Source Files\Features\AntiLag\S17\Ep2</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera3dS17.cpp">
+      <Filter>Source Files\Features\Camera3D\S17\Ep1</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera3dS1702.cpp">
+      <Filter>Source Files\Features\Camera3D\S17\Ep2</Filter>
+    </ClCompile>
+    <ClCompile Include="HookKBS17.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep1</Filter>
+    </ClCompile>
+    <ClCompile Include="HookMSS17.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep1</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchKBS17.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep1</Filter>
+    </ClCompile>
+    <ClCompile Include="HookKBS1702.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep2</Filter>
+    </ClCompile>
+    <ClCompile Include="HookMSS1702.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep2</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchKBS1702.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S17\Ep2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

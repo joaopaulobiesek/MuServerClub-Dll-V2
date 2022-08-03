@@ -89,6 +89,7 @@ typedef unsigned __int64 QWORD;
 #include "ProtocolS15.h"
 #include "ProtocolS16.h"
 #include "ProtocolS17.h"
+#include "ProtocolS1702.h"
 
 //Include Offset
 #include "Offset.h"
@@ -104,12 +105,14 @@ typedef unsigned __int64 QWORD;
 #include "OffsetS15.h"
 #include "OffsetS16.h"
 #include "OffsetS17.h"
+#include "OffsetS1702.h"
 
 //Include Protocol
 #include "Thread.h"
 #include "ThreadS6.h"
 #include "ThreadS15.h"
 #include "ThreadS17.h"
+#include "ThreadS1702.h"
 
 //Features
 //
@@ -131,6 +134,12 @@ typedef unsigned __int64 QWORD;
 #include "HookKBS17.h"
 #include "HookMSS17.h"
 #include "SwitchKBS17.h"
+//
+#include "Camera3dS1702.h"
+#include "AntiLagS1702.h"
+#include "HookKBS1702.h"
+#include "HookMSS1702.h"
+#include "SwitchKBS1702.h"
 //
 #include "CustomNpcNameS6.h"
 #include "CustomMonsterS6.h"

@@ -84,6 +84,7 @@ typedef unsigned __int64 QWORD;
 #include "ProtocolS15.h"
 #include "ProtocolS16.h"
 #include "ProtocolS17.h"
+#include "ProtocolS1702.h"
 #include "ProtocolValidation.h"
 
 //Offset
@@ -100,6 +101,7 @@ typedef unsigned __int64 QWORD;
 #include "OffsetS15.h"
 #include "OffsetS16.h"
 #include "OffsetS17.h"
+#include "OffsetS1702.h"
 
 #include "Features.h"
 #include "Resource.h"

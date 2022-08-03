@@ -270,6 +270,12 @@
     <ClInclude Include="GetSync.h">
       <Filter>Source Files\BasicModules</Filter>
     </ClInclude>
+    <ClInclude Include="OffsetS1702.h">
+      <Filter>Source Files\Offset\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolS1702.h">
+      <Filter>Source Files\Protocol\S17</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -418,6 +424,12 @@
     </ClCompile>
     <ClCompile Include="GetSync.cpp">
       <Filter>Source Files\BasicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="OffsetS1702.cpp">
+      <Filter>Source Files\Offset\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolS1702.cpp">
+      <Filter>Source Files\Protocol\S17</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,7 @@ struct MAIN_FILE_INFO
 	char IpAddress[32];
 	WORD ServerPort;
 	int removeSplash;
+	int removeFileProtect;
 	char SerialMD5[32];
 	char SplashName[32];
 	char CameraName[32];

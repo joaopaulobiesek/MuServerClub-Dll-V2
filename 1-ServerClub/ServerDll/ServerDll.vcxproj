@@ -186,6 +186,7 @@
     <ClInclude Include="OffsetS15.h" />
     <ClInclude Include="OffsetS16.h" />
     <ClInclude Include="OffsetS17.h" />
+    <ClInclude Include="OffsetS1702.h" />
     <ClInclude Include="OffsetS2.h" />
     <ClInclude Include="OffsetS4.h" />
     <ClInclude Include="OffsetS6.h" />
@@ -202,6 +203,7 @@
     <ClInclude Include="ProtocolS15.h" />
     <ClInclude Include="ProtocolS16.h" />
     <ClInclude Include="ProtocolS17.h" />
+    <ClInclude Include="ProtocolS1702.h" />
     <ClInclude Include="ProtocolS2.h" />
     <ClInclude Include="ProtocolS4.h" />
     <ClInclude Include="ProtocolS6.h" />
@@ -240,6 +242,7 @@
     <ClCompile Include="OffsetS15.cpp" />
     <ClCompile Include="OffsetS16.cpp" />
     <ClCompile Include="OffsetS17.cpp" />
+    <ClCompile Include="OffsetS1702.cpp" />
     <ClCompile Include="OffsetS2.cpp" />
     <ClCompile Include="OffsetS4.cpp" />
     <ClCompile Include="OffsetS6.cpp" />
@@ -261,6 +264,7 @@
     <ClCompile Include="ProtocolS15.cpp" />
     <ClCompile Include="ProtocolS16.cpp" />
     <ClCompile Include="ProtocolS17.cpp" />
+    <ClCompile Include="ProtocolS1702.cpp" />
     <ClCompile Include="ProtocolS2.cpp" />
     <ClCompile Include="ProtocolS4.cpp" />
     <ClCompile Include="ProtocolS6.cpp" />

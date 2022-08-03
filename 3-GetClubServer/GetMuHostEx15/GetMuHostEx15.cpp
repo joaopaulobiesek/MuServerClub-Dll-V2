@@ -9,6 +9,7 @@ struct MAIN_FILE_INFO
 	char IpAddress[32];
 	WORD ServerPort;
 	int removeSplash;
+	int removeFileProtect;
 	char SerialMD5[32];
 	char SplashName[32];
 	char CameraName[32];
@@ -33,6 +34,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	GetPrivateProfileString("ClubInfo", "SplashName", "", info.SplashName, sizeof(info.SplashName), ".\ClubInfo.ini");
 
 	info.removeSplash = GetPrivateProfileInt("ClubInfo", "Splash", 0, ".\\ClubInfo.ini");
+
+	info.removeFileProtect = GetPrivateProfileInt("ClubInfo", "RemoveFileProtect", 1, ".\\ClubInfo.ini");
 
 	GetPrivateProfileString("ClubInfo", "CameraName", "", info.CameraName, sizeof(info.CameraName), ".\\ClubInfo.ini");
 

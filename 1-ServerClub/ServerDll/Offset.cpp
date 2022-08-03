@@ -64,6 +64,10 @@ void COffset::Init(int version)
 		gProtocol.VersionMuHEX = 0x21;
 		gOffsetS17.InitOffset();
 		break;
+	case 14://Season 17Ep2
+		gProtocol.VersionMuHEX = 0x22;
+		gOffsetS1702.InitOffset();
+		break;
 	default:
 		break;
 	}

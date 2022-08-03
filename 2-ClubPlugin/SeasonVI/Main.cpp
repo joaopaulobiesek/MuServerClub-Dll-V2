@@ -5,6 +5,9 @@ CMain gMain;
 
 extern "C" _declspec(dllexport) void EntryProc() // OK
 {
+	//Use 1 para desativar todos Custom do server para testes de offset;
+	gProtocol.DebuggerCustomDisable = 0;
+
 	gMain.NumberSplash1 = 103;
 	gMain.NumberSplash2 = 104;
 	gMain.NumberSplash3 = 105;
@@ -28,16 +31,19 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	if (gProtect.m_MainInfo.removeSplash != 1)
 	{
 		wsprintf(buff, "Licensed to %s - Powered by Muserver.club", gProtect.m_MainInfo.SplashName);
-		SplashScreen(&SplashInit, 0, 1, buff, 0);
+		//SplashScreen(&SplashInit, 0, 1, buff, 0);
 	}
 
 	gThread.Init();
 
-	gFileProtect.Init();
+	if (gProtect.m_MainInfo.removeFileProtect == 1)
+	{
+		gFileProtect.Init();
+	}
 
 	if (gProtect.m_MainInfo.removeSplash != 1)
 	{
-		SplashInit.CloseSplash();
+		//SplashInit.CloseSplash();
 	}
 }
 

@@ -142,7 +142,7 @@ void CProtocoloAuth::SwitchFeature() // OK
 
 char* CProtocoloAuth::SwitchName(int SERVER_TYPE) // OK
 {
-	char Name[4];
+	char Name[6];
 	switch (SERVER_TYPE)
 	{
 	case AUTH_SERVER_TYPE_NONE:
@@ -184,8 +184,11 @@ char* CProtocoloAuth::SwitchName(int SERVER_TYPE) // OK
 	case AUTH_SERVER_TYPE_S12_IGC_SERVERDLL:
 		memcpy(Name, "IGC12", sizeof("IGC12"));
 		break;
-	case AUTH_SERVER_TYPE_S17_SERVERDLL:
-		memcpy(Name, "Ex17", sizeof("Ex17"));
+	case AUTH_SERVER_TYPE_S1701_SERVERDLL:
+		memcpy(Name, "Ex1701", sizeof("Ex1701"));
+		break;
+	case AUTH_SERVER_TYPE_S1702_SERVERDLL:
+		memcpy(Name, "Ex1702", sizeof("Ex1702"));
 		break;
 	default:
 		memcpy(Name, "TYPE_NONE_D", sizeof("TYPE_NONE_D"));

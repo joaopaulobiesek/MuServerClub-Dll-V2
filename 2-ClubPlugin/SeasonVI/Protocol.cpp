@@ -123,6 +123,9 @@ void ProtocolCoreMain(BYTE head, BYTE* lpMsg, int size)
 	case 0x21://Season 17
 		gProtocolS17.ProtocolCore(head, lpMsg, size);
 		break;
+	case 0x22://Season 17Ep2
+		gProtocolS1702.ProtocolCore(head, lpMsg, size);
+		break;
 	default:
 		gConnection.Disconnect();
 		break;
@@ -195,31 +198,62 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg)
 
 		gProtocol.ClientVersion[4] = (lpMsg->ClientVersion[6] + 5);
 
-		gFeatures.camera3D = lpMsg->camera3D;
+		if (this->DebuggerCustomDisable == 0)
+		{
+			gFeatures.camera3D = lpMsg->camera3D;
 
-		gFeatures.antiLag = lpMsg->antiLag;
+			gFeatures.antiLag = lpMsg->antiLag;
 
-		gFeatures.customICO = lpMsg->customICO;
+			gFeatures.customICO = lpMsg->customICO;
 
-		gFeatures.removeSplash = lpMsg->removeSplash;
+			gFeatures.removeSplash = lpMsg->removeSplash;
 
-		gFeatures.twoFactorAuth = lpMsg->twoFactorAuth;
+			gFeatures.twoFactorAuth = lpMsg->twoFactorAuth;
 
-		gFeatures.emoji = lpMsg->emoji;
+			gFeatures.emoji = lpMsg->emoji;
 
-		gFeatures.customMoster = lpMsg->customMoster;
+			gFeatures.customMoster = lpMsg->customMoster;
 
-		gFeatures.guildIco = lpMsg->guildIco;
+			gFeatures.guildIco = lpMsg->guildIco;
 
-		gFeatures.petSafeZone = lpMsg->petSafeZone;
+			gFeatures.petSafeZone = lpMsg->petSafeZone;
 
-		gFeatures.customNPC = lpMsg->customNPC;
+			gFeatures.customNPC = lpMsg->customNPC;
 
-		gFeatures.customCloak = lpMsg->customCloak;
+			gFeatures.customCloak = lpMsg->customCloak;
 
-		gFeatures.customOption = lpMsg->customOption;
+			gFeatures.customOption = lpMsg->customOption;
 
-		gFeatures.customEventTime = lpMsg->customEventTime;
+			gFeatures.customEventTime = lpMsg->customEventTime;
+		}
+		else
+		{
+			gFeatures.camera3D = 0;
+
+			gFeatures.antiLag = 0;
+
+			gFeatures.customICO = 0;
+
+			gFeatures.removeSplash = 0;
+
+			gFeatures.twoFactorAuth = 0;
+
+			gFeatures.emoji = 0;
+
+			gFeatures.customMoster = 0;
+
+			gFeatures.guildIco = 0;
+
+			gFeatures.petSafeZone = 0;
+
+			gFeatures.customNPC = 0;
+
+			gFeatures.customCloak = 0;
+
+			gFeatures.customOption = 0;
+
+			gFeatures.customEventTime = 0;
+		}
 
 		MemoryCpy((DWORD)gProtocol.ClientSerial, lpMsg->ClientSerial, sizeof(gProtocol.ClientSerial));
 

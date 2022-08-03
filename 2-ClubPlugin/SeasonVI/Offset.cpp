@@ -70,6 +70,12 @@ void COffset::Init(int version, SDHP_CLIENT_INFO_RECV* lpMsg)
 		gProtocolS17.RequestOffSetS17();
 		gProtocolS17.RequestKeyboardS17();
 		break;
+	case 14://Season 17 Ep2
+		gProtocol.VersionMuHEX = 0x22;
+		gOffsetS1702.InitOffset(lpMsg);
+		gProtocolS1702.RequestOffSetS17();
+		gProtocolS1702.RequestKeyboardS17();
+		break;
 	default:
 		break;
 	}

@@ -80,6 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>Plugin</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -161,9 +162,11 @@
   <ItemGroup>
     <ClInclude Include="AntiLagS15.h" />
     <ClInclude Include="AntiLagS17.h" />
+    <ClInclude Include="AntiLagS1702.h" />
     <ClInclude Include="AntiLagS6.h" />
     <ClInclude Include="Camera3dS15.h" />
     <ClInclude Include="Camera3dS17.h" />
+    <ClInclude Include="Camera3dS1702.h" />
     <ClInclude Include="Camera3dS6.h" />
     <ClInclude Include="CapeS6.h" />
     <ClInclude Include="CCRC32.h" />
@@ -190,9 +193,11 @@
     <ClInclude Include="HealthBarS6.h" />
     <ClInclude Include="HookKBS15.h" />
     <ClInclude Include="HookKBS17.h" />
+    <ClInclude Include="HookKBS1702.h" />
     <ClInclude Include="HookKBS6.h" />
     <ClInclude Include="HookMSS15.h" />
     <ClInclude Include="HookMSS17.h" />
+    <ClInclude Include="HookMSS1702.h" />
     <ClInclude Include="HookMSS6.h" />
     <ClInclude Include="ImportS6.h" />
     <ClInclude Include="InterfaceS6.h" />
@@ -217,6 +222,7 @@
     <ClInclude Include="OffsetS15.h" />
     <ClInclude Include="OffsetS16.h" />
     <ClInclude Include="OffsetS17.h" />
+    <ClInclude Include="OffsetS1702.h" />
     <ClInclude Include="OffsetS2.h" />
     <ClInclude Include="OffsetS4.h" />
     <ClInclude Include="OffsetS6.h" />
@@ -236,6 +242,7 @@
     <ClInclude Include="ProtocolS15.h" />
     <ClInclude Include="ProtocolS16.h" />
     <ClInclude Include="ProtocolS17.h" />
+    <ClInclude Include="ProtocolS1702.h" />
     <ClInclude Include="ProtocolS2.h" />
     <ClInclude Include="ProtocolS4.h" />
     <ClInclude Include="ProtocolS6.h" />
@@ -247,6 +254,7 @@
     <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="SwitchKBS15.h" />
     <ClInclude Include="SwitchKBS17.h" />
+    <ClInclude Include="SwitchKBS1702.h" />
     <ClInclude Include="SwitchKBS6.h" />
     <ClInclude Include="Thread.h" />
     <ClInclude Include="Themida\ThemidaSDK.h" />
@@ -254,6 +262,7 @@
     <ClInclude Include="ThreadCheck.h" />
     <ClInclude Include="ThreadS15.h" />
     <ClInclude Include="ThreadS17.h" />
+    <ClInclude Include="ThreadS1702.h" />
     <ClInclude Include="ThreadS6.h" />
     <ClInclude Include="UserS6.h" />
     <ClInclude Include="Util.h" />
@@ -264,9 +273,11 @@
   <ItemGroup>
     <ClCompile Include="AntiLagS15.cpp" />
     <ClCompile Include="AntiLagS17.cpp" />
+    <ClCompile Include="AntiLagS1702.cpp" />
     <ClCompile Include="AntiLagS6.cpp" />
     <ClCompile Include="Camera3dS15.cpp" />
     <ClCompile Include="Camera3dS17.cpp" />
+    <ClCompile Include="Camera3dS1702.cpp" />
     <ClCompile Include="Camera3dS6.cpp" />
     <ClCompile Include="CapeS6.cpp" />
     <ClCompile Include="CCRC32.cpp" />
@@ -291,9 +302,11 @@
     <ClCompile Include="HealthBarS6.cpp" />
     <ClCompile Include="HookKBS15.cpp" />
     <ClCompile Include="HookKBS17.cpp" />
+    <ClCompile Include="HookKBS1702.cpp" />
     <ClCompile Include="HookKBS6.cpp" />
     <ClCompile Include="HookMSS15.cpp" />
     <ClCompile Include="HookMSS17.cpp" />
+    <ClCompile Include="HookMSS1702.cpp" />
     <ClCompile Include="HookMSS6.cpp" />
     <ClCompile Include="InterfaceS6.cpp" />
     <ClCompile Include="ItemFixS6.cpp" />
@@ -316,6 +329,7 @@
     <ClCompile Include="OffsetS15.cpp" />
     <ClCompile Include="OffsetS16.cpp" />
     <ClCompile Include="OffsetS17.cpp" />
+    <ClCompile Include="OffsetS1702.cpp" />
     <ClCompile Include="OffsetS2.cpp" />
     <ClCompile Include="OffsetS4.cpp" />
     <ClCompile Include="OffsetS6.cpp" />
@@ -340,6 +354,7 @@
     <ClCompile Include="ProtocolS15.cpp" />
     <ClCompile Include="ProtocolS16.cpp" />
     <ClCompile Include="ProtocolS17.cpp" />
+    <ClCompile Include="ProtocolS1702.cpp" />
     <ClCompile Include="ProtocolS2.cpp" />
     <ClCompile Include="ProtocolS4.cpp" />
     <ClCompile Include="ProtocolS6.cpp" />
@@ -350,11 +365,13 @@
     <ClCompile Include="SplashScreen.cpp" />
     <ClCompile Include="SwitchKBS15.cpp" />
     <ClCompile Include="SwitchKBS17.cpp" />
+    <ClCompile Include="SwitchKBS1702.cpp" />
     <ClCompile Include="SwitchKBS6.cpp" />
     <ClCompile Include="Thread.cpp" />
     <ClCompile Include="ThreadCheck.cpp" />
     <ClCompile Include="ThreadS15.cpp" />
     <ClCompile Include="ThreadS17.cpp" />
+    <ClCompile Include="ThreadS1702.cpp" />
     <ClCompile Include="ThreadS6.cpp" />
     <ClCompile Include="UserS6.cpp" />
     <ClCompile Include="Util.cpp" />

@@ -47,6 +47,9 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) // OK
 		case 13://Season 17
 			gHookKBS17.Init(nCode, wParam, lParam);
 			break;
+		case 14://Season 17Ep2
+			gHookKBS1702.Init(nCode, wParam, lParam);
+			break;
 		default:
 			break;
 		}
@@ -88,6 +91,9 @@ LRESULT CALLBACK MouseProc(int nCode, WPARAM wParam, LPARAM lParam) // OK
 			break;
 		case 13://Season 17
 			gHookMSS17.Init(nCode, wParam, lParam);
+			break;
+		case 14://Season 17Ep2
+			gHookMSS1702.Init(nCode, wParam, lParam);
 			break;
 		default:
 			break;
@@ -227,6 +233,9 @@ DWORD WINAPI ThreadSeasonCustom() // OK
 		case 13://Season 17
 			gThreadS17.Init();
 			gCamera3dS17.ThreadCamS17();
+		case 14://Season 17Ep2
+			gThreadS1702.Init();
+			gCamera3dS1702.ThreadCamS17();
 			break;
 		default:
 			break;
