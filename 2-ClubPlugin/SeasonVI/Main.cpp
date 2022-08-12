@@ -31,7 +31,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	if (gProtect.m_MainInfo.removeSplash != 1)
 	{
 		wsprintf(buff, "Licensed to %s - Powered by Muserver.club", gProtect.m_MainInfo.SplashName);
-		//SplashScreen(&SplashInit, 0, 1, buff, 0);
+		SplashScreen(&SplashInit, 0, 1, buff, 0);
 	}
 
 	gThread.Init();
@@ -43,7 +43,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	if (gProtect.m_MainInfo.removeSplash != 1)
 	{
-		//SplashInit.CloseSplash();
+		SplashInit.CloseSplash();
 	}
 }
 

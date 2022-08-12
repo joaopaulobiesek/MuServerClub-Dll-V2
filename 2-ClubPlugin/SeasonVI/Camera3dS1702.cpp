@@ -23,12 +23,12 @@ void CCamera3dS1702::InitKB(int Parameter)
 			if (this->m_Start.Active != 2)
 			{
 				this->m_Start.Active = 2;
-				pDrawMessageS17("Disabled Camera 3D!", 1);
+				pDrawMessageS1702("Disabled Camera 3D!", 1);
 			}
 			else
 			{
 				this->m_Start.Active = 1;
-				pDrawMessageS17("Active Camera 3D!", 1);
+				pDrawMessageS1702("Active Camera 3D!", 1);
 			}
 		STR_ENCRYPT_END
 			VM_TIGER_BLACK_END
@@ -42,7 +42,7 @@ void CCamera3dS1702::InitKB(int Parameter)
 		SetFloat((DWORD)this->m_OffSet.RotX, -45.0);
 		SetFloat((DWORD)this->m_OffSet.RotY, -48.5);
 		SetDouble((DWORD)this->m_OffSet.PosZ, 150);
-		pDrawMessageS17("Reset Camera 3D!", 1);
+		pDrawMessageS1702("Reset Camera 3D!", 1);
 		STR_ENCRYPT_END
 			VM_TIGER_BLACK_END
 			break;

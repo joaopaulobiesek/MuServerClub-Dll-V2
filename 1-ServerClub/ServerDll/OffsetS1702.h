@@ -41,7 +41,16 @@ public:
 	DWORD Char2Moob5ActiveHook;
 	DWORD Terrain1Active;
 	DWORD Terrain2Active;
-	DWORD RemoveSetActive;
+	DWORD Terrain3Active;
+	DWORD Terrain4Active;
+	DWORD RemoveSet1Active;
+	DWORD RemoveSet2Active;
+	DWORD RemoveSet3Active;
+	DWORD RemoveSet4Active;
+	DWORD RemoveSet5Active;
+	DWORD RemoveSet6Active;
+	DWORD RemoveSet7Active;
+	DWORD RemoveMoob;
 	DWORD CameraY;
 	DWORD CameraZ;
 	DWORD CameraX;

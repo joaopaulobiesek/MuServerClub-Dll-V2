@@ -47,7 +47,16 @@ struct SDHP_REQUEST_OFFSET_S1702_RECV
 	DWORD Char2Moob5ActiveHook;
 	DWORD Terrain1Active;
 	DWORD Terrain2Active;
-	DWORD RemoveSetActive;
+	DWORD Terrain3Active;
+	DWORD Terrain4Active;
+	DWORD RemoveSet1Active;
+	DWORD RemoveSet2Active;
+	DWORD RemoveSet3Active;
+	DWORD RemoveSet4Active;
+	DWORD RemoveSet5Active;
+	DWORD RemoveSet6Active;
+	DWORD RemoveSet7Active;
+	DWORD RemoveMoob;
 	DWORD CameraY;
 	DWORD CameraZ;
 	DWORD CameraX;
@@ -76,6 +85,8 @@ struct SDHP_REQUEST_KEYBOARD_S1702_RECV
 	int Func11; //Ativa/Desativa renderização de chars e mobs 2
 	int Func12; //Ativa/Desativa todo AntLag
 	int Func13; //Ativa/Desativa efeitos diversos (Skills, Asas, Buffs, Drop de Moedas, Muuns)
+	int Func14; //Ativa/Desativa Set 2
+	int Func15; //Ativa/Desativa Mob
 };
 
 

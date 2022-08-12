@@ -19,6 +19,8 @@ public:
 	int Func11; //Ativa/Desativa renderização de chars e mobs 2
 	int Func12; //Ativa/Desativa todo AntLag
 	int Func13; //Ativa/Desativa efeitos diversos (Skills, Asas, Buffs, Drop de Moedas, Muuns)
+	int Func14; //Ativa/Desativa Set 2
+	int Func15; //Ativa/Desativa Mob
 };
 
 extern CHookKBS1702 gHookKBS1702;

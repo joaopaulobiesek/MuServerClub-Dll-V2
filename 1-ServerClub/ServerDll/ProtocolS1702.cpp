@@ -60,7 +60,16 @@ void CProtocolS1702::RequestOffSetS17(SDHP_REQUEST_OFFSET_S1702_RECV* lpMsg, int
 		pMsg.Char2Moob5ActiveHook = gOffsetS1702.Char2Moob5ActiveHook;
 		pMsg.Terrain1Active = gOffsetS1702.Terrain1Active;
 		pMsg.Terrain2Active = gOffsetS1702.Terrain2Active;
-		pMsg.RemoveSetActive = gOffsetS1702.RemoveSetActive;
+		pMsg.Terrain3Active = gOffsetS1702.Terrain3Active;
+		pMsg.Terrain4Active = gOffsetS1702.Terrain4Active;
+		pMsg.RemoveSet1Active = gOffsetS1702.RemoveSet1Active;
+		pMsg.RemoveSet2Active = gOffsetS1702.RemoveSet2Active;
+		pMsg.RemoveSet3Active = gOffsetS1702.RemoveSet3Active;
+		pMsg.RemoveSet4Active = gOffsetS1702.RemoveSet4Active;
+		pMsg.RemoveSet5Active = gOffsetS1702.RemoveSet5Active;
+		pMsg.RemoveSet6Active = gOffsetS1702.RemoveSet6Active;
+		pMsg.RemoveSet7Active = gOffsetS1702.RemoveSet7Active;
+		pMsg.RemoveMoob = gOffsetS1702.RemoveMoob;
 	}
 	if (gFeatures.camera3D == 1) {
 		pMsg.CameraY = gOffsetS1702.CameraY;
@@ -99,6 +108,8 @@ void CProtocolS1702::RequestKeyBoardS17(SDHP_REQUEST_KEYBOARD_S1702_RECV* lpMsg,
 	pMsg.Func11 = gServerInfo.Func11;
 	pMsg.Func12 = gServerInfo.Func12;
 	pMsg.Func13 = gServerInfo.Func13;
+	pMsg.Func14 = gServerInfo.Func14;
+	pMsg.Func15 = gServerInfo.Func15;
 
 	gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
 }

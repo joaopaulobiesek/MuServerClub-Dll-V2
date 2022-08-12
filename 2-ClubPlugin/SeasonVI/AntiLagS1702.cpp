@@ -23,6 +23,8 @@ void CAntiLagS1702::InitCase(int Parameter)
 	this->case9 = Parameter;
 	this->case10 = Parameter;
 	this->case11 = Parameter;
+	this->case14 = Parameter;
+	this->case15 = Parameter;
 	this->case12 = Parameter;
 }
 
@@ -128,6 +130,8 @@ void CAntiLagS1702::InitKB(int Parameter)
 				this->case7 = 1;
 				SetByte(gOffsetS1702.Terrain1Active, 0xC3);
 				SetByte(gOffsetS1702.Terrain2Active, 0xC3);
+				SetByte(gOffsetS1702.Terrain3Active, 0xC3);
+				SetByte(gOffsetS1702.Terrain4Active, 0xC3);
 				pDrawMessageS1702("AntLag:Terrain Obj Active.", 1);
 			}
 			else
@@ -135,6 +139,8 @@ void CAntiLagS1702::InitKB(int Parameter)
 				this->case7 = 0;
 				SetByte(gOffsetS1702.Terrain1Active, 0x55);
 				SetByte(gOffsetS1702.Terrain2Active, 0x55);
+				SetByte(gOffsetS1702.Terrain3Active, 0x55);
+				SetByte(gOffsetS1702.Terrain4Active, 0x55);
 				pDrawMessageS1702("AntLag:Terrain Obj Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case7);
@@ -148,13 +154,13 @@ void CAntiLagS1702::InitKB(int Parameter)
 			if (this->case8 == 0)
 			{
 				this->case8 = 1;
-				SetByte(gOffsetS1702.RemoveSetActive, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet1Active, 0xC3);
 				pDrawMessageS1702("AntLag:Remove Set Active.", 1);
 			}
 			else
 			{
 				this->case8 = 0;
-				SetByte(gOffsetS1702.RemoveSetActive, 0x55);
+				SetByte(gOffsetS1702.RemoveSet1Active, 0x55);
 				pDrawMessageS1702("AntLag:Remove Set Disabled.", 1);
 			}
 		wsprintf(GraphicsControl, "%d", this->case8);
@@ -242,7 +248,16 @@ void CAntiLagS1702::InitKB(int Parameter)
 				SetByte(gOffsetS1702.ItemActive, 0x00);
 				SetByte(gOffsetS1702.Terrain1Active, 0xC3);
 				SetByte(gOffsetS1702.Terrain2Active, 0xC3);
-				SetByte(gOffsetS1702.RemoveSetActive, 0xC3);
+				SetByte(gOffsetS1702.Terrain3Active, 0xC3);
+				SetByte(gOffsetS1702.Terrain4Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet1Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet2Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet3Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet4Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet5Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet6Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet7Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveMoob, 0xC3);
 				MemorySet(gOffsetS1702.Pet1Active, ASM::NOP, 0x5);
 				MemorySet(gOffsetS1702.Pet3Active, ASM::NOP, 0x5);
 				MemorySet(gOffsetS1702.Char1Moob1Active, ASM::NOP, 0x5);
@@ -263,7 +278,16 @@ void CAntiLagS1702::InitKB(int Parameter)
 				SetByte(gOffsetS1702.ItemActive, 0x01);
 				SetByte(gOffsetS1702.Terrain1Active, 0x55);
 				SetByte(gOffsetS1702.Terrain2Active, 0x55);
-				SetByte(gOffsetS1702.RemoveSetActive, 0x55);
+				SetByte(gOffsetS1702.Terrain3Active, 0x55);
+				SetByte(gOffsetS1702.Terrain4Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet1Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet2Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet3Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet4Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet5Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet6Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet7Active, 0x55);
+				SetByte(gOffsetS1702.RemoveMoob, 0x55);
 				SetOp((LPVOID)gOffsetS1702.Pet1Active, (LPVOID)gOffsetS1702.Pet2ActiveHook, ASM::CALL);
 				SetOp((LPVOID)gOffsetS1702.Pet3Active, (LPVOID)gOffsetS1702.Pet4ActiveHook, ASM::CALL);
 				SetOp((LPVOID)gOffsetS1702.Char1Moob1Active, (LPVOID)gOffsetS1702.Char1Moob2ActiveHook, ASM::CALL);
@@ -289,6 +313,10 @@ void CAntiLagS1702::InitKB(int Parameter)
 		WritePrivateProfileStringA("Graphics", "DisableCharMoob1", GraphicsControl, ".\\option.ini");
 		wsprintf(GraphicsControl, "%d", this->case11);
 		WritePrivateProfileStringA("Graphics", "DisableCharMoob2", GraphicsControl, ".\\option.ini");
+		wsprintf(GraphicsControl, "%d", this->case14);
+		WritePrivateProfileStringA("Graphics", "RemoveSet2", GraphicsControl, ".\\option.ini");
+		wsprintf(GraphicsControl, "%d", this->case15);
+		WritePrivateProfileStringA("Graphics", "RemoveMob", GraphicsControl, ".\\option.ini");
 		STR_ENCRYPT_END
 			VM_TIGER_BLACK_END
 			break;
@@ -316,6 +344,56 @@ void CAntiLagS1702::InitKB(int Parameter)
 		STR_ENCRYPT_END
 			VM_TIGER_BLACK_END
 			break;
+	case 14: //Ativa/Desativa Set 2
+		VM_TIGER_BLACK_START
+			STR_ENCRYPT_START
+			if (this->case14 == 0)
+			{
+				this->case14 = 1;
+				SetByte(gOffsetS1702.RemoveSet2Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet3Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet4Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet5Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet6Active, 0xC3);
+				SetByte(gOffsetS1702.RemoveSet7Active, 0xC3);
+				pDrawMessageS1702("AntLag:Remove Set 2 Active.", 1);
+			}
+			else
+			{
+				this->case14 = 0;
+				SetByte(gOffsetS1702.RemoveSet2Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet3Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet4Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet5Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet6Active, 0x55);
+				SetByte(gOffsetS1702.RemoveSet7Active, 0x55);
+				pDrawMessageS1702("AntLag:Remove Set 2 Disabled.", 1);
+			}
+		wsprintf(GraphicsControl, "%d", this->case14);
+		WritePrivateProfileStringA("Graphics", "RemoveSet2", GraphicsControl, ".\\option.ini");
+		STR_ENCRYPT_END
+			VM_TIGER_BLACK_END
+			break;
+	case 15: //Ativa/Desativa Mob
+		VM_TIGER_BLACK_START
+			STR_ENCRYPT_START
+			if (this->case15 == 0)
+			{
+				this->case15 = 1;
+				SetByte(gOffsetS1702.RemoveMoob, 0xC3);
+				pDrawMessageS1702("AntLag:Remove Mob Active.", 1);
+			}
+			else
+			{
+				this->case15 = 0;
+				SetByte(gOffsetS1702.RemoveMoob, 0x55);
+				pDrawMessageS1702("AntLag:Remove Mob Disabled.", 1);
+			}
+		wsprintf(GraphicsControl, "%d", this->case15);
+		WritePrivateProfileStringA("Graphics", "RemoveMob", GraphicsControl, ".\\option.ini");
+		STR_ENCRYPT_END
+			VM_TIGER_BLACK_END
+			break;
 	default:
 		break;
 	}
@@ -336,6 +414,8 @@ void CAntiLagS1702::ActiveDisabled(int code)
 			this->case9 = GetPrivateProfileIntA("Graphics", "DisablePet", 0, "./option.ini");
 			this->case10 = GetPrivateProfileIntA("Graphics", "DisableCharMoob1", 0, "./option.ini");
 			this->case11 = GetPrivateProfileIntA("Graphics", "DisableCharMoob2", 0, "./option.ini");
+			this->case14 = GetPrivateProfileIntA("Graphics", "RemoveSet2", 0, "./option.ini");
+			this->case15 = GetPrivateProfileIntA("Graphics", "RemoveMob", 0, "./option.ini");
 
 			if (this->case3) { this->case3 = 0; this->InitKB(3); }
 			if (this->case4) { this->case4 = 0; this->InitKB(4); }
@@ -344,6 +424,8 @@ void CAntiLagS1702::ActiveDisabled(int code)
 			if (this->case7) { this->case7 = 0; this->InitKB(7); }
 			if (this->case8) { this->case8 = 0; this->InitKB(8); }
 			if (this->case9) { this->case9 = 0; this->InitKB(9); }
+			if (this->case14) { this->case14 = 0; this->InitKB(14); }
+			if (this->case15) { this->case15 = 0; this->InitKB(15); }
 		}
 		else
 		{
@@ -382,6 +464,14 @@ void CAntiLagS1702::ActiveDisabled(int code)
 			if (GetPrivateProfileIntA("Graphics", "DisableCharMoob2", 0, "./option.ini") != this->case11)
 			{
 				this->InitKB(11);
+			}
+			if (GetPrivateProfileIntA("Graphics", "RemoveSet2", 0, "./option.ini") != this->case14)
+			{
+				this->InitKB(14);
+			}
+			if (GetPrivateProfileIntA("Graphics", "RemoveMob", 0, "./option.ini") != this->case15)
+			{
+				this->InitKB(15);
 			}
 		}
 	STR_ENCRYPT_END

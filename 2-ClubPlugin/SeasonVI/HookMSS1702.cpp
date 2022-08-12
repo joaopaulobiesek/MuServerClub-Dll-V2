@@ -24,7 +24,7 @@ void CHookMSS1702::Init(int nCode, WPARAM wParam, LPARAM lParam)
 				if (gCamera3dS1702.m_Start.Active != 2)
 				{
 					gCamera3dS1702.m_Start.Active = 0;
-					pDrawMessageS17("Camera 3D mode 2.", 1);
+					pDrawMessageS1702("Camera 3D mode 2.", 1);
 				}
 			}
 		STR_ENCRYPT_END
@@ -36,7 +36,7 @@ void CHookMSS1702::Init(int nCode, WPARAM wParam, LPARAM lParam)
 				if (gCamera3dS1702.m_Start.Active != 2)
 				{
 					gCamera3dS1702.m_Start.Active = 1;
-					pDrawMessageS17("Camera 3D mode 1.", 1);
+					pDrawMessageS1702("Camera 3D mode 1.", 1);
 				}
 			}
 		STR_ENCRYPT_END

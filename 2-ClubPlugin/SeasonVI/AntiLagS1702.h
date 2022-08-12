@@ -25,6 +25,8 @@ private:
 	int case11;
 	int case12;
 	int case13;
+	int case14;
+	int case15;
 	char GraphicsControl[256];
 };
 

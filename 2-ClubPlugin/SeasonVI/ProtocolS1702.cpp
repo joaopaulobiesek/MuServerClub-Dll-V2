@@ -56,5 +56,7 @@ void CProtocolS1702::RecvKeyboardS17(SDHP_REQUEST_KEYBOARD_S1702_RECV* lpMsg)
 	gHookKBS1702.Func11 = lpMsg->Func11;
 	gHookKBS1702.Func12 = lpMsg->Func12;
 	gHookKBS1702.Func13 = lpMsg->Func13;
+	gHookKBS1702.Func14 = lpMsg->Func14;
+	gHookKBS1702.Func15 = lpMsg->Func15;
 }
 
