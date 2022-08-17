@@ -7,6 +7,7 @@ public:
 	virtual ~COffset();
 	void Init(int version, SDHP_CLIENT_INFO_RECV* lpMsg);
 public:
+	DWORD PortNumberAddress;
 	DWORD IpAddressAddress;
 	DWORD ClientVersionAddress;
 	DWORD ClientSerialAddress;

@@ -113,6 +113,7 @@ struct SDHP_CLIENT_INFO_RECV
 	BYTE result;
 	BYTE Version;
 	BYTE HackSwitch;
+	DWORD PortNumberAddress;
 	DWORD IpAddressAddress;
 	DWORD ClientVersionAddress;
 	DWORD ClientSerialAddress;
@@ -240,10 +241,11 @@ struct SDHP_CLIENT_DISCONNECT_SEND
 struct SDHP_CLIENT_SEND_CONNECT
 {
 	PBMSG_HEAD header; // C1:00
-	char NewHardwareId[100];
+	char NewHardwareId[50];
 	char HardwareId[36];
 	char account[11];
-	char PcName[100];
+	char PcName[50];
+	int PortNumber;
 };
 
 //**********************************************//
@@ -297,6 +299,8 @@ public:
 	DWORD UserAccount;
 	DWORD UserStruct;
 	//
+	int PortNumber;//Pega a Port Number
+	DWORD PortNumberAddress;
 	char IpAddress[32];
 	BYTE ClientVersion[5];
 	BYTE ClientSerial[17];

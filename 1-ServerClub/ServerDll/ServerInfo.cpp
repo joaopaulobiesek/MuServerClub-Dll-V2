@@ -178,6 +178,8 @@ void CServerInfo::ReadBlackList() //OK
 
 void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 {
+	char OffsetPush[100] = { 0 };
+
 	this->LicenseId = GetPrivateProfileInt(section, "LicenseId", 0, path);
 
 	this->ServerPort = GetPrivateProfileInt(section, "ServerDllPort", 0, path);
@@ -196,6 +198,14 @@ void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 
 	this->CheckSQL = GetPrivateProfileInt("DataServerInfo", "CheckSQL", 1, path);
 
+	GetPrivateProfileString("DataServerInfo", "Ports1", "", Ports1, sizeof(Ports1), path);
+
+	GetPrivateProfileString("DataServerInfo", "Ports2", "", Ports2, sizeof(Ports2), path);
+
+	GetPrivateProfileString("DataServerInfo", "PortNumberAddress", "", OffsetPush, sizeof(OffsetPush), path);
+
+	this->PortNumberAddress = (((this->PortNumberAddress = strtoul(OffsetPush, NULL, 0)) > 0x10000000) ? (this->PortNumberAddress ^ 0xC47A0E9F) : this->PortNumberAddress);
+
 	GetPrivateProfileString(section, "IpAddress", "0", this->IpAddressExt, sizeof(this->IpAddressExt), path);
 
 	GetPrivateProfileString(section, "ClientVersion", "", this->ClientVersion, sizeof(this->ClientVersion), path);
@@ -209,19 +219,29 @@ void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 
 void CServerInfo::ReadStartupDS(const char* path) // OK
 {
-	char DataServerODBC[32] = { 0 };
-
 	char DataServerUSER[32] = { 0 };
 
 	char DataServerPASS[32] = { 0 };
 
-	GetPrivateProfileString("DataServerInfo", "DataServerODBC", "", DataServerODBC, sizeof(DataServerODBC), path);
+	GetPrivateProfileString("DataServerInfo", "DataServerPort1ODBC", "", this->DataServerPort1ODBC, sizeof(this->DataServerPort1ODBC), path);
+
+	GetPrivateProfileString("DataServerInfo", "DataServerPort2ODBC", "", this->DataServerPort2ODBC, sizeof(this->DataServerPort2ODBC), path);
 
 	GetPrivateProfileString("DataServerInfo", "DataServerUSER", "", DataServerUSER, sizeof(DataServerUSER), path);
 
 	GetPrivateProfileString("DataServerInfo", "DataServerPASS", "", DataServerPASS, sizeof(DataServerPASS), path);
 
-	if (gQueryManager.Connect(DataServerODBC, DataServerUSER, DataServerPASS) == 0)
+
+	if (gQueryManager.Connect(this->DataServerPort1ODBC, DataServerUSER, DataServerPASS) == 0)
+	{
+		LogAdd(LOG_RED, "Could not connect to database");
+	}
+	else
+	{
+		LogAdd(LOG_BLUE, "Connected to database");
+	}
+
+	if (gQueryManager.Connect(this->DataServerPort2ODBC, DataServerUSER, DataServerPASS) == 0)
 	{
 		LogAdd(LOG_RED, "Could not connect to database");
 	}

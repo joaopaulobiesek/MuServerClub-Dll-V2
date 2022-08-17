@@ -136,10 +136,14 @@ void CClientManager::DelClient() // OK
 	this->m_PacketTime = 0;
 }
 
-void CClientManager::SetDataServer(int Index, char* NewHardwareId, char* HardwareId, char* account, char* PcName)// OK
+void CClientManager::SetDataServer(int Index, char* NewHardwareId, char* HardwareId, char* account, char* PcName, int PortNumber)// OK
 {
+	char DataServerUSER[32] = { 0 };
+	char DataServerPASS[32] = { 0 };
+
 	std::string NewHWID = NewHardwareId;
 	NewHWID.erase(std::remove_if(NewHWID.begin(), NewHWID.end(), [](char c) { return !isalnum(c); }), NewHWID.end());
+	this->m_PortNumber = PortNumber;
 	strcpy(this->m_NewHardwareId, NewHWID.c_str());
 	memcpy(this->m_HardwareId, HardwareId, sizeof(this->m_HardwareId));
 	memcpy(this->m_Account, account, sizeof(this->m_Account));
@@ -151,35 +155,88 @@ void CClientManager::SetDataServer(int Index, char* NewHardwareId, char* Hardwar
 	LogAdd(LOG_BLACK, "[ClientManager][%d] HwId: %s", this->m_index, this->m_HardwareId);
 	LogAdd(LOG_BLACK, "[ClientManager][%d] NewHwId: %s", this->m_index, this->m_NewHardwareId);
 	LogAdd(LOG_BLACK, "[ClientManager][%d] PcName: %s", this->m_index, this->m_PcName);
+	LogAdd(LOG_BLACK, "[ClientManager][%d] PortNumber: %d", this->m_index, this->m_PortNumber);
 	if (gServerInfo.CheckSQL == 1)
 	{
-		gQueryManager.Close();
-		gQueryManager.BindParameterAsString(1, this->m_Account, sizeof(this->m_Account)); // Anti-Injection
-		gQueryManager.BindParameterAsString(2, this->m_IpAddr, sizeof(this->m_IpAddr)); // Anti-Injection
-		if (gQueryManager.ExecQuery("SELECT memb___id FROM MEMB_STAT WHERE memb___id=? and IP =? and ConnectStat=1") == 0 || gQueryManager.Fetch() == SQL_NO_DATA) // Anti-Injection
+		if (CommaSeparate(gServerInfo.Ports1, this->m_PortNumber))
 		{
-			gQueryManager.Close();
-			//HCClientDisconnectSend(Index, 0xB);
-			LogAdd(LOG_RED, "Erro de Conexão SQL");
+			//gQueryManager.Disconnect();
+			if (gQueryManager.Connect(gServerInfo.DataServerPort1ODBC, DataServerUSER, DataServerPASS) == 0)
+			{
+				LogAdd(LOG_RED, "1 - Could not connect to database %s", gServerInfo.DataServerPort1ODBC);
+			}
+			else
+			{
+				gQueryManager.Close();
+				gQueryManager.BindParameterAsString(1, this->m_HardwareId, sizeof(this->m_HardwareId)); // Anti-Injection
+				gQueryManager.BindParameterAsString(2, this->m_NewHardwareId, sizeof(this->m_NewHardwareId)); // Anti-Injection
+				gQueryManager.BindParameterAsString(3, this->m_PcName, sizeof(this->m_PcName)); // Anti-Injection
+				gQueryManager.BindParameterAsString(4, this->m_Account, sizeof(this->m_Account)); // Anti-Injection
+				if (gQueryManager.ExecQuery("UPDATE MEMB_INFO SET HWID=? , NewHWID=? , PcName=? , Port=%d WHERE memb___id=?", this->m_PortNumber) != 0 || gQueryManager.Fetch() == SQL_NO_DATA)
+				{
+					// Anti-Injection
+					gQueryManager.Close();
+					LogAdd(LOG_BLUE, "[SQL] [HwId]: %s [Acc]: %s ", this->m_NewHardwareId, this->m_Account);
+				}
+				else
+				{
+					// Anti-Injection
+					gQueryManager.Close();
+					LogAdd(LOG_RED, "[ERROR] updating HWID.");
+				}
+			}
+		}
+		else if (CommaSeparate(gServerInfo.Ports2, this->m_PortNumber))
+		{
+			if (gQueryManager.Connect(gServerInfo.DataServerPort2ODBC, DataServerUSER, DataServerPASS) == 0)
+			{
+				LogAdd(LOG_RED, "2 - Could not connect to database %s", gServerInfo.DataServerPort1ODBC);
+			}
+			else
+			{
+				gQueryManager.Close();
+				gQueryManager.BindParameterAsString(1, this->m_HardwareId, sizeof(this->m_HardwareId)); // Anti-Injection
+				gQueryManager.BindParameterAsString(2, this->m_NewHardwareId, sizeof(this->m_NewHardwareId)); // Anti-Injection
+				gQueryManager.BindParameterAsString(3, this->m_PcName, sizeof(this->m_PcName)); // Anti-Injection
+				gQueryManager.BindParameterAsString(4, this->m_Account, sizeof(this->m_Account)); // Anti-Injection
+				if (gQueryManager.ExecQuery("UPDATE MEMB_INFO SET HWID=? , NewHWID=? , PcName=? , Port=%d WHERE memb___id=?", this->m_PortNumber) != 0 || gQueryManager.Fetch() == SQL_NO_DATA)
+				{
+					// Anti-Injection
+					gQueryManager.Close();
+					LogAdd(LOG_BLUE, "[SQL] [HwId]: %s [Acc]: %s ", this->m_NewHardwareId, this->m_Account);
+				}
+				else
+				{
+					// Anti-Injection
+					gQueryManager.Close();
+					LogAdd(LOG_RED, "[ERROR] updating HWID.");
+				}
+			}
 		}
 		else
 		{
 			gQueryManager.Close();
-			gQueryManager.BindParameterAsString(1, this->m_NewHardwareId, sizeof(this->m_NewHardwareId)); // Anti-Injection
-			gQueryManager.BindParameterAsString(2, this->m_PcName, sizeof(this->m_PcName)); // Anti-Injection
-			gQueryManager.BindParameterAsString(3, this->m_Account, sizeof(this->m_Account)); // Anti-Injection
-			if (gQueryManager.ExecQuery("UPDATE MEMB_INFO SET HWID=? , pcname=? WHERE memb___id=?") != 0 || gQueryManager.Fetch() == SQL_NO_DATA)
-			{
-				// Anti-Injection
-				gQueryManager.Close();
-				LogAdd(LOG_BLUE, "[SQL] [HwId]: %s [Acc]: %s ", this->m_NewHardwareId, this->m_Account);
-			}
-			else
-			{
-				// Anti-Injection
-				gQueryManager.Close();
-				LogAdd(LOG_RED, "[ERROR] updating HWID.");
-			}
+			LogAdd(LOG_RED, "[ERROR] non-existent port.");
 		}
 	}
+}
+
+
+bool CClientManager::CommaSeparate(char* ports, int port) // OK
+{
+	char buff[6];
+	wsprintf(buff, "%d", port);
+	std::string portString(buff);
+	int tamanho = strlen(ports); //isto funciona só para delimitador de 1 caractere
+	char* token = strtok(ports, ",");
+	int Count = 0;
+	for (int i = 0; i < tamanho; i++) printf(token[i] == 0 ? "\\0" : "%c", token[i]);
+	while (token != NULL) {
+		if (portString.compare(token) == 0)
+		{
+			return true;
+		}
+		token = strtok(NULL, ",");
+	}
+	return false;
 }

@@ -6,7 +6,7 @@ COffsetS1702::COffsetS1702() // OK
 {
 	VM_TIGER_BLACK_START
 		STR_ENCRYPT_START
-		this->IpAddressAddress = 0x01A4FEE8;
+	this->IpAddressAddress = 0x01A4FEE8;
 	this->ClientVersionAddress = 0x01A5042C;
 	this->ClientSerialAddress = 0x01A50434;
 	this->AccountAddress = 0x01A7B74C;
@@ -42,7 +42,7 @@ COffsetS1702::COffsetS1702() // OK
 	this->Terrain2Active = 0x01543113;
 	this->Terrain3Active = 0x01542A0D;
 	this->Terrain4Active = 0x015CFD4E;
-	this->RemoveSet1Active = 0x0154168F; 
+	this->RemoveSet1Active = 0x0154168F;
 	this->RemoveSet2Active = 0x0154631B;
 	this->RemoveSet3Active = 0x01546D5A;
 	this->RemoveSet4Active = 0x0154923C;

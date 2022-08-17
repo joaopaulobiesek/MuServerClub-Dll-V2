@@ -20,10 +20,12 @@ void CThreadS1702::Init()
 	{
 	case SelectServer:
 		gWindowCheck.CHeckCheat = 0;
+		this->Count = 0;
 		if (this->GET_HWND == 0)
 		{
 			this->GET_HWND = 1;
 			gMain.hWnd = *(HWND*)(gOffset.HwndAddress);
+			this->BaseAddress = (DWORD)GetModuleHandle("Main.dll");
 			this->SelectServerThread(0);
 		}
 		else if (this->GET_HWND == 3 || this->GET_HWND == 4)
@@ -36,7 +38,7 @@ void CThreadS1702::Init()
 		gWindowCheck.CHeckCheat = 0;
 		if (this->GET_HWND == 1 || this->GET_HWND == 2)
 		{
-			this->Count++;
+			if (this->Count < 5) this->Count++;
 			if (this->Count == 3)
 			{
 				this->GET_HWND = 3;
@@ -46,6 +48,7 @@ void CThreadS1702::Init()
 		break;
 	case GameProcess:
 		gWindowCheck.CHeckCheat = 1;
+		this->Count = 0;
 		if (this->GET_HWND == 3)
 		{
 			this->GET_HWND = 4;
@@ -73,17 +76,18 @@ void CThreadS1702::SwitchCharacterThread(int Cod_ID)
 	if (Cod_ID == 0)
 	{
 		char* GetAccountN = (char*)gOffset.AccountAddress;
+		if (gOffset.PortNumberAddress != 0) gProtocol.PortNumber = *(DWORD*)(this->BaseAddress + (DWORD)gOffset.PortNumberAddress);
 		wsprintf(gThread.NameAccount, GetAccountN);
 		gProtocol.ClientConnectSend();
-	}	
+	}
 }
 
 void CThreadS1702::GameProcessThread(int Cod_ID)
 {
 	if (Cod_ID == 0)
 	{
-		this->BaseAddress = (DWORD)GetModuleHandle("Main.dll");
-		this->GetCharacterN = (char*)(*(DWORD*)(gOffset.CharacterAddress)+0x54);
+		if (gOffset.PortNumberAddress != 0) gProtocol.PortNumber = *(DWORD*)(this->BaseAddress + (DWORD)gOffset.PortNumberAddress);
+		this->GetCharacterN = (char*)(*(DWORD*)(gOffset.CharacterAddress) + 0x54);
 		this->Level = *(int*)(*(DWORD*)(gOffset.CharacterAddress));
 		this->MLevel = *(int*)(*(DWORD*)(gOffset.CharacterAddress) + 0x18);
 		this->Map = *(DWORD*)(gOffsetS1702.MAIN_MAP_CODE);

@@ -28,6 +28,7 @@ CProtocol::CProtocol() // OK
 	this->DetectCloseTime = 0;
 	this->UserAccount = 0;
 	this->UserStruct = 0;
+	this->PortNumber = -1;
 }
 
 CProtocol::~CProtocol() // OK
@@ -183,6 +184,8 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg)
 		gProtocol.HackSwitch = lpMsg->HackSwitch;
 
 		gProtocol.VersionMu = lpMsg->Version;
+
+		gOffset.PortNumberAddress = lpMsg->PortNumberAddress;
 
 		MemoryCpy((DWORD)gProtocol.IpAddress, lpMsg->IpAddress, sizeof(gProtocol.IpAddress));
 
@@ -556,6 +559,8 @@ void CProtocol::ClientConnectSend() // OK
 	SDHP_CLIENT_SEND_CONNECT pMsg;
 
 	pMsg.header.set(0x04, sizeof(pMsg));
+
+	pMsg.PortNumber = gProtocol.PortNumber;
 
 	memcpy(pMsg.NewHardwareId, GetHardwareIdNew(), sizeof(pMsg.NewHardwareId));
 

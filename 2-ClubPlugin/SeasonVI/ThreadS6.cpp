@@ -21,10 +21,12 @@ void CThreadS6::Init()
 	case SelectServer_2:
 		gWindowCheck.CHeckCheat = 0;
 		gSpeed.CHeckSpeed = 0;
+		this->Count = 0;
 		if (this->GET_HWND == 0)
 		{
 			this->GET_HWND = 1;
 			gMain.hWnd = *(HWND*)(gOffset.HwndAddress);
+			this->BaseAddress = (DWORD)GetModuleHandle("Main.dll");
 			this->SelectServerThread(0);
 		}
 		else if (this->GET_HWND == 3 || this->GET_HWND == 4)
@@ -38,7 +40,7 @@ void CThreadS6::Init()
 		gSpeed.CHeckSpeed = 0;
 		if (this->GET_HWND == 1 || this->GET_HWND == 2)
 		{
-			this->Count++;
+			if (this->Count < 5) this->Count++;
 			if (this->Count == 3)
 			{
 				this->GET_HWND = 3;
@@ -243,7 +245,6 @@ void CThreadS6::GameProcessThread(int Cod_ID)
 {
 	if (Cod_ID == 0)
 	{
-		this->BaseAddress = (DWORD)GetModuleHandle("Main.dll");
 		lpViewObj lpViewPlayer = &*(ObjectPreview*)*(int*)(gOffsetS6.MAIN_VIEWPORT_STRUCT);
 
 		DWORD Map = *(DWORD*)(gOffsetS6.MAIN_MAP_CODE);

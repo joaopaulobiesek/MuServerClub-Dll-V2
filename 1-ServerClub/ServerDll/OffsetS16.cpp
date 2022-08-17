@@ -65,7 +65,7 @@ void COffsetS16::InitOffset()
 {
 	VM_TIGER_BLACK_START
 		STR_ENCRYPT_START
-		gOffset.IpAddressAddress = this->IpAddressAddress;
+	gOffset.IpAddressAddress = this->IpAddressAddress;
 	gOffset.ClientVersionAddress = this->ClientVersionAddress;
 	gOffset.ClientSerialAddress = this->ClientSerialAddress;
 	gOffset.AccountAddress = this->AccountAddress;

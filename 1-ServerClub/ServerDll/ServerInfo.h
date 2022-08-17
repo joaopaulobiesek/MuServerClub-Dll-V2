@@ -21,6 +21,7 @@ public:
 	void ReadStartupDS(const char* path);
 public:
 	DWORD ClientFileCRC;
+	DWORD PortNumberAddress;
 	int LicenseId;
 	int ServerPort;
 	int CheckCRC;
@@ -30,6 +31,10 @@ public:
 	char IpAddressExt[32];
 	char ClientVersion[8];
 	char ClientSerial[17];
+	char DataServerPort1ODBC[32];
+	char DataServerPort2ODBC[32];
+	char Ports1[50];
+	char Ports2[50];
 	int CheckBlackList;
 	int CheckWindowList;
 	int CheckSumList;
@@ -37,15 +42,15 @@ public:
 	int CheckSQL;
 
 	//KeyBoard Function
-	int Func1; 
-	int Func2; 
-	int Func3; 
-	int Func4; 
-	int Func5; 
-	int Func6; 
-	int Func7; 
-	int Func8; 
-	int Func9; 
+	int Func1;
+	int Func2;
+	int Func3;
+	int Func4;
+	int Func5;
+	int Func6;
+	int Func7;
+	int Func8;
+	int Func9;
 	int Func10;
 	int Func11;
 	int Func12;

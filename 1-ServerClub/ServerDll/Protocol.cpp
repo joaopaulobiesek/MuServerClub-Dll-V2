@@ -121,6 +121,7 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 
 	gProtocolValidation.ClientInfoRecv(lpMsg, &pMsg, index);
 
+	pMsg.PortNumberAddress = gServerInfo.PortNumberAddress;
 	pMsg.IpAddressAddress = gOffset.IpAddressAddress;
 	pMsg.ClientVersionAddress = gOffset.ClientVersionAddress;
 	pMsg.ClientSerialAddress = gOffset.ClientSerialAddress;
@@ -601,6 +602,11 @@ void CProtocol::ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index)// 
 		LogAdd(LOG_RED, "[%d] PcName NULL", index);
 		return;
 	}
+	if (lpMsg->PortNumber == NULL)
+	{
+		LogAdd(LOG_RED, "[%d] PortNumber NULL", index);
+		return;
+	}
 
-	gClientManager[index].SetDataServer(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName);
+	gClientManager[index].SetDataServer(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
 }

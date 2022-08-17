@@ -144,10 +144,11 @@ struct SDHP_CLIENT_DISCONNECT_RECV
 struct SDHP_CLIENT_RECV_CONNECT
 {
 	PBMSG_HEAD header; // C1:00
-	char NewHardwareId[100];
+	char NewHardwareId[50];
 	char HardwareId[36];
 	char account[11];
-	char PcName[100];
+	char PcName[50];
+	int PortNumber;
 };
 
 //**********************************************//
@@ -160,6 +161,7 @@ struct SDHP_CLIENT_INFO_SEND
 	BYTE result;
 	BYTE Version;
 	BYTE HackSwitch;
+	DWORD PortNumberAddress;
 	DWORD IpAddressAddress;
 	DWORD ClientVersionAddress;
 	DWORD ClientSerialAddress;
@@ -281,6 +283,7 @@ public:
 	DWORD DetectCloseTime;
 	DWORD UserAccount;
 	DWORD UserStruct;
+	int ServerCodeId; // Server Code Para validação
 };
 
 void ProtocolCoreMain(int index, BYTE head, BYTE* lpMsg, int size);

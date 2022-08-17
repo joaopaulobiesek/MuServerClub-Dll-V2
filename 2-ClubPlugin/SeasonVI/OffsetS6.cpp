@@ -33,6 +33,7 @@ void COffsetS6::InitOffset(SDHP_CLIENT_INFO_RECV* lpMsg)
 {
 	VM_TIGER_BLACK_START
 		STR_ENCRYPT_START
+		gOffset.PortNumberAddress = lpMsg->PortNumberAddress;
 		gOffset.IpAddressAddress = lpMsg->IpAddressAddress;
 	gOffset.ClientVersionAddress = lpMsg->ClientVersionAddress;
 	gOffset.ClientSerialAddress = lpMsg->ClientSerialAddress;
