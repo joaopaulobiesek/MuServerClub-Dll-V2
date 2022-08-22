@@ -50,16 +50,16 @@ COffsetS1702::COffsetS1702() // OK
 	this->RemoveSet6Active = 0x01507488;//Concerta o 2
 	this->RemoveSet7Active = 0x01507264;//Este talvez de erro
 	this->RemoveMoob = 0x015D643E;
-	this->CameraY = 0x0;
-	this->CameraZ = 0x0;
-	this->CameraX = 0x0;
-	this->CameraZoom1 = 0x0;
-	this->CameraZoom2 = 0x0;
-	this->CameraZoom3 = 0x0;
-	this->CameraZoomByte = 0x0;
-	this->CameraArena = 0x0;
-	this->CameraFuncNull = 0x0;
-	this->CameraHook = 0x0;
+	this->CameraY = 0x0A106AB8;
+	this->CameraZ = 0x017F3208;
+	this->CameraX = 0x0A106AC0;
+	this->CameraZoom1 = 0x01A50A78;
+	this->CameraZoom2 = 0x01A50A7C;
+	this->CameraZoom3 = 0x01A50A80;
+	this->CameraZoomByte = 0x0A107094;
+	this->CameraArena = 0x01628382;
+	this->CameraFuncNull = 0x0162F442;
+	this->CameraHook = 0x011A93C4;
 	STR_ENCRYPT_END
 		VM_TIGER_BLACK_END
 }

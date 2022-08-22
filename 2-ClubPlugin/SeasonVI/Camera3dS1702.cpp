@@ -97,7 +97,7 @@ void CCamera3dS1702::ThreadCamS17()
 
 void Zoom2S1702()
 {
-	gCamera3dS17.ActiveCamDelay = 1;
+	gCamera3dS1702.ActiveCamDelay = 1;
 }
 
 void CCamera3dS1702::SetIsMove(BOOL IsMove) // OK

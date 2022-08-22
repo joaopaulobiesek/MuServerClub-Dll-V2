@@ -17,7 +17,7 @@ void CHookMSS1702::Init(int nCode, WPARAM wParam, LPARAM lParam)
 	MOUSEHOOKSTRUCTEX* HookStruct = (MOUSEHOOKSTRUCTEX*)lParam;
 	switch (wParam)
 	{
-	/*case WM_LBUTTONDBLCLK:
+	case WM_LBUTTONDBLCLK:
 		STR_ENCRYPT_START
 			if (GetForegroundWindow() == *(HWND*)(gOffset.HwndAddress))
 			{
@@ -40,7 +40,7 @@ void CHookMSS1702::Init(int nCode, WPARAM wParam, LPARAM lParam)
 				}
 			}
 		STR_ENCRYPT_END
-			break;*/
+			break;
 	case WM_RBUTTONDOWN:
 		STR_ENCRYPT_START
 			if (GetForegroundWindow() == *(HWND*)(gOffset.HwndAddress))
