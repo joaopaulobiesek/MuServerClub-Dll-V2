@@ -18,100 +18,102 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+	_In_opt_ HINSTANCE hPrevInstance,
+	_In_ LPWSTR    lpCmdLine,
+	_In_ int       nCmdShow)
 {
-    UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
+	UNREFERENCED_PARAMETER(hPrevInstance);
+	UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // TODO: Place code here.
+	// TODO: Place code here.
 
-    // Initialize global strings
-    LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_DATASERVER, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance);
+	// Initialize global strings
+	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+	LoadStringW(hInstance, IDC_DATASERVER, szWindowClass, MAX_LOADSTRING);
+	MyRegisterClass(hInstance);
 
-    // Perform application initialization:
-    if (!InitInstance (hInstance, nCmdShow))
-    {
-        return FALSE;
-    }
+	// Perform application initialization:
+	if (!InitInstance(hInstance, nCmdShow))
+	{
+		return FALSE;
+	}
 
-    char buff[256];
+	char buff[256];
 
-    wsprintf(buff, "[%s] %s DataServer (QueueSize : %d)", "DATASERVER_VERSION", "DATASERVER_CLIENT", 0);
+	wsprintf(buff, "[%s] %s DataServer (QueueSize : %d)", "DATASERVER_VERSION", "DATASERVER_CLIENT", 0);
 
-    SetWindowTextW(hWnd, (LPCWSTR)buff);
+	SetWindowTextW(hWnd, (LPCWSTR)buff);
 
-    gServerDisplayer.Init(hWnd);
+	gServerDisplayer.Init(hWnd);
 
-    WSADATA wsa;
+	WSADATA wsa;
 
-    if (WSAStartup(MAKEWORD(2, 2), &wsa) == 0)
-    {
-        char DataServerODBC[32] = { 0 };
+	if (WSAStartup(MAKEWORD(2, 2), &wsa) == 0)
+	{
+		char DataServerODBC[32] = { 0 };
 
-        char DataServerUSER[32] = { 0 };
+		char DataServerUSER[32] = { 0 };
 
-        char DataServerPASS[32] = { 0 };
+		char DataServerPASS[32] = { 0 };
 
-        GetPrivateProfileString("DataServerInfo", "DataServerODBC", "", DataServerODBC, sizeof(DataServerODBC), ".\\DataServer.ini");
+		GetPrivateProfileString("DataServerInfo", "DataServerODBC", "MuOnline", DataServerODBC, sizeof(DataServerODBC), ".\\DataServer.ini");
 
-        GetPrivateProfileString("DataServerInfo", "DataServerUSER", "", DataServerUSER, sizeof(DataServerUSER), ".\\DataServer.ini");
+		GetPrivateProfileString("DataServerInfo", "DataServerUSER", "", DataServerUSER, sizeof(DataServerUSER), ".\\DataServer.ini");
 
-        GetPrivateProfileString("DataServerInfo", "DataServerPASS", "", DataServerPASS, sizeof(DataServerPASS), ".\\DataServer.ini");
+		GetPrivateProfileString("DataServerInfo", "DataServerPASS", "", DataServerPASS, sizeof(DataServerPASS), ".\\DataServer.ini");
 
-        WORD DataServerPort = GetPrivateProfileInt("DataServerInfo", "DataServerPort", 55960, ".\\DataServer.ini");
+		WORD DataServerPort = GetPrivateProfileInt("DataServerInfo", "DataServerPort", 55860, ".\\DataServer.ini");
 
-        AdvancedLog = GetPrivateProfileInt("DataServerInfo", "AdvancedLog", 0, ".\\DataServer.ini");
+		AdvancedLog = GetPrivateProfileInt("DataServerInfo", "AdvancedLog", 0, ".\\DataServer.ini");
 
-        if (gQueryManager.Connect(DataServerODBC, DataServerUSER, DataServerPASS) == 0)
-        {
-            gUtil.LogAdd(LOG_RED, "Could not connect to database");
-        }
-        else
-        {
-            if (gSocketManager.Start(DataServerPort) == 0)
-            {
-                gQueryManager.Disconnect();
-            }
-            else
-            {
-                gAllowableIpList.Load("AllowableIpList.txt");
+		if (gQueryManager.Connect(DataServerODBC, DataServerUSER, DataServerPASS) == 0)
+		{
+			gUtil.LogAdd(LOG_RED, "Could not connect to database");
+		}
+		else
+		{
+			if (gSocketManager.Start(DataServerPort) == 0)
+			{
+				gQueryManager.Disconnect();
+			}
+			else
+			{
+				gAllowableIpList.Load("Data\\AllowableIpList.txt");
 
-                gBadSyntax.Load("BadSyntax.txt");
+				gBadSyntax.Load("Data\\BadSyntax.txt");
 
-                SetTimer(hWnd, TIMER_1000, 1000, 0);
-            }
-        }
-    }
-    else
-    {
-        gUtil.LogAdd(LOG_RED, "WSAStartup() failed with error: %d", WSAGetLastError());
-    }
+				gUtil.LogAdd(LOG_BLUE, "LIGOU");
 
-    gServerDisplayer.PaintAllInfo();
+				SetTimer(hWnd, TIMER_1000, 1000, 0);
+			}
+		}
+	}
+	else
+	{
+		gUtil.LogAdd(LOG_RED, "WSAStartup() failed with error: %d", WSAGetLastError());
+	}
 
-    gServerDisplayer.PaintName();
+	gServerDisplayer.PaintAllInfo();
 
-    SetTimer(hWnd, TIMER_2000, 2000, 0);
+	gServerDisplayer.PaintName();
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DATASERVER));
+	SetTimer(hWnd, TIMER_2000, 2000, 0);
 
-    MSG msg;
+	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DATASERVER));
 
-    // Main message loop:
-    while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-    }
+	MSG msg;
 
-    return (int) msg.wParam;
+	// Main message loop:
+	while (GetMessage(&msg, nullptr, 0, 0))
+	{
+		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+	}
+
+	return (int)msg.wParam;
 }
 
 //
@@ -121,23 +123,23 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
-    WNDCLASSEXW wcex;
+	WNDCLASSEXW wcex;
 
-    wcex.cbSize = sizeof(WNDCLASSEX);
+	wcex.cbSize = sizeof(WNDCLASSEX);
 
-    wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
-    wcex.cbClsExtra     = 0;
-    wcex.cbWndExtra     = 0;
-    wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_DATASERVER));
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_DATASERVER);
-    wcex.lpszClassName  = szWindowClass;
-    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+	wcex.style = CS_HREDRAW | CS_VREDRAW;
+	wcex.lpfnWndProc = WndProc;
+	wcex.cbClsExtra = 0;
+	wcex.cbWndExtra = 0;
+	wcex.hInstance = hInstance;
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_DATASERVER));
+	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+	wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_DATASERVER);
+	wcex.lpszClassName = szWindowClass;
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
-    return RegisterClassExW(&wcex);
+	return RegisterClassExW(&wcex);
 }
 
 //
@@ -152,20 +154,20 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // Store instance handle in our global variable
+	hInst = hInstance; // Store instance handle in our global variable
 
-  hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW | WS_THICKFRAME,
-      CW_USEDEFAULT, 0, 600, 600, nullptr, nullptr, hInstance, nullptr);
+	hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW | WS_THICKFRAME,
+		CW_USEDEFAULT, 0, 600, 600, nullptr, nullptr, hInstance, nullptr);
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+	if (!hWnd)
+	{
+		return FALSE;
+	}
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+	ShowWindow(hWnd, nCmdShow);
+	UpdateWindow(hWnd);
 
-   return TRUE;
+	return TRUE;
 }
 
 //
@@ -180,70 +182,70 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    switch (message)
-    {
-    case WM_COMMAND:
-        {
-            int wmId = LOWORD(wParam);
-            // Parse the menu selections:
-            switch (wmId)
-            {
-            case IDM_ABOUT:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-                break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
-                break;
-            default:
-                return DefWindowProc(hWnd, message, wParam, lParam);
-            }
-        }
-        break;
-    case WM_TIMER:
-        switch (wParam)
-        {
-        case TIMER_1000:
-            break;
-        case TIMER_2000:
-            gServerDisplayer.Run();
-            break;
-        default:
-            break;
-        }
-        break;
-    case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code that uses hdc here...
-            EndPaint(hWnd, &ps);
-        }
-        break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
-    }
-    return 0;
+	switch (message)
+	{
+	case WM_COMMAND:
+	{
+		int wmId = LOWORD(wParam);
+		// Parse the menu selections:
+		switch (wmId)
+		{
+		case IDM_ABOUT:
+			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+			break;
+		case IDM_EXIT:
+			DestroyWindow(hWnd);
+			break;
+		default:
+			return DefWindowProc(hWnd, message, wParam, lParam);
+		}
+	}
+	break;
+	case WM_TIMER:
+		switch (wParam)
+		{
+		case TIMER_1000:
+			break;
+		case TIMER_2000:
+			gServerDisplayer.Run();
+			break;
+		default:
+			break;
+		}
+		break;
+	case WM_PAINT:
+	{
+		PAINTSTRUCT ps;
+		HDC hdc = BeginPaint(hWnd, &ps);
+		// TODO: Add any drawing code that uses hdc here...
+		EndPaint(hWnd, &ps);
+	}
+	break;
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
+	default:
+		return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+	return 0;
 }
 
 // Message handler for about box.
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-    case WM_INITDIALOG:
-        return (INT_PTR)TRUE;
+	UNREFERENCED_PARAMETER(lParam);
+	switch (message)
+	{
+	case WM_INITDIALOG:
+		return (INT_PTR)TRUE;
 
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
-    }
-    return (INT_PTR)FALSE;
+	case WM_COMMAND:
+		if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+		{
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+		break;
+	}
+	return (INT_PTR)FALSE;
 }

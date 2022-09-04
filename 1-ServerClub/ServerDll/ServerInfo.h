@@ -40,6 +40,9 @@ public:
 	int CheckSumList;
 	int CheckCustomList;
 	int CheckSQL;
+	//Novas Funções
+	long m_DataServerPort;
+	char m_DataServerAddress[16];
 
 	//KeyBoard Function
 	int Func1;

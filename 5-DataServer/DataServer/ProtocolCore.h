@@ -21,19 +21,32 @@ struct PBMSG_HEAD
 	{
 		this->type = 0xC1;
 		this->size = size;
-		this->head = head;
-	}
-
-	void setE(BYTE head, BYTE size) // OK
-	{
-		this->type = 0xC3;
-		this->size = size;
+		this->key = rand() % 256;
 		this->head = head;
 	}
 
 	BYTE type;
 	BYTE size;
+	BYTE key;
 	BYTE head;
+};
+
+struct HEAD_VERSION
+{
+	void set(BYTE head, BYTE subh, BYTE size) // OK
+	{
+		this->type = 0xC1;
+		this->size = size;
+		this->key = rand() % 256;
+		this->head = head;
+		this->subh = subh;
+	}
+
+	BYTE type;
+	BYTE size;
+	BYTE key;
+	BYTE head;
+	BYTE subh;
 };
 
 struct PSBMSG_HEAD
@@ -42,20 +55,14 @@ struct PSBMSG_HEAD
 	{
 		this->type = 0xC1;
 		this->size = size;
-		this->head = head;
-		this->subh = subh;
-	}
-
-	void setE(BYTE head, BYTE subh, BYTE size) // OK
-	{
-		this->type = 0xC3;
-		this->size = size;
+		this->key = rand() % 256;
 		this->head = head;
 		this->subh = subh;
 	}
 
 	BYTE type;
 	BYTE size;
+	BYTE key;
 	BYTE head;
 	BYTE subh;
 };
@@ -67,19 +74,13 @@ struct PWMSG_HEAD
 		this->type = 0xC2;
 		this->size[0] = SET_NUMBERHB(size);
 		this->size[1] = SET_NUMBERLB(size);
-		this->head = head;
-	}
-
-	void setE(BYTE head, WORD size) // OK
-	{
-		this->type = 0xC4;
-		this->size[0] = SET_NUMBERHB(size);
-		this->size[1] = SET_NUMBERLB(size);
+		this->key = rand() % 256;
 		this->head = head;
 	}
 
 	BYTE type;
 	BYTE size[2];
+	BYTE key;
 	BYTE head;
 };
 
@@ -90,23 +91,40 @@ struct PSWMSG_HEAD
 		this->type = 0xC2;
 		this->size[0] = SET_NUMBERHB(size);
 		this->size[1] = SET_NUMBERLB(size);
-		this->head = head;
-		this->subh = subh;
-	}
-
-	void setE(BYTE head, BYTE subh, WORD size) // OK
-	{
-		this->type = 0xC4;
-		this->size[0] = SET_NUMBERHB(size);
-		this->size[1] = SET_NUMBERLB(size);
+		this->key = rand() % 256;
 		this->head = head;
 		this->subh = subh;
 	}
 
 	BYTE type;
 	BYTE size[2];
+	BYTE key;
 	BYTE head;
 	BYTE subh;
+};
+
+//**********************************************//
+//********** ServerDLL -> DataServer **********//
+//**********************************************//
+
+struct SDHP_SERVER_INFO_RECV
+{
+	PBMSG_HEAD header; // C1:00
+	BYTE type;
+	WORD ServerPort;
+	char ServerName[50];
+	WORD ServerCode;
+};
+
+//**********************************************//
+//********** DataServer -> ServerDLL **********//
+//**********************************************//
+
+struct SDHP_SERVER_INFO_SEND
+{
+	PBMSG_HEAD header; // C1:00
+	BYTE result;
+	DWORD ItemCount;
 };
 
 class CProtocolCore
@@ -114,6 +132,7 @@ class CProtocolCore
 public:
 	CProtocolCore();
 	virtual ~CProtocolCore();
+	void GDServerInfoRecv(SDHP_SERVER_INFO_RECV* lpMsg, int index);
 public:
 };
 

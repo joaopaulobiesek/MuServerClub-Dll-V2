@@ -170,6 +170,7 @@
     <ClInclude Include="BlackList.h" />
     <ClInclude Include="CCRC32.h" />
     <ClInclude Include="ClientManager.h" />
+    <ClInclude Include="Connection.h" />
     <ClInclude Include="ConnectionAuth.h" />
     <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="Features.h" />
@@ -194,6 +195,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="ProcessQueryAuth.h" />
     <ClInclude Include="Protocol.h" />
+    <ClInclude Include="ProtocolDataServer.h" />
     <ClInclude Include="ProtocoloAuth.h" />
     <ClInclude Include="ProtocolS0.h" />
     <ClInclude Include="ProtocolS10.h" />
@@ -227,6 +229,7 @@
     <ClCompile Include="BlackList.cpp" />
     <ClCompile Include="CCRC32.cpp" />
     <ClCompile Include="ClientManager.cpp" />
+    <ClCompile Include="Connection.cpp" />
     <ClCompile Include="ConnectionAuth.cpp" />
     <ClCompile Include="CriticalSection.cpp" />
     <ClCompile Include="Features.cpp" />
@@ -255,6 +258,7 @@
     </ClCompile>
     <ClCompile Include="ProcessQueryAuth.cpp" />
     <ClCompile Include="Protocol.cpp" />
+    <ClCompile Include="ProtocolDataServer.cpp" />
     <ClCompile Include="ProtocoloAuth.cpp" />
     <ClCompile Include="ProtocolS0.cpp" />
     <ClCompile Include="ProtocolS10.cpp" />

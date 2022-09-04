@@ -178,8 +178,6 @@ void CServerInfo::ReadBlackList() //OK
 
 void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 {
-	char OffsetPush[100] = { 0 };
-
 	this->LicenseId = GetPrivateProfileInt(section, "LicenseId", 0, path);
 
 	this->ServerPort = GetPrivateProfileInt(section, "ServerDllPort", 0, path);
@@ -196,16 +194,6 @@ void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 
 	this->HackSwitch = GetPrivateProfileInt(section, "HackSwitch", 1, path);
 
-	this->CheckSQL = GetPrivateProfileInt("DataServerInfo", "CheckSQL", 1, path);
-
-	GetPrivateProfileString("DataServerInfo", "Ports1", "", Ports1, sizeof(Ports1), path);
-
-	GetPrivateProfileString("DataServerInfo", "Ports2", "", Ports2, sizeof(Ports2), path);
-
-	GetPrivateProfileString("DataServerInfo", "PortNumberAddress", "", OffsetPush, sizeof(OffsetPush), path);
-
-	this->PortNumberAddress = (((this->PortNumberAddress = strtoul(OffsetPush, NULL, 0)) > 0x10000000) ? (this->PortNumberAddress ^ 0xC47A0E9F) : this->PortNumberAddress);
-
 	GetPrivateProfileString(section, "IpAddress", "0", this->IpAddressExt, sizeof(this->IpAddressExt), path);
 
 	GetPrivateProfileString(section, "ClientVersion", "", this->ClientVersion, sizeof(this->ClientVersion), path);
@@ -219,10 +207,18 @@ void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 
 void CServerInfo::ReadStartupDS(const char* path) // OK
 {
+	char OffsetPush[100] = { 0 };
+
 	char DataServerUSER[32] = { 0 };
 
 	char DataServerPASS[32] = { 0 };
 
+	this->CheckSQL = GetPrivateProfileInt("DataServerInfo", "CheckSQL", 1, path);
+
+	this->m_DataServerPort = GetPrivateProfileInt("DataServerInfo", "DataServerPort", 55860, path);
+
+	GetPrivateProfileString("DataServerInfo", "DataServerAddress", "127.0.0.1", this->m_DataServerAddress, sizeof(this->m_DataServerAddress), path);
+	
 	GetPrivateProfileString("DataServerInfo", "DataServerPort1ODBC", "", this->DataServerPort1ODBC, sizeof(this->DataServerPort1ODBC), path);
 
 	GetPrivateProfileString("DataServerInfo", "DataServerPort2ODBC", "", this->DataServerPort2ODBC, sizeof(this->DataServerPort2ODBC), path);
@@ -231,6 +227,13 @@ void CServerInfo::ReadStartupDS(const char* path) // OK
 
 	GetPrivateProfileString("DataServerInfo", "DataServerPASS", "", DataServerPASS, sizeof(DataServerPASS), path);
 
+	GetPrivateProfileString("DataServerInfo", "Ports1", "", Ports1, sizeof(Ports1), path);
+
+	GetPrivateProfileString("DataServerInfo", "Ports2", "", Ports2, sizeof(Ports2), path);
+
+	GetPrivateProfileString("DataServerInfo", "PortNumberAddress", "", OffsetPush, sizeof(OffsetPush), path);
+
+	this->PortNumberAddress = (((this->PortNumberAddress = strtoul(OffsetPush, NULL, 0)) > 0x10000000) ? (this->PortNumberAddress ^ 0xC47A0E9F) : this->PortNumberAddress);
 
 	if (gQueryManager.Connect(this->DataServerPort1ODBC, DataServerUSER, DataServerPASS) == 0)
 	{

@@ -131,5 +131,7 @@ typedef unsigned __int64 QWORD;
 #include "ThreadCheckAuth.h"
 
 //DataServer
+#include "Connection.h"
+#include "ProtocolDataServer.h"
 
 #include "GetSync.h"

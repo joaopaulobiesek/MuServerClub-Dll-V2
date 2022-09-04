@@ -288,6 +288,12 @@
     <ClInclude Include="ThreadAuth.h">
       <Filter>Source Files\BasicModules\Protocol\AuthServer\Socket</Filter>
     </ClInclude>
+    <ClInclude Include="Connection.h">
+      <Filter>Source Files\BasicModules\Protocol\DataServer\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolDataServer.h">
+      <Filter>Source Files\BasicModules\Protocol\DataServer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -442,6 +448,12 @@
     </ClCompile>
     <ClCompile Include="ThreadAuth.cpp">
       <Filter>Source Files\BasicModules\Protocol\AuthServer\Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="Connection.cpp">
+      <Filter>Source Files\BasicModules\Protocol\DataServer\Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolDataServer.cpp">
+      <Filter>Source Files\BasicModules\Protocol\DataServer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,8 @@
 #pragma once
 
+
+#define WM_DATA_SERVER_MSG_PROC (WM_USER+1)
+
 extern HWND hWnd;
 
 // Forward declarations of functions included in this code module:

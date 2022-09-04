@@ -29,7 +29,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	gServerInfo.ReadStartupKeyboard("ConfigFuncKeys", ".\\ServerPlugin.ini");
 
-	gServerInfo.ReadStartupCustomS6("ConfigCustomS6", ".\\ServerPlugin.ini");	
+	gServerInfo.ReadStartupCustomS6("ConfigCustomS6", ".\\ServerPlugin.ini");
 
 	gServerDisplayer.Init(hWnd);
 
@@ -41,6 +41,16 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		{
 			gServerInfo.ReadInit();
 		}
+
+		gConnection.Init(hWnd, ProtocolDataServer);
+
+		//if (gConnection.Connect(gServerInfo.m_DataServerAddress, (WORD)gServerInfo.m_DataServerPort, WM_DATA_SERVER_MSG_PROC) == 0)
+		if (gConnection.Connect("127.0.0.1", (WORD)"55860", WM_DATA_SERVER_MSG_PROC) == 0)
+		{
+			LogAdd(LOG_RED, "Falha ao connectar ao data Server");
+		}
+
+		gProtocolDataServer.GDServerInfoSend();
 	}
 	else
 	{
