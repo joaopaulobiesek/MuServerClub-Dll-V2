@@ -10,7 +10,13 @@
 enum eLogType
 {
 	LOG_GENERAL = 0,
-	LOG_HACK = 1,
+	LOG_CHAT = 1,
+	LOG_COMMAND = 2,
+	LOG_TRADE = 3,
+	LOG_CONNECT = 4,
+	LOG_HACK = 5,
+	LOG_CASH_SHOP = 6,
+	LOG_CHAOS_MIX = 7,
 };
 
 struct LOG_INFO

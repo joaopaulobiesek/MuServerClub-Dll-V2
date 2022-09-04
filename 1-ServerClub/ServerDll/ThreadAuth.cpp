@@ -23,26 +23,26 @@ DWORD WINAPI ConnectionReconnectThread() // OK
 {
 	while (!DelayMe(5000, 100))
 	{
-		if (gConnection.gReconnectStatus == 1)
+		if (gConnectionAuth.gReconnectStatus == 1)
 		{
-			if (gConnection.Init(ProtocolCore) == 0)
+			if (gConnectionAuth.Init(ProtocolCore) == 0)
 			{
 				gProtocoloAuth.ErrorMessageBox("Reconnect ProtocolCore");
 				gProtocoloAuth.SafeExitProcess();
 				continue;
 			}
 
-			if (gConnection.Connect(AUTH_ADDRESS_A, AUTH_PORT) == 0)
+			if (gConnectionAuth.Connect(AUTH_ADDRESS_A, AUTH_PORT) == 0)
 			{
-				gConnection.gConnectionStatusTime = GetTickCount();
+				gConnectionAuth.gConnectionStatusTime = GetTickCount();
 				continue;
 			}
 
-			gConnection.gReconnectStatus = 2;
+			gConnectionAuth.gReconnectStatus = 2;
 
-			gConnection.gConnectionStatusTime = GetTickCount();
+			gConnectionAuth.gConnectionStatusTime = GetTickCount();
 
-			gConnection.CHClientInfoSend();
+			gConnectionAuth.CHClientInfoSend();
 		}
 	}
 
@@ -54,31 +54,31 @@ DWORD WINAPI ConnectionStatusThread() // OK
 	while (!DelayMe(5000, 100))
 	{
 		TimeoutProc();// Responsavel por zerar o UserCountOnline////////////////////////////////////////////
-		if (gConnection.gReconnectSwitch == 2)
+		if (gConnectionAuth.gReconnectSwitch == 2)
 		{
-			gConnection.gReconnectStatus = 0;
-			closesocket(gConnection.m_socket);
-			gConnection.m_socket = INVALID_SOCKET;
+			gConnectionAuth.gReconnectStatus = 0;
+			closesocket(gConnectionAuth.m_socket);
+			gConnectionAuth.m_socket = INVALID_SOCKET;
 			closesocket(gSocketManager.m_listen);
 			gSocketManager.m_listen = INVALID_SOCKET;
-			gConnection.gConnectionStatusTime = GetTickCount();
+			gConnectionAuth.gConnectionStatusTime = GetTickCount();
 			gProtocoloAuth.ErrorMessageBox("ReconnectSwitch = 2 & Status: 0;");
 			gProtocoloAuth.SafeExitProcess();
 			break;
 		}
 
-		if (gConnection.CheckState() == 0)
+		if (gConnectionAuth.CheckState() == 0)
 		{
-			if (gConnection.gReconnectStatus == 0 || gConnection.gReconnectStatus == 2)
+			if (gConnectionAuth.gReconnectStatus == 0 || gConnectionAuth.gReconnectStatus == 2)
 			{
-				gConnection.gReconnectStatus = 1;
+				gConnectionAuth.gReconnectStatus = 1;
 				continue;
 			}
 
-			if (gConnection.gReconnectSwitch == 0)
+			if (gConnectionAuth.gReconnectSwitch == 0)
 			{
 				gThreadAuth.CountTime++;
-				gConnection.gConnectionStatusTime = GetTickCount();
+				gConnectionAuth.gConnectionStatusTime = GetTickCount();
 				if (gThreadAuth.CountTime % 30 == 0) LogAdd(LOG_RED, "Connect Status Error 60s. Count: %d/25", gThreadAuth.round(gThreadAuth.CountTime / 30) + 1);
 				if (gThreadAuth.CountTime > 720)
 				{
@@ -88,16 +88,16 @@ DWORD WINAPI ConnectionStatusThread() // OK
 				continue;
 			}
 
-			if (gConnection.gReconnectStatus == 1)
+			if (gConnectionAuth.gReconnectStatus == 1)
 			{
-				gConnection.gConnectionStatusTime = GetTickCount();
+				gConnectionAuth.gConnectionStatusTime = GetTickCount();
 				continue;
 			}
 		}
 		else
 		{
 			gThreadAuth.CountTime = 0;
-			gConnection.CHConnectionStatusSend();
+			gConnectionAuth.CHConnectionStatusSend();
 			continue;
 		}
 	}
@@ -119,23 +119,23 @@ void CThreadAuth::Init()
 			return;
 		}
 
-		if (gConnection.CheckState() == 0 && gConnection.Init(ProtocolCore) != 0)
+		if (gConnectionAuth.CheckState() == 0 && gConnectionAuth.Init(ProtocolCore) != 0)
 		{
-			if (gConnection.Connect(AUTH_ADDRESS_A, AUTH_PORT) != 0)
+			if (gConnectionAuth.Connect(AUTH_ADDRESS_A, AUTH_PORT) != 0)
 			{
-				gConnection.CHClientInfoSend();
+				gConnectionAuth.CHClientInfoSend();
 				break;
 			}
 		}
 	}
 
-	gThreadAuth.ThreadHandles[0] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ConnectionStatusThread, 0, 0, (DWORD*)&gThreadCheck.m_CheckThreadID[1]);
+	gThreadAuth.ThreadHandles[0] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ConnectionStatusThread, 0, 0, (DWORD*)&gThreadCheckAuth.m_CheckThreadID[1]);
 
-	gThreadAuth.ThreadHandles[1] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ConnectionReconnectThread, 0, 0, (DWORD*)&gThreadCheck.m_CheckThreadID[2]);
+	gThreadAuth.ThreadHandles[1] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ConnectionReconnectThread, 0, 0, (DWORD*)&gThreadCheckAuth.m_CheckThreadID[2]);
 
 	SetThreadPriority(gThreadAuth.ThreadHandles[0], THREAD_PRIORITY_HIGHEST);
 
 	WaitForMultipleObjects(3, gThreadAuth.ThreadHandles, 1, 2000);
 
-	gThreadCheck.Init();
+	gThreadCheckAuth.Init();
 }

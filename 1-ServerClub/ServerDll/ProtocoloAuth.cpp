@@ -15,7 +15,7 @@ void ProtocolCore(BYTE head, BYTE* lpMsg, int size) // OK
 		gProtocoloAuth.CHConnectionStatusRecv((SERVERDLL_CLIENT_STATUS_RECV*)lpMsg);
 		break;
 	default:
-		gConnection.Disconnect();
+		gConnectionAuth.Disconnect();
 		break;
 	}
 }
@@ -257,7 +257,7 @@ void CProtocoloAuth::ConnectionLicensedRecv(SERVERDLL_CONNECT_LICENSED_RECV* lpM
 		checkLoadInfo = 1;		
 	}
 
-	gConnection.gConnectionStatusTime = GetTickCount();
+	gConnectionAuth.gConnectionStatusTime = GetTickCount();
 
 	memcpy(this->m_Date, lpMsg->expireDate, sizeof(lpMsg->expireDate));
 
@@ -272,9 +272,9 @@ void CProtocoloAuth::CHConnectionStatusRecv(SERVERDLL_CLIENT_STATUS_RECV* lpMsg)
 
 		if (lpMsg->Status != AUTH_SERVER_STATUS_SUCCESS)
 		{
-			gConnection.gReconnectSwitch = 2;
+			gConnectionAuth.gReconnectSwitch = 2;
 		}
-	gConnection.gConnectionStatusTime = GetTickCount();
+	gConnectionAuth.gConnectionStatusTime = GetTickCount();
 
 	VM_TIGER_BLACK_END
 }

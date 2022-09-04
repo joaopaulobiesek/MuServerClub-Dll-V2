@@ -8,11 +8,11 @@
 
 #define MAX_BUFF_SIZE 8192
 
-class CConnection
+class CConnectionAuth
 {
 public:
-	CConnection();
-	virtual ~CConnection();
+	CConnectionAuth();
+	virtual ~CConnectionAuth();
 	bool Init(void* function);
 	bool Connect(char* IpAddress, WORD port);
 	void Disconnect();
@@ -20,7 +20,7 @@ public:
 	bool DataRecv();
 	bool DataSend(BYTE* lpMsg, int size);
 	bool DataSendEx();
-	static DWORD WINAPI ClientWorkerThread(CConnection* lpConnection);
+	static DWORD WINAPI ClientWorkerThread(CConnectionAuth* lpConnection);
 
 	void CHConnectionStatusSend();
 	void CHClientInfoSend();
@@ -43,4 +43,4 @@ private:
 	bool m_active;
 };
 
-extern CConnection gConnection;
+extern CConnectionAuth gConnectionAuth;

@@ -1,4 +1,4 @@
-// ProcessQuery.h: interface for the CProcessQuery class.
+// ProcessQuery.h: interface for the CProcessQueryAuth class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -16,13 +16,13 @@ typedef NTSTATUS(WINAPI* NTQUERYSYSTEMINFORMATION)(SYSTEM_INFORMATION_CLASS, PVO
 #define SystemExtendedHandleInformation ((SYSTEM_INFORMATION_CLASS)64)
 #define SystemKernelDebuggerInformation ((SYSTEM_INFORMATION_CLASS)35)
 
-enum THREAD_STATE
+enum THREAD_STATE_AUTH
 {
 	Running = 2,
 	Waiting = 5,
 };
 
-enum KWAIT_REASON
+enum KWAIT_REASON_AUTH
 {
 	Executive = 0,
 	FreePage = 1,
@@ -64,30 +64,30 @@ enum KWAIT_REASON
 	MaximumWaitReason = 37,
 };
 
-struct CLIENT_ID
+struct CLIENT_ID_AUTH
 {
 	PVOID UniqueProcess;
 	PVOID UniqueThread;
 };
 
-struct SYSTEM_THREAD_INFO
+struct SYSTEM_THREAD_INFO_AUTH
 {
 	LARGE_INTEGER KernelTime;
 	LARGE_INTEGER UserTime;
 	LARGE_INTEGER CreateTime;
 	ULONG WaitTime;
 	PVOID StartAddress;
-	CLIENT_ID ClientId;
+	CLIENT_ID_AUTH ClientId;
 	KPRIORITY Priority;
 	LONG BasePriority;
 	ULONG ContextSwitches;
 	ULONG ThreadState;
-	KWAIT_REASON WaitReason;
+	KWAIT_REASON_AUTH WaitReason;
 };
 
-struct SYSTEM_EXTENDED_THREAD_INFO
+struct SYSTEM_EXTENDED_THREAD_INFO_AUTH
 {
-	SYSTEM_THREAD_INFO ThreadInfo;
+	SYSTEM_THREAD_INFO_AUTH ThreadInfo;
 	PVOID StackBase;
 	PVOID StackLimit;
 	PVOID Win32StartAddress;
@@ -97,7 +97,7 @@ struct SYSTEM_EXTENDED_THREAD_INFO
 	ULONG Reserved3;
 };
 
-struct SYSTEM_PROCESS_INFO
+struct SYSTEM_PROCESS_INFO_AUTH
 {
 	ULONG NextEntryOffset;
 	ULONG NumberOfThreads;
@@ -133,10 +133,10 @@ struct SYSTEM_PROCESS_INFO
 	LARGE_INTEGER ReadTransferCount;
 	LARGE_INTEGER WriteTransferCount;
 	LARGE_INTEGER OtherTransferCount;
-	SYSTEM_THREAD_INFO Threads[1];
+	SYSTEM_THREAD_INFO_AUTH Threads[1];
 };
 
-struct SYSTEM_EXTENDED_PROCESS_INFO
+struct SYSTEM_EXTENDED_PROCESS_INFO_AUTH
 {
 	ULONG NextEntryOffset;
 	ULONG NumberOfThreads;
@@ -172,10 +172,10 @@ struct SYSTEM_EXTENDED_PROCESS_INFO
 	LARGE_INTEGER ReadTransferCount;
 	LARGE_INTEGER WriteTransferCount;
 	LARGE_INTEGER OtherTransferCount;
-	SYSTEM_EXTENDED_THREAD_INFO Threads[1];
+	SYSTEM_EXTENDED_THREAD_INFO_AUTH Threads[1];
 };
 
-struct SYSTEM_HANDLE_ENTRY_INFO
+struct SYSTEM_HANDLE_ENTRY_INFO_AUTH
 {
 	USHORT UniqueProcessId;
 	USHORT CreatorBackTraceIndex;
@@ -186,13 +186,13 @@ struct SYSTEM_HANDLE_ENTRY_INFO
 	ULONG GrantedAccess;
 };
 
-struct SYSTEM_HANDLE_INFO
+struct SYSTEM_HANDLE_INFO_AUTH
 {
 	ULONG NumberOfHandles;
-	SYSTEM_HANDLE_ENTRY_INFO Handles[1];
+	SYSTEM_HANDLE_ENTRY_INFO_AUTH Handles[1];
 };
 
-struct SYSTEM_HANDLE_ENTRY_INFO_EX
+struct SYSTEM_HANDLE_ENTRY_INFO_EX_AUTH
 {
 	PVOID Object;
 	ULONG UniqueProcessId;
@@ -204,34 +204,34 @@ struct SYSTEM_HANDLE_ENTRY_INFO_EX
 	ULONG Reserved;
 };
 
-struct SYSTEM_HANDLE_INFO_EX
+struct SYSTEM_HANDLE_INFO_EX_AUTH
 {
 	ULONG NumberOfHandles;
 	ULONG Reserved;
-	SYSTEM_HANDLE_ENTRY_INFO_EX Handles[1];
+	SYSTEM_HANDLE_ENTRY_INFO_EX_AUTH Handles[1];
 };
 
-struct SYSTEM_KERNEL_DEBUGGER_INFO
+struct SYSTEM_KERNEL_DEBUGGER_INFO_AUTH
 {
 	BOOLEAN DebuggerEnabled;
 	BOOLEAN DebuggerNotPresent;
 };
 
-class CProcessQuery
+class CProcessQueryAuth
 {
 public:
-	CProcessQuery();
-	virtual ~CProcessQuery();
+	CProcessQueryAuth();
+	virtual ~CProcessQueryAuth();
 	void Start();
 	void Close();
 	bool Fetch(SYSTEM_INFORMATION_CLASS SysInfoClass, DWORD QuerySize);
-	SYSTEM_HANDLE_INFO* GetHandleInfo();
-	SYSTEM_HANDLE_INFO_EX* GetExtendedHandleInfo();
-	SYSTEM_KERNEL_DEBUGGER_INFO* GetKernelDebuggerInfo();
-	SYSTEM_PROCESS_INFO* GetProcessInfoByID(HANDLE ProcessId);
-	SYSTEM_EXTENDED_PROCESS_INFO* GetExtendedProcessInfoByID(HANDLE ProcessId);
-	SYSTEM_THREAD_INFO* GetThreadInfoByID(SYSTEM_PROCESS_INFO* lpSystemProcessInfo, HANDLE ThreadId);
-	SYSTEM_EXTENDED_THREAD_INFO* GetExtendedThreadInfoByID(SYSTEM_EXTENDED_PROCESS_INFO* lpSystemProcessInfo, HANDLE ThreadId);
+	SYSTEM_HANDLE_INFO_AUTH* GetHandleInfo();
+	SYSTEM_HANDLE_INFO_EX_AUTH* GetExtendedHandleInfo();
+	SYSTEM_KERNEL_DEBUGGER_INFO_AUTH* GetKernelDebuggerInfo();
+	SYSTEM_PROCESS_INFO_AUTH* GetProcessInfoByID(HANDLE ProcessId);
+	SYSTEM_EXTENDED_PROCESS_INFO_AUTH* GetExtendedProcessInfoByID(HANDLE ProcessId);
+	SYSTEM_THREAD_INFO_AUTH* GetThreadInfoByID(SYSTEM_PROCESS_INFO_AUTH* lpSystemProcessInfo, HANDLE ThreadId);
+	SYSTEM_EXTENDED_THREAD_INFO_AUTH* GetExtendedThreadInfoByID(SYSTEM_EXTENDED_PROCESS_INFO_AUTH* lpSystemProcessInfo, HANDLE ThreadId);
 public:
 	static NTQUERYSYSTEMINFORMATION m_NtQuerySystemInformation;
 private:

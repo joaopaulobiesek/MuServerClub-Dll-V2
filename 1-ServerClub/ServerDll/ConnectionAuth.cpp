@@ -7,12 +7,12 @@
 DWORD gConnectionStatusTime = 0;
 DWORD gReconnectStatus = 0;
 DWORD gReconnectSwitch = 0;
-CConnection gConnection;
+CConnectionAuth gConnectionAuth;
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CConnection::CConnection() // OK
+CConnectionAuth::CConnectionAuth() // OK
 {
 	this->m_socket = INVALID_SOCKET;
 
@@ -23,12 +23,12 @@ CConnection::CConnection() // OK
 	this->m_active = 0;
 }
 
-CConnection::~CConnection() // OK
+CConnectionAuth::~CConnectionAuth() // OK
 {
 	this->Disconnect();
 }
 
-void CConnection::CHClientInfoSend() // OK
+void CConnectionAuth::CHClientInfoSend() // OK
 {
 	VM_TIGER_BLACK_START
 
@@ -44,12 +44,12 @@ void CConnection::CHClientInfoSend() // OK
 
 	memcpy(pMsg.Version, AUTHSERVER_LICENSED_VERSION, sizeof(AUTHSERVER_LICENSED_VERSION));
 
-	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
+	gConnectionAuth.DataSend((BYTE*)&pMsg, pMsg.header.size);
 
 	VM_TIGER_BLACK_END
 }
 
-void CConnection::CHConnectionStatusSend() // OK
+void CConnectionAuth::CHConnectionStatusSend() // OK
 {
 	VM_TIGER_BLACK_START
 
@@ -59,12 +59,12 @@ void CConnection::CHConnectionStatusSend() // OK
 
 	pMsg.Status = AUTH_SERVER_STATUS_NONE;
 
-	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
+	gConnectionAuth.DataSend((BYTE*)&pMsg, pMsg.header.size);
 
 	VM_TIGER_BLACK_END
 }
 
-bool CConnection::Init(void* function) // OK
+bool CConnectionAuth::Init(void* function) // OK
 {
 	WSADATA wsa;
 
@@ -88,7 +88,7 @@ bool CConnection::Init(void* function) // OK
 	return 1;
 }
 
-bool CConnection::Connect(char* IpAddress, WORD port) // OK
+bool CConnectionAuth::Connect(char* IpAddress, WORD port) // OK
 {
 	if (this->m_socket == INVALID_SOCKET)
 	{
@@ -137,18 +137,18 @@ bool CConnection::Connect(char* IpAddress, WORD port) // OK
 
 	this->m_SendSize = 0;
 
-	this->m_WorkerThread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)this->ClientWorkerThread, this, 0, &gThreadCheck.m_CheckThreadID[0]);
+	this->m_WorkerThread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)this->ClientWorkerThread, this, 0, &gThreadCheckAuth.m_CheckThreadID[0]);
 
 	this->m_active = 1;
 
 	return 1;
 }
 
-void CConnection::Disconnect() // OK
+void CConnectionAuth::Disconnect() // OK
 {
 	if (this->m_WorkerThread != 0)
 	{
-		gThreadCheck.m_CheckThreadID[0] = (DWORD)INVALID_HANDLE_VALUE;
+		gThreadCheckAuth.m_CheckThreadID[0] = (DWORD)INVALID_HANDLE_VALUE;
 		TerminateThread(this->m_WorkerThread, 0);
 		CloseHandle(this->m_WorkerThread);
 		this->m_WorkerThread = 0;
@@ -169,7 +169,7 @@ void CConnection::Disconnect() // OK
 	this->m_active = 0;
 }
 
-bool CConnection::CheckState() // OK
+bool CConnectionAuth::CheckState() // OK
 {
 	if (this->m_socket == INVALID_SOCKET)
 	{
@@ -184,7 +184,7 @@ bool CConnection::CheckState() // OK
 	return 1;
 }
 
-void CConnection::PacketDecryptDataAuth(BYTE* lpMsg, int size, BYTE key) // OK
+void CConnectionAuth::PacketDecryptDataAuth(BYTE* lpMsg, int size, BYTE key) // OK
 {
 	VM_TIGER_BLACK_START
 		for (int n = 0; n < size; n++)
@@ -194,7 +194,7 @@ void CConnection::PacketDecryptDataAuth(BYTE* lpMsg, int size, BYTE key) // OK
 	VM_TIGER_BLACK_END
 }
 
-void CConnection::PacketEncryptDataAuth(BYTE* lpMsg, int size, BYTE key) // OK
+void CConnectionAuth::PacketEncryptDataAuth(BYTE* lpMsg, int size, BYTE key) // OK
 {
 	VM_TIGER_BLACK_START
 		for (int n = 0; n < size; n++)
@@ -204,7 +204,7 @@ void CConnection::PacketEncryptDataAuth(BYTE* lpMsg, int size, BYTE key) // OK
 	VM_TIGER_BLACK_END
 }
 
-bool CConnection::DataRecv() // OK
+bool CConnectionAuth::DataRecv() // OK
 {
 	int count = 0, size = 0, result = 0;
 
@@ -296,7 +296,7 @@ bool CConnection::DataRecv() // OK
 	return 1;
 }
 
-bool CConnection::DataSend(BYTE* lpMsg, int size) // OK
+bool CConnectionAuth::DataSend(BYTE* lpMsg, int size) // OK
 {
 	this->m_critical.lock();
 
@@ -379,7 +379,7 @@ bool CConnection::DataSend(BYTE* lpMsg, int size) // OK
 	return 1;
 }
 
-bool CConnection::DataSendEx() // OK
+bool CConnectionAuth::DataSendEx() // OK
 {
 	this->m_critical.lock();
 
@@ -414,7 +414,7 @@ bool CConnection::DataSendEx() // OK
 	return 1;
 }
 
-DWORD WINAPI CConnection::ClientWorkerThread(CConnection* lpConnection) // OK
+DWORD WINAPI CConnectionAuth::ClientWorkerThread(CConnectionAuth* lpConnection) // OK
 {
 	while (true)
 	{

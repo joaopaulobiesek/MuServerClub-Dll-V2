@@ -4,22 +4,22 @@
 
 #include "pch.h"
 
-NTQUERYSYSTEMINFORMATION CProcessQuery::m_NtQuerySystemInformation;
+NTQUERYSYSTEMINFORMATION CProcessQueryAuth::m_NtQuerySystemInformation;
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CProcessQuery::CProcessQuery() // OK
+CProcessQueryAuth::CProcessQueryAuth() // OK
 {
 	this->Start();
 }
 
-CProcessQuery::~CProcessQuery() // OK
+CProcessQueryAuth::~CProcessQueryAuth() // OK
 {
 	this->Close();
 }
 
-void CProcessQuery::Start() // OK
+void CProcessQueryAuth::Start() // OK
 {
 	this->m_QueryData = 0;
 
@@ -28,7 +28,7 @@ void CProcessQuery::Start() // OK
 	this->m_QueryStatus = STATUS_SUCCESS;
 }
 
-void CProcessQuery::Close() // OK
+void CProcessQueryAuth::Close() // OK
 {
 	this->m_QueryData = ((this->m_QueryData == 0) ? (BYTE*)0 : ((HeapFree(GetProcessHeap(), 0, this->m_QueryData) == 0) ? (BYTE*)0 : (BYTE*)0));
 
@@ -37,13 +37,13 @@ void CProcessQuery::Close() // OK
 	this->m_QueryStatus = STATUS_SUCCESS;
 }
 
-bool CProcessQuery::Fetch(SYSTEM_INFORMATION_CLASS SysInfoClass, DWORD QuerySize) // OK
+bool CProcessQueryAuth::Fetch(SYSTEM_INFORMATION_CLASS SysInfoClass, DWORD QuerySize) // OK
 {
 	while (this->m_QueryData != 0 || (this->m_QueryData = (BYTE*)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, (this->m_QuerySize = ((this->m_QuerySize < QuerySize) ? QuerySize : this->m_QuerySize)))) != 0)
 	{
 		DWORD ReturnLength;
 
-		if ((this->m_QueryStatus = CProcessQuery::m_NtQuerySystemInformation(SysInfoClass, this->m_QueryData, this->m_QuerySize, &ReturnLength)) == STATUS_INFO_LENGTH_MISMATCH)
+		if ((this->m_QueryStatus = CProcessQueryAuth::m_NtQuerySystemInformation(SysInfoClass, this->m_QueryData, this->m_QuerySize, &ReturnLength)) == STATUS_INFO_LENGTH_MISMATCH)
 		{
 			this->m_QueryData = ((this->m_QueryData == 0) ? (BYTE*)0 : ((HeapFree(GetProcessHeap(), 0, this->m_QueryData) == 0) ? (BYTE*)0 : (BYTE*)0));
 			this->m_QuerySize = ReturnLength;
@@ -57,24 +57,24 @@ bool CProcessQuery::Fetch(SYSTEM_INFORMATION_CLASS SysInfoClass, DWORD QuerySize
 	return 0;
 }
 
-SYSTEM_HANDLE_INFO* CProcessQuery::GetHandleInfo() // OK
+SYSTEM_HANDLE_INFO_AUTH* CProcessQueryAuth::GetHandleInfo() // OK
 {
-	return ((SYSTEM_HANDLE_INFO*)this->m_QueryData);
+	return ((SYSTEM_HANDLE_INFO_AUTH*)this->m_QueryData);
 }
 
-SYSTEM_HANDLE_INFO_EX* CProcessQuery::GetExtendedHandleInfo() // OK
+SYSTEM_HANDLE_INFO_EX_AUTH* CProcessQueryAuth::GetExtendedHandleInfo() // OK
 {
-	return ((SYSTEM_HANDLE_INFO_EX*)this->m_QueryData);
+	return ((SYSTEM_HANDLE_INFO_EX_AUTH*)this->m_QueryData);
 }
 
-SYSTEM_KERNEL_DEBUGGER_INFO* CProcessQuery::GetKernelDebuggerInfo() // OK
+SYSTEM_KERNEL_DEBUGGER_INFO_AUTH* CProcessQueryAuth::GetKernelDebuggerInfo() // OK
 {
-	return ((SYSTEM_KERNEL_DEBUGGER_INFO*)this->m_QueryData);
+	return ((SYSTEM_KERNEL_DEBUGGER_INFO_AUTH*)this->m_QueryData);
 }
 
-SYSTEM_PROCESS_INFO* CProcessQuery::GetProcessInfoByID(HANDLE ProcessId) // OK
+SYSTEM_PROCESS_INFO_AUTH* CProcessQueryAuth::GetProcessInfoByID(HANDLE ProcessId) // OK
 {
-	SYSTEM_PROCESS_INFO* lpSystemProcessInfo = (SYSTEM_PROCESS_INFO*)this->m_QueryData;
+	SYSTEM_PROCESS_INFO_AUTH* lpSystemProcessInfo = (SYSTEM_PROCESS_INFO_AUTH*)this->m_QueryData;
 
 	while (true)
 	{
@@ -88,15 +88,15 @@ SYSTEM_PROCESS_INFO* CProcessQuery::GetProcessInfoByID(HANDLE ProcessId) // OK
 			break;
 		}
 
-		lpSystemProcessInfo = (SYSTEM_PROCESS_INFO*)((BYTE*)lpSystemProcessInfo + lpSystemProcessInfo->NextEntryOffset);
+		lpSystemProcessInfo = (SYSTEM_PROCESS_INFO_AUTH*)((BYTE*)lpSystemProcessInfo + lpSystemProcessInfo->NextEntryOffset);
 	}
 
 	return 0;
 }
 
-SYSTEM_EXTENDED_PROCESS_INFO* CProcessQuery::GetExtendedProcessInfoByID(HANDLE ProcessId) // OK
+SYSTEM_EXTENDED_PROCESS_INFO_AUTH* CProcessQueryAuth::GetExtendedProcessInfoByID(HANDLE ProcessId) // OK
 {
-	SYSTEM_EXTENDED_PROCESS_INFO* lpSystemProcessInfo = (SYSTEM_EXTENDED_PROCESS_INFO*)this->m_QueryData;
+	SYSTEM_EXTENDED_PROCESS_INFO_AUTH* lpSystemProcessInfo = (SYSTEM_EXTENDED_PROCESS_INFO_AUTH*)this->m_QueryData;
 
 	while (true)
 	{
@@ -110,15 +110,15 @@ SYSTEM_EXTENDED_PROCESS_INFO* CProcessQuery::GetExtendedProcessInfoByID(HANDLE P
 			break;
 		}
 
-		lpSystemProcessInfo = (SYSTEM_EXTENDED_PROCESS_INFO*)((BYTE*)lpSystemProcessInfo + lpSystemProcessInfo->NextEntryOffset);
+		lpSystemProcessInfo = (SYSTEM_EXTENDED_PROCESS_INFO_AUTH*)((BYTE*)lpSystemProcessInfo + lpSystemProcessInfo->NextEntryOffset);
 	}
 
 	return 0;
 }
 
-SYSTEM_THREAD_INFO* CProcessQuery::GetThreadInfoByID(SYSTEM_PROCESS_INFO* lpSystemProcessInfo, HANDLE ThreadId) // OK
+SYSTEM_THREAD_INFO_AUTH* CProcessQueryAuth::GetThreadInfoByID(SYSTEM_PROCESS_INFO_AUTH* lpSystemProcessInfo, HANDLE ThreadId) // OK
 {
-	SYSTEM_THREAD_INFO* lpSystemThreadInfo = lpSystemProcessInfo->Threads;
+	SYSTEM_THREAD_INFO_AUTH* lpSystemThreadInfo = lpSystemProcessInfo->Threads;
 
 	for (DWORD n = 0; n < lpSystemProcessInfo->NumberOfThreads; n++, lpSystemThreadInfo++)
 	{
@@ -131,9 +131,9 @@ SYSTEM_THREAD_INFO* CProcessQuery::GetThreadInfoByID(SYSTEM_PROCESS_INFO* lpSyst
 	return 0;
 }
 
-SYSTEM_EXTENDED_THREAD_INFO* CProcessQuery::GetExtendedThreadInfoByID(SYSTEM_EXTENDED_PROCESS_INFO* lpSystemProcessInfo, HANDLE ThreadId) // OK
+SYSTEM_EXTENDED_THREAD_INFO_AUTH* CProcessQueryAuth::GetExtendedThreadInfoByID(SYSTEM_EXTENDED_PROCESS_INFO_AUTH* lpSystemProcessInfo, HANDLE ThreadId) // OK
 {
-	SYSTEM_EXTENDED_THREAD_INFO* lpSystemThreadInfo = lpSystemProcessInfo->Threads;
+	SYSTEM_EXTENDED_THREAD_INFO_AUTH* lpSystemThreadInfo = lpSystemProcessInfo->Threads;
 
 	for (DWORD n = 0; n < lpSystemProcessInfo->NumberOfThreads; n++, lpSystemThreadInfo++)
 	{

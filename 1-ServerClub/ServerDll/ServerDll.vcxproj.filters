@@ -106,8 +106,20 @@
     <Filter Include="Source Files\BasicModules">
       <UniqueIdentifier>{f42c9b3e-382b-4d84-85e5-7f2ba612ed2c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\BasicModules\AuthServer">
+    <Filter Include="Source Files\BasicModules\Protocol">
+      <UniqueIdentifier>{e4c01b7a-7383-4e9f-8357-ea2571b9ecb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules\Protocol\DataServer">
+      <UniqueIdentifier>{694be874-4584-400c-abb2-966e252d3fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules\Protocol\AuthServer">
       <UniqueIdentifier>{7c4cee6e-6803-48f7-a9e0-1e7133bfeed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules\Protocol\AuthServer\Socket">
+      <UniqueIdentifier>{1b16c953-de16-46e1-9571-37da79994b8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BasicModules\Protocol\DataServer\Socket">
+      <UniqueIdentifier>{dc02f35f-9f83-4298-bfcf-e20528a8793c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -252,20 +264,8 @@
     <ClInclude Include="Log.h">
       <Filter>Source Files\BasicModules</Filter>
     </ClInclude>
-    <ClInclude Include="ThreadAuth.h">
-      <Filter>Source Files\BasicModules\AuthServer</Filter>
-    </ClInclude>
     <ClInclude Include="ProtocoloAuth.h">
-      <Filter>Source Files\BasicModules\AuthServer</Filter>
-    </ClInclude>
-    <ClInclude Include="ConnectionAuth.h">
-      <Filter>Source Files\BasicModules\AuthServer</Filter>
-    </ClInclude>
-    <ClInclude Include="ProcessQueryAuth.h">
-      <Filter>Source Files\BasicModules\AuthServer</Filter>
-    </ClInclude>
-    <ClInclude Include="ThreadCheckAuth.h">
-      <Filter>Source Files\BasicModules\AuthServer</Filter>
+      <Filter>Source Files\BasicModules\Protocol\AuthServer</Filter>
     </ClInclude>
     <ClInclude Include="GetSync.h">
       <Filter>Source Files\BasicModules</Filter>
@@ -275,6 +275,18 @@
     </ClInclude>
     <ClInclude Include="ProtocolS1702.h">
       <Filter>Source Files\Protocol\S17</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadCheckAuth.h">
+      <Filter>Source Files\BasicModules\Protocol\AuthServer\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessQueryAuth.h">
+      <Filter>Source Files\BasicModules\Protocol\AuthServer\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionAuth.h">
+      <Filter>Source Files\BasicModules\Protocol\AuthServer\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadAuth.h">
+      <Filter>Source Files\BasicModules\Protocol\AuthServer\Socket</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -407,20 +419,8 @@
     <ClCompile Include="Log.cpp">
       <Filter>Source Files\BasicModules</Filter>
     </ClCompile>
-    <ClCompile Include="ThreadAuth.cpp">
-      <Filter>Source Files\BasicModules\AuthServer</Filter>
-    </ClCompile>
     <ClCompile Include="ProtocoloAuth.cpp">
-      <Filter>Source Files\BasicModules\AuthServer</Filter>
-    </ClCompile>
-    <ClCompile Include="ConnectionAuth.cpp">
-      <Filter>Source Files\BasicModules\AuthServer</Filter>
-    </ClCompile>
-    <ClCompile Include="ProcessQueryAuth.cpp">
-      <Filter>Source Files\BasicModules\AuthServer</Filter>
-    </ClCompile>
-    <ClCompile Include="ThreadCheckAuth.cpp">
-      <Filter>Source Files\BasicModules\AuthServer</Filter>
+      <Filter>Source Files\BasicModules\Protocol\AuthServer</Filter>
     </ClCompile>
     <ClCompile Include="GetSync.cpp">
       <Filter>Source Files\BasicModules</Filter>
@@ -430,6 +430,18 @@
     </ClCompile>
     <ClCompile Include="ProtocolS1702.cpp">
       <Filter>Source Files\Protocol\S17</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadCheckAuth.cpp">
+      <Filter>Source Files\BasicModules\Protocol\AuthServer\Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessQueryAuth.cpp">
+      <Filter>Source Files\BasicModules\Protocol\AuthServer\Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionAuth.cpp">
+      <Filter>Source Files\BasicModules\Protocol\AuthServer\Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadAuth.cpp">
+      <Filter>Source Files\BasicModules\Protocol\AuthServer\Socket</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

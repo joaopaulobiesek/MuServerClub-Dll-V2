@@ -4,12 +4,12 @@
 
 #include "pch.h"
 
-CThreadCheck gThreadCheck;
+CThreadCheckAuth gThreadCheckAuth;
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CThreadCheck::CThreadCheck()
+CThreadCheckAuth::CThreadCheckAuth()
 {
 	this->m_IsActive = 0;
 
@@ -30,33 +30,33 @@ CThreadCheck::CThreadCheck()
 	InitializeCriticalSection(&this->m_CheckThreadCriticalSection);
 }
 
-CThreadCheck::~CThreadCheck()
+CThreadCheckAuth::~CThreadCheckAuth()
 {
 	DeleteCriticalSection(&this->m_CheckThreadCriticalSection);
 }
 
-void CThreadCheck::Init() //OK
+void CThreadCheckAuth::Init() //OK
 {
 	this->m_IsActive = 1;
 
 	this->m_IsActiveTime = GetTickCount();
 }
 
-bool CThreadCheck::CheckThreadState() // OK
+bool CThreadCheckAuth::CheckThreadState() // OK
 {
 	DWORD result = 0;
 
-	if (this->m_ProcessQuery.Fetch(SystemProcessInformation, sizeof(SYSTEM_PROCESS_INFO)) != 0)
+	if (this->m_ProcessQuery.Fetch(SystemProcessInformation, sizeof(SYSTEM_PROCESS_INFO_AUTH)) != 0)
 	{
-		SYSTEM_PROCESS_INFO* lpSystemProcessInfo = this->m_ProcessQuery.GetProcessInfoByID((HANDLE)GetCurrentProcessId());
+		SYSTEM_PROCESS_INFO_AUTH* lpSystemProcessInfo = this->m_ProcessQuery.GetProcessInfoByID((HANDLE)GetCurrentProcessId());
 
 		if (lpSystemProcessInfo != 0)
 		{
-			for (int n = 0; n < MAX_THREAD_CHECK; n++)
+			for (int n = 0; n < MAX_THREAD_CHECK_AUTH; n++)
 			{
 				if (((HANDLE)this->m_CheckThreadID[n]) != INVALID_HANDLE_VALUE)
 				{
-					SYSTEM_THREAD_INFO* lpSystemThreadInfo = this->m_ProcessQuery.GetThreadInfoByID(lpSystemProcessInfo, ((HANDLE)this->m_CheckThreadID[n]));
+					SYSTEM_THREAD_INFO_AUTH* lpSystemThreadInfo = this->m_ProcessQuery.GetThreadInfoByID(lpSystemProcessInfo, ((HANDLE)this->m_CheckThreadID[n]));
 
 					if (lpSystemThreadInfo == 0 || (lpSystemThreadInfo->ThreadState == Waiting && lpSystemThreadInfo->WaitReason == Suspended))
 					{

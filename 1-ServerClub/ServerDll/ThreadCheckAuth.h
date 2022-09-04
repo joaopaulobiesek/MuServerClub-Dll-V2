@@ -6,22 +6,22 @@
 
 #include "ProcessQueryAuth.h"
 
-#define MAX_THREAD_CHECK 8
+#define MAX_THREAD_CHECK_AUTH 8
 
-class CThreadCheck
+class CThreadCheckAuth
 {
 public:
-	CThreadCheck();
-	virtual ~CThreadCheck();
+	CThreadCheckAuth();
+	virtual ~CThreadCheckAuth();
 	void Init();
 	bool CheckThreadState();
 	//void CheckThreadIntegrity();
 public:
 	bool m_IsActive;
 	UINT m_IsActiveTime;
-	CProcessQuery m_ProcessQuery;
-	DWORD m_CheckThreadID[MAX_THREAD_CHECK];
+	CProcessQueryAuth m_ProcessQuery;
+	DWORD m_CheckThreadID[MAX_THREAD_CHECK_AUTH];
 	CRITICAL_SECTION m_CheckThreadCriticalSection;
 };
 
-extern CThreadCheck gThreadCheck;
+extern CThreadCheckAuth gThreadCheckAuth;

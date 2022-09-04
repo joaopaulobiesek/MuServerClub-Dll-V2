@@ -236,6 +236,7 @@ void CThreadS6::SwitchCharacterThread(int Cod_ID)
 	if (Cod_ID == 0)
 	{
 		char* GetAccountN = (char*)gOffset.AccountAddress;
+		if (gOffset.PortNumberAddress != 0) gProtocol.PortNumber = *(DWORD*)(this->BaseAddress + (DWORD)gOffset.PortNumberAddress);
 		wsprintf(gThread.NameAccount, GetAccountN);
 		gProtocol.ClientConnectSend();
 	}
