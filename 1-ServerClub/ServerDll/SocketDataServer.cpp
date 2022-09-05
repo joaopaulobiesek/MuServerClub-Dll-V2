@@ -13,11 +13,11 @@ CSocketDataServer::~CSocketDataServer() // OK
 {
 }
 
-bool CSocketDataServer::DataServerConnect(DWORD wMsg) // OK
+bool CSocketDataServer::DataServerConnect(char* IpAddress, WORD port, DWORD wMsg) // OK
 {
 	gConnection.Init(hWnd, ProtocolDataServer);
 
-	if (gConnection.Connect(DATASERVER_ADDRESS_A, DATASERVER_PORT, wMsg) == 0)
+	if (gConnection.Connect(IpAddress, port, wMsg) == 0)
 	{
 		return 0;
 	}

@@ -18,17 +18,23 @@ public:
 	void ReadStartupInfo(const char* section, const char* path);
 	void ReadStartupKeyboard(const char* section, const char* path);
 	void ReadStartupCustomS6(const char* section, const char* path);
-	void ReadStartupDS(const char* path);
+	void ReadStartupDS(const char* section, const char* path);
 public:
 	DWORD ClientFileCRC;
 	DWORD PortNumberAddress;
 	int LicenseId;
 	int ServerPort;
+	int DS_1_Enabled;
+	int DS_2_Enabled;
+	int DS_1_Port;
+	int DS_2_Port;
 	int CheckCRC;
 	int HackSwitch;
 	char ServerName[50];
 	char HardwareId[36];
 	char IpAddress[32];
+	char Ip_1_Address[32];
+	char Ip_2_Address[32];
 	char IpAddressExt[32];
 	char ClientVersion[8];
 	char ClientSerial[17];

@@ -31,6 +31,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	gServerInfo.ReadStartupCustomS6("ConfigCustomS6", ".\\ServerPlugin.ini");
 
+	gServerInfo.ReadStartupDS("DataServerConfig", ".\\ServerPlugin.ini");
+
 	gServerDisplayer.Init(hWnd);
 
 	SetTimer(hWnd, WM_TIMER_1000, 1000, 0);
@@ -43,15 +45,24 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) == 0)
 	{
-
 		if (gSocketManager.Start(gServerInfo.ServerPort) != 0)
 		{
 			gServerInfo.ReadInit();
 		}
 
-		if (gSocketDataServer.DataServerConnect(WM_DATA_SERVER_MSG_PROC) == 0)
+		if (gServerInfo.DS_1_Enabled)
 		{
-			LogAdd(LOG_RED, "Could not connect to database");
+			if (gSocketDataServer.DataServerConnect(gServerInfo.Ip_1_Address, gServerInfo.DS_1_Port, WM_DATA_SERVER_MSG_PROC) == 0)
+			{
+				LogAdd(LOG_RED, "Could not connect to DataServer 1");
+			}
+		}
+		if (gServerInfo.DS_2_Enabled)
+		{
+			if (gSocketDataServer.DataServerConnect(gServerInfo.Ip_2_Address, gServerInfo.DS_2_Port, WM_DATA_SERVER_MSG_PROC) == 0)
+			{
+				LogAdd(LOG_RED, "Could not connect to DataServer 2");
+			}
 		}
 	}
 	else
