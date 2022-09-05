@@ -35,5 +35,6 @@ void AuthenticateError();
 DWORD GetCurrentVersion();
 DWORD ConvertVersionPlugin(char* version);
 bool DelayMe(DWORD delay, DWORD value);
+bool CommaSeparate(char* ports, int port);
 
 extern int gClientCount;

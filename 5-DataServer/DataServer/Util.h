@@ -15,10 +15,15 @@ public:
 	bool CheckTextSyntax(char* text, int size);
 	int GetFreeServerIndex();
 	int SearchFreeServerIndex(int* index, int MinIndex, int MaxIndex, DWORD MinTime);
+	void ReadStartupInfo(const char* section, const char* path);
+	void ReadStartupDS(const char* section, const char* path, int debug);
 	//WORD GetServerCodeByName(char* name);
 	CServerManager* FindServerByCode(WORD ServerCode);
 public:
 	int gServerCount;
+	int AdvancedLog;
+	int DataServerPort;
+	char DataServerName[15];
 };
 
 extern CUtil gUtil;

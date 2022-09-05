@@ -9,7 +9,6 @@ HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 HWND hWnd;
-int AdvancedLog;
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -40,7 +39,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	char buff[256];
 
-	wsprintf(buff, "[%s] %s DataServer (QueueSize : %d)", "DATASERVER_VERSION", "DATASERVER_CLIENT", 0);
+	wsprintf(buff, "[%s] %s DataServer (QueueSize : %d)", DATA_SERVER_VERSION, gUtil.DataServerName, 0);
 
 	SetWindowTextW(hWnd, (LPCWSTR)buff);
 
@@ -50,43 +49,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) == 0)
 	{
-		char DataServerODBC[32] = { 0 };
+		gUtil.ReadStartupInfo("DataServerInfo", ".\\DataServer.ini");
+	
+		gUtil.ReadStartupDS("DataServerConfig", ".\\DataServer.ini", 1);
+		
+		SetTimer(hWnd, TIMER_1000, 1000, 0);
 
-		char DataServerUSER[32] = { 0 };
-
-		char DataServerPASS[32] = { 0 };
-
-		GetPrivateProfileString("DataServerInfo", "DataServerODBC", "MuOnline", DataServerODBC, sizeof(DataServerODBC), ".\\DataServer.ini");
-
-		GetPrivateProfileString("DataServerInfo", "DataServerUSER", "", DataServerUSER, sizeof(DataServerUSER), ".\\DataServer.ini");
-
-		GetPrivateProfileString("DataServerInfo", "DataServerPASS", "", DataServerPASS, sizeof(DataServerPASS), ".\\DataServer.ini");
-
-		WORD DataServerPort = GetPrivateProfileInt("DataServerInfo", "DataServerPort", 55860, ".\\DataServer.ini");
-
-		AdvancedLog = GetPrivateProfileInt("DataServerInfo", "AdvancedLog", 0, ".\\DataServer.ini");
-
-		if (gQueryManager.Connect(DataServerODBC, DataServerUSER, DataServerPASS) == 0)
-		{
-			gUtil.LogAdd(LOG_RED, "Could not connect to database");
-		}
-		else
-		{
-			if (gSocketManager.Start(DataServerPort) == 0)
-			{
-				gQueryManager.Disconnect();
-			}
-			else
-			{
-				gAllowableIpList.Load("Data\\AllowableIpList.txt");
-
-				gBadSyntax.Load("Data\\BadSyntax.txt");
-
-				gUtil.LogAdd(LOG_BLUE, "LIGOU");
-
-				SetTimer(hWnd, TIMER_1000, 1000, 0);
-			}
-		}
+		SetTimer(hWnd, TIMER_2000, 2000, 0);
 	}
 	else
 	{
@@ -96,8 +65,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	gServerDisplayer.PaintAllInfo();
 
 	gServerDisplayer.PaintName();
-
-	SetTimer(hWnd, TIMER_2000, 2000, 0);
 
 	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DATASERVER));
 

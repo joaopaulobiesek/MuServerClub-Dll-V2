@@ -25,7 +25,7 @@ public:
 	bool CheckAlloc();
 	void AddServer(int index, char* ip, SOCKET socket);
 	void DelServer();
-	void SetServerInfo(char* name, WORD port, WORD code);
+	void SetServerInfo(char* name, WORD port);
 public:
 	int m_index;
 	eServerState m_state;

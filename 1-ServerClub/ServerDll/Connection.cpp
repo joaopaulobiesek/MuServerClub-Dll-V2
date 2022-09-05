@@ -28,8 +28,6 @@ void CConnection::Init(HWND hwnd, void* function) // OK
 	this->m_socket = socket(PF_INET, SOCK_STREAM, 0);
 
 	this->wsProtocolCore = (void(*)(BYTE, BYTE*, int))function;
-
-	LogAdd(LOG_BLUE, "Connection Init");
 }
 
 bool CConnection::Connect(char* IpAddress, WORD port, DWORD WinMsg) // OK

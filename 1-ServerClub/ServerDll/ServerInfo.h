@@ -26,6 +26,7 @@ public:
 	int ServerPort;
 	int CheckCRC;
 	int HackSwitch;
+	char ServerName[50];
 	char HardwareId[36];
 	char IpAddress[32];
 	char IpAddressExt[32];

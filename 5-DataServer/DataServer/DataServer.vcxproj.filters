@@ -37,6 +37,9 @@
     <Filter Include="Source Files\Query">
       <UniqueIdentifier>{f56e0fb8-c696-43ff-8141-7958aa4bedb3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Query\Script">
+      <UniqueIdentifier>{7acb4acf-a893-4d3d-a4ba-b97ab7b768e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -93,6 +96,9 @@
     <ClInclude Include="BadSyntax.h">
       <Filter>Source Files\Protocol\Script</Filter>
     </ClInclude>
+    <ClInclude Include="Script_HWID.h">
+      <Filter>Source Files\Query\Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataServer.cpp">
@@ -136,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="BadSyntax.cpp">
       <Filter>Source Files\Protocol\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Script_HWID.cpp">
+      <Filter>Source Files\Query\Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

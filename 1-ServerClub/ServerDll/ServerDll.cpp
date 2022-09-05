@@ -33,37 +33,36 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	gServerDisplayer.Init(hWnd);
 
+	SetTimer(hWnd, WM_TIMER_1000, 1000, 0);
+
+	SetTimer(hWnd, WM_TIMER_2000, 2000, 0);
+
+	SetTimer(hWnd, WM_TIMER_10000, 10000, 0);
+
 	WSADATA wsa;
 
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) == 0)
 	{
+
 		if (gSocketManager.Start(gServerInfo.ServerPort) != 0)
 		{
 			gServerInfo.ReadInit();
 		}
 
-		gConnection.Init(hWnd, ProtocolDataServer);
-
-		//if (gConnection.Connect(gServerInfo.m_DataServerAddress, (WORD)gServerInfo.m_DataServerPort, WM_DATA_SERVER_MSG_PROC) == 0)
-		if (gConnection.Connect("127.0.0.1", (WORD)"55860", WM_DATA_SERVER_MSG_PROC) == 0)
+		if (gSocketDataServer.DataServerConnect(WM_DATA_SERVER_MSG_PROC) == 0)
 		{
-			LogAdd(LOG_RED, "Falha ao connectar ao data Server");
+			LogAdd(LOG_RED, "Could not connect to database");
 		}
-
-		gProtocolDataServer.GDServerInfoSend();
 	}
 	else
 	{
 		LogAdd(LOG_RED, "WSAStartup() failed with error: %d", WSAGetLastError());
 	}
 
-	if (gServerInfo.CheckSQL == 1) gServerInfo.ReadStartupDS(".\\ServerPlugin.ini");
-
-	gThreadAuth.Init();// Inicializa conexão com o AuthServer
+	//gThreadAuth.Init();// Inicializa conexão com o AuthServer
 
 	gServerDisplayer.PaintAllInfo();
 
-	SetTimer(hWnd, TIMER_1000, 2000, 0);
 	////////////////////////////////////////////////////////////////////////////////////////////
 	LONG gwl = GetWindowLong(hWnd, GWL_STYLE);
 	gwl &= (~WS_MAXIMIZEBOX); //& (~WS_MINIMIZEBOX);
@@ -220,8 +219,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	case WM_TIMER:
 		switch (wParam)
 		{
-		case TIMER_1000:
+		case WM_TIMER_1000:
 			gServerDisplayer.Run();
+			break;
+		case WM_TIMER_2000:
+			break;
+		case WM_TIMER_10000:
+			gSocketDataServer.DataServerReconnect(hWnd, WM_DATA_SERVER_MSG_PROC);
 			break;
 		default:
 			break;
@@ -229,6 +233,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
+		break;
+	case WM_DATA_SERVER_MSG_PROC:
+		gSocketDataServer.DataServerMsgProc(wParam, lParam);
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);

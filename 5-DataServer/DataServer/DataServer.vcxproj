@@ -144,6 +144,7 @@
     <ClInclude Include="QueryManager.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Script_HWID.h" />
     <ClInclude Include="ServerDisplayer.h" />
     <ClInclude Include="ServerManager.h" />
     <ClInclude Include="SocketManager.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="ProtocolCore.cpp" />
     <ClCompile Include="QueryManager.cpp" />
     <ClCompile Include="Queue.cpp" />
+    <ClCompile Include="Script_HWID.cpp" />
     <ClCompile Include="ServerDisplayer.cpp" />
     <ClCompile Include="ServerManager.cpp" />
     <ClCompile Include="SocketManager.cpp" />

@@ -294,6 +294,9 @@
     <ClInclude Include="ProtocolDataServer.h">
       <Filter>Source Files\BasicModules\Protocol\DataServer</Filter>
     </ClInclude>
+    <ClInclude Include="SocketDataServer.h">
+      <Filter>Source Files\BasicModules\Protocol\DataServer\Socket</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -454,6 +457,9 @@
     </ClCompile>
     <ClCompile Include="ProtocolDataServer.cpp">
       <Filter>Source Files\BasicModules\Protocol\DataServer</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketDataServer.cpp">
+      <Filter>Source Files\BasicModules\Protocol\DataServer\Socket</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

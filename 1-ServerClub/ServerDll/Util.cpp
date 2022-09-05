@@ -296,3 +296,22 @@ bool DelayMe(DWORD delay, DWORD value) // OK
 
 	return 0;
 }
+
+bool CommaSeparate(char* ports, int port) // OK
+{
+	char buff[6];
+	wsprintf(buff, "%d", port);
+	std::string portString(buff);
+	int tamanho = strlen(ports); //isto funciona só para delimitador de 1 caractere
+	char* token = strtok(ports, ",");
+	int Count = 0;
+	for (int i = 0; i < tamanho; i++) printf(token[i] == 0 ? "\\0" : "%c", token[i]);
+	while (token != NULL) {
+		if (portString.compare(token) == 0)
+		{
+			return true;
+		}
+		token = strtok(NULL, ",");
+	}
+	return false;
+}

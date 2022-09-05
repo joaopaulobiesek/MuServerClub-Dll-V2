@@ -1,7 +1,7 @@
 // ServerDisplayer.cpp: implementation of the CServerDisplayer class.
 //
 //////////////////////////////////////////////////////////////////////
-#include "framework.h"
+#include "pch.h"
 
 CServerDisplayer gServerDisplayer;
 //////////////////////////////////////////////////////////////////////
@@ -51,7 +51,7 @@ void CServerDisplayer::SetWindowName() // OK
 {
 	char buff[256];
 
-	wsprintf(buff, "[%s] %s DataServer (QueueSize : %d)", "asd", "DATASERVER_CLIENT", 5);
+	wsprintf(buff, "[%s] %s - DataServer (QueueSize : %d)", DATA_SERVER_VERSION, gUtil.DataServerName, gSocketManager.GetQueueSize());
 
 	SetWindowTextW(this->m_hwnd, (LPCWSTR)buff);
 }
@@ -71,9 +71,9 @@ void CServerDisplayer::PaintAllInfo() // OK
 
 	HFONT OldFont = (HFONT)SelectObject(hdc, this->m_font);
 
-	int state = 0;
+	this->state = 0;
 
-	/*for (int n = 0; n < MAX_SERVER; n++)
+	for (int n = 0; n < MAX_SERVER; n++)
 	{
 		if (gServerManager[n].CheckState() == 0)
 		{
@@ -82,12 +82,12 @@ void CServerDisplayer::PaintAllInfo() // OK
 
 		if ((GetTickCount() - gServerManager[n].m_PacketTime) <= 60000)
 		{
-			state = 1;
+			this->state = 1;
 			break;
 		}
-	}*/
+	}
 
-	if (state == 0)
+	if (this->state == 0)
 	{
 		SetTextColor(hdc, RGB(200, 200, 200));
 		FillRect(hdc, &rect, this->m_brush[0]);
@@ -121,9 +121,18 @@ void CServerDisplayer::PaintName() // OK
 
 	HFONT OldFont = (HFONT)SelectObject(hdc, this->m_font);
 
-	SetTextColor(hdc, RGB(255, 255, 255));
-	FillRect(hdc, &rect, this->m_brush[2]);
-	TextOut(hdc, 80, 0, "DATASERVER_CLIENT", sizeof("DATASERVER_CLIENT"));
+	if (this->state == 0)
+	{
+		SetTextColor(hdc, RGB(255, 255, 255));
+		FillRect(hdc, &rect, this->m_brush[2]);
+		TextOut(hdc, 120, 0, gUtil.DataServerName, sizeof(gUtil.DataServerName));
+	}
+	else
+	{
+		SetTextColor(hdc, RGB(255, 255, 255));
+		FillRect(hdc, &rect, this->m_brush[2]);
+		TextOut(hdc, 150, 0, gUtil.DataServerName, sizeof(gUtil.DataServerName));
+	}
 
 	SelectObject(hdc, OldFont);
 	SetBkMode(hdc, OldBkMode);

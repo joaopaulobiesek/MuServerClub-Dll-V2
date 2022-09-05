@@ -39,6 +39,7 @@ private:
 	HBRUSH m_brush[3];
 	LOG_DISPLAY_INFO m_log[MAX_LOG_TEXT_LINE];
 	int m_count;
+	int state;
 	char m_DisplayerText[2][64];
 };
 

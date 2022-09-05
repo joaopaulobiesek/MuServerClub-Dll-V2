@@ -28,7 +28,7 @@ public:
 	void AddClient(int index, char* ip, SOCKET socket);
 	void DelClient();
 	void SetDataServer(int Index, char* NewHardwareId, char* HardwareId, char* account, char* PcName, int PortNumber);
-	bool CommaSeparate(char* ports, int port);
+	//bool CommaSeparate(char* ports, int port);
 public:
 	int m_index;
 	eClientState m_state;

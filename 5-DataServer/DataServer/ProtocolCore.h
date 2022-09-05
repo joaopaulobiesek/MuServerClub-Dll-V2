@@ -15,6 +15,27 @@
 //************ Packet Base *********************//
 //**********************************************//
 
+struct PBMSG_DS_HEAD
+{
+	void set(BYTE head, BYTE size) // OK
+	{
+		this->type = 0xC1;
+		this->size = size;
+		this->head = head;
+	}
+
+	void setE(BYTE head, BYTE size) // OK
+	{
+		this->type = 0xC3;
+		this->size = size;
+		this->head = head;
+	}
+
+	BYTE type;
+	BYTE size;
+	BYTE head;
+};
+
 struct PBMSG_HEAD
 {
 	void set(BYTE head, BYTE size) // OK
@@ -109,11 +130,20 @@ struct PSWMSG_HEAD
 
 struct SDHP_SERVER_INFO_RECV
 {
-	PBMSG_HEAD header; // C1:00
+	PBMSG_DS_HEAD header; // C1:00
 	BYTE type;
 	WORD ServerPort;
 	char ServerName[50];
-	WORD ServerCode;
+};
+
+struct SDHP_HWID_INFO_RECV
+{
+	PBMSG_DS_HEAD header; // C1:00
+	int PortNumber;
+	char PcName[20];
+	char account[11];
+	char HardwareId[36];
+	char NewHardwareId[36];
 };
 
 //**********************************************//
@@ -122,9 +152,8 @@ struct SDHP_SERVER_INFO_RECV
 
 struct SDHP_SERVER_INFO_SEND
 {
-	PBMSG_HEAD header; // C1:00
-	BYTE result;
-	DWORD ItemCount;
+	PBMSG_DS_HEAD header; // C1:00
+	char DataServerName[15];
 };
 
 class CProtocolCore

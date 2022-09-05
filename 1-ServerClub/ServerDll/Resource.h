@@ -12,7 +12,9 @@
 #define IDC_SERVERDLL			107
 //New
 #define ID_LISTBOX              108
-#define TIMER_1000              109
+#define WM_TIMER_1000           109
+#define WM_TIMER_2000           110
+#define WM_TIMER_10000          111
 
 #define IDC_STATUSBAR					1003
 

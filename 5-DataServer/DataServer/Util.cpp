@@ -5,10 +5,55 @@ CUtil gUtil;
 CUtil::CUtil() // OK
 {
 	this->gServerCount = 0;
+	wsprintf(gUtil.DataServerName, "DataServerClub");
 }
 
 CUtil::~CUtil() // OK
 {
+}
+
+void CUtil::ReadStartupInfo(const char* section, const char* path) // OK
+{
+	GetPrivateProfileString(section, "DataServerName", "DataServerClub", this->DataServerName, sizeof(this->DataServerName), path);
+
+	this->AdvancedLog = GetPrivateProfileInt(section, "AdvancedLog", 0, path);
+
+	this->DataServerPort = GetPrivateProfileInt(section, "Port", 55860, path);
+}
+
+void CUtil::ReadStartupDS(const char* section, const char* path, int debug) // OK
+{
+	char DataServerODBC[32] = { 0 };
+
+	char DataServerUSER[32] = { 0 };
+
+	char DataServerPASS[32] = { 0 };
+
+	GetPrivateProfileString(section, "ODBC", "", DataServerODBC, sizeof(DataServerODBC), ".\\DataServer.ini");
+
+	GetPrivateProfileString(section, "USER", "", DataServerUSER, sizeof(DataServerUSER), ".\\DataServer.ini");
+
+	GetPrivateProfileString(section, "PASS", "", DataServerPASS, sizeof(DataServerPASS), ".\\DataServer.ini");
+
+	if (gQueryManager.Connect(DataServerODBC, DataServerUSER, DataServerPASS) == 0 && debug == 0)
+	{
+		gUtil.LogAdd(LOG_RED, "Could not connect to database");
+	}
+	else
+	{
+		LogAdd(LOG_BLUE, "Connected to database");
+
+		if (gSocketManager.Start(gUtil.DataServerPort) == 0)
+		{
+			gQueryManager.Disconnect();
+		}
+		else
+		{
+			gAllowableIpList.Load("Data\\AllowableIpList.txt");
+
+			gBadSyntax.Load("Data\\BadSyntax.txt");
+		}
+	}
 }
 
 void CUtil::ErrorMessageBox(const char* message, ...) // OK

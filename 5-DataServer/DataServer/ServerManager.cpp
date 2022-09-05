@@ -124,25 +124,13 @@ void CServerManager::DelServer() // OK
 	this->m_OnlineTime = GetTickCount();
 
 	this->m_PacketTime = 0;
-
-	//gCharacterManager.ClearServerCharacterInfo(ServerCode);
-
-	//gGuildMatching.ClearGuildMatchingInfo(ServerCode);
-
-	//gGuildMatching.ClearGuildMatchingJoinInfo(ServerCode);
-
-	//gPartyMatching.ClearPartyMatchingInfo(ServerCode);
-
-	//gPartyMatching.ClearPartyMatchingJoinInfo(ServerCode);
 }
 
-void CServerManager::SetServerInfo(char* name, WORD port, WORD code) // OK
+void CServerManager::SetServerInfo(char* name, WORD port) // OK
 {
 	strcpy_s(this->m_ServerName, name);
 
 	this->m_ServerPort = port;
 
-	this->m_ServerCode = code;
-
-	gUtil.LogAdd(LOG_BLACK, "[ServerManager][%d] ServerInfo (%s) (%d) (%d)", this->m_index, this->m_ServerName, this->m_ServerPort, this->m_ServerCode);
+	gUtil.LogAdd(LOG_BLACK, "[ServerManager][%d] ServerInfo (%s) (%d)", this->m_index, this->m_ServerName, this->m_ServerPort);
 }

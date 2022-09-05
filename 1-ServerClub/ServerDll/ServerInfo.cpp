@@ -4,7 +4,7 @@ CServerInfo gServerInfo;
 
 CServerInfo::CServerInfo() // OK
 {
-
+	wsprintf(this->ServerName, "ServerClub");
 }
 
 CServerInfo::~CServerInfo() // OK
@@ -195,6 +195,8 @@ void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 	this->HackSwitch = GetPrivateProfileInt(section, "HackSwitch", 1, path);
 
 	GetPrivateProfileString(section, "IpAddress", "0", this->IpAddressExt, sizeof(this->IpAddressExt), path);
+
+	GetPrivateProfileString(section, "ServerName", "ServerClub", this->ServerName, sizeof(this->ServerName), path);
 
 	GetPrivateProfileString(section, "ClientVersion", "", this->ClientVersion, sizeof(this->ClientVersion), path);
 

@@ -218,6 +218,7 @@
     <ClInclude Include="ServerDisplayer.h" />
     <ClInclude Include="ServerDll.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="SocketDataServer.h" />
     <ClInclude Include="SocketManager.h" />
     <ClInclude Include="Themida\ThemidaSDK.h" />
     <ClInclude Include="Themida\Via ASM module\SecureEngineMacros.h" />
@@ -280,6 +281,7 @@
     <ClCompile Include="ServerDisplayer.cpp" />
     <ClCompile Include="ServerDll.cpp" />
     <ClCompile Include="ServerInfo.cpp" />
+    <ClCompile Include="SocketDataServer.cpp" />
     <ClCompile Include="SocketManager.cpp" />
     <ClCompile Include="ThreadAuth.cpp" />
     <ClCompile Include="ThreadCheckAuth.cpp" />

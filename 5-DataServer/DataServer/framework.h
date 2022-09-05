@@ -7,6 +7,8 @@ typedef unsigned __int64 QWORD;
 
 #include "targetver.h"
 
+#define DATA_SERVER_VERSION "1.0.0.0"
+
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 // Windows Header Files:
 #include <windows.h>
@@ -81,3 +83,4 @@ typedef unsigned __int64 QWORD;
 #include "MemScript.h"
 #include "QueryManager.h"
 #include "BadSyntax.h"
+#include "Script_HWID.h"
