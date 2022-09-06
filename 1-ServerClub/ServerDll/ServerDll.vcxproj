@@ -105,7 +105,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>true</EnableUAC>
-      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
       <MapFileName>Yes (/MAP)</MapFileName>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -143,6 +143,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -196,6 +197,7 @@
     <ClInclude Include="ProcessQueryAuth.h" />
     <ClInclude Include="Protocol.h" />
     <ClInclude Include="ProtocolDataServer.h" />
+    <ClInclude Include="Protocol2DataServer.h" />
     <ClInclude Include="ProtocoloAuth.h" />
     <ClInclude Include="ProtocolS0.h" />
     <ClInclude Include="ProtocolS10.h" />
@@ -260,6 +262,7 @@
     <ClCompile Include="ProcessQueryAuth.cpp" />
     <ClCompile Include="Protocol.cpp" />
     <ClCompile Include="ProtocolDataServer.cpp" />
+    <ClCompile Include="Protocol2DataServer.cpp" />
     <ClCompile Include="ProtocoloAuth.cpp" />
     <ClCompile Include="ProtocolS0.cpp" />
     <ClCompile Include="ProtocolS10.cpp" />

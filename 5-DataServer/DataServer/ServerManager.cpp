@@ -128,7 +128,7 @@ void CServerManager::DelServer() // OK
 
 void CServerManager::SetServerInfo(char* name, WORD port) // OK
 {
-	strcpy_s(this->m_ServerName, name);
+	wsprintf(this->m_ServerName, "%s", name);
 
 	this->m_ServerPort = port;
 

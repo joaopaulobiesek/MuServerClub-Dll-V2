@@ -51,7 +51,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		gUtil.ReadStartupInfo("DataServerInfo", ".\\DataServer.ini");
 	
-		gUtil.ReadStartupDS("DataServerConfig", ".\\DataServer.ini", 1);
+		gUtil.ReadStartupDS("DataServerConfig", ".\\DataServer.ini", 0);// 1 Ativa DEBUG //0 DESATIVA MODO DEBUG
 		
 		SetTimer(hWnd, TIMER_1000, 1000, 0);
 

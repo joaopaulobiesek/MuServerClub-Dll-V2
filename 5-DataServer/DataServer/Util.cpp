@@ -5,7 +5,7 @@ CUtil gUtil;
 CUtil::CUtil() // OK
 {
 	this->gServerCount = 0;
-	wsprintf(gUtil.DataServerName, "DataServerClub");
+	wsprintf(this->DataServerName, "%s", "DataServerClub");
 }
 
 CUtil::~CUtil() // OK

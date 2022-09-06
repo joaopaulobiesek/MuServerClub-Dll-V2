@@ -12,6 +12,8 @@ CScript_HWID::~CScript_HWID() // OK
 
 void CScript_HWID::HWID(int Index, char* NewHardwareId, char* HardwareId, char* account, char* PcName, int PortNumber)// OK
 {
+	VM_TIGER_BLACK_START
+		STR_ENCRYPT_START
 	std::string NewHWID = NewHardwareId;
 	NewHWID.erase(std::remove_if(NewHWID.begin(), NewHWID.end(), [](char c) { return !isalnum(c); }), NewHWID.end());
 	this->m_PortNumber = PortNumber;
@@ -37,4 +39,7 @@ void CScript_HWID::HWID(int Index, char* NewHardwareId, char* HardwareId, char* 
 		gQueryManager.Close();
 		gUtil.LogAdd(LOG_RED, "[ERROR] updating HWID.");
 	}
+
+	STR_ENCRYPT_END
+		VM_TIGER_BLACK_END
 }

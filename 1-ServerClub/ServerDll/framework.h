@@ -10,9 +10,6 @@ typedef unsigned __int64 QWORD;
 
 #define PROTECT_STATE 1
 
-#define DATASERVER_ADDRESS_A	"127.0.0.1"
-#define DATASERVER_PORT 55860
-
 #include "targetver.h"
 
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
@@ -136,6 +133,7 @@ typedef unsigned __int64 QWORD;
 //DataServer
 #include "Connection.h"
 #include "ProtocolDataServer.h"
+#include "Protocol2DataServer.h"
 #include "SocketDataServer.h"
 
 #include "GetSync.h"

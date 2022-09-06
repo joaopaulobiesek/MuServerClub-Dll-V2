@@ -227,9 +227,9 @@ void CServerInfo::ReadStartupDS(const char* section, const char* path) // OK
 
 	GetPrivateProfileString(section, "GS_2_Ports", "", Ports2, sizeof(Ports2), path);
 
-	GetPrivateProfileString(section, "Ip_1_Address", "127.0.0.1", this->IpAddressExt, sizeof(this->IpAddressExt), path);
+	GetPrivateProfileString(section, "Ip_1_Address", "127.0.0.1", this->Ip_1_Address, sizeof(this->Ip_1_Address), path);
 
-	GetPrivateProfileString(section, "Ip_2_Address", "127.0.0.1", this->IpAddressExt, sizeof(this->IpAddressExt), path);
+	GetPrivateProfileString(section, "Ip_2_Address", "127.0.0.1", this->Ip_2_Address, sizeof(this->Ip_2_Address), path);
 }
 
 void CServerInfo::ReadStartupKeyboard(const char* section, const char* path) // OK

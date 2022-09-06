@@ -291,11 +291,14 @@
     <ClInclude Include="Connection.h">
       <Filter>Source Files\BasicModules\Protocol\DataServer\Socket</Filter>
     </ClInclude>
+    <ClInclude Include="SocketDataServer.h">
+      <Filter>Source Files\BasicModules\Protocol\DataServer\Socket</Filter>
+    </ClInclude>
     <ClInclude Include="ProtocolDataServer.h">
       <Filter>Source Files\BasicModules\Protocol\DataServer</Filter>
     </ClInclude>
-    <ClInclude Include="SocketDataServer.h">
-      <Filter>Source Files\BasicModules\Protocol\DataServer\Socket</Filter>
+    <ClInclude Include="Protocol2DataServer.h">
+      <Filter>Source Files\BasicModules\Protocol\DataServer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -455,11 +458,14 @@
     <ClCompile Include="Connection.cpp">
       <Filter>Source Files\BasicModules\Protocol\DataServer\Socket</Filter>
     </ClCompile>
+    <ClCompile Include="SocketDataServer.cpp">
+      <Filter>Source Files\BasicModules\Protocol\DataServer\Socket</Filter>
+    </ClCompile>
     <ClCompile Include="ProtocolDataServer.cpp">
       <Filter>Source Files\BasicModules\Protocol\DataServer</Filter>
     </ClCompile>
-    <ClCompile Include="SocketDataServer.cpp">
-      <Filter>Source Files\BasicModules\Protocol\DataServer\Socket</Filter>
+    <ClCompile Include="Protocol2DataServer.cpp">
+      <Filter>Source Files\BasicModules\Protocol\DataServer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

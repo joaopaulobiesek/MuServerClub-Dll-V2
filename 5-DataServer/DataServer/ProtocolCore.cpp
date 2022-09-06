@@ -28,7 +28,7 @@ void ProtocolCore(int index, BYTE head, BYTE* lpMsg, int size) // OK
 		gProtocolCore.GDServerInfoRecv((SDHP_SERVER_INFO_RECV*)lpMsg, index);
 		break;
 	case 0x01:
-		gProtocolCore.GDServerInfoRecv((SDHP_SERVER_INFO_RECV*)lpMsg, index);
+		gProtocolCore.DataServerHWIDRecv((SDHP_HWID_INFO_RECV*)lpMsg, index);
 		break;
 	}
 }
@@ -38,10 +38,15 @@ void CProtocolCore::GDServerInfoRecv(SDHP_SERVER_INFO_RECV* lpMsg, int index) //
 	SDHP_SERVER_INFO_SEND pMsg;
 
 	pMsg.header.set(0x00, sizeof(pMsg));
-	
-	strcpy_s(pMsg.DataServerName, gUtil.DataServerName);
+
+	wsprintf(pMsg.DataServerName, "%s", gUtil.DataServerName);
 
 	gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
 
 	gServerManager[index].SetServerInfo(lpMsg->ServerName, lpMsg->ServerPort);
+}
+
+void CProtocolCore::DataServerHWIDRecv(SDHP_HWID_INFO_RECV* lpMsg, int index) // OK
+{
+	gScript_HWID.HWID(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
 }

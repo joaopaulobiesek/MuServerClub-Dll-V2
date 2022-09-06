@@ -1,7 +1,7 @@
 #pragma once
 
-
-#define WM_DATA_SERVER_MSG_PROC (WM_USER+1)
+#define WM_DATA_SERVER_1_MSG_PROC (WM_USER+1)
+#define WM_DATA_SERVER_2_MSG_PROC (WM_USER+2)
 
 extern HWND hWnd;
 

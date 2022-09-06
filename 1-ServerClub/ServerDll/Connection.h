@@ -30,4 +30,5 @@ private:
 	void (*wsProtocolCore)(BYTE, BYTE*, int);
 	CCriticalSection m_critical;
 };
-extern CConnection gConnection;
+extern CConnection gConnectionDS;
+extern CConnection gConnectionDS2;

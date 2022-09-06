@@ -34,7 +34,7 @@ void CProtocolDataServer::GDServerInfoSend() // OK
 
 	strcpy_s(pMsg.ServerName, gServerInfo.ServerName);
 
-	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
+	gConnectionDS.DataSend((BYTE*)&pMsg, pMsg.header.size);
 }
 
 void CProtocolDataServer::DGServerInfoRecv(SDHP_DATA_SERVER_INFO_RECV* lpMsg) // OK
@@ -60,14 +60,15 @@ void CProtocolDataServer::DataServerHWID(int Index, char* NewHardwareId, char* H
 	strcpy_s(pMsg.HardwareId, HardwareId);
 	strcpy_s(pMsg.NewHardwareId, NewHardwareId);
 
-	if (PortNumber != -1) {
+	if (PortNumber != -1)
+	{
 		if (CommaSeparate(gServerInfo.Ports1, PortNumber))
 		{
-			gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
+			if (gServerInfo.DS_1_Enabled) gConnectionDS.DataSend((BYTE*)&pMsg, pMsg.header.size);
 		}
 		else if (CommaSeparate(gServerInfo.Ports2, PortNumber))
 		{
-			gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
+			if (gServerInfo.DS_2_Enabled) gConnectionDS2.DataSend((BYTE*)&pMsg, pMsg.header.size);
 		}
 		else
 		{

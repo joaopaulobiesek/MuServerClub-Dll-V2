@@ -149,6 +149,8 @@
     <ClInclude Include="ServerManager.h" />
     <ClInclude Include="SocketManager.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Themida\ThemidaSDK.h" />
+    <ClInclude Include="Themida\Via ASM module\SecureEngineMacros.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +176,12 @@
   <ItemGroup>
     <Image Include="DataServer.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Themida\SecureEngineSDK32.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Themida\Via ASM module\SecureEngineMacros.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

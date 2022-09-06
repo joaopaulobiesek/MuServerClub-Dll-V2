@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Query\Script">
       <UniqueIdentifier>{7acb4acf-a893-4d3d-a4ba-b97ab7b768e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Themida">
+      <UniqueIdentifier>{c77baa1a-9cf2-44c3-860d-1416f3bc950c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -98,6 +101,12 @@
     </ClInclude>
     <ClInclude Include="Script_HWID.h">
       <Filter>Source Files\Query\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Themida\ThemidaSDK.h">
+      <Filter>Header Files\Themida</Filter>
+    </ClInclude>
+    <ClInclude Include="Themida\Via ASM module\SecureEngineMacros.h">
+      <Filter>Header Files\Themida</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -159,5 +168,15 @@
     <Image Include="DataServer.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Themida\SecureEngineSDK32.lib">
+      <Filter>Header Files\Themida</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Themida\Via ASM module\SecureEngineMacros.asm">
+      <Filter>Header Files\Themida</Filter>
+    </None>
   </ItemGroup>
 </Project>

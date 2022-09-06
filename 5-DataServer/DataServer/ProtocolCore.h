@@ -162,6 +162,7 @@ public:
 	CProtocolCore();
 	virtual ~CProtocolCore();
 	void GDServerInfoRecv(SDHP_SERVER_INFO_RECV* lpMsg, int index);
+	void DataServerHWIDRecv(SDHP_HWID_INFO_RECV* lpMsg, int index);
 public:
 };
 

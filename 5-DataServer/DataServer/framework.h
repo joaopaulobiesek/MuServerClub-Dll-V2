@@ -69,6 +69,7 @@ typedef unsigned __int64 QWORD;
 
 ////////////////////////////////////
 
+#include "Themida/ThemidaSDK.h"
 #include "DataServer.h"
 #include "ServerDisplayer.h"
 #include "GetVersion.h"

@@ -23,7 +23,7 @@ public:
 	int gServerCount;
 	int AdvancedLog;
 	int DataServerPort;
-	char DataServerName[15];
+	char DataServerName[16];
 };
 
 extern CUtil gUtil;
