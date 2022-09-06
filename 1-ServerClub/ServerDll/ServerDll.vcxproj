@@ -213,7 +213,6 @@
     <ClInclude Include="ProtocolS6.h" />
     <ClInclude Include="ProtocolS8.h" />
     <ClInclude Include="ProtocolValidation.h" />
-    <ClInclude Include="QueryManager.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="ReadFiles.h" />
     <ClInclude Include="Resource.h" />
@@ -278,7 +277,6 @@
     <ClCompile Include="ProtocolS6.cpp" />
     <ClCompile Include="ProtocolS8.cpp" />
     <ClCompile Include="ProtocolValidation.cpp" />
-    <ClCompile Include="QueryManager.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="ReadFiles.cpp" />
     <ClCompile Include="ServerDisplayer.cpp" />

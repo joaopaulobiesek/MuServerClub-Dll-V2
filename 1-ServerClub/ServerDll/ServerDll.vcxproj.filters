@@ -249,9 +249,6 @@
     <ClInclude Include="ServerInfo.h">
       <Filter>Source Files\BasicModules</Filter>
     </ClInclude>
-    <ClInclude Include="QueryManager.h">
-      <Filter>Source Files\BasicModules</Filter>
-    </ClInclude>
     <ClInclude Include="ReadFiles.h">
       <Filter>Source Files\BasicModules</Filter>
     </ClInclude>
@@ -414,9 +411,6 @@
       <Filter>Source Files\BasicModules</Filter>
     </ClCompile>
     <ClCompile Include="ServerInfo.cpp">
-      <Filter>Source Files\BasicModules</Filter>
-    </ClCompile>
-    <ClCompile Include="QueryManager.cpp">
       <Filter>Source Files\BasicModules</Filter>
     </ClCompile>
     <ClCompile Include="ReadFiles.cpp">

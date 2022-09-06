@@ -4,9 +4,9 @@ typedef unsigned __int64 QWORD;
 
 #define _WIN32_WINNT _WIN32_WINNT_WINXP
 
-#define SERVER_VERSION "2.0.0.1"
+#define SERVER_VERSION "3.0.0.0"
 
-#define AUTHSERVER_LICENSED_VERSION "2.0.0.1"
+#define AUTHSERVER_LICENSED_VERSION "3.0.0.0"
 
 #define PROTECT_STATE 1
 
@@ -120,7 +120,6 @@ typedef unsigned __int64 QWORD;
 #include "ServerInfo.h"
 #include "ClientManager.h"
 #include "SocketManager.h"
-#include "QueryManager.h"
 #include "CriticalSection.h"
 
 //AuthServer
