@@ -41,8 +41,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	SetTimer(hWnd, WM_TIMER_10000, 10000, 0);
 
-	gThreadAuth.Init();// Inicializa conexão com o AuthServer
-
 	WSADATA wsa;
 
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) == 0)
@@ -52,10 +50,17 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			gServerInfo.ReadInit();
 		}
 
+		gThreadAuth.Init();// Inicializa conexão com o AuthServer
+
 		if (gFeatures.dataServer == 0)
 		{
 			gServerInfo.DS_1_Enabled = 0;
 			gServerInfo.DS_2_Enabled = 0;
+		}
+		else
+		{
+			gServerInfo.DS_1_Enabled = gFeatures.dataServer > 0 ? 1 : 0;//se for 1 ou 2 ativa Data Server 1
+			gServerInfo.DS_2_Enabled = gFeatures.dataServer == 2 ? 1 : 0;//se for 2 ativa Data Server 2	
 		}
 
 		if (gServerInfo.DS_1_Enabled)

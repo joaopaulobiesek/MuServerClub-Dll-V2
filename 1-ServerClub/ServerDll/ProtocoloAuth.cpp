@@ -143,9 +143,17 @@ void CProtocoloAuth::SwitchFeature() // OK
 	{
 		LogAdd(LOG_RED, "[Data Server] Disabled!");
 	}
-	else
+	else if (gFeatures.dataServer == 1)
 	{
-		LogAdd(LOG_GREEN, "[Data Server] Actived!");
+		LogAdd(LOG_GREEN, "[Data Server 1] Actived!");
+	}
+	else if (gFeatures.dataServer == 2)
+	{
+		LogAdd(LOG_GREEN, "[Data Server 1 and 2] Actived!");
+	}
+	else 
+	{
+		LogAdd(LOG_GREEN, "[Data Server] Actived!");	
 	}
 }
 
