@@ -41,6 +41,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	SetTimer(hWnd, WM_TIMER_10000, 10000, 0);
 
+	gThreadAuth.Init();// Inicializa conexão com o AuthServer
+
 	WSADATA wsa;
 
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) == 0)
@@ -48,6 +50,12 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		if (gSocketManager.Start(gServerInfo.ServerPort) != 0)
 		{
 			gServerInfo.ReadInit();
+		}
+
+		if (gFeatures.dataServer == 0)
+		{
+			gServerInfo.DS_1_Enabled = 0;
+			gServerInfo.DS_2_Enabled = 0;
 		}
 
 		if (gServerInfo.DS_1_Enabled)
@@ -69,8 +77,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	{
 		LogAdd(LOG_RED, "WSAStartup() failed with error: %d", WSAGetLastError());
 	}
-
-	gThreadAuth.Init();// Inicializa conexão com o AuthServer
 
 	gServerDisplayer.PaintAllInfo();
 	////////////////////////////////////////////////////////////////////////////////////////////

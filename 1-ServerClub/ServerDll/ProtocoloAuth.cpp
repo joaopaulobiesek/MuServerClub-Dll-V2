@@ -138,6 +138,15 @@ void CProtocoloAuth::SwitchFeature() // OK
 	{
 		LogAdd(LOG_GREEN, "[Custom Event Time] Actived!");
 	}
+
+	if (gFeatures.dataServer == 0)
+	{
+		LogAdd(LOG_RED, "[Data Server] Disabled!");
+	}
+	else
+	{
+		LogAdd(LOG_GREEN, "[Data Server] Actived!");
+	}
 }
 
 char* CProtocoloAuth::SwitchName(int SERVER_TYPE) // OK
@@ -250,6 +259,8 @@ void CProtocoloAuth::ConnectionLicensedRecv(SERVERDLL_CONNECT_LICENSED_RECV* lpM
 	gFeatures.customOption = lpMsg->feature_12;
 
 	gFeatures.customEventTime = lpMsg->feature_13;
+
+	gFeatures.dataServer = lpMsg->feature_14;
 
 	if (checkLoadInfo == 0)
 	{

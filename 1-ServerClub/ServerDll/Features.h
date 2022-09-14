@@ -19,5 +19,6 @@ public:
 	int customCloak;
 	int customOption;
 	int customEventTime;
+	int dataServer;
 };
 extern CFeatures gFeatures;

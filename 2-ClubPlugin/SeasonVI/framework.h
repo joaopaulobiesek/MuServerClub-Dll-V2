@@ -5,7 +5,7 @@ typedef unsigned __int64 QWORD;
 #define WIN32_LEAN_AND_MEAN             // Excluir itens raramente utilizados dos cabeçalhos do Windows
 #define _WIN32_WINNT _WIN32_WINNT_WINXP
 
-#define HACKCLIENT_VERSION "3.0.0.0"
+#define HACKCLIENT_VERSION "3.0.0.1"
 
 // Arquivos de Cabeçalho do Windows  
 #include <windows.h>
@@ -173,3 +173,4 @@ typedef unsigned __int64 QWORD;
 #include "CustomFogS6.h"
 #include "ItemSmokeS6.h"
 #include "ItemS6.h"
+#include "EquipRightClickS6.h"

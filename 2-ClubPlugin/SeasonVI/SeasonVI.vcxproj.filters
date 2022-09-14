@@ -528,6 +528,9 @@
     <ClInclude Include="SwitchKBS1702.h">
       <Filter>Source Files\Features\Hook_KB_MS\S17\Ep2</Filter>
     </ClInclude>
+    <ClInclude Include="EquipRightClickS6.h">
+      <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -835,6 +838,9 @@
     </ClCompile>
     <ClCompile Include="SwitchKBS1702.cpp">
       <Filter>Source Files\Features\Hook_KB_MS\S17\Ep2</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipRightClickS6.cpp">
+      <Filter>Source Files\Features\Custom\S6</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

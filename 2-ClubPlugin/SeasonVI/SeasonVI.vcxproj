@@ -182,6 +182,7 @@
     <ClInclude Include="CustomOptionS6.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="EmojiSystemS6.h" />
+    <ClInclude Include="EquipRightClickS6.h" />
     <ClInclude Include="EventTimeS6.h" />
     <ClInclude Include="ExecutableCheck.h" />
     <ClInclude Include="Features.h" />
@@ -292,6 +293,7 @@
     <ClCompile Include="CustomNpcNameS6.cpp" />
     <ClCompile Include="CustomOptionS6.cpp" />
     <ClCompile Include="EmojiSystem_S6.cpp" />
+    <ClCompile Include="EquipRightClickS6.cpp" />
     <ClCompile Include="EventTimeS6.cpp" />
     <ClCompile Include="ExecutableCheck.cpp" />
     <ClCompile Include="Features.cpp" />

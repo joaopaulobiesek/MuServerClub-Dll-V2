@@ -17,6 +17,7 @@ CFeatures::CFeatures() // OK
 	this->customCloak = 0;
 	this->customOption = 0;
 	this->customEventTime = 0;
+	this->dataServer = 0;
 }
 
 CFeatures::~CFeatures() // OK

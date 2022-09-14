@@ -86,81 +86,7 @@ void JCOptionBox::LoadAction(int Pointer, int Action)
 	case DEFAULT:
 		break;
 	}
-
-	/*switch (this->JCAction)
-	{
-	case Effect_DisableWing:
-	{
-		this->JCActive = GetPrivateProfileIntA("Graphics", "DisableWing", 0, "./Config.ini");
-	}
-	break;
-	case Effect_DisableSkill:
-	{
-		this->JCActive = GetPrivateProfileIntA("Graphics", "DisableSkill", 0, "./Config.ini");
-	}
-	break;
-	case Effect_DisableDropZen:
-	{
-		this->JCActive = GetPrivateProfileIntA("Graphics", "DisableDropZen", 0, "./Config.ini");
-	}
-	break;
-	case Effect_DisableDropItem:
-	{
-		this->JCActive = GetPrivateProfileIntA("Graphics", "DisableDropItem", 0, "./Config.ini");
-	}
-	break;
-	case Effect_DisablePet:
-	{
-		this->JCActive = GetPrivateProfileIntA("Graphics", "DisablePet", 0, "./Config.ini");
-	}
-	break;
-	case Effect_DisableCharMoob1:
-	{
-		this->JCActive = GetPrivateProfileIntA("Graphics", "DisableCharMoob1", 0, "./Config.ini");
-	}
-	break;
-	case Effect_DisableCharMoob2:
-	{
-		this->JCActive = GetPrivateProfileIntA("Graphics", "DisableCharMoob2", 0, "./Config.ini");
-	}
-	break;
-	case Effect_DisableObjTerrain:
-	{
-		this->JCActive = GetPrivateProfileIntA("Graphics", "DisableObjTerrain", 0, "./Config.ini");
-	}
-	break;
-	case Effect_RemoveSet:
-	{
-		this->JCActive = GetPrivateProfileIntA("Graphics", "RemoveSet", 0, "./Config.ini");
-	}
-	break;
-	case Effect_LagDetection:
-	{
-		this->JCActive = !GetPrivateProfileIntA("Graphics", "LagDetection", 0, "./Config.ini");
-	}
-	break;
-	case NONE:
-		break;
-	case DEFAULT:
-		break;
-	}*/
 }
-
-/*void JCOptionBox::SetBounds(JCRECT Bound)
-{
-	this->JCRenderX = Bound.x;
-	this->JCRenderY = Bound.y;
-	this->JCWidth = Bound.w;
-	this->JCHeight = Bound.h;
-}
-
-void JCOptionBox::SetBounds(float x, float y, float Width, float Height)
-{
-	this->JCRenderX = x;
-	this->JCRenderY = y;
-	this->JCWidth = Width;
-	this->JCHeight = Height;
-}*/
 
 int JCOptionBox::SetVisible()
 {
@@ -204,17 +130,6 @@ char* JCOptionBox::GetText()
 {
 	return this->JCtext;
 }
-
-/*JCRECT JCOptionBox::GetBounds()
-{
-	JCRECT Bounds;
-	Bounds.x = this->JCRenderX;
-	Bounds.y = this->JCRenderY;
-	Bounds.w = this->JCWidth;
-	Bounds.h = this->JCHeight;
-
-	return Bounds;
-}*/
 
 void JCOptionBox::mouseClicked()
 {

@@ -4,6 +4,7 @@ CHookKBS6 gHookKBS6;
 
 CHookKBS6::CHookKBS6() // OK
 {
+	this->PositionMouse = GetPrivateProfileIntA("CustomClickS6", "RIGHT_MOUSE_ENABLED", 0, "./option.ini");;
 }
 
 CHookKBS6::~CHookKBS6() // OK
@@ -16,6 +17,24 @@ void CHookKBS6::Init(int nCode, WPARAM wParam, LPARAM lParam)
 	{
 		switch (wParam)
 		{
+		case VK_DELETE:
+			if (GetForegroundWindow() == *(HWND*)(gOffset.HwndAddress) && *(DWORD*)(gOffsetS6.MAIN_SCREEN_STATE) == 5)
+			{
+				if (this->PositionMouse == 1)
+				{
+					this->PositionMouse = 1;//2;
+					mouse_event(MOUSEEVENTF_RIGHTDOWN, 0x08, 0, 0, 0);
+					pDrawMessageS6("Auto Attack Switch", 1);
+
+				}
+				/*else if (this->PositionMouse == 2)
+				{
+					this->PositionMouse = 1;
+					mouse_event(MOUSEEVENTF_RIGHTUP, 0x10, 0, 0, 0);
+					pDrawMessageS6("Auto Attack Switch: Disabled.", 1);
+				}*/
+			}
+			break;
 		case VK_F6:
 			if (GetKeyState(VK_CONTROL) & 0x8000)
 			{
