@@ -582,31 +582,37 @@ void CProtocol::CustomFogListSend(int index) // OK
 
 void CProtocol::ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index)// OK
 {
-	if (lpMsg->NewHardwareId[0] == NULL)
-	{
-		LogAdd(LOG_RED, "[%d] NewHardwareId NULL", index);
-		return;
+	try {
+		if (lpMsg->NewHardwareId[0] == NULL)
+		{
+			LogAdd(LOG_RED, "[%d] NewHardwareId NULL", index);
+			return;
+		}
+		if (lpMsg->HardwareId[0] == NULL)
+		{
+			LogAdd(LOG_RED, "[%d] HardwareId NULL", index);
+			return;
+		}
+		if (lpMsg->account[0] == NULL)
+		{
+			LogAdd(LOG_RED, "[%d] Account NULL", index);
+			return;
+		}
+		if (lpMsg->PcName[0] == NULL)
+		{
+			LogAdd(LOG_RED, "[%d] PcName NULL", index);
+			return;
+		}
+		if (lpMsg->PortNumber == NULL)
+		{
+			LogAdd(LOG_RED, "[%d] PortNumber NULL", index);
+			return;
+		}
+		gProtocolDataServer.DataServerHWID(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
+		gClientManager[index].SetDataServer(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
 	}
-	if (lpMsg->HardwareId[0] == NULL)
+	catch (...)
 	{
-		LogAdd(LOG_RED, "[%d] HardwareId NULL", index);
-		return;
+		LogAdd(LOG_RED, "[ClientConnectRecv][%d] - possible treatment error)", index);
 	}
-	if (lpMsg->account[0] == NULL)
-	{
-		LogAdd(LOG_RED, "[%d] Account NULL", index);
-		return;
-	}
-	if (lpMsg->PcName[0] == NULL)
-	{
-		LogAdd(LOG_RED, "[%d] PcName NULL", index);
-		return;
-	}
-	if (lpMsg->PortNumber == NULL)
-	{
-		LogAdd(LOG_RED, "[%d] PortNumber NULL", index);
-		return;
-	}
-	gProtocolDataServer.DataServerHWID(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
-	gClientManager[index].SetDataServer(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
 }

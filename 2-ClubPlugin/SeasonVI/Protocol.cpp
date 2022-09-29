@@ -560,7 +560,7 @@ void CProtocol::ClientConnectSend() // OK
 
 	pMsg.header.set(0x04, sizeof(pMsg));
 
-	pMsg.PortNumber = gProtocol.PortNumber;
+	pMsg.PortNumber = (int)gProtocol.PortNumber;
 
 	memcpy(pMsg.NewHardwareId, GetHardwareIdNew(), sizeof(pMsg.NewHardwareId));
 
