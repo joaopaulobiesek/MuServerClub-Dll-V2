@@ -36,7 +36,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	gThread.Init();
 
-	if (gProtect.m_MainInfo.removeFileProtect == 1)
+	if (gProtect.m_MainInfo.removeFileProtect == 0)
 	{
 		gFileProtect.Init();
 	}

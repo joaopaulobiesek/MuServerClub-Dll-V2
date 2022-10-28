@@ -11,23 +11,25 @@ int main(int argc, _TCHAR* argv[])
 {
 	GetPrivateProfileString("GetCryptClub","PasswordFiles","",gCustomerName,sizeof(gCustomerName),".\\GetCryptClub.ini");
 
+	gFileProtect.FindFile("Checksum_Protect\\");
+
 	CRCChecker.Initialize();
 
-	fopen_s(&DumpFile,"Dump.List.db","w");
+	//fopen_s(&DumpFile,"Dump.List.db","w");
 
 	fopen_s(&ChecksumFile,"Checksum.List.db","w");
 
-	GetHackList(L"Dump\\", TYPE_DUMP);
+	//GetHackList(L"Dump\\", TYPE_DUMP);
 
 	GetHackList(L"Checksum\\", TYPE_CRC);
 
 	GetHackList(L"Checksum_Protect\\", TYPE_CRC_PROTECT);
 
-	fputs("end", DumpFile);
+	//fputs("end", DumpFile);
 
 	fputs("end", ChecksumFile);
 
-	fclose(DumpFile);
+	//fclose(DumpFile);
 
 	fclose(ChecksumFile);
 

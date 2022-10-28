@@ -170,8 +170,10 @@ void CCustomOptionS6::EventPanelOption()
 	}
 	else if (this->EventPushCursor(x - 45, y + 98, 40, 12)) {
 		RegeditData(3);
+		//RESOLUTION = 1280;
+		//ChangeSize(0x500u, 768);
 		RESOLUTION = 1280;
-		ChangeSize(0x500u, 768);
+		ChangeSize(0x500u, 1024);
 	}
 	else if (this->EventPushCursor(x - 45, y + 118, 40, 12)) {
 		RegeditData(4);
@@ -516,7 +518,8 @@ void RenderOptionText(int a1)
 	pDrawText(pTextThis(), x - 40, y + 40, "640x480", 0, 0, (LPINT)1, 0);
 	pDrawText(pTextThis(), x - 40, y + 60, "800x600", 0, 0, (LPINT)1, 0);
 	pDrawText(pTextThis(), x - 40, y + 80, "1024x768", 0, 0, (LPINT)1, 0);
-	pDrawText(pTextThis(), x - 40, y + 100, "1280x768", 0, 0, (LPINT)1, 0);
+	//pDrawText(pTextThis(), x - 40, y + 100, "1280x768", 0, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x - 40, y + 100, "1280x1024", 0, 0, (LPINT)1, 0);
 	pDrawText(pTextThis(), x - 40, y + 120, "1366x768", 0, 0, (LPINT)1, 0);
 	pDrawText(pTextThis(), x - 40, y + 140, "1440x900", 0, 0, (LPINT)1, 0);
 	pDrawText(pTextThis(), x - 40, y + 160, "1600x900", 0, 0, (LPINT)1, 0);

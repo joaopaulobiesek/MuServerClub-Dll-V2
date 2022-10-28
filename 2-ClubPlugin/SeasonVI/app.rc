@@ -86,6 +86,7 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 IDB_BITMAP1             BITMAP                  "SplashScreen\\InitSplash.bmp"
+//IDB_BITMAP1             BITMAP                  "SplashScreen\\LogoBaxo.bmp"
 IDB_BITMAP2             BITMAP                  "SplashScreen\\WarningSplash.bmp"
 IDB_BITMAP3             BITMAP                  "SplashScreen\\CloseSplash.bmp"
 
