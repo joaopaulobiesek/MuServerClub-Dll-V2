@@ -139,11 +139,11 @@ struct SDHP_SERVER_INFO_RECV
 struct SDHP_HWID_INFO_RECV
 {
 	PBMSG_DS_HEAD header; // C1:00
-	int PortNumber;
-	char PcName[20];
-	char account[11];
+	char NewHardwareId[50];
 	char HardwareId[36];
-	char NewHardwareId[36];
+	char account[11];
+	char PcName[50];
+	int PortNumber;
 };
 
 //**********************************************//

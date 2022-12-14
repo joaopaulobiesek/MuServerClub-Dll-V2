@@ -608,8 +608,8 @@ void CProtocol::ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index)// 
 			LogAdd(LOG_RED, "[%d] PortNumber NULL", index);
 			return;
 		}
-		gProtocolDataServer.DataServerHWID(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
-		gClientManager[index].SetDataServer(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
+		if (lpMsg->PortNumber > 0 && lpMsg->PortNumber < 99999) gProtocolDataServer.DataServerHWID(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
+		if (lpMsg->PortNumber > 0 && lpMsg->PortNumber < 99999) gClientManager[index].SetDataServer(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
 	}
 	catch (...)
 	{

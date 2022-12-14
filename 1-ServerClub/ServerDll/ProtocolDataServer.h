@@ -46,11 +46,11 @@ struct SDHP_DATA_SERVER_INFO_SEND
 struct SDHP_HWID_INFO_SEND
 {
     PBMSG_DS_HEAD header; // C1:00
-    int PortNumber;
-    char PcName[20];
-    char account[11];
+    char NewHardwareId[50];
     char HardwareId[36];
-    char NewHardwareId[36];
+    char account[11];
+    char PcName[50];
+    int PortNumber;
 };
 
 class CProtocolDataServer

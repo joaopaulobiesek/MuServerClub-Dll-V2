@@ -50,33 +50,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			gServerInfo.ReadInit();
 		}
 
-		gThreadAuth.Init();// Inicializa conexão com o AuthServer
-
-		if (gFeatures.dataServer == 0)
-		{
-			gServerInfo.DS_1_Enabled = 0;
-			gServerInfo.DS_2_Enabled = 0;
-		}
-		else
-		{
-			gServerInfo.DS_1_Enabled = gFeatures.dataServer > 0 ? 1 : 0;//se for 1 ou 2 ativa Data Server 1
-			gServerInfo.DS_2_Enabled = gFeatures.dataServer == 2 ? 1 : 0;//se for 2 ativa Data Server 2	
-		}
-
-		if (gServerInfo.DS_1_Enabled)
-		{
-			if (gSocketDataServer.DataServerConnect(gServerInfo.Ip_1_Address, gServerInfo.DS_1_Port, WM_DATA_SERVER_1_MSG_PROC) == 0)
-			{
-				LogAdd(LOG_RED, "Could not connect to DataServer 1");
-			}
-		}
-		if (gServerInfo.DS_2_Enabled)
-		{
-			if (gSocketDataServer.DataServer2Connect(gServerInfo.Ip_2_Address, gServerInfo.DS_2_Port, WM_DATA_SERVER_2_MSG_PROC) == 0)
-			{
-				LogAdd(LOG_RED, "Could not connect to DataServer 2");
-			}
-		}
+		gThreadAuth.Init();// Inicializa conexão com o AuthServer		
 	}
 	else
 	{
