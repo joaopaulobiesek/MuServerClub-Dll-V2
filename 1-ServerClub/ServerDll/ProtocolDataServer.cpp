@@ -44,6 +44,9 @@ void CProtocolDataServer::DGServerInfoRecv(SDHP_DATA_SERVER_INFO_RECV* lpMsg) //
 
 void CProtocolDataServer::DataServerHWID(int Index, char* NewHardwareId, char* HardwareId, char* account, char* PcName, int PortNumber)// OK
 {
+	GetPrivateProfileString("DataServerConfig", "GS_1_Ports", "", gServerInfo.Ports1, sizeof(gServerInfo.Ports1), ".\\ServerPlugin.ini");
+	GetPrivateProfileString("DataServerConfig", "GS_2_Ports", "", gServerInfo.Ports2, sizeof(gServerInfo.Ports2), ".\\ServerPlugin.ini");
+
 	SDHP_HWID_INFO_SEND pMsg;
 
 	pMsg.header.set(0x01, sizeof(pMsg));
@@ -72,7 +75,8 @@ void CProtocolDataServer::DataServerHWID(int Index, char* NewHardwareId, char* H
 		}
 		else
 		{
-			LogAdd(LOG_RED, "[ERROR] non-existent port.");
+			LogAdd(LOG_RED, "[ERROR] non-existent port: %d", PortNumber);
+			LogAdd(LOG_RED, "[LogError] ports - DS1: %s || DS2: %s", gServerInfo.Ports1, gServerInfo.Ports2);
 		}
 	}
 }
