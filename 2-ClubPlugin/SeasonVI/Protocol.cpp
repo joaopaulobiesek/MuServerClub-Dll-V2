@@ -31,6 +31,9 @@ CProtocol::CProtocol() // OK
 	this->UserAccount = 0;
 	this->UserStruct = 0;
 	this->PortNumber = -1;
+	this->ActiveWindowName = 0;
+	this->ActiveWindowClock = 0;
+	this->ActiveWindowWebSite = 0;
 }
 
 CProtocol::~CProtocol() // OK
@@ -83,6 +86,7 @@ void ProtocolCoreMain(BYTE head, BYTE* lpMsg, int size)
 	case 0x04:
 		break;
 	case 0x05:
+		gProtocol.ClientClockRecv((SDHP_CLIENT_CLOCK_RECV*)lpMsg);
 		break;
 	case 0x06:
 		break;
@@ -226,6 +230,14 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg)
 
 		gOffset.PortNumberAddress = lpMsg->PortNumberAddress;
 
+		gProtocol.ActiveWindowName = lpMsg->ActiveWindowName;
+
+		gProtocol.ActiveWindowClock = lpMsg->ActiveWindowClock;
+
+		gProtocol.ActiveWindowWebSite = lpMsg->ActiveWindowWebSite;
+
+		MemoryCpy((DWORD)gProtocol.WindowWebSite, lpMsg->WindowWebSite, sizeof(gProtocol.WindowWebSite));
+
 		MemoryCpy((DWORD)gProtocol.ServerName, lpMsg->ServerName, sizeof(gProtocol.ServerName));
 
 		MemoryCpy((DWORD)gProtocol.IpAddress, lpMsg->IpAddress, sizeof(gProtocol.IpAddress));
@@ -302,8 +314,6 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg)
 		MemoryCpy((DWORD)gProtocol.ClientSerial, lpMsg->ClientSerial, sizeof(gProtocol.ClientSerial));
 
 		gOffset.Init(gProtocol.VersionMu, lpMsg);
-
-		gMain.hWnd = *(HWND*)(lpMsg->HwndAddress);
 	}
 	else
 	{
@@ -630,4 +640,21 @@ void CProtocol::ClientConnectSend() // OK
 	//gLog.Output(LOG_DEBUG,GetEncryptedString(31),pMsg.IsReconnect,pMsg.ClientFileCRC,pMsg.HackVersion,pMsg.HardwareId);
 
 	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
+}
+
+void CProtocol::ClientClockRecv(SDHP_CLIENT_CLOCK_RECV* lpMsg) // OK
+{
+	gClock.m_ClockMain.DateHour = lpMsg->DateHour;
+
+	gClock.m_ClockMain.DateMinute = lpMsg->DateMinute;
+
+	gClock.m_ClockMain.DateSecond = lpMsg->DateSecond;
+
+	gClock.m_ClockMain.DateDay = lpMsg->DateDay;
+
+	gClock.m_ClockMain.DateMonth = lpMsg->DateMonth;
+
+	gClock.m_ClockMain.DateYear = lpMsg->DateYear;
+
+	gClock.StartClock = 1;
 }

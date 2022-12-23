@@ -92,14 +92,19 @@ void CThreadS2::GameProcessThread(int Cod_ID)
 		int MapY;
 		Map = *(DWORD*)(gOffsetS2.MAIN_MAP_CODE);
 		name = (char*)gOffset.AccountAddress;
-		//MapX = *(DWORD*)(gOffsetS2.gCameraPosXC);
-		//MapY = *(DWORD*)(gOffsetS2.gCameraPosYC);
 
-		gProcessWindowS2.SetWindowName(gProtocol.ServerName, name, Map);
+		if (gProtocol.ActiveWindowName)
+		{
+			DWORD hour = gClock.m_ClockMain.DateHour;
+			DWORD minute = gClock.m_ClockMain.DateMinute;
+			DWORD second = gClock.m_ClockMain.DateSecond;
+
+			gProcessWindowS2.SetWindowName(name, Map, hour, minute, second);
+		}
 	}
 	else
 	{
-		if (gFeatures.antiLag != 0)  
-			gAntiLagS2.ActiveDisabled(0); 
+		if (gFeatures.antiLag != 0)
+			gAntiLagS2.ActiveDisabled(0);
 	}
 }

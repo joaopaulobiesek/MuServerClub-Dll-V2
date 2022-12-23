@@ -122,7 +122,11 @@ struct SDHP_CLIENT_INFO_RECV
 	DWORD HwndAddress;
 	DWORD FileProtectAddress1;
 	DWORD FileProtectAddress2;
-	char ServerName[50];
+	int ActiveWindowName;
+	int ActiveWindowClock;
+	int ActiveWindowWebSite;
+	char WindowWebSite[25];
+	char ServerName[25];
 	char IpAddress[32];
 	char ClientVersion[8];
 	char ClientSerial[17];
@@ -139,6 +143,17 @@ struct SDHP_CLIENT_INFO_RECV
 	int customCloak;
 	int customOption;
 	int customEventTime;
+};
+
+struct SDHP_CLIENT_CLOCK_RECV
+{
+	PBMSG_HEAD header; // C1:00
+	DWORD DateHour;
+	DWORD DateMinute;
+	DWORD DateSecond;
+	DWORD DateDay;
+	DWORD DateMonth;
+	DWORD DateYear;
 };
 
 struct SDHP_CONNECTION_STATUS_RECV
@@ -277,6 +292,7 @@ public:
 	void CustomMapNameListRecv(SDHP_CUSTOM_MAP_NAME_LIST_RECV* lpMsg);
 	void ClientDisconnectSend(int type, char* text, DWORD pid);
 	void ClientDisconnectRecv(SDHP_CLIENT_DISCONNECT_RECV* lpMsg);
+	void ClientClockRecv(SDHP_CLIENT_CLOCK_RECV* lpMsg);
 	void ClientSendHack(char* Account, char* Prog, int Status, int Map, int X, int Y);
 	void ClientInfoSend();
 	void ConnectionStatusSend();
@@ -316,6 +332,11 @@ public:
 	char IpAddress[32];
 	BYTE ClientVersion[5];
 	BYTE ClientSerial[17];
+	//WindowName
+	int ActiveWindowName;
+	int ActiveWindowClock;
+	int ActiveWindowWebSite;
+	char WindowWebSite[50];
 };
 
 void ProtocolCoreMain(BYTE head, BYTE* lpMsg, int size);

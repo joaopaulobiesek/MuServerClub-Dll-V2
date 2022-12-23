@@ -131,6 +131,14 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 	pMsg.FileProtectAddress1 = gOffset.FileProtectAddress1;
 	pMsg.FileProtectAddress2 = gOffset.FileProtectAddress2;
 
+	pMsg.ActiveWindowName = gServerInfo.ActiveWindowName;
+
+	pMsg.ActiveWindowClock = gServerInfo.ActiveWindowClock;
+
+	pMsg.ActiveWindowWebSite = gServerInfo.ActiveWindowWebSite;
+
+	memcpy(pMsg.WindowWebSite, gServerInfo.WindowWebSite, sizeof(pMsg.WindowWebSite));
+
 	memcpy(pMsg.ServerName, gServerInfo.ServerName, sizeof(pMsg.ServerName));
 
 	memcpy(pMsg.IpAddress, gServerInfo.IpAddress, sizeof(pMsg.IpAddress));
@@ -665,6 +673,30 @@ void CProtocol::ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index)// 
 		}
 		if (lpMsg->PortNumber > 0 && lpMsg->PortNumber < 99999) gProtocolDataServer.DataServerHWID(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
 		if (lpMsg->PortNumber > 0 && lpMsg->PortNumber < 99999) gClientManager[index].SetDataServer(index, lpMsg->NewHardwareId, lpMsg->HardwareId, lpMsg->account, lpMsg->PcName, lpMsg->PortNumber);
+
+		SYSTEMTIME time;
+
+		GetLocalTime(&time);
+
+		SDHP_CLIENT_CLOCK_SEND pMsg;
+
+		pMsg.header.set(0x05, sizeof(pMsg));
+
+		pMsg.DateDay = time.wDay;
+
+		pMsg.DateMonth = time.wMonth;
+
+		pMsg.DateYear = time.wYear;
+
+		pMsg.DateHour = time.wHour;
+
+		pMsg.DateMinute = time.wMinute;
+
+		pMsg.DateSecond = time.wSecond;
+
+		gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
+
+
 	}
 	catch (...)
 	{

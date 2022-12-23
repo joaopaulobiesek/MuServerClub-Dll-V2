@@ -155,6 +155,17 @@ struct SDHP_CLIENT_RECV_CONNECT
 //************ Server -> Dll *******************//
 //**********************************************//
 
+struct SDHP_CLIENT_CLOCK_SEND
+{
+	PBMSG_HEAD header; // C1:00
+	DWORD DateHour;
+	DWORD DateMinute;
+	DWORD DateSecond;
+	DWORD DateDay;
+	DWORD DateMonth;
+	DWORD DateYear;
+};
+
 struct SDHP_CLIENT_INFO_SEND
 {
 	PBMSG_HEAD header; // C1:00
@@ -170,7 +181,11 @@ struct SDHP_CLIENT_INFO_SEND
 	DWORD HwndAddress;
 	DWORD FileProtectAddress1;
 	DWORD FileProtectAddress2;
-	char ServerName[50];
+	int ActiveWindowName;
+	int ActiveWindowClock;
+	int ActiveWindowWebSite;
+	char WindowWebSite[25];
+	char ServerName[25];
 	char IpAddress[32];
 	char ClientVersion[8];
 	char ClientSerial[17];

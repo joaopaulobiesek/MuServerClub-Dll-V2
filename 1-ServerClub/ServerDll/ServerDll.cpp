@@ -33,6 +33,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	gServerInfo.ReadStartupDS("DataServerConfig", ".\\ServerPlugin.ini");
 
+	gServerInfo.ReadWindowNameInfo("WindowNameCustom", ".\\ServerPlugin.ini");
+
 	gServerDisplayer.Init(hWnd);
 
 	SetTimer(hWnd, WM_TIMER_1000, 1000, 0);

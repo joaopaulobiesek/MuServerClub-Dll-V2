@@ -16,6 +16,7 @@ public:
 	void ReadWindowList();
 	void ReadBlackList();
 	void ReadStartupInfo(const char* section, const char* path);
+	void ReadWindowNameInfo(const char* section, const char* path);
 	void ReadStartupKeyboard(const char* section, const char* path);
 	void ReadStartupCustomS6(const char* section, const char* path);
 	void ReadStartupDS(const char* section, const char* path);
@@ -50,6 +51,11 @@ public:
 	//Novas Funções
 	long m_DataServerPort;
 	char m_DataServerAddress[16];
+	//WindowName
+	int ActiveWindowName;
+	int ActiveWindowClock;
+	int ActiveWindowWebSite;
+	char WindowWebSite[50];
 
 	//KeyBoard Function
 	int Func1;

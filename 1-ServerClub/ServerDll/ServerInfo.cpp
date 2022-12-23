@@ -188,6 +188,19 @@ void CServerInfo::ReadBlackList() //OK
 	}
 }
 
+void CServerInfo::ReadWindowNameInfo(const char* section, const char* path) // OK
+{
+	this->ActiveWindowName = GetPrivateProfileInt(section, "ActiveWindowName", 0, path);
+
+	this->ActiveWindowClock = GetPrivateProfileInt(section, "ActiveWindowClock", 0, path);
+
+	this->ActiveWindowWebSite = GetPrivateProfileInt(section, "ActiveWindowWebSite", 0, path);
+
+	GetPrivateProfileString(section, "WindowWebSite", "www.muserver.club", this->WindowWebSite, sizeof(this->WindowWebSite), path);
+
+	LogAdd(LOG_BLUE, "Window name loaded successfully");
+}
+
 void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 {
 	this->LicenseId = GetPrivateProfileInt(section, "LicenseId", 0, path);

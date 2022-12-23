@@ -68,6 +68,7 @@ void COffsetS14::InitOffset(SDHP_CLIENT_INFO_RECV* lpMsg)
 	gOffset.AccountAddress = lpMsg->AccountAddress;
 	gOffset.CharacterAddress = lpMsg->CharacterAddress;
 	gOffset.HwndAddress = lpMsg->HwndAddress;
+	gMain.hWnd = *(HWND*)(lpMsg->HwndAddress);
 	gOffset.FileProtectAddress1 = lpMsg->FileProtectAddress1;
 	gOffset.FileProtectAddress2 = lpMsg->FileProtectAddress2;
 	STR_ENCRYPT_END

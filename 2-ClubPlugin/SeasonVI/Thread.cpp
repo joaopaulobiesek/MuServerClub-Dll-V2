@@ -176,6 +176,8 @@ void CThread::Init()
 
 	this->ThreadHandles[4] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ThreadSeasonCustom, 0, 0, (DWORD*)&gThreadCheck.m_CheckThreadID[5]);
 
+	this->ThreadHandles[5] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ThreadClock, 0, 0, (DWORD*)&gThreadCheck.m_CheckThreadID[6]);
+
 	SetThreadPriority(this->ThreadHandles[0], THREAD_PRIORITY_HIGHEST);
 
 	WaitForMultipleObjects(3, this->ThreadHandles, 1, 2000);
@@ -453,6 +455,41 @@ DWORD WINAPI ConnectionStatusThread() // OK
 			{
 				gProtocol.ConnectionStatusSend();
 				continue;
+			}
+		}
+	}
+
+	return 0;
+}
+
+DWORD WINAPI ThreadClock()
+{
+	while (!DelayMe(1000, 100))
+	{
+		if (gClock.StartClock == 1)
+		{
+			if (gClock.m_ClockMain.DateHour == 23 && gClock.m_ClockMain.DateMinute == 59 && gClock.m_ClockMain.DateSecond == 59)
+			{
+				gClock.m_ClockMain.DateHour = 0;
+				gClock.m_ClockMain.DateMinute = 0;
+				gClock.m_ClockMain.DateSecond = 0;
+			}
+			else
+			{
+				if (gClock.m_ClockMain.DateSecond >= 59)
+				{
+					gClock.m_ClockMain.DateSecond = 0;
+					gClock.m_ClockMain.DateMinute++;
+				}
+				else
+				{
+					gClock.m_ClockMain.DateSecond++;
+				}
+				if (gClock.m_ClockMain.DateMinute > 59)
+				{
+					gClock.m_ClockMain.DateMinute = 0;
+					gClock.m_ClockMain.DateHour++;
+				}
 			}
 		}
 	}

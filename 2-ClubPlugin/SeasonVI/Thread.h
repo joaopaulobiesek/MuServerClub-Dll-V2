@@ -34,4 +34,5 @@ DWORD WINAPI ConnectionReconnectThread();
 DWORD WINAPI ConnectionStatusThread();
 LRESULT CALLBACK IconeMu();
 DWORD WINAPI ThreadSeasonCustom();
+DWORD WINAPI ThreadClock();
 extern CThread gThread;
