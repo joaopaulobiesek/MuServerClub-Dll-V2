@@ -640,3 +640,62 @@ void CReadFiles::CustomFogList(char* path)
 
 	delete lpScript;
 }
+
+
+
+void CReadFiles::CustomMapNameList(char* path)
+{
+
+	CMemScript* lpScript = new CMemScript;
+
+	if (lpScript == 0)
+	{
+		return;
+	}
+
+	if (lpScript->SetBuffer(path, 0) == 0)
+	{
+		delete lpScript;
+		return;
+	}
+
+	gCustomMapNameInfo.clear();
+
+	try
+	{
+		while (true)
+		{
+			if (lpScript->GetToken() == TOKEN_END)
+			{
+				break;
+			}
+
+			if (strcmp("end", lpScript->GetString()) == 0)
+			{
+				break;
+			}
+
+			MAP_NAME info;
+
+			memset(&info, 0, sizeof(info));
+
+			static int CustomIndexCount = 0;
+
+			info.Index = CustomIndexCount;
+
+			info.MapNumber = lpScript->GetNumber();
+
+			strcpy_s(info.Name, lpScript->GetAsString());
+
+			CustomIndexCount++;
+
+			gCustomMapNameInfo.push_back(info);
+		}
+	}
+	catch (...)
+	{
+		printf(lpScript->GetLastError());
+	}
+
+	delete lpScript;
+}

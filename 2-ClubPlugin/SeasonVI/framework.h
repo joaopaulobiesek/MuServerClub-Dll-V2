@@ -5,7 +5,7 @@ typedef unsigned __int64 QWORD;
 #define WIN32_LEAN_AND_MEAN             // Excluir itens raramente utilizados dos cabeçalhos do Windows
 #define _WIN32_WINNT _WIN32_WINNT_WINXP
 
-#define HACKCLIENT_VERSION "3.0.0.2"
+#define HACKCLIENT_VERSION "3.0.0.3"
 
 // Arquivos de Cabeçalho do Windows  
 #include <windows.h>
@@ -109,6 +109,7 @@ typedef unsigned __int64 QWORD;
 
 //Include Protocol
 #include "Thread.h"
+#include "ThreadS2.h"
 #include "ThreadS6.h"
 #include "ThreadS15.h"
 #include "ThreadS17.h"
@@ -116,6 +117,10 @@ typedef unsigned __int64 QWORD;
 
 //Features
 //
+#include "AntiLagS2.h"
+#include "HookKBS2.h"
+#include "SwitchKBS2.h" 
+#include "ProcessWindowS2.h" 
 // 
 #include "Camera3dS6.h"
 #include "AntiLagS6.h"

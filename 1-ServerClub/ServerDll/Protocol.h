@@ -170,6 +170,7 @@ struct SDHP_CLIENT_INFO_SEND
 	DWORD HwndAddress;
 	DWORD FileProtectAddress1;
 	DWORD FileProtectAddress2;
+	char ServerName[50];
 	char IpAddress[32];
 	char ClientVersion[8];
 	char ClientSerial[17];
@@ -228,6 +229,13 @@ struct SDHP_CUSTOM_SMOKE_EFFECT_LIST_SEND
 	BYTE count;
 };
 
+struct SDHP_CUSTOM_MAP_NAME_LIST_SEND
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
 struct SDHP_CUSTOM_FOG_LIST_SEND
 {
 	PSWMSG_HEAD header; // C1:02:03
@@ -267,6 +275,7 @@ public:
 	void CustomCloakListSend(int index);
 	void CustomSmokeEffectListSend(int index);
 	void CustomFogListSend(int index);
+	void CustomMapsNameSend(int index);
 	void ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index);
 public:
 	DWORD VersionMu;

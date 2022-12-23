@@ -98,6 +98,13 @@ struct CUSTOM_FOG
 	float Blue;
 };
 
+struct MAP_NAME
+{
+	int Index;
+	WORD MapNumber;
+	char Name[30];
+};
+
 class CReadFiles
 {
 public:
@@ -112,6 +119,7 @@ public:
 	void CustomCloakList(char* path);
 	void CustomEventList(char* path);
 	void CustomFogList(char* path);
+	void CustomMapNameList(char* path);
 	void CustomSmokeEffectList(char* path);
 public:
 	bool ReloadSwitch;
@@ -127,6 +135,7 @@ public:
 	std::vector<CUSTOMMONSTER_DATA> gCustomMonsterListInfo;
 	std::vector<CUSTOM_SMOKEEFFECT> gCustomSmokeEffectInfo;
 	std::vector<CUSTOM_FOG> gCustomFogInfo;
+	std::vector<MAP_NAME> gCustomMapNameInfo;
 };
 
 extern CReadFiles gReadFiles;

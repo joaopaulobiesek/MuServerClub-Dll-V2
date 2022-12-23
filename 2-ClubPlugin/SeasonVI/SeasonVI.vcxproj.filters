@@ -199,6 +199,18 @@
     <Filter Include="Source Files\Features\Hook_KB_MS\S17\Ep2">
       <UniqueIdentifier>{d6d29299-ba54-40f4-b6de-bc4518d928d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Features\AntiLag\S2">
+      <UniqueIdentifier>{c59b3ca4-5032-4642-8ff4-88c07d42d4ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Hook_KB_MS\S2">
+      <UniqueIdentifier>{305cb48c-4c03-4701-b691-fdcc99284fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Custom\S2">
+      <UniqueIdentifier>{41207ae6-693f-40c9-91a3-c1b5c0da9cc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Custom\S2\WindowName">
+      <UniqueIdentifier>{192fd31f-fccd-41e7-b113-ca625611bf2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -531,6 +543,21 @@
     <ClInclude Include="EquipRightClickS6.h">
       <Filter>Source Files\Features\Custom\S6</Filter>
     </ClInclude>
+    <ClInclude Include="AntiLagS2.h">
+      <Filter>Source Files\Features\AntiLag\S2</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchKBS2.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S2</Filter>
+    </ClInclude>
+    <ClInclude Include="HookKBS2.h">
+      <Filter>Source Files\Features\Hook_KB_MS\S2</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadS2.h">
+      <Filter>Source Files\Protocol\S2</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessWindowS2.h">
+      <Filter>Source Files\Features\Custom\S2\WindowName</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -841,6 +868,21 @@
     </ClCompile>
     <ClCompile Include="EquipRightClickS6.cpp">
       <Filter>Source Files\Features\Custom\S6</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiLagS2.cpp">
+      <Filter>Source Files\Features\AntiLag\S2</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchKBS2.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S2</Filter>
+    </ClCompile>
+    <ClCompile Include="HookKBS2.cpp">
+      <Filter>Source Files\Features\Hook_KB_MS\S2</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadS2.cpp">
+      <Filter>Source Files\Protocol\S2</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessWindowS2.cpp">
+      <Filter>Source Files\Features\Custom\S2\WindowName</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

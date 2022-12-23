@@ -82,3 +82,20 @@ char* CMapName::GetMap(int index) // OK
 	if (lpInfo == 0) { return this->m_DefaultMap; }
 	return lpInfo->Name;
 }
+
+
+void CMapName::Scan()
+{
+	MAP_NAME info;
+
+	for (std::vector<MAP_NAME>::iterator it = gListManager.gCustomMapNameListInfo.begin(); it != gListManager.gCustomMapNameListInfo.end(); it++)
+	{
+		info.Index = it->Index;
+
+		info.MapNumber = it->MapNumber;
+
+		strcpy_s(info.Name, it->Name);
+
+		this->m_MapName[info.Index] = info;
+	}
+}

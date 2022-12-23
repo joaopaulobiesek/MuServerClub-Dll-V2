@@ -101,6 +101,13 @@ struct CUSTOM_FOG
 	float Blue;
 };
 
+struct MAP_NAME
+{
+	int Index;
+	WORD MapNumber;
+	char Name[30];
+};
+
 class CListManager
 {
 public:
@@ -116,6 +123,7 @@ public:
 	std::vector<CLOAKNAME_DATA> gCustomCloakListInfo;
 	std::vector<CUSTOM_SMOKEEFFECT> gCustomSmokeEffectListInfo;
 	std::vector<CUSTOM_FOG> gCustomFogListInfo;
+	std::vector<MAP_NAME> gCustomMapNameListInfo;
 };
 
 extern CListManager gListManager;

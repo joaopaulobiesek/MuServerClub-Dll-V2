@@ -122,6 +122,7 @@ struct SDHP_CLIENT_INFO_RECV
 	DWORD HwndAddress;
 	DWORD FileProtectAddress1;
 	DWORD FileProtectAddress2;
+	char ServerName[50];
 	char IpAddress[32];
 	char ClientVersion[8];
 	char ClientSerial[17];
@@ -181,6 +182,13 @@ struct SDHP_CUSTOM_SMOKE_EFFECT_LIST_RECV
 };
 
 struct SDHP_CUSTOM_FOG_LIST_RECV
+{
+	PSWMSG_HEAD header; // C1:02:03
+	WORD MaxCount;
+	BYTE count;
+};
+
+struct SDHP_CUSTOM_MAP_NAME_LIST_RECV
 {
 	PSWMSG_HEAD header; // C1:02:03
 	WORD MaxCount;
@@ -266,6 +274,7 @@ public:
 	void CustomCloakListRecv(SDHP_CUSTOM_CLOAK_LIST_RECV* lpMsg);
 	void CustomSmokeEffectListRecv(SDHP_CUSTOM_SMOKE_EFFECT_LIST_RECV* lpMsg);
 	void CustomFogListRecv(SDHP_CUSTOM_FOG_LIST_RECV* lpMsg);
+	void CustomMapNameListRecv(SDHP_CUSTOM_MAP_NAME_LIST_RECV* lpMsg);
 	void ClientDisconnectSend(int type, char* text, DWORD pid);
 	void ClientDisconnectRecv(SDHP_CLIENT_DISCONNECT_RECV* lpMsg);
 	void ClientSendHack(char* Account, char* Prog, int Status, int Map, int X, int Y);
@@ -284,6 +293,7 @@ public:
 	DWORD CustomCloakListMaxCount;
 	DWORD CustomSmokeEffectListMaxCount;
 	DWORD CustomFogListMaxCount;
+	DWORD CustomMapNameListMaxCount;
 	DWORD ReconnectStatus;
 	DWORD ReconnectSwitch;
 	DWORD HackSwitch;
@@ -295,12 +305,14 @@ public:
 	DWORD CustomCloakListOK;
 	DWORD CustomSmokeEffectListOK;
 	DWORD CustomFogListOK;
+	DWORD CustomMapNameListOK;
 	DWORD DetectCloseTime;
 	DWORD UserAccount;
 	DWORD UserStruct;
 	//
 	int PortNumber;//Pega a Port Number
 	DWORD PortNumberAddress;
+	char ServerName[50];
 	char IpAddress[32];
 	BYTE ClientVersion[5];
 	BYTE ClientSerial[17];

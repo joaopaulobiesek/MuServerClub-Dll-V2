@@ -4,9 +4,9 @@ typedef unsigned __int64 QWORD;
 
 #define _WIN32_WINNT _WIN32_WINNT_WINXP
 
-#define SERVER_VERSION "3.0.0.2"
+#define SERVER_VERSION "3.0.0.3"
 
-#define AUTHSERVER_LICENSED_VERSION "3.0.0.2"
+#define AUTHSERVER_LICENSED_VERSION "3.0.0.3"
 
 #define PROTECT_STATE 1
 

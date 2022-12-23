@@ -80,38 +80,35 @@ void Interface::LoadImages()
 	pLoadImage("Interface\\newui_menu02-03.jpg", 31379, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Interface\\newui_menu03.jpg", 31380, 0x2601, 0x2901, 1, 0);
 
-	if (gFeatures.customOption == 1)
-	{
-		//-- IMAGEN POPUP VENTANA CUSTOM OPCIONES
-		pLoadImage("Custom\\Interface\\tooltip_bg01.tga", 61511, 0x2601, 0x2901, 1, 0); //esquina arriba izquierda
-		pLoadImage("Custom\\Interface\\tooltip_bg02.tga", 61512, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Custom\\Interface\\tooltip_bg03.tga", 61513, 0x2601, 0x2901, 1, 0); //esquina arriba derecha
-		pLoadImage("Custom\\Interface\\tooltip_bg04.tga", 61514, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Custom\\Interface\\tooltip_bg06.tga", 61515, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Custom\\Interface\\tooltip_bg07.tga", 61516, 0x2601, 0x2901, 1, 0); //esquina abajo izquierda
-		pLoadImage("Custom\\Interface\\tooltip_bg08.tga", 61517, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Custom\\Interface\\tooltip_bg09.tga", 61518, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-		//-- IMAGEN POPUP VENTANA CUSTOM OPCIONES
-		pLoadImage("Custom\\Interface\\popupbg01.tga", 71511, 0x2601, 0x2901, 1, 0); //esquina arriba izquierda
-		pLoadImage("Custom\\Interface\\popupbg02.tga", 71512, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Custom\\Interface\\popupbg03.tga", 71513, 0x2601, 0x2901, 1, 0); //esquina arriba derecha
-		pLoadImage("Custom\\Interface\\popupbg04.tga", 71514, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Custom\\Interface\\popupbg06.tga", 71515, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Custom\\Interface\\popupbg07.tga", 71516, 0x2601, 0x2901, 1, 0); //esquina abajo izquierda
-		pLoadImage("Custom\\Interface\\popupbg08.tga", 71517, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Custom\\Interface\\popupbg09.tga", 71518, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-		//--
-		pLoadImage("Custom\\Interface\\popup_line_m.tga", 71519, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-		pLoadImage("Custom\\Interface\\popup_line_s.tga", 71520, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-		//--
-		pLoadImage("Custom\\Interface\\Render_buttom_1.tga", 71521, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-		pLoadImage("Custom\\Interface\\Render_buttom_2.tga", 71522, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-		pLoadImage("Custom\\Interface\\Render_buttom_3.tga", 71524, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-		//--
-		pLoadImage("Custom\\Interface\\RenderBits_Sound.tga", 71523, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-		pLoadImage("Custom\\Interface\\newui_option_volume01.tga", 31596, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-		pLoadImage("Custom\\Interface\\newui_option_volume02.tga", 31597, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-	}
+	//-- IMAGEN POPUP VENTANA CUSTOM OPCIONES
+	pLoadImage("Custom\\Interface\\tooltip_bg01.tga", 61511, 0x2601, 0x2901, 1, 0); //esquina arriba izquierda
+	pLoadImage("Custom\\Interface\\tooltip_bg02.tga", 61512, 0x2601, 0x2901, 1, 0);
+	pLoadImage("Custom\\Interface\\tooltip_bg03.tga", 61513, 0x2601, 0x2901, 1, 0); //esquina arriba derecha
+	pLoadImage("Custom\\Interface\\tooltip_bg04.tga", 61514, 0x2601, 0x2901, 1, 0);
+	pLoadImage("Custom\\Interface\\tooltip_bg06.tga", 61515, 0x2601, 0x2901, 1, 0);
+	pLoadImage("Custom\\Interface\\tooltip_bg07.tga", 61516, 0x2601, 0x2901, 1, 0); //esquina abajo izquierda
+	pLoadImage("Custom\\Interface\\tooltip_bg08.tga", 61517, 0x2601, 0x2901, 1, 0);
+	pLoadImage("Custom\\Interface\\tooltip_bg09.tga", 61518, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	//-- IMAGEN POPUP VENTANA CUSTOM OPCIONES
+	pLoadImage("Custom\\Interface\\popupbg01.tga", 71511, 0x2601, 0x2901, 1, 0); //esquina arriba izquierda
+	pLoadImage("Custom\\Interface\\popupbg02.tga", 71512, 0x2601, 0x2901, 1, 0);
+	pLoadImage("Custom\\Interface\\popupbg03.tga", 71513, 0x2601, 0x2901, 1, 0); //esquina arriba derecha
+	pLoadImage("Custom\\Interface\\popupbg04.tga", 71514, 0x2601, 0x2901, 1, 0);
+	pLoadImage("Custom\\Interface\\popupbg06.tga", 71515, 0x2601, 0x2901, 1, 0);
+	pLoadImage("Custom\\Interface\\popupbg07.tga", 71516, 0x2601, 0x2901, 1, 0); //esquina abajo izquierda
+	pLoadImage("Custom\\Interface\\popupbg08.tga", 71517, 0x2601, 0x2901, 1, 0);
+	pLoadImage("Custom\\Interface\\popupbg09.tga", 71518, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	//--
+	pLoadImage("Custom\\Interface\\popup_line_m.tga", 71519, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	pLoadImage("Custom\\Interface\\popup_line_s.tga", 71520, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	//--
+	pLoadImage("Custom\\Interface\\Render_buttom_1.tga", 71521, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	pLoadImage("Custom\\Interface\\Render_buttom_2.tga", 71522, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	pLoadImage("Custom\\Interface\\Render_buttom_3.tga", 71524, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	//--
+	pLoadImage("Custom\\Interface\\RenderBits_Sound.tga", 71523, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	pLoadImage("Custom\\Interface\\newui_option_volume01.tga", 31596, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	pLoadImage("Custom\\Interface\\newui_option_volume02.tga", 31597, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
 
 	if (gFeatures.emoji == 1)
 	{

@@ -131,6 +131,8 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 	pMsg.FileProtectAddress1 = gOffset.FileProtectAddress1;
 	pMsg.FileProtectAddress2 = gOffset.FileProtectAddress2;
 
+	memcpy(pMsg.ServerName, gServerInfo.ServerName, sizeof(pMsg.ServerName));
+
 	memcpy(pMsg.IpAddress, gServerInfo.IpAddress, sizeof(pMsg.IpAddress));
 
 	memcpy(pMsg.ClientVersion, gServerInfo.ClientVersion, sizeof(pMsg.ClientVersion));
@@ -166,6 +168,8 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index)
 	gProtocol.CustomSmokeEffectListSend(index);
 
 	gProtocol.CustomFogListSend(index);
+
+	gProtocol.CustomMapsNameSend(index);
 }
 
 void CProtocol::ClientRecvHack(SDHP_CLIENT_HACK_RECV* lpMsg, int index)
@@ -578,6 +582,57 @@ void CProtocol::CustomFogListSend(int index) // OK
 
 		gSocketManager.DataSend(index, send, size);
 	} while (MakeList != gReadFiles.gCustomFogInfo.end());
+}
+
+void CProtocol::CustomMapsNameSend(int index) // OK
+{
+	std::vector<MAP_NAME>::iterator MakeList = gReadFiles.gCustomMapNameInfo.begin();
+
+	do
+	{
+		BYTE send[8192];
+
+		SDHP_CUSTOM_MAP_NAME_LIST_SEND pMsg;
+
+		pMsg.header.set(0x02, 0x0F, 0);
+
+		int size = sizeof(pMsg);
+
+		pMsg.MaxCount = gReadFiles.gCustomSmokeEffectInfo.size();
+
+		pMsg.count = 0;
+
+		MAP_NAME info;
+
+		for (; MakeList != gReadFiles.gCustomMapNameInfo.end(); MakeList++)
+		{
+			info.Index = MakeList->Index;
+
+			info.MapNumber = MakeList->MapNumber;
+
+			strcpy_s(info.Name, MakeList->Name);
+
+			if ((size + sizeof(info)) > sizeof(send))
+			{
+				break;
+			}
+			else
+			{
+				memcpy(&send[size], &info, sizeof(info));
+				size += sizeof(info);
+
+				pMsg.count++;
+			}
+		}
+
+		pMsg.header.size[0] = SET_NUMBERHB(size);
+
+		pMsg.header.size[1] = SET_NUMBERLB(size);
+
+		memcpy(send, &pMsg, sizeof(pMsg));
+
+		gSocketManager.DataSend(index, send, size);
+	} while (MakeList != gReadFiles.gCustomMapNameInfo.end());
 }
 
 void CProtocol::ClientConnectRecv(SDHP_CLIENT_RECV_CONNECT* lpMsg, int index)// OK

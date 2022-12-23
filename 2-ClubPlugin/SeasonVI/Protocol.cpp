@@ -14,6 +14,7 @@ CProtocol::CProtocol() // OK
 	this->CustomCloakListMaxCount = 0;
 	this->CustomSmokeEffectListMaxCount = 0;
 	this->CustomFogListMaxCount = 0;
+	this->CustomMapNameListMaxCount = 0;
 	this->ReconnectStatus = 0;
 	this->ReconnectSwitch = 0;
 	this->HackSwitch = 0;
@@ -25,6 +26,7 @@ CProtocol::CProtocol() // OK
 	this->CustomCloakListOK = 0;
 	this->CustomSmokeEffectListOK = 0;
 	this->CustomFogListOK = 0;
+	this->CustomMapNameListOK = 0;
 	this->DetectCloseTime = 0;
 	this->UserAccount = 0;
 	this->UserStruct = 0;
@@ -69,6 +71,9 @@ void ProtocolCoreMain(BYTE head, BYTE* lpMsg, int size)
 			break;
 		case 0x0D:
 			gProtocol.CustomFogListRecv((SDHP_CUSTOM_FOG_LIST_RECV*)lpMsg);
+			break;
+		case 0x0F:
+			gProtocol.CustomMapNameListRecv((SDHP_CUSTOM_MAP_NAME_LIST_RECV*)lpMsg);
 			break;
 		}
 		break;
@@ -141,21 +146,55 @@ void CProtocol::ClientInfoSend() // OK
 
 		ChecksumListOK = 0;
 
+		WindowListOK = 0;
+
 		CustomMonsterListOK = 0;
 
 		CustomNPCListOK = 0;
 
+		CustomCloakListOK = 0;
+
+		CustomSmokeEffectListOK = 0;
+
+		CustomFogListOK = 0;
+
+		CustomMapNameListOK = 0;
+
 		ChecksumListMaxCount = 0;
+
+		WindowListMaxCount = 0;
 
 		CustomMonsterListMaxCount = 0;
 
 		CustomNPCListMaxCount = 0;
 
+		CustomCloakListMaxCount = 0;
+
+		CustomSmokeEffectListMaxCount = 0;
+
+		CustomFogListMaxCount = 0;
+
+		CustomMapNameListMaxCount = 0;
+
+		gListManager.gDumpListInfo.clear();
+
 		gListManager.gChecksumListInfo.clear();
+
+		gListManager.gInternalListInfo.clear();
+
+		gListManager.gWindowListInfo.clear();
+
+		gListManager.gCustomNPCListInfo.clear();
 
 		gListManager.gCustomMonsterListInfo.clear();
 
-		gListManager.gCustomNPCListInfo.clear();
+		gListManager.gCustomCloakListInfo.clear();
+
+		gListManager.gCustomSmokeEffectListInfo.clear();
+
+		gListManager.gCustomFogListInfo.clear();
+
+		gListManager.gCustomMapNameListInfo.clear();
 	}
 
 	SDHP_CLIENT_INFO_SEND pMsg;
@@ -186,6 +225,8 @@ void CProtocol::ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg)
 		gProtocol.VersionMu = lpMsg->Version;
 
 		gOffset.PortNumberAddress = lpMsg->PortNumberAddress;
+
+		MemoryCpy((DWORD)gProtocol.ServerName, lpMsg->ServerName, sizeof(gProtocol.ServerName));
 
 		MemoryCpy((DWORD)gProtocol.IpAddress, lpMsg->IpAddress, sizeof(gProtocol.IpAddress));
 
@@ -405,6 +446,22 @@ void CProtocol::CustomFogListRecv(SDHP_CUSTOM_FOG_LIST_RECV* lpMsg) // OK
 	}
 
 	CustomFogListOK = 1;
+}
+
+void CProtocol::CustomMapNameListRecv(SDHP_CUSTOM_MAP_NAME_LIST_RECV* lpMsg) // OK
+{
+	//gLog.Output(LOG_DEBUG, GetEncryptedString(43), lpMsg->count, lpMsg->MaxCount);
+
+	CustomMapNameListMaxCount = lpMsg->MaxCount;
+
+	for (int n = 0; n < lpMsg->count; n++)
+	{
+		MAP_NAME* lpInfo = (MAP_NAME*)(((BYTE*)lpMsg) + sizeof(SDHP_CUSTOM_MAP_NAME_LIST_RECV) + (sizeof(MAP_NAME) * n));
+
+		gListManager.gCustomMapNameListInfo.push_back((*lpInfo));
+	}
+
+	CustomMapNameListOK = 1;
 }
 
 void CProtocol::ConnectionStatusSend() // OK

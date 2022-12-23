@@ -21,6 +21,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) // OK
 		case 1://Season 0
 			break;
 		case 2://Season 2
+			gHookKBS2.Init(nCode, wParam, lParam);
 			break;
 		case 3://Season 4
 			break;
@@ -128,11 +129,11 @@ void CThread::Init()
 			}
 		}
 
-		if (gProtocol.ClientInfoOK != 0 && gProtocol.ChecksumListOK != 0 && gProtocol.WindowListOK != 0 && gProtocol.CustomMonsterListOK != 0 && gProtocol.CustomNPCListOK != 0 && gProtocol.CustomCloakListOK != 0 && gProtocol.CustomSmokeEffectListOK != 0 && gProtocol.CustomFogListOK != 0)
+		if (gProtocol.ClientInfoOK != 0 && gProtocol.ChecksumListOK != 0 && gProtocol.WindowListOK != 0 && gProtocol.CustomMonsterListOK != 0 && gProtocol.CustomNPCListOK != 0 && gProtocol.CustomCloakListOK != 0 && gProtocol.CustomSmokeEffectListOK != 0 && gProtocol.CustomFogListOK != 0 && gProtocol.CustomMapNameListOK != 0)
 		{
-			DWORD CurProgress = gListManager.gChecksumListInfo.size() + gListManager.gWindowListInfo.size() + gListManager.gCustomMonsterListInfo.size() + gListManager.gCustomNPCListInfo.size() + gListManager.gCustomCloakListInfo.size() + gListManager.gCustomFogListInfo.size() + gListManager.gCustomSmokeEffectListInfo.size();
+			DWORD CurProgress = gListManager.gChecksumListInfo.size() + gListManager.gWindowListInfo.size() + gListManager.gCustomMonsterListInfo.size() + gListManager.gCustomNPCListInfo.size() + gListManager.gCustomCloakListInfo.size() + gListManager.gCustomFogListInfo.size() + gListManager.gCustomSmokeEffectListInfo.size() + gListManager.gCustomMapNameListInfo.size();
 
-			DWORD MaxProgress = gProtocol.ChecksumListMaxCount + gProtocol.WindowListMaxCount + gProtocol.CustomMonsterListMaxCount + gProtocol.CustomNPCListMaxCount + gProtocol.CustomCloakListMaxCount + gProtocol.CustomSmokeEffectListMaxCount + gProtocol.CustomFogListMaxCount;
+			DWORD MaxProgress = gProtocol.ChecksumListMaxCount + gProtocol.WindowListMaxCount + gProtocol.CustomMonsterListMaxCount + gProtocol.CustomNPCListMaxCount + gProtocol.CustomCloakListMaxCount + gProtocol.CustomSmokeEffectListMaxCount + gProtocol.CustomFogListMaxCount + gProtocol.CustomMapNameListMaxCount;
 
 			if (CurProgress >= MaxProgress)
 			{
@@ -205,7 +206,8 @@ DWORD WINAPI ThreadSeasonCustom() // OK
 		{
 		case 1://Season 0
 			break;
-		case 2://Season 2
+		case 2://Season 2		
+			gThreadS2.Init();
 			break;
 		case 3://Season 4
 			break;

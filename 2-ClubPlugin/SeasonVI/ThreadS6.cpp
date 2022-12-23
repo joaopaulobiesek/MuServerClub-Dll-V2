@@ -140,6 +140,7 @@ void CThreadS6::InitCustom()
 	gInterface.Load();
 	gCustomInterface.Load();
 	if (gThreadS6.CustomFog == 1) gFog.Init();
+	gMapName.Scan();
 
 	if (gFeatures.customMoster == 1)
 	{

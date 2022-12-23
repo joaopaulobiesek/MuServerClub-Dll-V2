@@ -139,6 +139,18 @@ void CServerInfo::ReadCustomList() // OK
 		obj.close();
 		LogAdd(LOG_RED, "[ServerInfo] Custom Monster file does not exist");
 	}
+	obj.open(".\\Custom\\Maps.txt");
+	if (obj.is_open())
+	{
+		obj.close();
+		gReadFiles.CustomMapNameList(".\\Custom\\Maps.txt");
+		LogAdd(LOG_BLUE, "[ServerInfo] Maps loaded successfully");
+	}
+	else
+	{
+		obj.close();
+		LogAdd(LOG_RED, "[ServerInfo] Maps file does not exist");
+	}
 }
 
 void CServerInfo::ReadWindowList() // OK
@@ -194,9 +206,9 @@ void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 
 	this->HackSwitch = GetPrivateProfileInt(section, "HackSwitch", 1, path);
 
-	GetPrivateProfileString(section, "IpAddress", "0", this->IpAddressExt, sizeof(this->IpAddressExt), path);
-
 	GetPrivateProfileString(section, "ServerName", "ServerClub", this->ServerName, sizeof(this->ServerName), path);
+
+	GetPrivateProfileString(section, "IpAddress", "0", this->IpAddressExt, sizeof(this->IpAddressExt), path);
 
 	GetPrivateProfileString(section, "ClientVersion", "", this->ClientVersion, sizeof(this->ClientVersion), path);
 

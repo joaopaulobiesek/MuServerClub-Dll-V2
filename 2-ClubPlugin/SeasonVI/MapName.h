@@ -2,14 +2,6 @@
 
 #define MAX_MAP 150
 
-struct MAP_NAME
-{
-	int Index;
-	WORD MapNumber;
-	BYTE CameraMap;
-	char Name[30];
-};
-
 class CMapName
 {
 public:
@@ -21,6 +13,7 @@ public:
 	MAP_NAME* GetMapName(int index);
 	MAP_NAME* GetIndexMap(int index);
 	char* GetMap(int index);
+	void Scan();
 public:
 	char m_DefaultMap[128];
 	int m_MapNumberDefault;

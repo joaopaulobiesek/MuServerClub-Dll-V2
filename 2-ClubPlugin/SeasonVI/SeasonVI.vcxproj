@@ -163,6 +163,7 @@
     <ClInclude Include="AntiLagS15.h" />
     <ClInclude Include="AntiLagS17.h" />
     <ClInclude Include="AntiLagS1702.h" />
+    <ClInclude Include="AntiLagS2.h" />
     <ClInclude Include="AntiLagS6.h" />
     <ClInclude Include="Camera3dS15.h" />
     <ClInclude Include="Camera3dS17.h" />
@@ -195,6 +196,7 @@
     <ClInclude Include="HookKBS15.h" />
     <ClInclude Include="HookKBS17.h" />
     <ClInclude Include="HookKBS1702.h" />
+    <ClInclude Include="HookKBS2.h" />
     <ClInclude Include="HookKBS6.h" />
     <ClInclude Include="HookMSS15.h" />
     <ClInclude Include="HookMSS17.h" />
@@ -233,6 +235,7 @@
     <ClInclude Include="ProcessCheck.h" />
     <ClInclude Include="ProcessManager.h" />
     <ClInclude Include="ProcessQuery.h" />
+    <ClInclude Include="ProcessWindowS2.h" />
     <ClInclude Include="Protect.h" />
     <ClInclude Include="Protocol.h" />
     <ClInclude Include="ProtocolS0.h" />
@@ -256,6 +259,7 @@
     <ClInclude Include="SwitchKBS15.h" />
     <ClInclude Include="SwitchKBS17.h" />
     <ClInclude Include="SwitchKBS1702.h" />
+    <ClInclude Include="SwitchKBS2.h" />
     <ClInclude Include="SwitchKBS6.h" />
     <ClInclude Include="Thread.h" />
     <ClInclude Include="Themida\ThemidaSDK.h" />
@@ -264,6 +268,7 @@
     <ClInclude Include="ThreadS15.h" />
     <ClInclude Include="ThreadS17.h" />
     <ClInclude Include="ThreadS1702.h" />
+    <ClInclude Include="ThreadS2.h" />
     <ClInclude Include="ThreadS6.h" />
     <ClInclude Include="UserS6.h" />
     <ClInclude Include="Util.h" />
@@ -275,6 +280,7 @@
     <ClCompile Include="AntiLagS15.cpp" />
     <ClCompile Include="AntiLagS17.cpp" />
     <ClCompile Include="AntiLagS1702.cpp" />
+    <ClCompile Include="AntiLagS2.cpp" />
     <ClCompile Include="AntiLagS6.cpp" />
     <ClCompile Include="Camera3dS15.cpp" />
     <ClCompile Include="Camera3dS17.cpp" />
@@ -305,6 +311,7 @@
     <ClCompile Include="HookKBS15.cpp" />
     <ClCompile Include="HookKBS17.cpp" />
     <ClCompile Include="HookKBS1702.cpp" />
+    <ClCompile Include="HookKBS2.cpp" />
     <ClCompile Include="HookKBS6.cpp" />
     <ClCompile Include="HookMSS15.cpp" />
     <ClCompile Include="HookMSS17.cpp" />
@@ -346,6 +353,7 @@
     <ClCompile Include="ProcessCheck.cpp" />
     <ClCompile Include="ProcessManager.cpp" />
     <ClCompile Include="ProcessQuery.cpp" />
+    <ClCompile Include="ProcessWindowS2.cpp" />
     <ClCompile Include="Protect.cpp" />
     <ClCompile Include="Protocol.cpp" />
     <ClCompile Include="ProtocolS0.cpp" />
@@ -368,12 +376,14 @@
     <ClCompile Include="SwitchKBS15.cpp" />
     <ClCompile Include="SwitchKBS17.cpp" />
     <ClCompile Include="SwitchKBS1702.cpp" />
+    <ClCompile Include="SwitchKBS2.cpp" />
     <ClCompile Include="SwitchKBS6.cpp" />
     <ClCompile Include="Thread.cpp" />
     <ClCompile Include="ThreadCheck.cpp" />
     <ClCompile Include="ThreadS15.cpp" />
     <ClCompile Include="ThreadS17.cpp" />
     <ClCompile Include="ThreadS1702.cpp" />
+    <ClCompile Include="ThreadS2.cpp" />
     <ClCompile Include="ThreadS6.cpp" />
     <ClCompile Include="UserS6.cpp" />
     <ClCompile Include="Util.cpp" />
