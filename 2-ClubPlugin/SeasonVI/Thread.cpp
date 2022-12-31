@@ -368,6 +368,9 @@ DWORD WINAPI MainThread() // OK
 		{
 			switch (((CycleCount++) % 10))
 			{
+			case 3:
+				gFileCheck.Scan();
+				break;
 			default:
 				break;
 			}

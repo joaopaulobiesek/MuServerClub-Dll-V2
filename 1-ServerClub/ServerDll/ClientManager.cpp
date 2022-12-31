@@ -107,13 +107,14 @@ void CClientManager::AddClient(int index, char* ip, SOCKET socket) // OK
 	this->m_PacketTime = 0;
 
 	//gIpManager.InsertIpAddress(this->m_IpAddr);
-
-	LogAdd(LOG_BLACK, "[ClientManager][%d] AddClient (%s)", this->m_index, this->m_IpAddr);
+	//Comentado este log por excesso de log ->
+	//LogAdd(LOG_BLACK, "[ClientManager][%d] AddClient (%s)", this->m_index, this->m_IpAddr);
 }
 
 void CClientManager::DelClient() // OK
 {
-	LogAdd(LOG_BLACK, "[ClientManager][%d] DelClient (%s)", this->m_index, this->m_IpAddr);
+	//Comentado este log por excesso de log ->
+	//LogAdd(LOG_BLACK, "[ClientManager][%d] DelClient (%s)", this->m_index, this->m_IpAddr);
 
 	memcpy(gClientManager[this->m_index].m_Account, "", sizeof(gClientManager[this->m_index].m_Account));
 

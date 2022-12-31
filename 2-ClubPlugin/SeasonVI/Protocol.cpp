@@ -499,6 +499,7 @@ void CProtocol::ClientDisconnectRecv(SDHP_CLIENT_DISCONNECT_RECV* lpMsg) // OK
 		break;
 	case CLIENT_DISCONNECT_FILE_DETECTION:
 		SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(16), 5000);
+		SafeExitProcess();
 		break;
 	case CLIENT_DISCONNECT_FILE_MAPPING_DETECTION:
 		SplashScreen(&SplashError, 2, 1, gMessage.GetMessage(17), 5000);
@@ -565,24 +566,9 @@ void CProtocol::ClientDisconnectSend(int type, char* text, DWORD pid) // OK
 
 	pMsg.type = type;
 
-	if (UserAccount == 0)
-	{
-		memset(pMsg.account, 0, sizeof(pMsg.account));
-	}
-	else
-	{
-		memcpy(pMsg.account, (void*)UserAccount, sizeof(pMsg.account));
-	}
+	memset(pMsg.name, 0, sizeof(pMsg.name));
 
-	if (UserStruct == 0 || (*(DWORD*)(UserStruct)) == 0)
-	{
-		memset(pMsg.name, 0, sizeof(pMsg.name));
-	}
-	else
-	{
-		memcpy(pMsg.name, (void*)(*(DWORD*)(UserStruct)+0x00), sizeof(pMsg.name));
-		MessageBox(0, pMsg.name, "Error", MB_OK | MB_ICONERROR);
-	}
+	memset(pMsg.account, 0, sizeof(pMsg.account));
 
 	if (text == 0)
 	{
@@ -615,8 +601,6 @@ void CProtocol::ClientDisconnectSend(int type, char* text, DWORD pid) // OK
 			CloseHandle(hProcess);
 		}
 	}
-
-	//gLog.Output(LOG_DEBUG,GetEncryptedString(32),pMsg.type,pMsg.account,pMsg.name,pMsg.CaptionName,pMsg.ProcessName);
 
 	gConnection.DataSend((BYTE*)&pMsg, pMsg.header.size);
 }

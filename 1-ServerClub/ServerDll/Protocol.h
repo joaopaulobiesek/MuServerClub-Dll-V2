@@ -281,6 +281,8 @@ public:
 	CProtocol();
 	virtual ~CProtocol();
 	void ConnectionStatusRecv(SDHP_CONNECTION_STATUS_RECV* lpMsg, int index);
+	void ClientDisconnectRecv(SDHP_CLIENT_DISCONNECT_RECV* lpMsg, int index);
+	void ClientDisconnectSend(int index, int type);
 	void ClientInfoRecv(SDHP_CLIENT_INFO_RECV* lpMsg, int index);
 	void ClientRecvHack(SDHP_CLIENT_HACK_RECV* lpMsg, int index);
 	void ChecksumListSend(int index);

@@ -39,7 +39,7 @@ void ProtocolCoreMain(int index, BYTE head, BYTE* lpMsg, int size)
 		gProtocol.ConnectionStatusRecv((SDHP_CONNECTION_STATUS_RECV*)lpMsg, index);
 		break;
 	case 0x03:
-		//CHClientDisconnectRecv((SDHP_CLIENT_DISCONNECT_RECV*)lpMsg, index);
+		gProtocol.ClientDisconnectRecv((SDHP_CLIENT_DISCONNECT_RECV*)lpMsg, index);
 		break;
 	case 0x04:
 		gProtocol.ClientConnectRecv((SDHP_CLIENT_RECV_CONNECT*)lpMsg, index);
@@ -201,6 +201,65 @@ void CProtocol::ConnectionStatusRecv(SDHP_CONNECTION_STATUS_RECV* lpMsg, int ind
 	gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
 
 	gClientManager[index].m_OnlineTime = GetTickCount();
+}
+
+void CProtocol::ClientDisconnectSend(int index, int type) // OK
+{
+	SDHP_CLIENT_DISCONNECT_SEND pMsg;
+
+	pMsg.header.set(0x03, sizeof(pMsg));
+
+	pMsg.type = type;
+
+	gSocketManager.DataSend(index, (BYTE*)&pMsg, pMsg.header.size);
+}
+
+void CProtocol::ClientDisconnectRecv(SDHP_CLIENT_DISCONNECT_RECV* lpMsg, int index) // OK
+{
+	char buff[128] = { 0 };
+
+	switch (lpMsg->type)
+	{
+	case CLIENT_DISCONNECT_NONE:
+		wsprintf(buff, "CLIENT_DISCONNECT_NONE");
+		break;
+	case CLIENT_DISCONNECT_DUMP_DETECTION:
+		wsprintf(buff, "DUMP_DETECTION");
+		break;
+	case CLIENT_DISCONNECT_EXECUTABLE_DETECTION:
+		wsprintf(buff, "EXECUTABLE_DETECTION");
+		break;
+	case CLIENT_DISCONNECT_FILE_DETECTION:
+		wsprintf(buff, "FILE_DETECTION");
+		break;
+	case CLIENT_DISCONNECT_FILE_MAPPING_DETECTION:
+		wsprintf(buff, "FILE_MAPPING_DETECTION");
+		break;
+	case CLIENT_DISCONNECT_LIBRARY_DETECTION:
+		wsprintf(buff, "LIBRARY_DETECTION");
+		break;
+	case CLIENT_DISCONNECT_REGISTRY_DETECTION:
+		wsprintf(buff, "REGISTRY_DETECTION");
+		break;
+	case CLIENT_DISCONNECT_MEMORY_DETECTION:
+		wsprintf(buff, "MEMORY_DETECTION");
+		break;
+	case CLIENT_DISCONNECT_WINDOW_DETECTION:
+		wsprintf(buff, "WINDOW_DETECTION");
+		break;
+	case CLIENT_DISCONNECT_MACRO_DETECTION:
+		wsprintf(buff, "MACRO_DETECTION");
+		break;
+	case CLIENT_DISCONNECT_DEBUGGER_DETECTION:
+		wsprintf(buff, "DEBUGGER_DETECTION");
+		break;
+	default:
+		wsprintf(buff, "DEFAULT_DETECTION");
+		break;
+	}
+
+	this->ClientDisconnectSend(index, lpMsg->type);
+	LogAddHack(LOG_RED, "[ProtectionDetected] IpAddress: %s, DetectionType: %s, CaptionName: %s, ProcessName: %s", gClientManager[index].m_IpAddr, buff, lpMsg->CaptionName, lpMsg->ProcessName);
 }
 
 void CProtocol::ChecksumListSend(int index) // OK
