@@ -249,9 +249,11 @@ void CThreadS6::GameProcessThread(int Cod_ID)
 	{
 		lpViewObj lpViewPlayer = &*(ObjectPreview*)*(int*)(gOffsetS6.MAIN_VIEWPORT_STRUCT);
 
+		char* name;
 		DWORD Map = *(DWORD*)(gOffsetS6.MAIN_MAP_CODE);
 		DWORD PosX = lpViewPlayer->MapPosX;
-		DWORD PosY = lpViewPlayer->MapPosY;
+		DWORD PosY = lpViewPlayer->MapPosY;		
+		name = lpViewPlayer->Name;
 
 		if (gSpeed.CHeckSpeed == 1) {
 			gSpeed.m_SpeedMain.Map = Map;
@@ -260,6 +262,16 @@ void CThreadS6::GameProcessThread(int Cod_ID)
 
 			gSpeed.CheckLimit(Map, PosX, PosY);
 		}
+
+		if (gProtocol.ActiveWindowName)
+		{
+			DWORD hour = gClock.m_ClockMain.DateHour;
+			DWORD minute = gClock.m_ClockMain.DateMinute;
+			DWORD second = gClock.m_ClockMain.DateSecond;
+
+			gProcessWindowS6.SetWindowName(name, Map, PosX, PosY, hour, minute, second);
+		}
+
 	}
 	else
 	{

@@ -235,7 +235,9 @@
     <ClInclude Include="ProcessCheck.h" />
     <ClInclude Include="ProcessManager.h" />
     <ClInclude Include="ProcessQuery.h" />
+    <ClInclude Include="ProcessWindowS0.h" />
     <ClInclude Include="ProcessWindowS2.h" />
+    <ClInclude Include="ProcessWindowS6.h" />
     <ClInclude Include="Protect.h" />
     <ClInclude Include="Protocol.h" />
     <ClInclude Include="ProtocolS0.h" />
@@ -265,6 +267,7 @@
     <ClInclude Include="Themida\ThemidaSDK.h" />
     <ClInclude Include="Themida\Via ASM module\SecureEngineMacros.h" />
     <ClInclude Include="ThreadCheck.h" />
+    <ClInclude Include="ThreadS0.h" />
     <ClInclude Include="ThreadS15.h" />
     <ClInclude Include="ThreadS17.h" />
     <ClInclude Include="ThreadS1702.h" />
@@ -353,7 +356,9 @@
     <ClCompile Include="ProcessCheck.cpp" />
     <ClCompile Include="ProcessManager.cpp" />
     <ClCompile Include="ProcessQuery.cpp" />
+    <ClCompile Include="ProcessWindowS0.cpp" />
     <ClCompile Include="ProcessWindowS2.cpp" />
+    <ClCompile Include="ProcessWindowS6.cpp" />
     <ClCompile Include="Protect.cpp" />
     <ClCompile Include="Protocol.cpp" />
     <ClCompile Include="ProtocolS0.cpp" />
@@ -380,6 +385,7 @@
     <ClCompile Include="SwitchKBS6.cpp" />
     <ClCompile Include="Thread.cpp" />
     <ClCompile Include="ThreadCheck.cpp" />
+    <ClCompile Include="ThreadS0.cpp" />
     <ClCompile Include="ThreadS15.cpp" />
     <ClCompile Include="ThreadS17.cpp" />
     <ClCompile Include="ThreadS1702.cpp" />

@@ -211,6 +211,15 @@
     <Filter Include="Source Files\Features\Custom\S2\WindowName">
       <UniqueIdentifier>{192fd31f-fccd-41e7-b113-ca625611bf2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Features\Custom\S6\WindowName">
+      <UniqueIdentifier>{3b0af528-4ba4-4ce1-a3e1-6590071cabba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Custom\S0">
+      <UniqueIdentifier>{812067bb-e365-44c2-a3e3-54e68e7f5eda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Features\Custom\S0\WindowName">
+      <UniqueIdentifier>{94cfe9d7-52ce-4738-bf1e-5e22558626ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -558,6 +567,15 @@
     <ClInclude Include="ProcessWindowS2.h">
       <Filter>Source Files\Features\Custom\S2\WindowName</Filter>
     </ClInclude>
+    <ClInclude Include="ProcessWindowS6.h">
+      <Filter>Source Files\Features\Custom\S6\WindowName</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadS0.h">
+      <Filter>Source Files\Protocol\S0</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessWindowS0.h">
+      <Filter>Source Files\Features\Custom\S0\WindowName</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -883,6 +901,15 @@
     </ClCompile>
     <ClCompile Include="ProcessWindowS2.cpp">
       <Filter>Source Files\Features\Custom\S2\WindowName</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessWindowS6.cpp">
+      <Filter>Source Files\Features\Custom\S6\WindowName</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadS0.cpp">
+      <Filter>Source Files\Protocol\S0</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessWindowS0.cpp">
+      <Filter>Source Files\Features\Custom\S0\WindowName</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

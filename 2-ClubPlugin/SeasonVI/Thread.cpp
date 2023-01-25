@@ -206,7 +206,8 @@ DWORD WINAPI ThreadSeasonCustom() // OK
 	{
 		switch (gProtocol.VersionMu)
 		{
-		case 1://Season 0
+		case 1://Season 0	
+			gThreadS0.Init();
 			break;
 		case 2://Season 2		
 			gThreadS2.Init();

@@ -109,6 +109,7 @@ typedef unsigned __int64 QWORD;
 
 //Include Protocol
 #include "Thread.h"
+#include "ThreadS0.h"
 #include "ThreadS2.h"
 #include "ThreadS6.h"
 #include "ThreadS15.h"
@@ -120,7 +121,9 @@ typedef unsigned __int64 QWORD;
 #include "AntiLagS2.h"
 #include "HookKBS2.h"
 #include "SwitchKBS2.h" 
+#include "ProcessWindowS0.h" 
 #include "ProcessWindowS2.h" 
+#include "ProcessWindowS6.h" 
 // 
 #include "Camera3dS6.h"
 #include "AntiLagS6.h"
