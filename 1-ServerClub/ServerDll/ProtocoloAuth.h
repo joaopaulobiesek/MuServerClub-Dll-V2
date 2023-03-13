@@ -1,6 +1,6 @@
 #pragma once
 
-#define AUTH_ADDRESS_A	"51.79.116.137"
+#define AUTH_ADDRESS_A	"dll.muserver.club"
 #define AUTH_PORT 1257
 
 void ProtocolCore(BYTE head, BYTE* lpMsg, int size);

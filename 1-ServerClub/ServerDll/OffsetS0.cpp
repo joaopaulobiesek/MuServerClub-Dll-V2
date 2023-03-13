@@ -9,7 +9,7 @@ COffsetS0::COffsetS0() // OK
 	this->IpAddressAddress = 0x006B6694;
 	this->ClientVersionAddress = 0x006B7248;
 	this->ClientSerialAddress = 0x006B7250;
-	this->AccountAddress = 0x7ABCC80C;
+	this->AccountAddress = 0x0575490C;
 	this->CharacterAddress = 0x0;
 	this->HwndAddress = 0x0;//0x05737460; //--> não tenho certeza
 	this->FileProtectAddress1 = 0x0068F214;
