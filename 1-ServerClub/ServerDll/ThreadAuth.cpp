@@ -23,7 +23,7 @@ DWORD WINAPI ConnectionReconnectThread() // OK
 {
 	while (!DelayMe(5000, 100))
 	{
-		if (gConnectionAuth.gReconnectStatus == 1)
+		/*if (gConnectionAuth.gReconnectStatus == 1)
 		{
 			if (gConnectionAuth.Init(ProtocolCore) == 0)
 			{
@@ -43,7 +43,7 @@ DWORD WINAPI ConnectionReconnectThread() // OK
 			gConnectionAuth.gConnectionStatusTime = GetTickCount();
 
 			gConnectionAuth.CHClientInfoSend();
-		}
+		}*/
 	}
 
 	return 0;
@@ -53,7 +53,7 @@ DWORD WINAPI ConnectionStatusThread() // OK
 {
 	while (!DelayMe(5000, 100))
 	{
-		TimeoutProc();// Responsavel por zerar o UserCountOnline////////////////////////////////////////////
+		/*TimeoutProc();// Responsavel por zerar o UserCountOnline////////////////////////////////////////////
 		if (gConnectionAuth.gReconnectSwitch == 2)
 		{
 			gConnectionAuth.gReconnectStatus = 0;
@@ -99,7 +99,7 @@ DWORD WINAPI ConnectionStatusThread() // OK
 			gThreadAuth.CountTime = 0;
 			gConnectionAuth.CHConnectionStatusSend();
 			continue;
-		}
+		}*/
 	}
 
 	return 0;
@@ -107,7 +107,7 @@ DWORD WINAPI ConnectionStatusThread() // OK
 
 void CThreadAuth::Init()
 {
-	DWORD ClientInfoTimeOut = GetTickCount();
+	/*DWORD ClientInfoTimeOut = GetTickCount();
 
 	while (!DelayMe(500, 1))
 	{
@@ -137,5 +137,45 @@ void CThreadAuth::Init()
 
 	WaitForMultipleObjects(3, gThreadAuth.ThreadHandles, 1, 2000);
 
-	gThreadCheckAuth.Init();
+	gThreadCheckAuth.Init();*/
+
+	
+	gProtocoloAuth.m_VersionId = gServerInfo.A_VersionId;
+
+	gFeatures.camera3D = gServerInfo.A_Camera3D;
+
+	gFeatures.antiLag = gServerInfo.A_AntiLag;
+
+	gFeatures.customICO = gServerInfo.A_CustomICO;
+
+	gFeatures.removeSplash = gServerInfo.A_RemoveSplash;
+
+	gFeatures.twoFactorAuth = gServerInfo.A_TwoFactorAuth;
+
+	gFeatures.emoji = gServerInfo.A_Emoji;
+
+	gFeatures.customMoster = gServerInfo.A_CustomMoster;
+
+	gFeatures.guildIco = gServerInfo.A_GuildIco;
+
+	gFeatures.petSafeZone = gServerInfo.A_PetSafeZone;
+
+	gFeatures.customNPC = gServerInfo.A_CustomNPC;
+
+	gFeatures.customCloak = gServerInfo.A_CustomCloak;
+
+	gFeatures.customOption = gServerInfo.A_CustomOption;
+
+	gFeatures.customEventTime = gServerInfo.A_CustomEventTime;
+
+	gFeatures.dataServer = gServerInfo.A_DataServer;
+
+	gProtocoloAuth.SwitchFeature();
+	gProtocoloAuth.ActiveDataServer();
+
+	gConnectionAuth.gConnectionStatusTime = GetTickCount();
+
+	memcpy(gProtocoloAuth.m_Date, "31/12/2050", sizeof("31/12/2050"));
+
+	gServerDisplayer.SetWindowName();
 }

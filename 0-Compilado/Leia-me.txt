@@ -1,0 +1,103 @@
+Offset Port Number Disabled = 0x0
+Offset Port Number S1702 = 0x3C524
+Offset Port Number S603 = 0x0126CE0
+Offset Port Number S603 = 0x0156D8
+Offset Port Number S201 = 0x015B5E4
+Offset Port Number S201 = 0x015C92C
+Offset Port Number S001 = 0x015C918
+
+[ConfigFuncKeys]
+Func1 = 25   (AVAILABLE FUNCTIONS = AVAILABLE KEYS)
+Func2 = 26
+Func3 = 1
+Func4 = 7
+Func5 = 13
+Func6 = 19
+Func7 = 2
+Func8 = 8
+Func9 = 14
+Func10 = 20
+Func11 = 15 
+Func12 = 21
+Func13 = 3
+Func14 = 9
+Func15 = 5
+Func16 = 27
+
+[AVAILABLE KEYS]
+F6                  = 1
+F7                  = 2
+F8                  = 3
+F9                  = 4
+F10                 = 5
+F11                 = 6
+SHIFT + F6          = 7
+SHIFT + F7          = 8
+SHIFT + F8          = 9
+SHIFT + F9          = 10
+SHIFT + F10         = 11
+SHIFT + F11         = 12
+CTRL + F6           = 13
+CTRL + F7           = 14
+CTRL + F8           = 15
+CTRL + F9           = 16
+CTRL + F10          = 17
+CTRL + F11          = 18
+CTRL + SHIFT + F6   = 19
+CTRL + SHIFT + F7   = 20
+CTRL + SHIFT + F8   = 21
+CTRL + SHIFT + F9   = 22
+CTRL + SHIFT + F10  = 23
+CTRL + SHIFT + F11  = 24
+PageUp              = 25
+PageDown            = 26
+SHIFT + 0           = 27
+SHIFT + 1           = 28
+SHIFT + 2           = 29
+SHIFT + 3           = 30
+SHIFT + 4           = 31
+SHIFT + 5           = 32
+SHIFT + 6           = 33
+SHIFT + 7           = 34
+SHIFT + 8           = 35
+SHIFT + 9           = 36
+
+[AVAILABLE FUNCTIONS] -- Nem todas as funções estão disponivel em todas as Season.
+1  = Ativar/Desativar Câmera 3D
+2  = Reseta a Câmera 3D
+3  = Ativa/Desativa renderização das Asas
+4  = Ativa/Desativa efeitos de Skills e Brilhos
+5  = Ativa/Desativa renderização das moedas no chão
+6  = Ativa/Desativa renderização dos itens do chão
+7  = Ativa/Desativa renderização Terrain Obj
+8  = Ativa/Desativa Set
+9  = Ativa/Desativa renderização dos pets
+10 = Ativa/Desativa renderização de chars e mobs 1
+11 = Ativa/Desativa renderização de chars e mobs 2
+12 = Ativa/Desativa todo AntLag
+13 = Ativa/Desativa efeitos diversos (Skills, Asas, Buffs, Drop de Moedas, Muuns)
+14 = Ativa/Desativa Set 2
+15 = Ativa/Desativa Mob
+16 = MiniMap Season 6
+
+**************************************************************************************
+
+[ConfigSeason6] Funciona apenas na S6
+PetSafeZoneHorse = 0 -- Permite Usar Horse dentro da safe Zone
+PetSafeZoneDinorant = 0 -- Permite Usar Dinorant dentro da safe Zone
+PetSafeZoneFenrir = 0 -- Permite Usar Fenrir dentro da safe Zone
+DownS6 = 0 --Original 	
+DownS6 = 1 --Remove RF
+DownS6 = 2 --Remove RF + SU
+DownS6 = 3 --Remove RF + SU + DL
+DownS6 = 4 --Remove RF + SU + DL + MG
+CustomFog = 0 -- Ativa e desativa Custom FOG
+SmokeEffect = 0 -- Ativa e desativa Smoke Effect
+KeyEventTime = 82 -- Tecla para abrir o eventTime 82 = R https://docs.microsoft.com/pt-br/dotnet/api/system.windows.forms.keys?view=windowsdesktop-6.0
+ActiveNameServer = 0 --Ativa Nome da sala personalizada
+Name1Server = Custom1Name
+Name2Server = Custom2Name
+Name3Server = Custom3Name
+Name4Server = Custom4Name
+
+**************************************************************************************

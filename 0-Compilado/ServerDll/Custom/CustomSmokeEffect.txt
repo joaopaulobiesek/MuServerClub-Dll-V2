@@ -1,0 +1,60 @@
+// ----------------------------------------------------------------------------------
+//  ItemIndex   Red   Green   Blue   SetName
+// ----------------------------------------------------------------------------------
+    0           0.5   0.5     0.5    //Bronze 
+    1           0.5   0.5     0.5    //Dragon 
+    2           0.5   0.5     0.5    //Pad 
+    3           0.0   0.0     0.5    //Legendary 
+    4           0.5   0.5     0.5    //Bone 
+    5           0.5   0.5     0.5    //Leather 
+    6           0.5   0.5     0.5    //Scale 
+    7           0.5   0.5     0.0    //Sphinx 
+    8           0.5   0.5     0.5    //Brass 
+    9           0.5   0.5     0.5    //Plate 
+    10          0.5   0.5     0.5    //Vine
+    11          0.5   0.5     0.5    //Silk
+    12          0.5   0.5     0.5    //Wind
+    13          0.5   0.5     0.5    //Spirit
+    14          0.5   0.5     0.5    //Guardian
+    15          0.5   0.5     0.5    //Storm Crow
+    16          0.5   0.5     0.5    //Black Dragon
+    17          0.5   0.5     0.5    //Dark Phoenix
+    18          0.5   0.5     0.5    //Grand Soul
+    19          0.5   0.5     0.5    //Divine
+    20          0.5   0.5     0.5    //Thunder Hawk
+    21          0.5   0.5     0.5    //Great Dragon
+    22          0.5   0.5     0.5    //Dark Soul
+    23          0.5   0.5     0.5    //Hurricane
+    24          0.5   0.5     0.5    //Red Sprit 
+    25          0.5   0.5     0.5    //Light Plate
+    26          0.5   0.5     0.5    //Adamantine
+    27          0.5   0.5     0.5    //Dark Steel
+    28          0.5   0.5     0.5    //Dark Master
+    29          0.5   0.5     0.5    //Dragon Knight
+    30          0.5   0.5     0.5    //Venom Mist
+    31          0.5   0.5     0.5    //Sylphid Ray
+    32          0.5   0.5     0.5    //Volcano
+    33          0.5   0.5     0.5    //Sunlight
+    34          0.5   0.5     0.5    //Ashcrow
+    35          0.5   0.5     0.5    //Eclipse
+    36          0.5   0.5     0.5    //Iris
+    37          0.5   0.5     0.5    //Valiant
+    38          0.5   0.5     0.5    //Glorious
+    39          0.5   0.5     0.5    //Violent Wind
+    40          0.5   0.5     0.5    //Red Wing 
+    41          0.5   0.5     0.5    //Ancient
+    42          0.5   0.5     0.5    //Demonic
+    43          0.5   0.5     0.5    //Storm Blitz
+    45          0.5   0.5     0.5    //Titan
+    46          0.5   0.5     0.5    //Brave
+    47          0.5   0.5     0.5    //Phantom
+    48          0.5   0.5     0.5    //Destroy
+    49          0.5   0.5     0.5    //Seraphim
+    50          0.5   0.5     0.5    //Divine
+    51          0.5   0.5     0.5    //Royal
+    52          0.5   0.5     0.5    //Hades
+    59          0.5   0.5     0.5    //Sacred
+    60          0.5   0.5     0.5    //Storm Hard
+    61          0.5   0.5     0.5    //Piercing
+    73          0.5   0.5     0.5    //Phoenix Soul
+end

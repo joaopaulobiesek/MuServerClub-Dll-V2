@@ -56,6 +56,22 @@ public:
 	int ActiveWindowClock;
 	int ActiveWindowWebSite;
 	char WindowWebSite[50];
+	//AtivaLicençaManual
+	int A_VersionId;
+	int A_Camera3D;
+	int A_AntiLag;
+	int A_CustomICO;
+	int A_RemoveSplash;
+	int A_TwoFactorAuth;
+	int A_Emoji;
+	int A_CustomMoster;
+	int A_GuildIco;
+	int A_PetSafeZone;
+	int A_CustomNPC;
+	int A_CustomCloak;
+	int A_CustomOption;
+	int A_CustomEventTime;
+	int A_DataServer;
 
 	//KeyBoard Function
 	int Func1;

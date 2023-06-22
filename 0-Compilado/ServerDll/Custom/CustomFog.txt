@@ -1,0 +1,56 @@
+//Index   Enable   ColorR   ColorG   ColorB   Comment
+0         1        211      212      168      //Lorencia
+1         0        0        0        0        //Dungeon
+2         1        171      185      149      //Devias
+3         1        146      206      155      //Noria
+4         0        0        0        0        //Lost Tower
+6         1        0        0        0        //Arena
+7         1        33       77       66       //Atlans
+8         0        0        0        0        //Tarkan
+9         0        0        0        0        //Devil Square
+10        1        12       30       45       //Icarus
+11        0        0        0        0        //Blood Castle 1
+12        0        0        0        0        //Blood Castle 2
+13        0        0        0        0        //Blood Castle 3
+14        0        0        0        0        //Blood Castle 4
+15        0        0        0        0        //Blood Castle 5
+16        0        0        0        0        //Blood Castle 6
+17        0        0        0        0        //Blood Castle 7
+18        0        0        0        0        //Chaos Castle 1
+19        0        0        0        0        //Chaos Castle 2
+20        0        0        0        0        //Chaos Castle 3
+21        0        0        0        0        //Chaos Castle 4
+22        0        0        0        0        //Chaos Castle 5
+23        0        0        0        0        //Chaos Castle 6
+24        1        13       75       119      //Kalima 1
+25        1        13       75       119      //Kalima 2
+26        1        13       75       119      //Kalima 3
+27        1        13       75       119      //Kalima 4
+28        1        13       75       119      //Kalima 5
+29        1        13       75       119      //Kalima 6
+30        0        0        0        0        //Valley of Loren
+31        0        0        0        0        //Land of Trials
+32        0        0        0        0        //Devil Square 2
+33        1        113      132      79       //Aida
+34        1        68       63       40       //Crywolf
+36        0        0        0        0        //Kalima 7
+37        0        0        0        0        //Kanturu 1
+38        0        0        0        0        //Kanturu 2
+39        0        0        0        0        //Kanturu 3
+40        0        0        0        0        //Silent Map
+41        1        74       0        0        //Barracks of Balgass
+42        0        0        0        0        //Refuge of Balgass
+45        1        191      200      176      //Illusion Template 1
+46        1        191      200      176      //Illusion Template 2
+47        1        191      200      176      //Illusion Template 3
+48        1        191      200      176      //Illusion Template 4
+49        1        191      200      176      //Illusion Template 5
+50        1        191      200      176      //Illusion Template 6
+51        1        208      203      191      //Elbeland
+52        1        208      203      191      //Blood Castle 8
+53        0        0        0        0        //Chaos Castle 7
+56        1        73       58       61       //Swamp of Calmness
+57        1        163      171      182      //Raklion
+58        0        0        0        0        //Raklion Boss
+62        1        205      133      63       //Santa Town
+end

@@ -1,0 +1,10 @@
+// ----------------------------------------------------------------------------------
+// Type = 0: NPC
+// Type = 1: Monster
+// ----------------------------------------------------------------------------------
+// MonsterID | Type 	| Name 		| Dir 				| Folder 		| BMDFile 		| Size
+// ----------------------------------------------------------------------------------
+580		1	"ExBoSS"	"Data\\Custom\\Monster\\"	"Custom\\Monster\\"	"Monster171"		0.80
+585		0	"Arthur"	"Data\\Custom\\Monster\\"	"Custom\\Monster\\"	"CustomNpc02"		1.00
+620		0	"Arthur2"	"Data\\Custom\\Monster\\"	"Custom\\Monster\\"	"CustomNpc03"		1.00
+end

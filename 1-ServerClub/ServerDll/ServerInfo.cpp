@@ -227,6 +227,36 @@ void CServerInfo::ReadStartupInfo(const char* section, const char* path) // OK
 
 	GetPrivateProfileString(section, "ClientSerial", "", this->ClientSerial, sizeof(this->ClientSerial), path);
 
+	this->A_VersionId = GetPrivateProfileInt(section, "A_VersionId", 1, path);
+
+	this->A_Camera3D = GetPrivateProfileInt(section, "A_Camera3D", 1, path);
+
+	this->A_AntiLag = GetPrivateProfileInt(section, "A_AntiLag", 1, path);
+
+	this->A_CustomICO = GetPrivateProfileInt(section, "A_CustomICO", 1, path);
+
+	this->A_RemoveSplash = GetPrivateProfileInt(section, "A_RemoveSplash", 1, path);
+
+	this->A_TwoFactorAuth = GetPrivateProfileInt(section, "A_TwoFactorAuth", 1, path);
+
+	this->A_Emoji = GetPrivateProfileInt(section, "A_Emoji", 1, path);
+
+	this->A_CustomMoster = GetPrivateProfileInt(section, "A_CustomMoster", 1, path);
+
+	this->A_GuildIco = GetPrivateProfileInt(section, "A_GuildIco", 1, path);
+
+	this->A_PetSafeZone = GetPrivateProfileInt(section, "A_PetSafeZone", 1, path);
+
+	this->A_CustomNPC = GetPrivateProfileInt(section, "A_CustomNPC", 1, path);
+
+	this->A_CustomCloak = GetPrivateProfileInt(section, "A_CustomCloak", 1, path);
+
+	this->A_CustomOption = GetPrivateProfileInt(section, "A_CustomOption", 1, path);
+
+	this->A_CustomEventTime = GetPrivateProfileInt(section, "A_CustomEventTime", 1, path);
+
+	this->A_DataServer = GetPrivateProfileInt(section, "A_DataServer", 1, path);
+
 	GetHardwareId(this->HardwareId);
 
 	LogAdd(LOG_BLUE, "Port: %d", ServerPort);
